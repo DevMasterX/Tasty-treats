@@ -1,0 +1,22 @@
+:root {
+  --text-primary: #050505;
+  //   --text-primary: red;
+
+  --text-secondary: rgba(5, 5, 5, 0.5);
+  --text-secondary-light: rgba(5, 5, 5, 0.3);
+  --text-accent: #9bb537;
+
+  --bg-primary: #f8f8f8;
+  --mobile-menu-bg: #9bb537;
+  --modal-bg: #fff;
+}
+
+.dark-theme {
+  --text-primary: #fff;
+  --text-secondary: rgba(255, 255, 255, 0.5);
+  --text-secondary-light: rgba(255, 255, 255, 0.3);
+
+  --bg-primary: #161616;
+  --mobile-menu-bg: #050505;
+  --modal-bg: #050505;
+}

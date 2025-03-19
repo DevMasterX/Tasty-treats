@@ -1,0 +1,54 @@
+@use '../utils/variables';
+
+.nav-list {
+  display: flex;
+  gap: 16px;
+  display: none;
+}
+
+.header-container {
+  display: flex;
+  position: relative;
+
+  padding-top: 20px;
+}
+
+.header-logo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.header-btn-block {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-left: auto;
+}
+
+.shopping-cart-btn {
+  width: 24px;
+  height: 24px;
+  //   background-color: inherit;
+}
+
+.shopping-icon,
+.mobile-menu-icon {
+  fill: var(--bg-primary);
+  stroke: var(--text-primary);
+}
+
+.theme-switcher-btn {
+  display: none;
+}
+.js-theme-switcher {
+}
+.input-switcher {
+}
+.mobile-menu-btn {
+  width: 32px;
+  height: 32px;
+}
+.mobile-menu-icon {
+}
