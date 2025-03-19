@@ -35,7 +35,9 @@
 
 .shopping-icon,
 .mobile-menu-icon {
-  fill: var(--bg-primary);
+  //   fill: var(--bg-primary);
+  fill: transparent;
+
   stroke: var(--text-primary);
 }
 
