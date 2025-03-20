@@ -1,0 +1,15 @@
+// @use '../../utils/variables';
+@use '../../utils/mixins' as *;
+
+.header-nav {
+  //   @include flex-center;
+  display: none;
+  @include media(md) {
+    display: block;
+  }
+}
+
+.nav-list {
+  display: flex;
+  gap: 16px;
+}
