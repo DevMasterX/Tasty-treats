@@ -1,4 +1,9 @@
-@use '../utils/variables';
+// @use '../utils/variables';
+@use '../utils/mixins' as *;
+
+.header-nav {
+  @include flex-center;
+}
 
 .nav-list {
   display: flex;
@@ -8,23 +13,30 @@
 
 .header-container {
   display: flex;
+  justify-content: space-between;
   position: relative;
 
   padding-top: 20px;
 }
 
 .header-logo {
+  // display: none;
   position: absolute;
   bottom: 0;
   left: 0;
   transform: translateY(-50%);
+  color: inherit;
+
+  span {
+    color: var(--text-accent);
+  }
 }
 
 .header-btn-block {
   display: flex;
   gap: 14px;
   align-items: center;
-  margin-left: auto;
+  //   margin-left: auto;
 }
 
 .shopping-cart-btn {
@@ -35,9 +47,7 @@
 
 .shopping-icon,
 .mobile-menu-icon {
-  //   fill: var(--bg-primary);
   fill: transparent;
-
   stroke: var(--text-primary);
 }
 
