@@ -5,7 +5,8 @@
   "homepage": "https://DevMasterX.github.io/Tasty-treats",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /Tasty-treats/"
+    "build": "parcel build src/*.html --public-url /Tasty-treats/",
+    "dev": "concurrently -k -n PARCEL,NODEMON -c green,cyan \"parcel src/index.html\" \"nodemon --watch src --ext scss,js,html --signal SIGKILL\""
   },
   "repository": {
     "type": "git",
