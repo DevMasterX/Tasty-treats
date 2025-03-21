@@ -1,9 +1,9 @@
 // @use '../utils/variables';
 @use '../utils/mixins' as *;
 
-* {
-  outline: 1px solid red;
-}
+// * {
+//   outline: 1px solid red;
+// }
 
 html {
   scroll-behavior: smooth;
@@ -23,13 +23,13 @@ body {
   padding-right: 20px;
 
   @include media(md) {
-    background-color: black;
+    // background-color: black;
     width: 768px;
     padding-left: 32px;
     padding-right: 32px;
   }
   @include media(lg) {
-    background-color: red;
+    // background-color: red;
     width: 1280px;
     padding-left: 100px;
     padding-right: 100px;
@@ -42,4 +42,16 @@ body {
 
 .mobile-menu-current {
   color: var(--mobile-menu-current);
+}
+
+.dark-theme {
+  --text-primary: #fff;
+  --text-secondary: rgba(255, 255, 255, 0.5);
+  --text-secondary-light: rgba(255, 255, 255, 0.3);
+
+  --bg-primary: #161616;
+  --mobile-menu-bg: #050505;
+  --mobile-menu-current: #9bb537;
+
+  --modal-bg: #050505;
 }
