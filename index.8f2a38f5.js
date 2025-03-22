@@ -1,0 +1,2 @@
+!function(){let e=document.querySelector(".js-theme-switcher__input"),t="dark-theme",o="theme";(function(){try{let t=localStorage.getItem(o);if(console.log("\uD83D\uDE80 savedTheme:",t),!t)return;document.body.classList.add(t),e.checked=!0}catch(e){console.error("ERROR! Can not find saved theme in local storage",e)}})(),e.addEventListener("change",function(){document.body.classList.toggle(t),document.body.classList.contains(t)?localStorage.setItem(o,t):localStorage.removeItem(o)})}();
+//# sourceMappingURL=index.8f2a38f5.js.map
