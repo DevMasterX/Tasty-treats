@@ -17,12 +17,10 @@ function onMobileMenuCloseBtnClick() {
 function onOpenMenu() {
   mobileMenu.classList.add('open');
   header.classList.add('menu-opened');
-  //   document.addEventListener('click', onDocumentClick);
 }
 function onCloseMenu() {
   mobileMenu.classList.remove('open');
   header.classList.remove('menu-opened');
-  //   document.removeEventListener('click', onDocumentClick);
 }
 
 function onDocumentClick(e) {
