@@ -1,57 +1,35 @@
 // @use '../utils/variables';
 @use '../utils/mixins' as *;
 
-// * {
-//   outline: 1px solid red;
-// }
+* {
+  font-family: inherit;
+}
 
 html {
   scroll-behavior: smooth;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
 }
 
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  transition: background-color 0.4s ease, color 0.4s ease;
-}
 
-.container {
-  width: 100%;
-  // max-width: 1280px;
-  margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
-
-  @include media(md) {
-    // background-color: black;
-    width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-  @include media(lg) {
-    // background-color: red;
-    width: 1280px;
-    padding-left: 100px;
-    padding-right: 100px;
-  }
+  @include transition;
 }
 
 .current {
   color: var(--text-accent);
 }
 
-.mobile-menu-current {
-  color: var(--mobile-menu-current);
-}
+// .dark-theme {
+//   --text-primary: #fff;
+//   --text-secondary: rgba(255, 255, 255, 0.5);
+//   --text-secondary-light: rgba(255, 255, 255, 0.3);
 
-.dark-theme {
-  --text-primary: #fff;
-  --text-secondary: rgba(255, 255, 255, 0.5);
-  --text-secondary-light: rgba(255, 255, 255, 0.3);
+//   --bg-primary: #161616;
+//   --mobile-menu-bg: #050505;
+//   --mobile-menu-current: #9bb537;
 
-  --bg-primary: #161616;
-  --mobile-menu-bg: #050505;
-  --mobile-menu-current: #9bb537;
-
-  --modal-bg: #050505;
-}
+//   --modal-bg: #050505;
+// }

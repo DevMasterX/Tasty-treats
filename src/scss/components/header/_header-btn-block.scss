@@ -33,4 +33,10 @@
 .mobile-menu-icon {
   fill: transparent;
   stroke: var(--text-primary);
+
+  &:hover {
+    stroke: var(--hover-color);
+  }
+
+  @include transition;
 }

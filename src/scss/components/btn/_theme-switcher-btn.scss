@@ -3,6 +3,8 @@
 .theme-switcher {
   display: inline-block;
   cursor: pointer;
+
+  @include transition;
 }
 
 .theme-switcher__slider {
@@ -13,8 +15,8 @@
   background: #cecdcd;
   box-shadow: 7px 5px 15px 0 rgba(160, 158, 160, 0.6);
   border-radius: 60px;
-
-  @include transition;
+  transition: background-color 0.3s ease-out, box-shadow 0.3s ease-out;
+  // @include transition;
 }
 
 .theme-switcher__slider::before {
@@ -44,4 +46,28 @@
 
 .theme-switcher__slider:active::before {
   width: 25px;
+}
+
+.theme-switcher__input:focus-visible + .theme-switcher__slider {
+  outline: 2px solid #1976d2;
+  outline-offset: 2px;
+  border-radius: 50px; // если у тебя круглый слайдер
+}
+
+// .mobile-menu {
+//   position: relative;
+// }
+
+.theme-switcher {
+  @include media(sm) {
+    position: absolute;
+    bottom: 20px;
+    // right: calc(65% - 46px - 20px);
+    right: calc(-100%);
+    z-index: 1;
+
+    header.menu-opened & {
+      right: calc(65% - 46px - 20px);
+    }
+  }
 }

@@ -1,19 +1,22 @@
 @use '../../utils/mixins' as *;
 
 .header-logo {
-  // display: none;
-  //   position: absolute;
-  //   bottom: 0;
-  //   left: 0;
-  //   transform: translateY(-50%);
-  color: inherit;
+  // color: inherit;
+  @include transition;
 
+  // transition: all 0.3s ease-out;
   span {
     color: var(--text-accent);
+    @include transition(all, 0.1s);
+
+    // transition: all 0.1s;
   }
 
-  @include media(md) {
-    // left: 50%;
-    // transform: translate(-50%, -50%);
+  &:hover {
+    color: var(--text-accent);
+
+    span {
+      color: var(--text-primary);
+    }
   }
 }

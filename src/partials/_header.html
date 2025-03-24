@@ -15,13 +15,17 @@
       <a class="header-logo" href="./index.html"><span>tasty</span>treats.</a>
 
       <div class="header-btn-block">
-        <button type="button" class="shopping-cart-btn">
+        <button
+          type="button"
+          class="shopping-cart-btn"
+          aria-label="Shopping cart"
+        >
           <svg class="shopping-icon">
             <use href="./img/icons.svg#icon-shopping-cart"></use>
           </svg>
         </button>
 
-        <label class="theme-switcher">
+        <label class="theme-switcher "">
           <input
             type="checkbox"
             class="theme-switcher__input js-theme-switcher__input visually-hidden"
@@ -29,7 +33,11 @@
           <span class="theme-switcher__slider"></span>
         </label>
 
-        <button type="button" class="mobile-menu-btn">
+        <button
+          type="button"
+          class="mobile-menu-btn js-mobile-menu-btn"
+          aria-label="Open mobile menu"
+        >
           <svg class="mobile-menu-icon">
             <use href="./img/icons.svg#icon-burger"></use>
           </svg>
@@ -40,8 +48,8 @@
 
   <!-- ------------------ Mobile menu ---------------- -->
 
-  <div class="mobile-menu">
-    <button type="button" class="close-btn">
+  <div class="mobile-menu js-mobile-menu" >
+    <button type="button" class="close-btn js-close-btn" aria-label="Close mobile menu">
       <svg class="close-btn-icon">
         <use href="./img/icons.svg#icon-x"></use>
       </svg>
@@ -58,12 +66,5 @@
       </ul>
     </nav>
 
-    <label class="theme-switcher">
-      <input
-        type="checkbox"
-        class="theme-switcher__input js-theme-switcher__input visually-hidden"
-      />
-      <span class="theme-switcher__slider"></span>
-    </label>
   </div>
 </header>

@@ -4,7 +4,7 @@
   position: fixed;
   top: 0;
   right: -100%;
-  //   right: 0;
+
   height: 100%;
 
   display: flex;
@@ -13,8 +13,19 @@
   width: 65%;
   padding: 20px;
 
+  opacity: 0;
+
   background-color: var(--mobile-menu-bg);
   color: var(--mobile-menu-text);
+
+  box-shadow: -8px 0 16px rgba(0, 0, 0, 0.15);
+
+  @include transition(all, 0.3s, ease-out);
+
+  &.open {
+    right: 0;
+    opacity: 1;
+  }
 }
 
 .mobile-menu .close-btn {
@@ -43,4 +54,12 @@
   display: inline-block;
   margin-bottom: 0;
   margin-top: auto;
+}
+
+.mobile-menu-current {
+  color: var(--mobile-menu-current);
+}
+
+body.dark-theme .mobile-menu {
+  box-shadow: -8px 0 24px rgba(155, 181, 55, 0.25);
 }

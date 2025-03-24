@@ -13,3 +13,11 @@
   display: flex;
   gap: 16px;
 }
+
+.nav-list-item {
+  @include transition;
+
+  &:hover {
+    color: var(--hover-color);
+  }
+}

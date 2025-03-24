@@ -19,7 +19,7 @@ function onSwitherInputChange() {
 function initTheme() {
   try {
     const savedTheme = localStorage.getItem(THEME);
-    console.log('🚀 savedTheme:', savedTheme);
+
     if (!savedTheme) {
       return;
     }
