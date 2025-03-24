@@ -1,7 +1,9 @@
 @use '../../utils/mixins' as *;
 
 .header-logo {
-  // color: inherit;
+  font-weight: 600;
+  line-height: 112%;
+  letter-spacing: -0.04em;
   @include transition;
 
   // transition: all 0.3s ease-out;

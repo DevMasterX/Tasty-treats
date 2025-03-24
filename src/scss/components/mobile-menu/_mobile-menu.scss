@@ -56,8 +56,14 @@
   margin-top: auto;
 }
 
-.mobile-menu-current {
+.mobile-menu-list-item {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.mobile-menu-list-item.mobile-menu-current {
   color: var(--mobile-menu-current);
+  font-weight: 500;
 }
 
 body.dark-theme .mobile-menu {

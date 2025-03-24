@@ -15,9 +15,16 @@
 }
 
 .nav-list-item {
+  font-weight: 400;
+  font-size: 12px;
   @include transition;
 
   &:hover {
     color: var(--hover-color);
   }
+}
+
+.nav-list-item.current {
+  font-weight: 500;
+  color: var(--text-accent);
 }
