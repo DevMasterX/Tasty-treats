@@ -1,0 +1,43 @@
+@use '../utils/mixins' as *;
+
+.hero-container {
+  padding-top: 84px;
+
+  @include media(md) {
+    padding-top: 89px;
+  }
+
+  @include media(lg) {
+    display: flex;
+    gap: 32px;
+    padding-top: 94px;
+  }
+}
+
+.hero-text {
+  margin-top: 14px;
+
+  @include media(md) {
+    margin-top: 16px;
+  }
+}
+
+.hero-btn {
+  margin-top: 28px;
+
+  @include media(md) {
+    margin-top: 32px;
+  }
+}
+
+.slider-wrapper {
+  padding-top: 48px;
+
+  @include media(md) {
+    margin-top: 64px;
+  }
+
+  @include media(md) {
+    margin-top: 0;
+  }
+}
