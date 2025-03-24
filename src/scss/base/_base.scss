@@ -3,6 +3,7 @@
 
 * {
   font-family: inherit;
+  outline: 1px solid red;
 }
 
 html {
@@ -14,7 +15,6 @@ html {
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  overflow-x: hidden;
 
   @include transition;
 }

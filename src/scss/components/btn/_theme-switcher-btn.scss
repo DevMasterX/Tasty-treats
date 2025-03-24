@@ -3,6 +3,7 @@
 .theme-switcher {
   display: inline-block;
   cursor: pointer;
+  // display: none;
 
   @include transition;
 }
@@ -60,13 +61,15 @@
 
 .theme-switcher {
   @include media(sm) {
-    position: absolute;
+    position: fixed;
     bottom: 20px;
     // right: calc(65% - 46px - 20px);
-    right: calc(-100%);
+    right: -100%;
+    // transform: translateX(100%);
     z-index: 1;
 
     header.menu-opened & {
+      // transform: translateX(0);
       right: calc(65% - 46px - 20px);
     }
   }

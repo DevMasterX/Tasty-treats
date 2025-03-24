@@ -13,12 +13,14 @@
   width: 65%;
   padding: 20px;
 
-  opacity: 0;
+  opacity: 1;
 
   background-color: var(--mobile-menu-bg);
   color: var(--mobile-menu-text);
 
   box-shadow: -8px 0 16px rgba(0, 0, 0, 0.15);
+
+  // display: none;
 
   @include transition(all, 0.3s, ease-out);
 
