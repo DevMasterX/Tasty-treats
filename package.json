@@ -20,7 +20,8 @@
   },
   "dependencies": {
     "modern-normalize": "^3.0.1",
-    "sass": "^1.86.0"
+    "sass": "^1.86.0",
+    "swiper": "^11.2.6"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
