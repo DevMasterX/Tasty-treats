@@ -1,3 +1,4 @@
 import './scss/index.scss';
-import './js/utils/themeSwitcher';
-import './js/helpers/mobileMenu';
+import './js/components/themeSwitcher';
+import './js/components/mobileMenu';
+import './js/components/swiper';
