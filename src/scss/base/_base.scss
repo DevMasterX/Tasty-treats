@@ -19,6 +19,15 @@ body {
   @include transition;
 }
 
-// .current {
-//   color: var(--text-accent);
-// }
+.current {
+  color: var(--text-accent);
+}
+
+.mobile-menu-current {
+  color: var(--mobile-menu-current);
+  font-weight: 600;
+}
+
+.no-scroll {
+  overflow: hidden;
+}

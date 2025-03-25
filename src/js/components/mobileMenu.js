@@ -1,48 +1,43 @@
-const mobileMenuBtn = document.querySelector('.js-mobile-menu-btn');
-const mobileMenu = document.querySelector('.js-mobile-menu');
-const header = document.querySelector('header');
-const themeSwitcher = document.querySelector('.js-theme-switcher');
-const mobileMenuCloseBtn = document.querySelector('.js-close-btn');
+function initMobileMenu() {
+  const mobileMenuBtn = document.querySelector('.js-mobile-menu-btn');
+  const mobileMenuCloseBtn = document.querySelector('.js-close-btn');
+  const mobileMenu = document.querySelector('.js-mobile-menu');
+  const header = document.querySelector('header');
+  const themeSwitcher = document.querySelector('.js-theme-switcher');
 
-// Проверяем наличие элементов перед добавлением обработчиков
-if (mobileMenuBtn && mobileMenuCloseBtn) {
-  mobileMenuBtn.addEventListener('click', onMobileMenuBtnClick);
-  mobileMenuCloseBtn.addEventListener('click', onMobileMenuCloseBtnClick);
-}
+  if (!mobileMenuBtn || !mobileMenu || !header || !mobileMenuCloseBtn) {
+    console.warn('Mobile menu: один или несколько элементов не найдены');
+    return;
+  }
 
-function onMobileMenuBtnClick() {
-  onOpenMenu();
-}
+  mobileMenuBtn.addEventListener('click', onOpenMenu);
+  mobileMenuCloseBtn.addEventListener('click', onCloseMenu);
 
-function onMobileMenuCloseBtnClick() {
-  onCloseMenu();
-}
-
-function onOpenMenu() {
-  if (mobileMenu && header) {
+  function onOpenMenu() {
     mobileMenu.classList.add('open');
     header.classList.add('menu-opened');
-    // Добавляем обработчик клика по документу при открытии меню
+    document.body.classList.add('no-scroll');
     document.addEventListener('click', onDocumentClick);
   }
-}
 
-function onCloseMenu() {
-  if (mobileMenu && header) {
+  function onCloseMenu() {
     mobileMenu.classList.remove('open');
     header.classList.remove('menu-opened');
-    // Удаляем обработчик клика при закрытии меню
+    document.body.classList.remove('no-scroll');
     document.removeEventListener('click', onDocumentClick);
   }
-}
 
-function onDocumentClick(e) {
-  // Проверяем, был ли клик вне меню и не по кнопке открытия
-  const clickInsideMenu = mobileMenu.contains(e.target);
-  const clickOnButton = mobileMenuBtn.contains(e.target);
-  const clickOnThemeSwitcher = themeSwitcher.contains(e.target);
+  function onDocumentClick(e) {
+    const clickInsideMenu = mobileMenu.contains(e.target);
+    const clickOnButton = mobileMenuBtn.contains(e.target);
+    // const clickOnThemeSwitcher =
+    //   themeSwitcher && themeSwitcher.contains(e.target);
+    const clickOnThemeSwitcher = themeSwitcher?.contains(e.target);
 
-  if (!clickInsideMenu && !clickOnButton && !clickOnThemeSwitcher) {
-    onCloseMenu();
+    if (!clickInsideMenu && !clickOnButton && !clickOnThemeSwitcher) {
+      onCloseMenu();
+    }
   }
 }
+
+export { initMobileMenu };
