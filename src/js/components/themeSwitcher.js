@@ -45,7 +45,7 @@ function initTheme() {
   const savedTheme = localStorage.getItem(THEME_KEY);
   const isDark = savedTheme === DARK_CLASS;
 
-  if (!isDark) {
+  if (isDark) {
     document.body.classList.add(DARK_CLASS);
     themeSwitcherInput.checked = true;
   }
