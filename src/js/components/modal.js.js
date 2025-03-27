@@ -1,3 +1,5 @@
+import { renderOrderForm } from './renderOrderForm';
+
 let modal, overlay, modalContent;
 
 function initModal() {
@@ -16,21 +18,22 @@ function initModal() {
   handleEscapeKey();
 }
 
-function openModal() {
-  if (!modal) return;
-
-  modal.classList.remove('is-hidden');
-  document.body.classList.add('no-scroll');
-}
-function closeModal() {
-  if (!modal) return;
-  modal.classList.add('is-hidden');
-  document.body.classList.remove('no-scroll');
+function setupOpenButtons() {
+  document.querySelectorAll('[data-modal-open]').forEach(btn => {
+    btn.addEventListener('click', openModal);
+  });
 }
 
-function setModalContent(htmlString) {
-  if (!modalContent) return;
-  modalContent.innerHTML = htmlString;
+function setupCloseButtons() {
+  //   document.querySelectorAll('[data-modal-close]').forEach(btn => {
+  //     btn.addEventListener('click', closeModal);
+  //   });
+
+  modal.addEventListener('click', e => {
+    if (e.target.closest(['data-modal-close'])) {
+      closeModal();
+    }
+  });
 }
 
 function handleOverlayClick() {
@@ -45,22 +48,28 @@ function handleOverlayClick() {
 
 function handleEscapeKey() {
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && !modal.classList.contains('is-hidden')) {
+    if (e.key === 'Escape' && modal && !modal.classList.contains('is-hidden')) {
       closeModal();
     }
   });
 }
 
-function setupOpenButtons() {
-  document.querySelectorAll('[data-modal-open]').forEach(btn => {
-    btn.addEventListener('click', openModal);
-  });
+function openModal() {
+  if (!modal) return;
+
+  modal.classList.remove('is-hidden');
+  document.body.classList.add('no-scroll');
+}
+function closeModal() {
+  if (!modal) return;
+  modal.classList.add('is-hidden');
+  document.body.classList.remove('no-scroll');
+  // modalContent.innerHTML = '';
 }
 
-function setupCloseButtons() {
-  document.querySelectorAll('[data-modal-close').forEach(btn => {
-    btn.addEventListener('click', closeModal);
-  });
+function setModalContent(htmlString) {
+  if (!modalContent) return;
+  modalContent.innerHTML = htmlString;
 }
 
 export { initModal };
