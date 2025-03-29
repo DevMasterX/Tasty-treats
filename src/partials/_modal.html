@@ -1,59 +1,11 @@
 <div class="modal is-hidden" id="modal" hidden>
-  <div class="modal-overlay" data-modal-close></div>
+  <div class="modal-overlay"></div>
   <div class="modal-wrapper">
+    <button data-modal-close class="modal-close-btn">
+      <svg class="close-btn__icon">
+        <use href="./img/icons.svg#icon-x"></use>
+      </svg>
+    </button>
     <div class="modal-content"></div>
   </div>
 </div>
-
-<form name="order_form" autocomplete="on" class="order-form">
-  <button data-modal-close class="close-btn order-form__close-btn">
-    <svg class="close-btn__icon">
-      <use href="./img/icons.svg#icon-x"></use>
-    </svg>
-  </button>
-
-  <h2 id="form-title" class="order-form__title">Order now</h2>
-  <div role="group" aria-labelledby="form-title" class="order-form__group">
-    <label class="order-form__label">
-      <span class="order-form__label-text">Name</span>
-      <input
-        type="text"
-        name="username"
-        placeholder="Jacob Mercer"
-        class="order-form__input"
-      />
-    </label>
-
-    <label class="order-form__label">
-      <span class="order-form__label-text">Phone number</span>
-      <input
-        type="tel"
-        name="phone_number"
-        placeholder="+3 (___) ___-__-__"
-        class="order-form__input"
-      />
-    </label>
-
-    <label class="order-form__label">
-      <span class="order-form__label-text">Email</span>
-      <input
-        type="email"
-        name="email"
-        placeholder="you@example.com"
-        class="order-form__input"
-      />
-    </label>
-
-    <label class="order-form__label">
-      <span class="order-form__label-text">Comment</span>
-      <textarea
-        name="comments"
-        rows="4"
-        placeholder="Enter your comments here..."
-        class="order-form__textarea"
-      ></textarea>
-    </label>
-  </div>
-
-  <button type="submit" class="order-form__submit-btn">Send</button>
-</form>

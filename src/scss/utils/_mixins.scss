@@ -4,6 +4,38 @@
   justify-content: center;
 }
 
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin btn-primary {
+  @include flex-center;
+  color: var(--text-btn-primary);
+  background-color: #9bb537;
+
+  &:hover {
+    color: #050505;
+  }
+  &:active {
+    background-color: #7f9e2c;
+  }
+}
+
+@mixin btn-secondary {
+  @include flex-center;
+  color: var(--text-primary);
+  border: 1px solid #9bb537;
+
+  &:hover {
+    color: #f8f8f8;
+    background-color: #9bb537;
+  }
+  &:active {
+    background-color: #7f9e2c;
+  }
+}
+
 @mixin media($breakpoint) {
   @if $breakpoint == sm {
     @media (max-width: 767px) {

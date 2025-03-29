@@ -1,1 +1,29 @@
 @use '../../utils/mixins' as *;
+
+.modal-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  width: 20px;
+  height: 20px;
+  stroke: var(--text-primary);
+
+  &:hover {
+    stroke: var(--hover-color);
+  }
+
+  &:active {
+    stroke: var(--active-color);
+  }
+  @include transition;
+
+  @include media(md) {
+    top: 16px;
+    right: 16px;
+  }
+  @include media(md) {
+    width: 24px;
+    height: 24px;
+  }
+}

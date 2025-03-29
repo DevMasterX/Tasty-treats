@@ -13,8 +13,29 @@
 }
 
 .modal-overlay {
+  position: absolute;
+  inset: 0;
+
+  background-color: rgba(0, 0, 0, 0.5);
+
+  z-index: 1;
 }
 .modal-wrapper {
+  position: relative;
+  z-index: 2;
+
+  padding: 28px 20px;
+  width: 335px;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  background-color: var(--modal-bg);
+  @include media(md) {
+    padding: 40px;
+  }
 }
 .modal-content {
+}
+
+body.dark-theme .modal-wrapper {
+  box-shadow: 0 8px 40px rgba(155, 181, 55, 0.25);
 }

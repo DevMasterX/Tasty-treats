@@ -1,10 +1,10 @@
 // @use '../utils/variables';
 @use '../utils/mixins' as *;
 
-* {
-  font-family: inherit;
-  // outline: 1px solid red;
-}
+// * {
+//   font-family: inherit;
+
+// }
 
 html {
   scroll-behavior: smooth;
@@ -30,4 +30,39 @@ body {
 
 .no-scroll {
   overflow: hidden;
+}
+
+button {
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: inline-block;
+}
+
+button,
+a,
+input,
+textarea {
+  outline: none;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus,
+a:focus,
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #1976d2;
+  outline-offset: 2px;
 }

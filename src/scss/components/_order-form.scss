@@ -1,0 +1,72 @@
+@use '../utils/mixins' as *;
+
+.order-form {
+  @include flex-column;
+}
+
+.order-form__group {
+  margin-top: 28px;
+
+  @include flex-column;
+  gap: 16px;
+  @include media(md) {
+    gap: 18px;
+    margin-top: 40px;
+  }
+}
+
+.order-form__label {
+  @include flex-column;
+  gap: 8px;
+}
+
+.order-form__submit-btn {
+  margin-top: 40px;
+}
+
+.order-form__title {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 122%;
+  text-transform: uppercase;
+}
+
+.order-form__label-text {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 129%;
+}
+
+.order-form__input {
+  //   color: var(--text-primary);
+  color: inherit;
+  padding: 14px;
+  height: 46px;
+  border: var(--input-border);
+  border-radius: 15px;
+  background-color: inherit;
+
+  @include media(md) {
+    height: 48px;
+  }
+}
+
+.order-form__textarea {
+  color: inherit;
+  border: var(--input-border);
+  border-radius: 15px;
+  padding: 14px;
+
+  height: 100px;
+  resize: none;
+  background-color: inherit;
+}
+
+.order-form__submit-btn {
+  height: 46px;
+  border-radius: 15px;
+  font-size: 14px;
+
+  @include btn-primary;
+  @include transition;
+}

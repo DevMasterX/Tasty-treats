@@ -25,14 +25,8 @@ function setupOpenButtons() {
 }
 
 function setupCloseButtons() {
-  //   document.querySelectorAll('[data-modal-close]').forEach(btn => {
-  //     btn.addEventListener('click', closeModal);
-  //   });
-
-  modal.addEventListener('click', e => {
-    if (e.target.closest(['data-modal-close'])) {
-      closeModal();
-    }
+  document.querySelectorAll('[data-modal-close]').forEach(btn => {
+    btn.addEventListener('click', closeModal);
   });
 }
 
@@ -54,22 +48,32 @@ function handleEscapeKey() {
   });
 }
 
-function openModal() {
+function openModal(e) {
   if (!modal) return;
 
+  setModalContent(e.currentTarget.dataset.modalType);
   modal.classList.remove('is-hidden');
   document.body.classList.add('no-scroll');
 }
+
 function closeModal() {
   if (!modal) return;
   modal.classList.add('is-hidden');
   document.body.classList.remove('no-scroll');
-  // modalContent.innerHTML = '';
+  modalContent.innerHTML = '';
 }
 
-function setModalContent(htmlString) {
-  if (!modalContent) return;
-  modalContent.innerHTML = htmlString;
+function setModalContent(modalType) {
+  if (!modalContent || !modalType) return;
+
+  switch (modalType) {
+    case 'order':
+      modalContent.innerHTML = renderOrderForm();
+      break;
+
+    default:
+      console.log('error');
+  }
 }
 
 export { initModal };

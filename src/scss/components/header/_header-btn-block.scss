@@ -38,5 +38,9 @@
     stroke: var(--hover-color);
   }
 
+  &:active {
+    stroke: var(--active-color);
+  }
+
   @include transition;
 }
