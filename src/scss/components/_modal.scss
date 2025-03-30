@@ -12,7 +12,7 @@
   pointer-events: auto;
   transform: scale(1);
   transition: opacity 0.3s ease, transform 0.3s ease;
-
+  overflow: hidden;
   &.is-hidden {
     opacity: 0;
     visibility: hidden;
@@ -27,7 +27,6 @@
   inset: 0;
 
   background-color: rgba(0, 0, 0, 0.5);
-
   z-index: 1;
 }
 .modal-wrapper {
@@ -43,7 +42,8 @@
   transform: scale(1);
   transition: transform 0.3s ease;
   // @include transition;
-  overflow: scroll;
+
+  // -webkit-overflow-scrolling: touch;
 
   @include media(md) {
     padding: 40px;
@@ -56,6 +56,13 @@
 }
 
 .modal-content {
+  max-height: 100dvh;
+  overflow-y: auto;
+  // -webkit-overflow-scrolling: touch;
+}
+
+.modal-content::-webkit-scrollbar {
+  display: none;
 }
 
 body.dark-theme .modal-wrapper {
@@ -65,3 +72,15 @@ body.dark-theme .modal-wrapper {
 .modal.is-hidden .modal-close-btn {
   display: none;
 }
+
+// .modal-content::-webkit-scrollbar-track {
+//   background-color: black;
+// }
+// .modal-content::-webkit-scrollbar-thumb {
+//   width: 1px;
+//   background-color: pink;
+// }
+
+// ::-webkit-scrollbar {
+//   width: 1px;
+// }
