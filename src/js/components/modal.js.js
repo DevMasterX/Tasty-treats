@@ -1,4 +1,5 @@
 import { renderOrderForm } from './renderOrderForm';
+import { initOrderFormValidation } from '../utils/orderFormValidator.js';
 
 let modal, overlay, modalContent;
 
@@ -69,6 +70,7 @@ function setModalContent(modalType) {
   switch (modalType) {
     case 'order':
       modalContent.innerHTML = renderOrderForm();
+      initOrderFormValidation();
       break;
 
     default:

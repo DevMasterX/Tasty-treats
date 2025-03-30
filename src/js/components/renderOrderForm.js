@@ -1,6 +1,6 @@
 function renderOrderForm() {
   return `
-  <form name="order_form" autocomplete="on" class="order-form">
+  <form name="order_form" autocomplete="on" class="order-form js-order-form" >
         <h2 id="form-title" class="order-form__title">Order now</h2>
         <div
           role="group"
