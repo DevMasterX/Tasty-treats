@@ -1,7 +1,7 @@
 @use '../../utils/mixins' as *;
 
 .hero-title {
-  width: 335px;
+  max-width: 335px;
   font-weight: 600;
   font-size: 26px;
   line-height: 120%;

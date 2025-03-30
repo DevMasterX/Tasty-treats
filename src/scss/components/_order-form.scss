@@ -1,6 +1,13 @@
 @use '../utils/mixins' as *;
 
 .order-form {
+  min-width: 10%;
+  width: 295px;
+
+  @include media(md) {
+    width: 360px;
+  }
+
   @include flex-column;
 }
 

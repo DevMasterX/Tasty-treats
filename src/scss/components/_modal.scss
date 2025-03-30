@@ -5,21 +5,24 @@
 
   position: fixed;
   inset: 0;
+  // top: 0;
+  // left: 0;
+  // width: 100vw;
+  // height: 100dvh;
+
   z-index: 1000;
+  overflow: hidden;
 
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
   transform: scale(1);
   transition: opacity 0.3s ease, transform 0.3s ease;
-  overflow: hidden;
   &.is-hidden {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    // transform: scale(0.9);
   }
-  @include transition(all 2s ease);
 }
 
 .modal-overlay {
@@ -29,21 +32,22 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
+
 .modal-wrapper {
   position: relative;
   z-index: 2;
 
   padding: 28px 20px;
-  width: 335px;
+  // max-width: 335px;
   border-radius: 15px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
   background-color: var(--modal-bg);
 
   transform: scale(1);
   transition: transform 0.3s ease;
-  // @include transition;
 
-  // -webkit-overflow-scrolling: touch;
+  max-height: 98dvh;
+  overflow: auto;
 
   @include media(md) {
     padding: 40px;
@@ -51,18 +55,7 @@
 
   .modal.is-hidden & {
     transform: scale(0.7);
-    // opacity: 0;
   }
-}
-
-.modal-content {
-  max-height: 100dvh;
-  overflow-y: auto;
-  // -webkit-overflow-scrolling: touch;
-}
-
-.modal-content::-webkit-scrollbar {
-  display: none;
 }
 
 body.dark-theme .modal-wrapper {
@@ -73,14 +66,6 @@ body.dark-theme .modal-wrapper {
   display: none;
 }
 
-// .modal-content::-webkit-scrollbar-track {
-//   background-color: black;
-// }
-// .modal-content::-webkit-scrollbar-thumb {
-//   width: 1px;
-//   background-color: pink;
-// }
-
-// ::-webkit-scrollbar {
-//   width: 1px;
-// }
+.modal-wrapper::-webkit-scrollbar {
+  display: none;
+}
