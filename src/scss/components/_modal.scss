@@ -43,6 +43,7 @@
   transform: scale(1);
   transition: transform 0.3s ease;
   // @include transition;
+  overflow: scroll;
 
   @include media(md) {
     padding: 40px;
