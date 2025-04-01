@@ -17,6 +17,7 @@ const validationConfig = {
 
 function initOrderFormValidation() {
   const form = document.querySelector('.js-order-form');
+
   if (!form) return;
 
   //   const usernameInput = form.querySelector('[name="username"]');
@@ -30,13 +31,22 @@ function initOrderFormValidation() {
   //   const phonePattern = /^[\d\s+()-]{7,20}$/;
   //   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  form.addEventListener('submit', onFormSubmit);
-
-  function onFormSubmit(e) {
-    e.preventDefault;
-  }
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    validateForm(e.currentTarget);
+  });
 
   let isValid = true;
+}
+
+function validateForm(form) {
+  const configKeys = Object.keys(validationConfig);
+  console.log('🚀 configKeys:', configKeys);
+
+  console.log(form.elements);
+  [...form.elements].forEach(input => {
+    console.log(input.name);
+  });
 }
 
 export { initOrderFormValidation };
