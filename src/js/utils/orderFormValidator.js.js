@@ -40,12 +40,10 @@ function initOrderFormValidation() {
 }
 
 function validateForm(form) {
-  const configKeys = Object.keys(validationConfig);
-  console.log('🚀 configKeys:', configKeys);
-
-  console.log(form.elements);
+  // console.log(form.elements);
   [...form.elements].forEach(input => {
-    console.log(input.name);
+    // console.log(input.name);
+    validateField(input);
   });
 }
 
@@ -53,7 +51,15 @@ export { initOrderFormValidation };
 
 // -----------------------------------------------------
 
-function validateField(inputElement) {}
+function validateField(inputElement) {
+  const configKeys = Object.keys(validationConfig);
+  // console.log('🚀 configKeys:', configKeys);
+  configKeys.forEach(key => {
+    if (key === inputElement.name) {
+      console.log(validationConfig[key]);
+    }
+  });
+}
 
 function showError() {}
 
