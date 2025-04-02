@@ -93,12 +93,12 @@
   right: 0;
 }
 
-.order-form__label.is-invalid .order-form__input {
+.order-form__input.is-invalid {
   border-color: #e53935;
   color: #e53935;
 }
 
-.order-form__label.is-invalid .order-form__input {
+.order-form__input.is-valid {
   border-color: #9bb537;
 }
 

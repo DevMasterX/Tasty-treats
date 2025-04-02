@@ -30,17 +30,15 @@ function initOrderFormValidation() {
 
   //   const phonePattern = /^[\d\s+()-]{7,20}$/;
   //   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  let isValid = true;
 
   form.addEventListener('submit', e => {
     e.preventDefault();
     validateForm(form);
   });
-
-  let isValid = true;
 }
 
 function validateForm(form) {
-  // console.log(form.elements);
   [...form.elements].forEach(input => {
     // console.log(input.name);
     validateField(input);
@@ -53,7 +51,7 @@ export { initOrderFormValidation };
 
 function validateField(inputElement) {
   const configKeys = Object.keys(validationConfig);
-  // console.log('🚀 configKeys:', configKeys);
+
   configKeys.forEach(key => {
     if (key === inputElement.name) {
       const required = validationConfig[key].required;
@@ -70,17 +68,41 @@ function validateField(inputElement) {
       // console.log(pattern.test());
       // console.log('pattern test', pattern.test(inputElement.value.trim()));
       if (required && inputElement.value.trim() === '') {
-        showError(errorEl, errorMessage);
+        showError(errorEl, errorMessage, inputElement);
       } else if (pattern && !pattern.test(inputElement.value.trim())) {
-        showError(errorEl, errorMessage);
+        showError(errorEl, errorMessage, inputElement);
       }
     }
   });
 }
 
-function showError(errorElement, message) {
-  errorElement.textContent = message;
-  errorElement.closest('label').classList.add('is-invalid');
+function showError(errorElement, message, inputElement) {
+  if (!errorElement || !inputElement) return;
+
+  if (errorElement.textContent !== message) {
+    errorElement.textContent = message;
+  }
+
+  inputElement.classList.add('is-invalid');
 }
 
 function clearError() {}
+
+// function validateField(inputElement) {
+//   clearError(inputElement); // 🧼 Сброс перед проверкой
+
+//   const config = validationConfig[inputElement.name];
+//   if (!config) return;
+
+//   const { required, pattern, errorMessage } = config;
+//   const value = inputElement.value.trim();
+//   const errorEl = inputElement
+//     .closest('label')
+//     ?.querySelector('.order-form__error-essage');
+
+//   if (required && value === '') {
+//     showError(errorEl, errorMessage, inputElement);
+//   } else if (pattern && !pattern.test(value)) {
+//     showError(errorEl, errorMessage, inputElement);
+//   }
+// }
