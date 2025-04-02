@@ -23,6 +23,8 @@
 }
 
 .order-form__label {
+  position: relative;
+
   @include flex-column;
   gap: 8px;
 }
@@ -83,4 +85,24 @@
 
   @include btn-primary;
   @include transition;
+}
+
+.order-form__error-essage {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.order-form__label.is-invalid .order-form__input {
+  border-color: #e53935;
+  color: #e53935;
+}
+
+.order-form__label.is-invalid .order-form__input {
+  border-color: #9bb537;
+}
+
+.order-form__error-essage {
+  color: #e53935;
+  font-size: 14px;
 }

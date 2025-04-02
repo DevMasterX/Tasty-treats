@@ -8,18 +8,21 @@ function renderOrderForm() {
           class="order-form__group"
         >
           <label class="order-form__label">
-            <span class="order-form__label-text">Name</span>
-            <input type="text" name="username" class="order-form__input"  />
+          <span class="order-form__label-text">Name</span>
+          <input type="text" name="username" class="order-form__input"  />
+          <span class="order-form__error-essage"></span>
           </label>
 
           <label class="order-form__label">
             <span class="order-form__label-text">Phone number</span>
             <input type="tel" inputmode="tel" name="phone_number" class="order-form__input" />
+            <span class="order-form__error-essage"></span>
           </label>
 
           <label class="order-form__label">
             <span class="order-form__label-text">Email</span>
             <input type="email" name="email" class="order-form__input"  />
+            <span class="order-form__error-essage"></span>
           </label>
 
           <label class="order-form__label">

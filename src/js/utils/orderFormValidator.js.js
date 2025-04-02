@@ -33,7 +33,7 @@ function initOrderFormValidation() {
 
   form.addEventListener('submit', e => {
     e.preventDefault();
-    validateForm(e.currentTarget);
+    validateForm(form);
   });
 
   let isValid = true;
@@ -59,6 +59,9 @@ function validateField(inputElement) {
       const required = validationConfig[key].required;
       const pattern = validationConfig[key].pattern;
       const errorMessage = validationConfig[key].errorMessage;
+      const errorEl = inputElement
+        .closest('label')
+        ?.querySelector('.order-form__error-essage');
       // console.log(inputElement.name);
       // console.log('🚀 required:', required);
       // console.log('🚀 errorMessage:', errorMessage);
@@ -67,14 +70,17 @@ function validateField(inputElement) {
       // console.log(pattern.test());
       // console.log('pattern test', pattern.test(inputElement.value.trim()));
       if (required && inputElement.value.trim() === '') {
-        showError(errorMessage);
+        showError(errorEl, errorMessage);
       } else if (pattern && !pattern.test(inputElement.value.trim())) {
-        showError(errorMessage);
+        showError(errorEl, errorMessage);
       }
     }
   });
 }
 
-function showError(message) {}
+function showError(errorElement, message) {
+  errorElement.textContent = message;
+  errorElement.closest('label').classList.add('is-invalid');
+}
 
 function clearError() {}
