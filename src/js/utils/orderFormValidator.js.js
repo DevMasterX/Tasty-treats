@@ -56,11 +56,25 @@ function validateField(inputElement) {
   // console.log('🚀 configKeys:', configKeys);
   configKeys.forEach(key => {
     if (key === inputElement.name) {
-      console.log(validationConfig[key]);
+      const required = validationConfig[key].required;
+      const pattern = validationConfig[key].pattern;
+      const errorMessage = validationConfig[key].errorMessage;
+      // console.log(inputElement.name);
+      // console.log('🚀 required:', required);
+      // console.log('🚀 errorMessage:', errorMessage);
+      // console.log('🚀 pattern:', pattern);
+      // console.log(inputElement.value);
+      // console.log(pattern.test());
+      // console.log('pattern test', pattern.test(inputElement.value.trim()));
+      if (required && inputElement.value.trim() === '') {
+        showError(errorMessage);
+      } else if (pattern && !pattern.test(inputElement.value.trim())) {
+        showError(errorMessage);
+      }
     }
   });
 }
 
-function showError() {}
+function showError(message) {}
 
 function clearError() {}
