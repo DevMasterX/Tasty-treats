@@ -50,6 +50,11 @@ export { initOrderFormValidation };
 // -----------------------------------------------------
 
 function validateField(inputElement) {
+  const config = validationConfig[inputElement.name];
+  console.log('🚀 config:', config);
+
+  if (!config) return;
+
   const configKeys = Object.keys(validationConfig);
 
   configKeys.forEach(key => {
