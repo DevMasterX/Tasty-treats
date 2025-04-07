@@ -1,5 +1,5 @@
-import { renderOrderForm } from './renderOrderForm';
-import { initOrderFormValidation } from '../utils/orderFormValidator.js';
+import { renderOrderForm } from './renderOrderForm.js';
+import { initOrderFormValidation } from '../utils/orderFormValidator.js.js';
 
 let modal, overlay, modalContent;
 
@@ -78,4 +78,4 @@ function setModalContent(modalType) {
   }
 }
 
-export { initModal };
+export { initModal, closeModal };

@@ -13,9 +13,9 @@
 
 .order-form__group {
   margin-top: 28px;
+  gap: 16px;
 
   @include flex-column;
-  gap: 16px;
   @include media(md) {
     gap: 18px;
     margin-top: 40px;

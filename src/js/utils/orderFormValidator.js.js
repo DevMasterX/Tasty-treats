@@ -1,3 +1,5 @@
+import { closeModal } from '../components/modal';
+
 const validationConfig = {
   username: {
     required: true,
@@ -20,28 +22,26 @@ function initOrderFormValidation() {
 
   if (!form) return;
 
-  //   const usernameInput = form.querySelector('[name="username"]');
-  //   const phoneInput = form.querySelector('[name="phone_number"]');
-  //   const emailInput = form.querySelector('[name="email"]');
-
-  //   form
-  //     .querySelectorAll('.order-form__input')
-  //     .forEach(el => console.log(validationConfig[el.name]));
-
-  //   const phonePattern = /^[\d\s+()-]{7,20}$/;
-  //   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  let isValid = true;
-
   form.addEventListener('submit', e => {
     e.preventDefault();
     validateForm(form);
+    checkBeforeSubmit(form);
   });
 }
 
 function validateForm(form) {
   [...form.elements].forEach(input => {
-    // console.log(input.name);
     validateField(input);
+
+    if (
+      input.classList.contains('is-invalid') &&
+      !input.dataset.listenerAdded
+    ) {
+      input.addEventListener('input', () => {
+        validateField(input);
+      });
+      input.dataset.listenerAdded = 'true';
+    }
   });
 }
 
@@ -51,34 +51,22 @@ export { initOrderFormValidation };
 
 function validateField(inputElement) {
   const config = validationConfig[inputElement.name];
-  console.log('🚀 config:', config);
 
   if (!config) return;
 
-  const configKeys = Object.keys(validationConfig);
+  const { required, pattern, errorMessage } = config;
+  const value = inputElement.value.trim();
+  const errorEl = inputElement
+    .closest('label')
+    ?.querySelector('.order-form__error-essage');
 
-  configKeys.forEach(key => {
-    if (key === inputElement.name) {
-      const required = validationConfig[key].required;
-      const pattern = validationConfig[key].pattern;
-      const errorMessage = validationConfig[key].errorMessage;
-      const errorEl = inputElement
-        .closest('label')
-        ?.querySelector('.order-form__error-essage');
-      // console.log(inputElement.name);
-      // console.log('🚀 required:', required);
-      // console.log('🚀 errorMessage:', errorMessage);
-      // console.log('🚀 pattern:', pattern);
-      // console.log(inputElement.value);
-      // console.log(pattern.test());
-      // console.log('pattern test', pattern.test(inputElement.value.trim()));
-      if (required && inputElement.value.trim() === '') {
-        showError(errorEl, errorMessage, inputElement);
-      } else if (pattern && !pattern.test(inputElement.value.trim())) {
-        showError(errorEl, errorMessage, inputElement);
-      }
-    }
-  });
+  if (required && value === '') {
+    showError(errorEl, errorMessage, inputElement);
+  } else if (pattern && !pattern.test(value)) {
+    showError(errorEl, errorMessage, inputElement);
+  } else {
+    clearError(inputElement, errorEl);
+  }
 }
 
 function showError(errorElement, message, inputElement) {
@@ -89,25 +77,40 @@ function showError(errorElement, message, inputElement) {
   }
 
   inputElement.classList.add('is-invalid');
+  inputElement.classList.remove('is-valid');
 }
 
-function clearError() {}
+function clearError(inputElement, errorEl) {
+  inputElement.classList.remove('is-invalid');
+  inputElement.classList.add('is-valid');
+  if (errorEl) {
+    errorEl.textContent = '';
+  }
+}
 
-// function validateField(inputElement) {
-//   clearError(inputElement); // 🧼 Сброс перед проверкой
+function checkBeforeSubmit(form) {
+  const hasInvalidFields = [...form.elements].some(input => {
+    return input.classList.contains('is-invalid');
+  });
 
-//   const config = validationConfig[inputElement.name];
-//   if (!config) return;
+  if (!hasInvalidFields) {
+    form.reset();
+    resetValidationState(form);
 
-//   const { required, pattern, errorMessage } = config;
-//   const value = inputElement.value.trim();
-//   const errorEl = inputElement
-//     .closest('label')
-//     ?.querySelector('.order-form__error-essage');
+    closeModal();
+    console.log('success');
+  }
+}
 
-//   if (required && value === '') {
-//     showError(errorEl, errorMessage, inputElement);
-//   } else if (pattern && !pattern.test(value)) {
-//     showError(errorEl, errorMessage, inputElement);
-//   }
-// }
+function resetValidationState(form) {
+  [...form.elements].forEach(input => {
+    input.classList.remove('is-valid', 'is-invalid');
+    delete input.dataset.listenerAdded;
+
+    const errorEl = input
+      .closest('label')
+      ?.querySelector('.order-form__error-essage');
+
+    if (errorEl) errorEl.textContent = '';
+  });
+}
