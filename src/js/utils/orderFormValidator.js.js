@@ -19,7 +19,6 @@ const validationConfig = {
 
 function initOrderFormValidation() {
   const form = document.querySelector('.js-order-form');
-
   if (!form) return;
 
   form.addEventListener('submit', e => {
@@ -32,16 +31,7 @@ function initOrderFormValidation() {
 function validateForm(form) {
   [...form.elements].forEach(input => {
     validateField(input);
-
-    if (
-      input.classList.contains('is-invalid') &&
-      !input.dataset.listenerAdded
-    ) {
-      input.addEventListener('input', () => {
-        validateField(input);
-      });
-      input.dataset.listenerAdded = 'true';
-    }
+    attachInputListener(input);
   });
 }
 
@@ -56,9 +46,7 @@ function validateField(inputElement) {
 
   const { required, pattern, errorMessage } = config;
   const value = inputElement.value.trim();
-  const errorEl = inputElement
-    .closest('label')
-    ?.querySelector('.order-form__error-essage');
+  const errorEl = getErrorElement(inputElement);
 
   if (required && value === '') {
     showError(errorEl, errorMessage, inputElement);
@@ -89,17 +77,19 @@ function clearError(inputElement, errorEl) {
 }
 
 function checkBeforeSubmit(form) {
-  const hasInvalidFields = [...form.elements].some(input => {
-    return input.classList.contains('is-invalid');
-  });
+  const invalidInput = [...form.elements].find(input =>
+    input.classList.contains('is-invalid')
+  );
 
-  if (!hasInvalidFields) {
-    form.reset();
-    resetValidationState(form);
-
-    closeModal();
-    console.log('success');
+  if (invalidInput) {
+    invalidInput.focus();
+    return;
   }
+
+  resetValidationState(form);
+  form.reset();
+  closeModal();
+  console.log('success');
 }
 
 function resetValidationState(form) {
@@ -107,10 +97,26 @@ function resetValidationState(form) {
     input.classList.remove('is-valid', 'is-invalid');
     delete input.dataset.listenerAdded;
 
-    const errorEl = input
-      .closest('label')
-      ?.querySelector('.order-form__error-essage');
+    const errorEl = getErrorElement(input);
 
     if (errorEl) errorEl.textContent = '';
   });
+}
+
+function attachInputListener(input) {
+  if (
+    !input.name ||
+    input.dataset.listenerAdded ||
+    !validationConfig[input.name]
+  )
+    return;
+
+  input.addEventListener('input', () => {
+    validateField(input);
+  });
+  input.dataset.listenerAdded = 'true';
+}
+
+function getErrorElement(input) {
+  return input.closest('label')?.querySelector('.order-form__error-message');
 }
