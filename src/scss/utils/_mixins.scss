@@ -10,7 +10,6 @@
 }
 
 @mixin btn-primary {
-  @include flex-center;
   color: var(--text-btn-primary);
   background-color: #9bb537;
 
@@ -20,10 +19,11 @@
   &:active {
     background-color: #7f9e2c;
   }
+
+  @include flex-center;
 }
 
 @mixin btn-secondary {
-  @include flex-center;
   color: var(--text-primary);
   border: 1px solid #9bb537;
 
@@ -34,6 +34,8 @@
   &:active {
     background-color: #7f9e2c;
   }
+
+  @include flex-center;
 }
 
 @mixin media($breakpoint) {
