@@ -1,5 +1,6 @@
 import { renderOrderForm } from './renderOrderForm.js';
-import { initOrderFormValidation } from '../utils/orderFormValidator.js.js';
+import { initOrderFormValidation } from '../utils/orderFormValidator.js';
+import { restoreFormStateFromLocalStorage } from '../utils/formStorage.js';
 
 let modal, overlay, modalContent;
 
@@ -70,6 +71,7 @@ function setModalContent(modalType) {
   switch (modalType) {
     case 'order':
       modalContent.innerHTML = renderOrderForm();
+      restoreFormStateFromLocalStorage();
       initOrderFormValidation();
       break;
 
