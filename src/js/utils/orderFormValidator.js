@@ -1,4 +1,5 @@
 import { closeModal } from '../components/modal';
+import { ORDER_FORM_KEY } from './formStorage';
 
 const validationConfig = {
   username: {
@@ -17,14 +18,15 @@ const validationConfig = {
   },
 };
 
-function initOrderFormValidation() {
-  const form = document.querySelector('.js-order-form');
+function initOrderFormValidation(form) {
+  // const form = document.querySelector('.js-order-form');
   if (!form) return;
 
   form.addEventListener('submit', e => {
     e.preventDefault();
     validateForm(form);
     checkBeforeSubmit(form);
+    formSubmit(form);
   });
 }
 
@@ -87,9 +89,7 @@ function checkBeforeSubmit(form) {
   }
 
   resetValidationState(form);
-  form.reset();
   closeModal();
-  console.log('success');
 }
 
 function resetValidationState(form) {
@@ -115,6 +115,17 @@ function attachInputListener(input) {
     validateField(input);
   });
   input.dataset.listenerAdded = 'true';
+}
+
+function clearFormStorage(storageKey) {
+  localStorage.removeItem(storageKey);
+}
+
+function formSubmit(form) {
+  form.reset();
+
+  clearFormStorage(ORDER_FORM_KEY);
+  console.log('success');
 }
 
 function getErrorElement(input) {

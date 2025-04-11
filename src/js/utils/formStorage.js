@@ -1,21 +1,19 @@
+const ORDER_FORM_KEY = 'order-form-data';
+
 function initFormStorage(form) {
-  // restoreFormStateFromLocalStorage();
+  restoreFormStateFromLocalStorage(form);
   saveFormStateToLocalStorage(form);
 }
 
-// function restoreFormStateFromLocalStorage() {
-//   const formData = localStorage.getItem();
+function restoreFormStateFromLocalStorage(form) {
+  const formData = JSON.parse(localStorage.getItem(ORDER_FORM_KEY));
+  console.log('🚀 formData:', formData);
 
-//   const form = document.querySelector('.js-order-form');
-
-//   try {
-//   } catch (error) {}
-// }
+  if (!formData) return;
+}
 
 function saveFormStateToLocalStorage(form) {
   if (!form) return;
-
-  const ORDER_FORM_KEY = 'order-form-data';
 
   form.addEventListener('focusout', e => {
     if (
@@ -33,7 +31,8 @@ function saveFormStateToLocalStorage(form) {
 
     if (!formDataKey) return;
 
-    const formData = JSON.parse(localStorage.getItem(ORDER_FORM_KEY || '{}'));
+    const formData = JSON.parse(localStorage.getItem(ORDER_FORM_KEY) || '{}');
+    console.log(formData);
 
     formData[formDataKey] = formDataValue;
 
@@ -41,4 +40,4 @@ function saveFormStateToLocalStorage(form) {
   });
 }
 
-export { initFormStorage };
+export { initFormStorage, ORDER_FORM_KEY };

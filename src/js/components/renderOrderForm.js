@@ -1,5 +1,3 @@
-import { initFormStorage } from '../utils/formStorage';
-
 function renderOrderForm(modalContentElement) {
   const formMarkup = `
   <form name="order_form" autocomplete="on" class="order-form js-order-form" novalidate>
@@ -42,10 +40,6 @@ function renderOrderForm(modalContentElement) {
   `;
 
   modalContentElement.innerHTML = formMarkup;
-
-  const form = document.querySelector('.js-order-form');
-
-  initFormStorage(form);
 }
 
 export { renderOrderForm };
