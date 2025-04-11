@@ -1,6 +1,6 @@
 function renderOrderForm(modalContentElement) {
   const formMarkup = `
-  <form name="order_form" autocomplete="on" class="order-form js-order-form" novalidate>
+  <form name="order_form"  class="order-form js-order-form" novalidate>
         <h2 id="form-title" class="order-form__title">Order now</h2>
         <div
           role="group"
@@ -9,19 +9,19 @@ function renderOrderForm(modalContentElement) {
         >
           <label class="order-form__label">
           <span class="order-form__label-text">Name</span>
-          <input type="text" name="username" class="order-form__input"  />
+          <input type="text" name="username" class="order-form__input"  autocomplete="name"/>
           <span class="order-form__error-message"></span>
           </label>
 
           <label class="order-form__label">
             <span class="order-form__label-text">Phone number</span>
-            <input type="tel" inputmode="tel" name="phone_number" class="order-form__input" />
+            <input type="tel" inputmode="tel" name="phone_number" class="order-form__input" autocomplete="tel"/>
             <span class="order-form__error-message"></span>
           </label>
 
           <label class="order-form__label">
             <span class="order-form__label-text">Email</span>
-            <input type="email" name="email" class="order-form__input"  />
+            <input type="email" name="email" class="order-form__input" autocomplete="email" />
             <span class="order-form__error-message"></span>
           </label>
 

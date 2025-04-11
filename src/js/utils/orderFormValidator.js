@@ -1,3 +1,5 @@
+import Notiflix from 'notiflix';
+
 import { closeModal } from '../components/modal';
 import { ORDER_FORM_KEY } from './formStorage';
 
@@ -26,7 +28,6 @@ function initOrderFormValidation(form) {
     e.preventDefault();
     validateForm(form);
     checkBeforeSubmit(form);
-    formSubmit(form);
   });
 }
 
@@ -89,7 +90,7 @@ function checkBeforeSubmit(form) {
   }
 
   resetValidationState(form);
-  closeModal();
+  formSubmit(form);
 }
 
 function resetValidationState(form) {
@@ -123,8 +124,22 @@ function clearFormStorage(storageKey) {
 
 function formSubmit(form) {
   form.reset();
-
   clearFormStorage(ORDER_FORM_KEY);
+  closeModal();
+
+  // Notiflix.Notify.success('Форма успешно отправлена!');
+  // Notiflix.Report.success('SUCCESS!', 'Мы получили вашу заявку.');
+  Notiflix.Report.success(
+    'SUCCESS',
+    'Your request has been sent. We’ll contact you shortly.',
+    'Close',
+
+    {
+      width: '360px',
+      svgSize: '200px',
+    }
+  );
+
   console.log('success');
 }
 

@@ -6,10 +6,21 @@ function initFormStorage(form) {
 }
 
 function restoreFormStateFromLocalStorage(form) {
-  const formData = JSON.parse(localStorage.getItem(ORDER_FORM_KEY));
-  console.log('🚀 formData:', formData);
+  const formData = JSON.parse(localStorage.getItem(ORDER_FORM_KEY) || '{}');
 
   if (!formData) return;
+  const formDataKeys = Object.keys(formData);
+  const inputElements = [...form.elements];
+
+  inputElements.forEach(element => {
+    if (formDataKeys.includes(element.name)) {
+      element.value = formData[element.name];
+    }
+
+    // if (formDataKeys.includes(element.name)) {
+    //   element.value = formDataKeys[element.name];
+    // }
+  });
 }
 
 function saveFormStateToLocalStorage(form) {
@@ -32,7 +43,6 @@ function saveFormStateToLocalStorage(form) {
     if (!formDataKey) return;
 
     const formData = JSON.parse(localStorage.getItem(ORDER_FORM_KEY) || '{}');
-    console.log(formData);
 
     formData[formDataKey] = formDataValue;
 
