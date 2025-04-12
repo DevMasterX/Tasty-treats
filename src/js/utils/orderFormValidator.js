@@ -127,8 +127,6 @@ function formSubmit(form) {
   clearFormStorage(ORDER_FORM_KEY);
   closeModal();
 
-  // Notiflix.Notify.success('Форма успешно отправлена!');
-  // Notiflix.Report.success('SUCCESS!', 'Мы получили вашу заявку.');
   Notiflix.Report.success(
     'SUCCESS',
     'Your request has been sent. We’ll contact you shortly.',
@@ -136,11 +134,9 @@ function formSubmit(form) {
 
     {
       width: '360px',
-      svgSize: '200px',
+      svgSize: '180px',
     }
   );
-
-  console.log('success');
 }
 
 function getErrorElement(input) {

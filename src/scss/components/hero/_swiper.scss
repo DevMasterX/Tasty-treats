@@ -1,0 +1,54 @@
+@use '../../utils/mixins' as *;
+
+.swiper-container {
+  padding-left: 20px;
+  overflow-x: hidden;
+
+  @include media(md) {
+    padding-left: 32px;
+  }
+  @include media(lg) {
+    padding-left: 0;
+  }
+}
+
+.swiper-slide {
+  display: flex;
+  gap: 16px;
+
+  width: 497px;
+  height: 302px;
+
+  @include media(md) {
+    width: 871px;
+    height: 468px;
+  }
+}
+
+.swiper-slide__cook-img-container {
+  width: 80px;
+  height: 280px;
+
+  @include media(md) {
+    width: 137px;
+    height: 442px;
+  }
+}
+
+.swiper-slide__main-img-container,
+.swiper-slide__big-img-container {
+  width: 200px;
+  height: 280px;
+
+  @include media(md) {
+    width: 351px;
+    height: 442px;
+  }
+}
+
+.swiper-slide__cook-img-container,
+.swiper-slide__main-img-container,
+.swiper-slide__big-img-container {
+  background: var(--slide-card-bg);
+  border-radius: 15px;
+}
