@@ -1,7 +1,7 @@
 @use '../../utils/mixins' as *;
 
 .modal-close-btn {
-  @include transition;
+  // @include transition;
 
   position: absolute;
   top: 14px;
