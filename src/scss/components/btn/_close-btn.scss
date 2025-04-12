@@ -19,12 +19,12 @@
     stroke: var(--active-color);
   }
 
-  @include media(md) {
-    top: 16px;
-    right: 16px;
-  }
-  @include media(md) {
-    width: 24px;
-    height: 24px;
-  }
+  // @include media(md) {
+  //   top: 16px;
+  //   right: 16px;
+  // }
+  // @include media(md) {
+  //   width: 24px;
+  //   height: 24px;
+  // }
 }
