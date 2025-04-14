@@ -1,5 +1,9 @@
 import Swiper from 'swiper';
-import { Pagination } from 'swiper/modules';
+import { Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/swiper.min.css';
+import 'swiper/modules/pagination.min.css';
+// import 'swiper/css/pagination';
+
 // import 'swiper/css';
 // import 'swiper/css/pagination';
 
@@ -24,6 +28,12 @@ async function getSwiperData() {
 
 function renderSlides(data) {
   const swiperContainer = document.querySelector('.swiper-wrapper');
+
+  if (!swiperContainer) {
+    console.warn('Swiper wrapper not found in DOM');
+    return;
+  }
+
   swiperContainer.innerHTML = data
     .map(
       item => `
@@ -50,10 +60,14 @@ function renderSlides(data) {
 
 function initSwiperInstance() {
   const swiper = new Swiper('.swiper', {
-    modules: [Pagination],
+    modules: [Pagination, Autoplay],
     speed: 500,
     autoplay: {
       delay: 5000,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
     },
   });
 }
