@@ -1,9 +1,9 @@
 @use '../../utils/mixins' as *;
 
-.swiper-container {
+.container.swiper-container {
   padding-left: 20px;
   padding-right: 0;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   margin-top: 48px;
 
   @include media(md) {
@@ -16,54 +16,91 @@
   }
 }
 
-.swiper-slide {
-  display: flex !important;
+.swiper {
+  width: 144%;
+
+  // aspect-ratio: 512 / 302 !important;
+  @include media(md) {
+    width: 118.3%;
+  }
+}
+
+// .swiper-wrapper {
+//   overflow-x: hidden !important;
+// }
+
+.swiper-wrapper .swiper-slide {
+  display: grid !important;
+  grid-template-columns: 0.4fr 1fr 1fr;
+  aspect-ratio: 512 / 280;
   gap: 16px;
 
-  width: 497px;
-  height: 302px;
-
   @include media(md) {
-    width: 871px;
-    height: 468px;
+    aspect-ratio: 871 / 442;
   }
 }
 
-.swiper-slide__cook-img-container {
-  width: 80px;
-  height: 280px;
+// .swiper-slide__cook-img-container {
+//   width: 80px;
+//   height: 280px;
 
-  @include media(md) {
-    width: 137px;
-    height: 442px;
-  }
-}
+//   @include media(md) {
+//     width: 137px;
+//     height: 442px;
+//   }
+// }
 
-.swiper-slide__main-img-container,
-.swiper-slide__big-img-container {
-  width: 200px;
-  height: 280px;
+// .swiper-slide__main-img-container,
+// .swiper-slide__big-img-container {
+//   width: 200px;
+//   height: 280px;
 
-  @include media(md) {
-    width: 351px;
-    height: 442px;
-  }
-}
+//   @include media(md) {
+//     width: 351px;
+//     height: 442px;
+//   }
+// }
 
 .swiper-slide__cook-img-container,
 .swiper-slide__main-img-container,
 .swiper-slide__big-img-container {
   background: var(--slide-card-bg);
   border-radius: 15px;
+  overflow-x: hidden;
 }
 
-.swiper-pagination-bullet {
-  background-color: #ccc;
-  opacity: 0.6;
-  transition: background-color 0.3s;
+.swiper-slide__cook-img-containe img {
+}
+.swiper-slide__main-img-container img {
+}
+.swiper-slide__big-img-container img {
 }
 
-.swiper-pagination-bullet-active {
-  background-color: red !important;
-  opacity: 1;
+// .swiper-pagination-bullet {
+//   background-color: #ccc;
+//   opacity: 0.6;
+//   transition: background-color 0.3s;
+// }
+
+// .swiper-pagination-bullet-active {
+//   background-color: red !important;
+//   opacity: 1;
+// }
+
+.swiper-container .swiper .swiper-pagination {
+  position: static;
+  margin-top: 15px;
+  width: 76%;
 }
+
+// #wow {
+//   overflow-x: hidden;
+// }
+// #wows {
+//   width: 120%;
+//   background-color: red;
+// }
+
+// #wew {
+//   height: 600px;
+// }

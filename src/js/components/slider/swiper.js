@@ -33,7 +33,7 @@ function renderSlides(data) {
   swiperContainer.innerHTML = data
     .map(
       item => `
-   <div class="swiper-slide">
+   <div class="swiper-slide" >
     <div class="swiper-slide__cook-img-container">
       <img  class="swiper-lazy" src="${item.cook.imgWebpUrl}" alt="${item.cook.name}" />
     </div>
@@ -56,13 +56,13 @@ function renderSlides(data) {
 
 function initSwiperInstance() {
   const swiper = new Swiper('.swiper', {
-    // spaceBetween: 100,
+    spaceBetween: 50,
     // effect: 'cards',
     // centerInsufficientSlides: true,
     modules: [Pagination, Autoplay],
-    speed: 1500,
+    speed: 1000,
     autoplay: {
-      delay: 500,
+      delay: 5000,
     },
     pagination: {
       el: '.swiper-pagination',
