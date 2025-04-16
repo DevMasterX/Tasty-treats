@@ -68,6 +68,7 @@ function initSwiperInstance() {
       el: '.swiper-pagination',
       // type: 'bullets',
       clickable: true,
+      type: 'bullets',
     },
     grabCursor: true,
     effect: 'fade',
