@@ -78,13 +78,13 @@ function initSwiperInstance() {
       type: 'bullets',
     },
     grabCursor: true,
-    // effect: 'cube',
-    // cubeEffect: {
-    //   shadow: true,
-    //   slideShadows: true,
-    //   shadowOffset: 20,
-    //   shadowScale: 0.94,
-    // },
+    effect: 'cube',
+    cubeEffect: {
+      shadow: true,
+      slideShadows: true,
+      shadowOffset: 20,
+      shadowScale: 0.94,
+    },
     lazy: {
       loadOnTransitionStart: true,
       loadPrevNext: true,
