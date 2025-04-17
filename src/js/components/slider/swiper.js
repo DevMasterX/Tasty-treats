@@ -90,7 +90,7 @@ function initSwiperInstance() {
       loadPrevNext: true,
       lazyPreloadPrevNext: 2,
     },
-    loop: true,
+    // loop: true,
     // dynamicMainBullets: 2,
     // dynamicBullets: true,
 
