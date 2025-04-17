@@ -3,6 +3,7 @@ import { Pagination, Autoplay, EffectCube } from 'swiper/modules';
 import 'swiper/swiper.min.css';
 import 'swiper/modules/pagination.min.css';
 import 'swiper/modules/effect-cube.min.css';
+// import 'swiper/css';
 
 import { apiClient } from '../../api/axios';
 
@@ -12,6 +13,7 @@ async function initSwiper() {
 
   renderSlides(data);
   initSwiperInstance();
+  // setTimeout(() => initSwiperInstance(), 0);
 }
 
 async function getSwiperData() {
@@ -38,17 +40,20 @@ function renderSlides(data) {
       item => `
    <div class="swiper-slide" >
     <div class="swiper-slide__cook-img-container">
-      <img  class="swiper-lazy" loading="lazy" src="${item.cook.imgWebpUrl}" alt="${item.cook.name}" />
+      <img  loading="lazy" src="${item.cook.imgWebpUrl}" alt="${item.cook.name}" />
+      <div class="swiper-lazy-preloader"></div>
     </div>
     <div class="swiper-slide__main-img-container">
-      <img  class="swiper-lazy" loading="lazy" src="${item.topic.previewUrl}" alt="${item.topic.name}" />
+      <img  loading="lazy" src="${item.topic.previewUrl}" alt="${item.topic.name}" />
+      <div class="swiper-lazy-preloader"></div>
       <div class="swiper-title-wrapper">
         <h3 class="swiper-title">${item.topic.name}</h3>
         <p class="swiper-location-text">${item.topic.area}</p>
       </div>
     </div>
     <div class="swiper-slide__big-img-container">
-      <img  class="swiper-lazy" loading="lazy" src="${item.topic.previewWebpUrl}" alt="${item.topic.name}" />
+      <img  loading="lazy" src="${item.topic.previewWebpUrl}" alt="${item.topic.name}" />
+      <div class="swiper-lazy-preloader"></div>
     </div>
   </div>
    
@@ -64,9 +69,9 @@ function initSwiperInstance() {
     // centerInsufficientSlides: true,
     modules: [Pagination, Autoplay, EffectCube],
     speed: 1000,
-    autoplay: {
-      delay: 5000,
-    },
+    // autoplay: {
+    //   delay: 5000,
+    // },
     pagination: {
       el: '.swiper-pagination',
       // type: 'bullets',

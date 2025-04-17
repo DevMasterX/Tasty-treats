@@ -36,6 +36,9 @@
   aspect-ratio: 512 / 280;
   gap: 16px;
 
+  will-change: transform;
+  backface-visibility: hidden;
+
   @include media(md) {
     aspect-ratio: 871 / 442;
   }
