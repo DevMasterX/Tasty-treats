@@ -78,7 +78,7 @@ function initSwiperInstance() {
       type: 'bullets',
     },
     grabCursor: true,
-    effect: 'cube',
+    // effect: 'cube',
     // cubeEffect: {
     //   shadow: true,
     //   slideShadows: true,
