@@ -19,8 +19,7 @@
   color: var(--mobile-menu-text);
 
   box-shadow: -8px 0 16px rgba(0, 0, 0, 0.15);
-
-  // display: none;
+  z-index: 2;
 
   @include transition;
 

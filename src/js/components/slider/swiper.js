@@ -1,12 +1,15 @@
 import Swiper from 'swiper';
-import { Pagination, Autoplay } from 'swiper/modules';
+import { Pagination, Autoplay, EffectCube } from 'swiper/modules';
 import 'swiper/swiper.min.css';
 import 'swiper/modules/pagination.min.css';
+import 'swiper/modules/effect-cube.min.css';
 
 import { apiClient } from '../../api/axios';
 
 async function initSwiper() {
   const data = await getSwiperData();
+  console.log('🚀 data:', data);
+
   renderSlides(data);
   initSwiperInstance();
 }
@@ -35,17 +38,17 @@ function renderSlides(data) {
       item => `
    <div class="swiper-slide" >
     <div class="swiper-slide__cook-img-container">
-      <img  class="swiper-lazy" src="${item.cook.imgWebpUrl}" alt="${item.cook.name}" />
+      <img  class="swiper-lazy" loading="lazy" src="${item.cook.imgWebpUrl}" alt="${item.cook.name}" />
     </div>
     <div class="swiper-slide__main-img-container">
-      <img  class="swiper-lazy" src="${item.topic.previewWebpUrl}" alt="${item.topic.name}" />
+      <img  class="swiper-lazy" loading="lazy" src="${item.topic.previewUrl}" alt="${item.topic.name}" />
       <div class="swiper-title-wrapper">
         <h3 class="swiper-title">${item.topic.name}</h3>
-        <p class="swiper-text">${item.topic.area}</p>
+        <p class="swiper-location-text">${item.topic.area}</p>
       </div>
     </div>
     <div class="swiper-slide__big-img-container">
-      <img  class="swiper-lazy" src="${item.topic.previewWebpUrl}" alt="${item.topic.name}" />
+      <img  class="swiper-lazy" loading="lazy" src="${item.topic.previewWebpUrl}" alt="${item.topic.name}" />
     </div>
   </div>
    
@@ -59,7 +62,7 @@ function initSwiperInstance() {
     spaceBetween: 50,
     // effect: 'cards',
     // centerInsufficientSlides: true,
-    modules: [Pagination, Autoplay],
+    modules: [Pagination, Autoplay, EffectCube],
     speed: 1000,
     autoplay: {
       delay: 5000,
@@ -71,9 +74,12 @@ function initSwiperInstance() {
       type: 'bullets',
     },
     grabCursor: true,
-    effect: 'fade',
-    fadeEffect: {
-      crossFade: true,
+    effect: 'cube',
+    cubeEffect: {
+      shadow: true,
+      slideShadows: true,
+      shadowOffset: 20,
+      shadowScale: 0.94,
     },
     lazy: {
       loadOnTransitionStart: true,
@@ -81,6 +87,8 @@ function initSwiperInstance() {
       lazyPreloadPrevNext: 2,
     },
     loop: true,
+    // dynamicMainBullets: 2,
+    // dynamicBullets: true,
 
     // parallax: true,
     // effect: 'cube',
