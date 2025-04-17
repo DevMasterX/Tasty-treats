@@ -65,13 +65,12 @@ function renderSlides(data) {
 function initSwiperInstance() {
   const swiper = new Swiper('.swiper', {
     spaceBetween: 50,
-    // effect: 'cards',
-    // centerInsufficientSlides: true,
+
     modules: [Pagination, Autoplay, EffectCube],
     speed: 1000,
-    // autoplay: {
-    //   delay: 5000,
-    // },
+    autoplay: {
+      delay: 5000,
+    },
     pagination: {
       el: '.swiper-pagination',
       // type: 'bullets',
@@ -80,12 +79,12 @@ function initSwiperInstance() {
     },
     grabCursor: true,
     effect: 'cube',
-    cubeEffect: {
-      shadow: true,
-      slideShadows: true,
-      shadowOffset: 20,
-      shadowScale: 0.94,
-    },
+    // cubeEffect: {
+    //   shadow: true,
+    //   slideShadows: true,
+    //   shadowOffset: 20,
+    //   shadowScale: 0.94,
+    // },
     lazy: {
       loadOnTransitionStart: true,
       loadPrevNext: true,
