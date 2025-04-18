@@ -1,18 +1,17 @@
 @use '../../utils/mixins' as *;
 
-.container.swiper-container {
-  padding-left: 20px;
-  padding-right: 0;
-  overflow-x: hidden !important;
-  margin-top: 48px;
-
+.sw-container {
   @include media(md) {
-    padding-left: 32px;
-    margin-top: 70px;
+    margin: 0 auto;
+    width: 768px;
   }
+}
+
+.sw-container.swiper-container {
+  overflow-x: hidden !important;
+
   @include media(lg) {
-    padding-left: 0;
-    margin-top: 0;
+    width: 100%;
   }
 }
 
@@ -21,6 +20,10 @@
 
   @include media(md) {
     width: 118.3%;
+  }
+
+  @include media(lg) {
+    width: 871px;
   }
 }
 

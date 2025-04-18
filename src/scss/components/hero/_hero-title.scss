@@ -8,7 +8,7 @@
   text-transform: uppercase;
 
   @include media(md) {
-    width: 446px;
+    max-width: 446px;
     font-size: 36px;
   }
 }

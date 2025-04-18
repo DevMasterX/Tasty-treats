@@ -1,16 +1,45 @@
 @use '../utils/mixins' as *;
 
-.hero-container {
-  padding-top: 84px;
+.hero-section {
+  margin-top: 84px;
 
   @include media(md) {
-    padding-top: 89px;
+    margin-top: 89px;
   }
 
   @include media(lg) {
-    display: flex;
+    display: grid;
+    grid-template-columns: 446px 1fr;
     gap: 32px;
-    padding-top: 94px;
+
+    width: 1280px;
+    margin: 0 auto;
+    padding-left: 100px;
+    // padding-right: 100px;
+    margin-top: 96px;
+  }
+}
+
+.hero-container {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @include media(md) {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @include media(lg) {
+    // display: flex;
+    // gap: 32px;
+    // padding-top: 94px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 64px;
+    width: auto;
   }
 }
 
@@ -30,14 +59,17 @@
   }
 }
 
-// .swiper-wrapper {
-//   margin-top: 48px;
+.sw-container.swiper-container {
+  padding-left: 20px;
+  padding-right: 0;
+  margin-top: 48px;
 
-//   @include media(md) {
-//     margin-top: 64px;
-//   }
-
-//   @include media(md) {
-//     margin-top: 0;
-//   }
-// }
+  @include media(md) {
+    padding-left: 32px;
+    margin-top: 70px;
+  }
+  @include media(lg) {
+    padding: 0;
+    margin: 0;
+  }
+}

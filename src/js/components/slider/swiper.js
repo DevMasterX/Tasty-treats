@@ -3,7 +3,7 @@ import { Pagination, Autoplay, EffectCube, Parallax } from 'swiper/modules';
 import 'swiper/swiper.min.css';
 import 'swiper/modules/pagination.min.css';
 import 'swiper/modules/effect-cube.min.css';
-// import 'swiper/css';
+import 'swiper/modules/parallax.min.css';
 
 import { apiClient } from '../../api/axios';
 
@@ -13,7 +13,6 @@ async function initSwiper() {
 
   renderSlides(data);
   initSwiperInstance();
-  // setTimeout(() => initSwiperInstance(), 0);
 }
 
 async function getSwiperData() {
@@ -85,15 +84,7 @@ function initSwiperInstance() {
       shadowOffset: 20,
       shadowScale: 0.94,
     },
-    // lazy: {
-    //   loadOnTransitionStart: true,
-    //   loadPrevNext: true,
-    //   lazyPreloadPrevNext: 2,
-    // },
     loop: true,
-    // dynamicMainBullets: 2,
-    // dynamicBullets: true,
-
     parallax: true,
   });
 }

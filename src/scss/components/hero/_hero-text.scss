@@ -7,7 +7,7 @@
   line-height: 129%;
 
   @include media(md) {
-    width: 408px;
+    max-width: 408px;
     font-size: 16px;
     line-height: 150%;
   }
