@@ -19,15 +19,10 @@
 .swiper {
   width: 144%;
 
-  // aspect-ratio: 512 / 302 !important;
   @include media(md) {
     width: 118.3%;
   }
 }
-
-// .swiper-wrapper {
-//   overflow-x: hidden !important;
-// }
 
 .swiper-wrapper .swiper-slide {
   // width: 100% !important;
@@ -52,10 +47,6 @@
   overflow: hidden;
 }
 
-// .swiper-slide:nth-child(1) .swiper-slide__cook-img-container img {
-//   width: 50px;
-// }
-
 .swiper-slide__cook-img-container {
   display: flex;
   justify-content: center;
@@ -78,7 +69,7 @@
 
   & img {
     width: 86%;
-    // height: auto;
+
     filter: drop-shadow(0 0 50px rgba(155, 181, 55, 0.7));
   }
 
@@ -87,7 +78,6 @@
     text-align: center;
     width: 143px;
     & .swiper-title {
-      // width: 157px;
       text-wrap: balance;
 
       font-size: 10px;
@@ -125,7 +115,6 @@
 
   @include media(md) {
     padding-bottom: 32px;
-    // width: 79%;
   }
 }
 

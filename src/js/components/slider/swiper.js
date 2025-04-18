@@ -1,5 +1,5 @@
 import Swiper from 'swiper';
-import { Pagination, Autoplay, EffectCube } from 'swiper/modules';
+import { Pagination, Autoplay, EffectCube, Parallax } from 'swiper/modules';
 import 'swiper/swiper.min.css';
 import 'swiper/modules/pagination.min.css';
 import 'swiper/modules/effect-cube.min.css';
@@ -40,19 +40,19 @@ function renderSlides(data) {
       item => `
    <div class="swiper-slide" >
     <div class="swiper-slide__cook-img-container">
-      <img  loading="lazy" src="${item.cook.imgWebpUrl}" alt="${item.cook.name}" />
+      <img data-swiper-parallax="60%" loading="lazy" src="${item.cook.imgWebpUrl}" alt="${item.cook.name}" />
       
     </div>
     <div class="swiper-slide__main-img-container">
-      <img  loading="lazy" src="${item.topic.previewWebpUrl}" alt="${item.topic.name}" />
+      <img data-swiper-parallax-scale="0" loading="lazy" src="${item.topic.previewWebpUrl}" alt="${item.topic.name}" />
       
       <div class="swiper-title-wrapper">
-        <h3 class="swiper-title">${item.topic.name}</h3>
-        <p class="swiper-location-text">${item.topic.area}</p>
+        <h3 class="swiper-title" data-swiper-parallax-y="-150%" >${item.topic.name}</h3>
+        <p class="swiper-location-text" data-swiper-parallax-y="-600%"  >${item.topic.area}</p>
       </div>
     </div>
     <div class="swiper-slide__big-img-container">
-      <img  loading="lazy" src="${item.topic.previewWebpUrl}" alt="${item.topic.name}" />
+      <img data-swiper-parallax-scale="0" loading="lazy" src="${item.topic.previewWebpUrl}" alt="${item.topic.name}" />
       
     </div>
   </div>
@@ -66,8 +66,8 @@ function initSwiperInstance() {
   const swiper = new Swiper('.swiper', {
     spaceBetween: 50,
 
-    modules: [Pagination, Autoplay, EffectCube],
-    speed: 1000,
+    modules: [Pagination, Autoplay, EffectCube, Parallax],
+    speed: 2000,
     autoplay: {
       delay: 5000,
     },
@@ -94,11 +94,7 @@ function initSwiperInstance() {
     // dynamicMainBullets: 2,
     // dynamicBullets: true,
 
-    // parallax: true,
-    // effect: 'cube',
-    // cubeEffect: {
-    //   slideShadows: true,
-    // },
+    parallax: true,
   });
 }
 
