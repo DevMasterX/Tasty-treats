@@ -41,11 +41,11 @@ function renderSlides(data) {
    <div class="swiper-slide" >
     <div class="swiper-slide__cook-img-container">
       <img  loading="lazy" src="${item.cook.imgWebpUrl}" alt="${item.cook.name}" />
-      <div class="swiper-lazy-preloader"></div>
+      
     </div>
     <div class="swiper-slide__main-img-container">
-      <img  loading="lazy" src="${item.topic.previewUrl}" alt="${item.topic.name}" />
-      <div class="swiper-lazy-preloader"></div>
+      <img  loading="lazy" src="${item.topic.previewWebpUrl}" alt="${item.topic.name}" />
+      
       <div class="swiper-title-wrapper">
         <h3 class="swiper-title">${item.topic.name}</h3>
         <p class="swiper-location-text">${item.topic.area}</p>
@@ -53,7 +53,7 @@ function renderSlides(data) {
     </div>
     <div class="swiper-slide__big-img-container">
       <img  loading="lazy" src="${item.topic.previewWebpUrl}" alt="${item.topic.name}" />
-      <div class="swiper-lazy-preloader"></div>
+      
     </div>
   </div>
    
@@ -85,12 +85,12 @@ function initSwiperInstance() {
       shadowOffset: 20,
       shadowScale: 0.94,
     },
-    lazy: {
-      loadOnTransitionStart: true,
-      loadPrevNext: true,
-      lazyPreloadPrevNext: 2,
-    },
-    // loop: true,
+    // lazy: {
+    //   loadOnTransitionStart: true,
+    //   loadPrevNext: true,
+    //   lazyPreloadPrevNext: 2,
+    // },
+    loop: true,
     // dynamicMainBullets: 2,
     // dynamicBullets: true,
 
