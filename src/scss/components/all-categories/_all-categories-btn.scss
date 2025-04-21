@@ -8,11 +8,26 @@
   border-radius: 15px;
   border: var(--input-border);
 
-  &:hover {
+  @include transition();
+
+  // &:hover {
+  //   color: var(--text-btn-primary);
+  //   background-color: var(--btn-primary-bg);
+  //   border-color: var(--btn-primary-bg);
+  // }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: var(--text-btn-primary);
+      background-color: var(--btn-primary-bg);
+      border-color: var(--btn-primary-bg);
+    }
+  }
+
+  &:active {
+    transform: scale(0.98);
     color: var(--text-btn-primary);
     background-color: var(--btn-primary-bg);
     border-color: var(--btn-primary-bg);
   }
-
-  @include transition;
 }

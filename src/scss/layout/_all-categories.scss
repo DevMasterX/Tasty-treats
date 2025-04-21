@@ -1,0 +1,13 @@
+@use '../utils/mixins' as *;
+
+.all-categories__list {
+  margin-top: 24px;
+
+  @include media(md) {
+    margin-top: 30px;
+  }
+
+  @include media(lg) {
+    margin-top: 42px;
+  }
+}

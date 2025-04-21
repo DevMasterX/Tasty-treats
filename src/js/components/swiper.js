@@ -1,3 +1,4 @@
+import { fetchEvents } from '../services/events';
 import Swiper from 'swiper';
 import { Pagination, Autoplay, EffectCube, Parallax } from 'swiper/modules';
 import 'swiper/swiper.min.css';
@@ -5,11 +6,10 @@ import 'swiper/modules/pagination.min.css';
 import 'swiper/modules/effect-cube.min.css';
 import 'swiper/modules/parallax.min.css';
 
-import { apiClient } from '../../api/axios';
+import { apiClient } from '../api/axios';
 
 async function initSwiper() {
   const data = await getSwiperData();
-  console.log('🚀 data:', data);
 
   renderSlides(data);
   initSwiperInstance();
@@ -17,9 +17,8 @@ async function initSwiper() {
 
 async function getSwiperData() {
   try {
-    const res = await apiClient.get('/events');
-    console.log(res.data);
-    return res.data;
+    const data = await fetchEvents();
+    return data;
   } catch (error) {
     console.error('Error loading data for slider:', error);
     return [];
