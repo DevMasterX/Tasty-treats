@@ -8,13 +8,7 @@
   border-radius: 15px;
   border: var(--input-border);
 
-  @include transition();
-
-  // &:hover {
-  //   color: var(--text-btn-primary);
-  //   background-color: var(--btn-primary-bg);
-  //   border-color: var(--btn-primary-bg);
-  // }
+  transition: background-color 0.3s ease-out, color 0.3s ease-out;
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {

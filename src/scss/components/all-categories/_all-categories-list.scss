@@ -44,6 +44,7 @@
 
 .all-categories__item {
   cursor: pointer;
+  @include transition;
 }
 
 .all-categories__item.current {

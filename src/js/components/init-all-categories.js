@@ -23,9 +23,19 @@ function renderCategories(element, list) {
 }
 
 function initCurrentItem(list, targetName = 'Breakfast') {
-  [...list.children]
-    .find(element => element.textContent.trim() === targetName)
-    ?.classList.add('current');
+  let current = [...list.children].find(
+    element => element.textContent.trim() === targetName
+  );
+
+  current?.classList.add('current');
+
+  [...list.children].forEach(item =>
+    item.addEventListener('click', () => {
+      current.classList.remove('current');
+      item.classList.add('current');
+      current = item;
+    })
+  );
 }
 
 export { initAllCategories };
