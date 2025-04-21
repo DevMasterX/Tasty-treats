@@ -1,0 +1,18 @@
+@use '../../utils/mixins' as *;
+
+.all-categories__button {
+  padding: 14px 28px;
+  color: var(--text-secondary);
+  font-size: 18px;
+
+  border-radius: 15px;
+  border: var(--input-border);
+
+  &:hover {
+    color: var(--text-btn-primary);
+    background-color: var(--btn-primary-bg);
+    border-color: var(--btn-primary-bg);
+  }
+
+  @include transition;
+}
