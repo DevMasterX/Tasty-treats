@@ -39,11 +39,11 @@ function renderSlides(data) {
       item => `
    <div class="swiper-slide" >
     <div class="swiper-slide__cook-img-container">
-      <img data-swiper-parallax="60%" loading="lazy" src="${item.cook.imgWebpUrl}" alt="${item.cook.name}" />
+      <img   src="${item.cook.imgWebpUrl}" alt="${item.cook.name}" data-swiper-parallax="60%" />
       
     </div>
     <div class="swiper-slide__main-img-container">
-      <img data-swiper-parallax-scale="0" loading="lazy" src="${item.topic.previewWebpUrl}" alt="${item.topic.name}" />
+      <img   src="${item.topic.previewWebpUrl}" alt="${item.topic.name}" data-swiper-parallax-scale="0" />
       
       <div class="swiper-title-wrapper">
         <h3 class="swiper-title" data-swiper-parallax-y="-150%" >${item.topic.name}</h3>
@@ -51,7 +51,7 @@ function renderSlides(data) {
       </div>
     </div>
     <div class="swiper-slide__big-img-container">
-      <img data-swiper-parallax-scale="0" loading="lazy" src="${item.topic.previewWebpUrl}" alt="${item.topic.name}" />
+      <img   src="${item.topic.previewWebpUrl}" alt="${item.topic.name}" data-swiper-parallax-scale="0" />
       
     </div>
   </div>
