@@ -7,11 +7,10 @@
   font-size: 14px;
 
   @include btn-secondary;
+  @include transition;
   @include media(md) {
     width: 127px;
     height: 45px;
     border-radius: 15px;
   }
-
-  @include transition;
 }

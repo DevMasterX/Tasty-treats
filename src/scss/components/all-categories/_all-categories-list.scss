@@ -21,6 +21,8 @@
 
   &::-webkit-scrollbar-thumb {
     background-color: var(--all-categories-scrollbar-color);
+    background-color: red;
+
     border-radius: 12px;
   }
 
