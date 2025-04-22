@@ -1,3 +1,10 @@
+import ResizeObserver from 'resize-observer-polyfill';
+window.ResizeObserver = ResizeObserver;
+
+// import SimpleBar from 'simplebar';
+// import 'simplebar';
+// import 'simplebar/dist/simplebar.css';
+
 import { initTheme } from './components/themeSwitcher';
 import { initMobileMenu } from './components/mobileMenu';
 import { initModal } from './components/modal.js';
@@ -10,5 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   initModal();
 
   initSwiper();
-  initAllCategories();
+  await initAllCategories();
+  // const el = document.querySelector('.all-categories__list');
+  // new SimpleBar(el);
 });

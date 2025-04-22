@@ -1,12 +1,18 @@
+import { initSimpleBar } from '../utils/simplebar';
 import { fetchAllCategoriesList } from '../services/all-categories';
 
 const allCategoriesList = document.querySelector('.all-categories__list');
-if (!allCategoriesList) return;
+const allCategoriesListWrapper = document.querySelector(
+  '.all-categories__list-wrapper'
+);
+if (!allCategoriesList || !allCategoriesListWrapper) return;
 
 async function initAllCategories() {
   try {
     const categories = await fetchAllCategoriesList();
     renderCategories(allCategoriesList, categories);
+
+    initSimpleBar(allCategoriesListWrapper);
     initCurrentItem(allCategoriesList, 'Breakfast');
   } catch (error) {
     console.error('Error loading categories:', error);

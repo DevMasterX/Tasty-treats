@@ -1,6 +1,6 @@
 @use '../utils/mixins' as *;
 
-.all-categories__list {
+.all-categories__list-wrapper {
   margin-top: 24px;
 
   @include media(md) {

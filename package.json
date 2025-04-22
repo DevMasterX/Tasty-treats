@@ -22,6 +22,8 @@
     "axios": "^1.8.4",
     "modern-normalize": "^3.0.1",
     "notiflix": "^3.2.8",
+    "resize-observer-polyfill": "^1.5.1",
+    "simplebar": "^6.3.0",
     "swiper": "^11.2.6"
   },
   "devDependencies": {

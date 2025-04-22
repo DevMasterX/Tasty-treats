@@ -1,46 +1,50 @@
 @use '../../utils/mixins' as *;
 
-.all-categories__list {
+.all-categories__list-wrapper {
   height: 198px;
-  overflow: auto;
-  font-size: 14px;
-  line-height: 129%;
-  color: var(--text-secondary-light);
 
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px;
-
-  &::-webkit-scrollbar {
+  .simplebar-track.simplebar-vertical {
     width: 8px;
-    height: 116px;
-  }
-  &::-webkit-scrollbar-track {
     background: transparent;
   }
 
-  &::-webkit-scrollbar-thumb {
+  .simplebar-scrollbar {
     background-color: var(--all-categories-scrollbar-color);
-    background-color: red;
-
+    min-height: 116px;
     border-radius: 12px;
+    &::before {
+      display: none;
+    }
   }
 
   @include media(md) {
     width: 176px;
     height: 416px;
-    gap: 24px;
-    font-size: 16px;
-    line-height: 125%;
 
-    &::-webkit-scrollbar {
-      height: 201px;
+    .simplebar-scrollbar {
+      min-height: 201px;
     }
   }
 
   @include media(lg) {
     width: 235px;
     height: 416px;
+  }
+}
+
+.all-categories__list {
+  font-size: 14px;
+  line-height: 129%;
+  color: var(--text-secondary-light);
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+
+  @include media(md) {
+    gap: 24px;
+    font-size: 16px;
+    line-height: 125%;
   }
 }
 
