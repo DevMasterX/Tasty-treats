@@ -1,0 +1,14 @@
+@use '../../utils/mixins' as *;
+
+.popular-recipes__title {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 133%;
+  text-transform: uppercase;
+  color: var(--text-primary);
+
+  @include media(lg) {
+    font-size: 24px;
+    line-height: 117%;
+  }
+}

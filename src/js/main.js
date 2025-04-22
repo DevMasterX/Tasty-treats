@@ -10,14 +10,14 @@ import { initMobileMenu } from './components/mobileMenu';
 import { initModal } from './components/modal.js';
 import { initSwiper } from './components/swiper';
 import { initAllCategories } from './components/init-all-categories.js';
+import { initPopularRecipes } from './components/init-popular-recipes';
 
 document.addEventListener('DOMContentLoaded', async () => {
   initTheme();
   initMobileMenu();
   initModal();
 
-  initSwiper();
+  await initSwiper();
   await initAllCategories();
-  // const el = document.querySelector('.all-categories__list');
-  // new SimpleBar(el);
+  await initPopularRecipes();
 });

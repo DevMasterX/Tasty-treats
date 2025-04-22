@@ -1,0 +1,45 @@
+@use '../utils/mixins' as *;
+
+.popular-recipes-section {
+  margin-top: 40px;
+
+  @include media(md) {
+    margin-top: 64px;
+  }
+}
+
+.popular-recipes__list {
+  margin-top: 20px;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+  @include media(md) {
+    margin-top: 32px;
+    gap: 16px;
+  }
+  @include media(lg) {
+    margin-top: 30px;
+    gap: 32px;
+  }
+}
+
+.popular-recipes__item {
+  //   display: flex;
+
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 16px;
+
+  @include media(md) {
+    gap: 8px;
+  }
+  @include media(lg) {
+    gap: 16px;
+  }
+}
+
+.popular-recipes__item-text {
+  margin-top: 8px;
+}

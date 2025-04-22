@@ -1,0 +1,33 @@
+@use '../../utils/mixins' as *;
+
+.popular-recipes__item-title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 129%;
+  text-transform: uppercase;
+  color: var(--text-primary);
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.popular-recipes__item-text {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 133%;
+  color: var(--popular-description-text-color);
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  @include media(md) {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 140%;
+    -webkit-line-clamp: 3;
+  }
+}
