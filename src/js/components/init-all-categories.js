@@ -13,7 +13,7 @@ async function initAllCategories() {
     renderCategories(allCategoriesList, categories);
 
     initSimpleBar(allCategoriesListWrapper);
-    initCurrentItem(allCategoriesList, 'Breakfast');
+    initCurrentItem(allCategoriesList);
   } catch (error) {
     console.error('Error loading categories:', error);
   }
@@ -28,16 +28,18 @@ function renderCategories(element, list) {
     .join('');
 }
 
-function initCurrentItem(list, targetName = 'Breakfast') {
-  let current = [...list.children].find(
-    element => element.textContent.trim() === targetName
+function initCurrentItem(list) {
+  let current = [...list.children].find(element =>
+    element.classList.contains('current')
   );
 
-  current?.classList.add('current');
+  // current?.classList.add('current');
 
   [...list.children].forEach(item =>
     item.addEventListener('click', () => {
-      current.classList.remove('current');
+      if (current) {
+        current.classList.remove('current');
+      }
       item.classList.add('current');
       current = item;
     })
