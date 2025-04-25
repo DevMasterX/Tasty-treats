@@ -35,11 +35,13 @@
 }
 
 .filters-item__input {
+  width: 100%;
   padding-left: 48px;
   padding-right: 14px;
 }
 
 .filters-item__element {
+  height: 46px;
   background-color: inherit;
   border: var(--input-border);
   border-radius: 15px;
@@ -53,8 +55,32 @@
   line-height: 129%;
 
   @include media(md) {
+    height: 48px;
     font-size: 16px;
-
     line-height: 125%;
   }
+}
+
+.filters-item__element.filters-item__input:focus-visible {
+  outline: none;
+  border-color: #b7b7b7;
+
+  & + .filters-item__input-icon {
+    fill: var(--text-accent);
+    stroke: var(--text-accent);
+  }
+}
+
+.label-search {
+  // width: 100%;
+  grid-area: search;
+}
+.label-time {
+  grid-area: time;
+}
+.label-area {
+  grid-area: area;
+}
+.label-ingredients {
+  grid-area: ingredients;
 }

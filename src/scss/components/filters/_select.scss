@@ -1,22 +1,83 @@
-// .filters-item__select {
-//   appearance: none;
-//   -webkit-appearance: none;
-//   -moz-appearance: none;
-// }
+@use '../../utils/mixins' as *;
+
+.filters-item .choices {
+  margin-bottom: 0;
+}
 
 .choices::after {
   display: none;
 }
 
 .choices .choices__inner {
-  background-color: red;
-  border-radius: 8px;
+  height: 46px;
+
+  font-size: 14px;
+  line-height: 129%;
+  background-color: inherit;
+  border: var(--input-border);
+  border-radius: 15px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 18px;
+
+  @include media(md) {
+    height: 48px;
+    font-size: 16px;
+    line-height: 125%;
+  }
+}
+
+.is-flipped.is-open .choices__inner {
+  border-radius: 15px;
+}
+
+.choices__list.choices__list--single {
+  padding: 0;
 }
 
 .choices .choices__list--dropdown.is-active {
-  background-color: blue;
-  color: red;
-  border-radius: 5px;
+  max-height: 176px !important;
+  border-radius: 15px !important;
+  border: none;
+  margin: 0 !important;
+
+  box-shadow: 0 4px 36px 0 rgba(0, 0, 0, 0.02);
+  background: var(--modal-bg);
+  color: var(--text-secondary-light);
+
+  @include media(md) {
+    max-height: 188px !important;
+  }
+
+  &.choices__list {
+    // height: 200px;
+  }
 }
-.choices__item--selectable {
+
+.choices.is-open .choices__inner {
+  border-radius: 15px !important;
+}
+
+.choices__item.choices__item--choice.choices__item--selectable.is-highlighted {
+  background-color: transparent !important;
+  color: var(--text-primary);
+}
+
+.choices__list--dropdown {
+  scrollbar-width: thin; /* для Firefox */
+  scrollbar-color: var(--text-secondary-light) transparent; /* для Firefox */
+}
+
+/* для Webkit-браузеров (Chrome, Safari, Edge) */
+.choices__list--dropdown::-webkit-scrollbar {
+  width: 6px; /* ширина полосы */
+}
+
+.choices__list--dropdown::-webkit-scrollbar-thumb {
+  background-color: var(--text-secondary-light); /* цвет "ползунка" */
+  border-radius: 10px; /* скругление ползунка */
+}
+
+.choices__list--dropdown::-webkit-scrollbar-track {
+  background: transparent; /* фон трека */
 }

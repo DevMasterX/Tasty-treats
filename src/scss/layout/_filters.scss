@@ -3,10 +3,27 @@
 .filters-section {
   margin-top: 62px;
 
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(auto-fit, minmax(46px, 1fr));
+
+  column-gap: 14px;
+  row-gap: 36px;
+
+  grid-template-areas:
+    'search search'
+    'time area'
+    'ingredients ingredients';
+
   @include media(md) {
+    column-gap: 16px;
+    row-gap: 42px;
     margin-top: 106px;
+    // margin-top: 0;
   }
   @include media(lg) {
     margin-top: 126px;
+    // margin-top: 0;
   }
 }

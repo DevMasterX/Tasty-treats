@@ -1,5 +1,5 @@
 <section class="filters-section">
-  <label class="filters-item">
+  <label class="filters-item label-search">
     <span class="filters-item__label">Search</span>
     <input
       type="text"
@@ -11,7 +11,7 @@
     </svg>
   </label>
 
-  <!-- <label class="filters-item">
+  <label class="filters-item label-time">
     <span class="filters-item__label">Time</span>
     <select
       name="time"
@@ -45,8 +45,38 @@
       <option value="120">120 min</option>
     </select>
 
-    <svg class="filters-item__icon">
+    <svg class="filters-item__icon filters-item__select-icon">
       <use href="./img/icons.svg#icon-down"></use>
     </svg>
-  </label> -->
+  </label>
+
+  <label class="filters-item label-area">
+    <span class="filters-item__label">Area</span>
+    <select
+      name="area"
+      id=""
+      class="filters-item__element filters-item__select js-choice"
+    >
+      <option value="all">All</option>
+    </select>
+
+    <svg class="filters-item__icon filters-item__select-icon">
+      <use href="./img/icons.svg#icon-down"></use>
+    </svg>
+  </label>
+
+  <label class="filters-item label-ingredients">
+    <span class="filters-item__label">Ingredients</span>
+    <select
+      name="ingredients"
+      id=""
+      class="filters-item__element filters-item__select js-choice"
+    >
+      <option value="all">All</option>
+    </select>
+
+    <svg class="filters-item__icon filters-item__select-icon">
+      <use href="./img/icons.svg#icon-down"></use>
+    </svg>
+  </label>
 </section>
