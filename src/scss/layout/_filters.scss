@@ -1,0 +1,12 @@
+@use '../utils/mixins' as *;
+
+.filters-section {
+  margin-top: 62px;
+
+  @include media(md) {
+    margin-top: 106px;
+  }
+  @include media(lg) {
+    margin-top: 126px;
+  }
+}

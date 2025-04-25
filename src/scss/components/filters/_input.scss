@@ -1,7 +1,60 @@
+@use '../../utils/mixins' as *;
+
+.filters-item__input::placeholder {
+  color: currentColor;
+
+  font-size: 14px;
+  line-height: 129%;
+
+  @include media(md) {
+    font-size: 16px;
+
+    line-height: 125%;
+  }
+}
+
 .filters-item {
+  display: block;
   position: relative;
+  color: var(--text-secondary);
 }
 
 .filters-item__label {
   position: absolute;
+  top: -20px;
+  color: currentColor;
+
+  font-size: 12px;
+  line-height: 117%;
+
+  @include media(md) {
+    font-size: 14px;
+    top: -22px;
+    line-height: 129%;
+  }
+}
+
+.filters-item__input {
+  padding-left: 48px;
+  padding-right: 14px;
+}
+
+.filters-item__element {
+  background-color: inherit;
+  border: var(--input-border);
+  border-radius: 15px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+
+  font-size: 14px;
+  color: currentColor;
+
+  font-size: 14px;
+  line-height: 129%;
+
+  @include media(md) {
+    font-size: 16px;
+
+    line-height: 125%;
+  }
 }
