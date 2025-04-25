@@ -1,0 +1,22 @@
+// .filters-item__select {
+//   appearance: none;
+//   -webkit-appearance: none;
+//   -moz-appearance: none;
+// }
+
+.choices::after {
+  //   display: none;
+}
+
+.choices .choices__inner {
+  background-color: red;
+  border-radius: 8px;
+}
+
+.choices .choices__list--dropdown.is-active {
+  background-color: blue;
+  color: red;
+  border-radius: 5px;
+}
+.choices__item--selectable {
+}

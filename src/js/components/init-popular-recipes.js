@@ -5,7 +5,6 @@ if (!popularRecipesList) return;
 
 async function initPopularRecipes() {
   const recipes = await fetchPopularRecipes();
-  console.log(recipes);
 
   renderPopularRecipes(recipes);
 }
