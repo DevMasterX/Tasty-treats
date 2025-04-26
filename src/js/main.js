@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   initTheme();
   initMobileMenu();
   initModal();
-  initFilters();
 
   await initSwiper();
   await initAllCategories();
   await initPopularRecipes();
+  await initFilters();
 });
