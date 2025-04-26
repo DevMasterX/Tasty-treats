@@ -11,3 +11,9 @@
     margin-top: 42px;
   }
 }
+
+.all-categories {
+  @include media(md) {
+    grid-area: categories;
+  }
+}

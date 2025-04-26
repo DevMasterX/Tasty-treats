@@ -7,9 +7,19 @@
     margin-top: 100px;
 
     display: grid;
+    grid-template-columns: 176px 1fr;
+    column-gap: 32px;
+    grid-template-areas:
+      'categories filters'
+      'categories gallery'
+      'popular gallery'
+      '. gallery';
   }
 
   @include media(lg) {
     margin-top: 126px;
+
+    grid-template-columns: 235px 1fr;
+    column-gap: 64px;
   }
 }

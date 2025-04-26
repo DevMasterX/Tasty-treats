@@ -22,6 +22,8 @@
     flex-wrap: wrap;
 
     gap: 42px 16px;
+
+    grid-area: filters;
   }
   @include media(lg) {
     // margin-top: 126px;

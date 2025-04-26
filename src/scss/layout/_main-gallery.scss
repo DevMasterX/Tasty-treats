@@ -1,3 +1,9 @@
+@use '../utils/mixins' as *;
+
 .main-gallery {
   margin-top: 14px;
+
+  @include media(md) {
+    grid-area: gallery;
+  }
 }
