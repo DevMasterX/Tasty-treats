@@ -1,0 +1,18 @@
+@use '../../utils/mixins' as *;
+
+.reset-filter-btn {
+  margin-left: auto;
+  margin-right: 0;
+  font-size: 12px;
+  line-height: 133%;
+  color: var(--text-secondary);
+  gap: 4px;
+
+  @include flex-center;
+}
+
+.reset-filter-btn__icon {
+  width: 16px;
+  height: 16px;
+  stroke: var(--text-accent);
+}

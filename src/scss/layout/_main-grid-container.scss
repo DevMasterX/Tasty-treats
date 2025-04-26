@@ -5,6 +5,8 @@
 
   @include media(md) {
     margin-top: 100px;
+
+    display: grid;
   }
 
   @include media(lg) {

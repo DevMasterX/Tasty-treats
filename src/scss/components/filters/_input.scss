@@ -2,13 +2,9 @@
 
 .filters-item__input::placeholder {
   color: currentColor;
-
-  font-size: 14px;
   line-height: 129%;
 
   @include media(md) {
-    font-size: 16px;
-
     line-height: 125%;
   }
 }
@@ -76,20 +72,23 @@
 
   @include media(md) {
     max-width: 278px;
+    grid-area: auto;
   }
 }
 .label-time {
   grid-area: time;
 
   @include media(md) {
-    max-width: 125px;
+    width: 125px;
+    grid-area: auto;
   }
 }
 .label-area {
   grid-area: area;
 
   @include media(md) {
-    max-width: 141px;
+    width: 141px;
+    grid-area: auto;
   }
 }
 .label-ingredients {
@@ -97,6 +96,7 @@
   max-width: 60%;
 
   @include media(md) {
-    max-width: 188px;
+    width: 188px;
+    grid-area: auto;
   }
 }

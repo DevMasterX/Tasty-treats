@@ -1,11 +1,5 @@
 @use '../../utils/mixins' as *;
 
-.filters-item__input + .filters-item__icon {
-}
-
-// .filters-item__icon {
-//   position: absolute;
-// }
 .filters-item__icon {
   position: absolute;
   top: 50%;

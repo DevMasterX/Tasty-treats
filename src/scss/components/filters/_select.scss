@@ -48,10 +48,6 @@
   @include media(md) {
     max-height: 188px !important;
   }
-
-  &.choices__list {
-    // height: 200px;
-  }
 }
 
 .choices.is-open .choices__inner {

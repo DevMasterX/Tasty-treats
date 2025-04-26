@@ -8,8 +8,7 @@
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(auto-fit, minmax(46px, 1fr));
 
-  column-gap: 14px;
-  row-gap: 36px;
+  gap: 36px 14px;
 
   grid-template-areas:
     'search search'
@@ -17,20 +16,15 @@
     'ingredients ingredients';
 
   @include media(md) {
-    // margin-top: 0;
-    column-gap: 16px;
-    row-gap: 42px;
-    margin-top: 106px;
+    margin-top: 0;
+    // margin-top: 106px;
+    display: flex;
+    flex-wrap: wrap;
 
-    grid-auto-flow: row;
-    grid-template-columns: repeat(auto-fit, minmax(140px, auto));
-    grid-auto-rows: 46px;
-    justify-content: start;
-
-    grid-template-areas: none;
+    gap: 42px 16px;
   }
   @include media(lg) {
-    margin-top: 126px;
+    // margin-top: 126px;
     // margin-top: 0;
   }
 }
