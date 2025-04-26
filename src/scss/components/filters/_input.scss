@@ -72,15 +72,31 @@
 }
 
 .label-search {
-  // width: 100%;
   grid-area: search;
+
+  @include media(md) {
+    max-width: 278px;
+  }
 }
 .label-time {
   grid-area: time;
+
+  @include media(md) {
+    max-width: 125px;
+  }
 }
 .label-area {
   grid-area: area;
+
+  @include media(md) {
+    max-width: 141px;
+  }
 }
 .label-ingredients {
   grid-area: ingredients;
+  max-width: 60%;
+
+  @include media(md) {
+    max-width: 188px;
+  }
 }

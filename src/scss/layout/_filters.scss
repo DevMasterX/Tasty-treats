@@ -17,10 +17,17 @@
     'ingredients ingredients';
 
   @include media(md) {
+    // margin-top: 0;
     column-gap: 16px;
     row-gap: 42px;
     margin-top: 106px;
-    // margin-top: 0;
+
+    grid-auto-flow: row;
+    grid-template-columns: repeat(auto-fit, minmax(140px, auto));
+    grid-auto-rows: 46px;
+    justify-content: start;
+
+    grid-template-areas: none;
   }
   @include media(lg) {
     margin-top: 126px;
