@@ -8,8 +8,9 @@ const choicesOptions = {
   itemSelectText: '',
 };
 async function initFilters() {
-  await initAreaList();
-  await initIngredientsList();
+  await Promise.all([initAreaList(), initIngredientsList()]);
+  // await initAreaList();
+  // await initIngredientsList();
 
   initChoices();
 }

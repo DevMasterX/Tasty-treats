@@ -18,8 +18,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   initMobileMenu();
   initModal();
 
-  await initSwiper();
-  await initAllCategories();
-  await initPopularRecipes();
-  await initFilters();
+  await Promise.all([
+    initSwiper(),
+    initAllCategories(),
+    initPopularRecipes(),
+    initFilters(),
+  ]);
+  // initSwiper();
+  // initAllCategories();
+  // initPopularRecipes();
+  // initFilters();
 });
