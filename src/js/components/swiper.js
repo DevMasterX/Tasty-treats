@@ -6,8 +6,6 @@ import 'swiper/modules/pagination.min.css';
 import 'swiper/modules/effect-cube.min.css';
 import 'swiper/modules/parallax.min.css';
 
-import { apiClient } from '../api/axios';
-
 async function initSwiper() {
   const data = await getSwiperData();
 

@@ -12,6 +12,7 @@ import { initSwiper } from './components/swiper';
 import { initAllCategories } from './components/init-all-categories.js';
 import { initPopularRecipes } from './components/init-popular-recipes';
 import { initFilters } from './components/filters';
+import { initMainGallery } from './components/mainGallery.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   initTheme();
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initAllCategories(),
     initPopularRecipes(),
     initFilters(),
+    initMainGallery(),
   ]);
   // initSwiper();
   // initAllCategories();
