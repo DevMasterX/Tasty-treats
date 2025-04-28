@@ -12,7 +12,7 @@ import { initSwiper } from './components/swiper';
 import { initAllCategories } from './components/init-all-categories.js';
 import { initPopularRecipes } from './components/init-popular-recipes';
 import { initFilters } from './components/filters';
-import { initMainGallery } from './components/mainGallery.js';
+import { initMainGallery } from './components/main-gallery.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   initTheme();
