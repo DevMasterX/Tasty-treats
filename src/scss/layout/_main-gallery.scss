@@ -7,3 +7,27 @@
     grid-area: gallery;
   }
 }
+
+.gallery-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+
+  @include media(md) {
+    gap: 16px;
+  }
+
+  @include media(lg) {
+    gap: 32px 16px;
+  }
+}
+
+.main-gallery-container {
+  @include media(md) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include media(lg) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

@@ -22,28 +22,47 @@ class RecipesApiService {
     }
   }
 
-  setCategory(category) {
-    this.category = category;
-  }
+  //   setCategory(category) {
+  //     this.category = category;
+  //   }
 
-  setPage(page) {
-    this.page = page;
-  }
+  //   setPage(page) {
+  //     this.page = page;
+  //   }
 
-  setTime(time) {
-    this.time = time;
-  }
+  //   setTime(time) {
+  //     this.time = time;
+  //   }
 
-  setArea(area) {
-    this.area = area;
-  }
+  //   setArea(area) {
+  //     this.area = area;
+  //   }
 
-  setIngredient(ingredient) {
-    this.ingredient = ingredient;
+  //   setIngredient(ingredient) {
+  //     this.ingredient = ingredient;
+  //   }
+
+  updateParams(paramName, value) {
+    if (this.hasOwnProperty(paramName)) {
+      this[paramName] = value;
+    }
   }
 
   getQueryParams() {
-    const params = {};
+    const params = {
+      category: this.category ?? null,
+      page: this.page,
+      limit: this.limit,
+      time: this.time ?? null,
+      area: this.area ?? null,
+      ingredient: this.ingredient ?? null,
+    };
+
+    return Object.fromEntries(
+      Object.entries(params).filter(
+        ([_, value]) => value !== null && value !== ''
+      )
+    );
   }
 
   async fetchRecipes() {
