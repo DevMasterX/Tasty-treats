@@ -23,10 +23,15 @@
 
 .theme-switcher-btn {
   display: none;
+  -webkit-tap-highlight-color: transparent;
 
   @include media(md) {
     display: block;
   }
+}
+
+.theme-switcher {
+  -webkit-tap-highlight-color: transparent;
 }
 
 .shopping-icon,

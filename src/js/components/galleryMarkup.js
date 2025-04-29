@@ -1,29 +1,15 @@
-import iconsSprite from '../../img/icons.svg';
-
 function createGalleryMarkup(arr) {
   return arr
     .map(
       ({ preview, title, description, rating }) => `
      <li class="gallery-item">
      <img class="gallery-item__img" src="${preview}" alt="${title}" loading="lazy">
-
-
       <button class="gallery-item__favorite-btn">
         <svg class="favorite-btn__icon">
           <use href="#icon-heart"></use>
         </svg>
-        Heart
       </button>
-
-
-  <button class="gallery-item__favorite-btn">
-    <svg class="favorite-btn__icon">
-      <use href="${iconsSprite}#icon-heart"></use>
-    </svg>
-    Heart
-  </button>
-
-
+      <div class="gallery-item__content-wrapper">
       <h3 class="gallery-item__title">${title}</h3>
       <p class="gallery-item__text">${description}</p>
       <div class="rating-and-btn-wrapper">
@@ -38,6 +24,7 @@ function createGalleryMarkup(arr) {
           </ul>
         </div>
         <button class="gallery-item__see-recipe-btn">See recipe</button>
+      </div>
       </div>
     </li>
     

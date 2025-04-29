@@ -63,7 +63,7 @@ function initSwiperInstance() {
     spaceBetween: 50,
 
     modules: [Pagination, Autoplay, EffectCube, Parallax],
-    speed: 2000,
+    speed: 1500,
     autoplay: {
       delay: 5000,
     },

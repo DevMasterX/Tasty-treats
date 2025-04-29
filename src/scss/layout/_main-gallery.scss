@@ -23,11 +23,26 @@
 }
 
 .main-gallery-container {
+  margin-top: 20px;
   @include media(md) {
+    margin-top: 14px;
     grid-template-columns: 1fr 1fr;
   }
 
   @include media(lg) {
     grid-template-columns: 1fr 1fr 1fr;
   }
+}
+
+.gallery-item__text {
+  margin-top: 8px;
+}
+
+.rating-and-btn-wrapper {
+  margin-top: 16px;
+}
+.rating-and-btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
