@@ -1,4 +1,4 @@
-import { ICONS_PATH } from '../config/paths.js';
+import iconsSprite from '../../img/icons.svg';
 
 function createGalleryMarkup(arr) {
   return arr
@@ -7,12 +7,22 @@ function createGalleryMarkup(arr) {
      <li class="gallery-item">
      <img class="gallery-item__img" src="${preview}" alt="${title}" loading="lazy">
 
+
       <button class="gallery-item__favorite-btn">
         <svg class="favorite-btn__icon">
-          <use href="${ICONS_PATH}#icon-heart"></use>
+          <use href="#icon-heart"></use>
         </svg>
         Heart
       </button>
+
+
+  <button class="gallery-item__favorite-btn">
+    <svg class="favorite-btn__icon">
+      <use href="${iconsSprite}#icon-heart"></use>
+    </svg>
+    Heart
+  </button>
+
 
       <h3 class="gallery-item__title">${title}</h3>
       <p class="gallery-item__text">${description}</p>
@@ -30,6 +40,7 @@ function createGalleryMarkup(arr) {
         <button class="gallery-item__see-recipe-btn">See recipe</button>
       </div>
     </li>
+    
     `
     )
     .join('');

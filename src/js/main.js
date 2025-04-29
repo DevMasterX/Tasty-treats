@@ -14,13 +14,11 @@ import { initAllCategories } from './components/init-all-categories.js';
 import { initPopularRecipes } from './components/init-popular-recipes';
 import { initFilters } from './components/filters';
 import { initMainGallery } from './components/main-gallery.js';
-import { initSvgIcons } from './utils/svg-icons.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   initTheme();
   initMobileMenu();
   initModal();
-  initSvgIcons();
 
   await Promise.all([
     initSwiper(),
