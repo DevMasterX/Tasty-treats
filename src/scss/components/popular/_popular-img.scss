@@ -16,3 +16,7 @@
     height: 64px;
   }
 }
+
+.popular-recipes__img {
+  @include transition;
+}

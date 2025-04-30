@@ -45,6 +45,8 @@
   background: var(--modal-bg);
   color: var(--text-secondary-light);
 
+  z-index: 3;
+
   @include media(md) {
     max-height: 188px !important;
   }

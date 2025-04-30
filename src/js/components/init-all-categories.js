@@ -1,6 +1,8 @@
 import { initSimpleBar } from '../utils/simplebar';
 import { fetchAllCategoriesList } from '../services/all-categories';
 
+const allCategoriesSection = document.querySelector('.all-categories');
+const allCategoriesBtn = document.querySelector('.all-categories__button');
 const allCategoriesList = document.querySelector('.all-categories__list');
 const allCategoriesListWrapper = document.querySelector(
   '.all-categories__list-wrapper'
@@ -14,6 +16,7 @@ async function initAllCategories() {
 
     initSimpleBar(allCategoriesListWrapper);
     initCurrentItem(allCategoriesList);
+    initEventListeners(allCategoriesSection, allCategoriesBtn);
   } catch (error) {
     console.error('Error loading categories:', error);
   }
@@ -33,8 +36,6 @@ function initCurrentItem(list) {
     element.classList.contains('current')
   );
 
-  // current?.classList.add('current');
-
   [...list.children].forEach(item =>
     item.addEventListener('click', () => {
       if (current) {
@@ -44,6 +45,20 @@ function initCurrentItem(list) {
       current = item;
     })
   );
+}
+
+function initEventListeners(section, btn) {
+  section.addEventListener('click', e => {
+    // const categoryItem = document.querySelector.classList.contains(
+    //   'all-categories__item'
+    // );
+
+    if (e.target === btn) {
+      console.log('btn');
+    } else if (e.target.classList.contains('all-categories__item')) {
+      console.log(e.target.textContent);
+    }
+  });
 }
 
 export { initAllCategories };
