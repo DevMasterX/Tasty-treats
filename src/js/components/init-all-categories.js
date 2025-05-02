@@ -1,6 +1,14 @@
 import { initSimpleBar } from '../utils/simplebar';
 import { fetchAllCategoriesList } from '../services/all-categories';
+import { recipesApiService } from '../services/recipes-api-service';
+import { initMainGallery } from './main-gallery';
+import {
+  saveToStorage,
+  loadFromStorage,
+  removeFromStorage,
+} from '../utils/localStorage';
 
+const CURRENT = 'current';
 const allCategoriesSection = document.querySelector('.all-categories');
 const allCategoriesBtn = document.querySelector('.all-categories__button');
 const allCategoriesList = document.querySelector('.all-categories__list');
@@ -32,31 +40,54 @@ function renderCategories(element, list) {
 }
 
 function initCurrentItem(list) {
-  let current = [...list.children].find(element =>
-    element.classList.contains('current')
-  );
+  const category = loadFromStorage(CURRENT);
+  const currentElement = findCurrentElement(list, category);
+  if (!category || !currentElement) return;
 
-  [...list.children].forEach(item =>
-    item.addEventListener('click', () => {
-      if (current) {
-        current.classList.remove('current');
-      }
-      item.classList.add('current');
-      current = item;
-    })
+  addCurrentClass(currentElement);
+  recipesApiService.updateParams('category', category);
+  initMainGallery();
+}
+
+function findCurrentElement(list, value = null) {
+  return [...list.children].find(
+    element =>
+      element.classList.contains('current') ||
+      (value && element.textContent.trim() === value)
   );
+}
+
+function addCurrentClass(item) {
+  item.classList.add('current');
+}
+function removeCurrentClass(current) {
+  if (current) {
+    current.classList.remove('current');
+  }
 }
 
 function initEventListeners(section, btn) {
   section.addEventListener('click', e => {
-    // const categoryItem = document.querySelector.classList.contains(
-    //   'all-categories__item'
-    // );
+    const isReset = e.target.closest('.all-categories__button');
+    const item = e.target.closest('.all-categories__item');
 
-    if (e.target === btn) {
-      console.log('btn');
-    } else if (e.target.classList.contains('all-categories__item')) {
-      console.log(e.target.textContent);
+    if (isReset) {
+      const current = findCurrentElement(allCategoriesList);
+      removeCurrentClass(current);
+      removeFromStorage(CURRENT);
+      recipesApiService.updateParams('category', '');
+      initMainGallery();
+      return;
+    }
+    if (item && !item.classList.contains('current')) {
+      const current = findCurrentElement(allCategoriesList);
+      removeCurrentClass(current);
+      addCurrentClass(item);
+      const category = item.textContent.trim();
+      saveToStorage(CURRENT, category);
+
+      recipesApiService.updateParams('category', category);
+      initMainGallery();
     }
   });
 }
