@@ -2,15 +2,16 @@ import { initSimpleBar } from '../utils/simplebar';
 import { fetchAllCategoriesList } from '../services/all-categories';
 import { recipesApiService } from '../services/recipes-api-service';
 import { initMainGallery } from './main-gallery';
+import { STORAGE_KEYS } from '../../constants/constants';
 import {
   saveToStorage,
   loadFromStorage,
   removeFromStorage,
 } from '../utils/localStorage';
 
-const CURRENT = 'current';
+const CURRENT_CATEGORY = STORAGE_KEYS.CURRENT_CATEGORY;
 const allCategoriesSection = document.querySelector('.all-categories');
-const allCategoriesBtn = document.querySelector('.all-categories__button');
+// const allCategoriesBtn = document.querySelector('.all-categories__button');
 const allCategoriesList = document.querySelector('.all-categories__list');
 const allCategoriesListWrapper = document.querySelector(
   '.all-categories__list-wrapper'
@@ -24,7 +25,7 @@ async function initAllCategories() {
 
     initSimpleBar(allCategoriesListWrapper);
     initCurrentItem(allCategoriesList);
-    initEventListeners(allCategoriesSection, allCategoriesBtn);
+    initEventListeners(allCategoriesSection);
   } catch (error) {
     console.error('Error loading categories:', error);
   }
@@ -40,13 +41,11 @@ function renderCategories(element, list) {
 }
 
 function initCurrentItem(list) {
-  const category = loadFromStorage(CURRENT);
+  const category = loadFromStorage(CURRENT_CATEGORY);
   const currentElement = findCurrentElement(list, category);
   if (!category || !currentElement) return;
 
   addCurrentClass(currentElement);
-  recipesApiService.updateParams('category', category);
-  initMainGallery();
 }
 
 function findCurrentElement(list, value = null) {
@@ -66,7 +65,7 @@ function removeCurrentClass(current) {
   }
 }
 
-function initEventListeners(section, btn) {
+function initEventListeners(section) {
   section.addEventListener('click', e => {
     const isReset = e.target.closest('.all-categories__button');
     const item = e.target.closest('.all-categories__item');
@@ -74,7 +73,7 @@ function initEventListeners(section, btn) {
     if (isReset) {
       const current = findCurrentElement(allCategoriesList);
       removeCurrentClass(current);
-      removeFromStorage(CURRENT);
+      removeFromStorage(CURRENT_CATEGORY);
       recipesApiService.updateParams('category', '');
       initMainGallery();
       return;
@@ -84,7 +83,7 @@ function initEventListeners(section, btn) {
       removeCurrentClass(current);
       addCurrentClass(item);
       const category = item.textContent.trim();
-      saveToStorage(CURRENT, category);
+      saveToStorage(CURRENT_CATEGORY, category);
 
       recipesApiService.updateParams('category', category);
       initMainGallery();
@@ -92,4 +91,4 @@ function initEventListeners(section, btn) {
   });
 }
 
-export { initAllCategories };
+export { initAllCategories, removeCurrentClass };

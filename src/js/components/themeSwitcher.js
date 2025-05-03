@@ -1,5 +1,6 @@
-const THEME_KEY = 'theme';
-const DARK_CLASS = 'dark-theme';
+import { STORAGE_KEYS, DARK_CLASS } from '../../constants/constants';
+
+const THEME_KEY = STORAGE_KEYS.THEME_KEY;
 
 function initTheme() {
   const themeSwitcherInput = document.querySelector(

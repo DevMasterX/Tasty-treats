@@ -2,6 +2,7 @@ import { apiClient } from '../api/axios';
 
 class RecipesApiService {
   constructor() {
+    this.title = '';
     this.category = '';
     this.page = 1;
     this.limit = this.getLimitByViewport();
@@ -50,6 +51,7 @@ class RecipesApiService {
 
   getQueryParams() {
     const params = {
+      title: this.title ?? null,
       category: this.category ?? null,
       page: this.page,
       limit: this.limit,
@@ -65,6 +67,15 @@ class RecipesApiService {
     );
   }
 
+  resetFilterQueryParams() {
+    this.title = '';
+    this.page = 1;
+    this.limit = this.getLimitByViewport();
+    this.time = null;
+    this.area = '';
+    this.ingredient = '';
+  }
+
   async fetchRecipes() {
     try {
       const response = await apiClient.get('/recipes', {
@@ -75,6 +86,12 @@ class RecipesApiService {
       console.error('Error fetching recipes:', error);
       throw error;
     }
+  }
+  async fetchAllRecipes() {
+    try {
+      const response = await apiClient.get('/recipes');
+      console.log('🚀 response:', response.data);
+    } catch (error) {}
   }
 }
 

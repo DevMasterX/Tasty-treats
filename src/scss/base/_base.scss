@@ -48,7 +48,9 @@ button,
 a,
 input,
 textarea,
-li {
+li,
+select,
+label {
   outline: none;
   box-shadow: none;
   -webkit-tap-highlight-color: transparent;

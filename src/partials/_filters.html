@@ -2,8 +2,9 @@
   <label class="filters-item label-search">
     <span class="filters-item__label">Search</span>
     <input
+      name="title"
       type="text"
-      class="filters-item__element filters-item__input"
+      class="filters-item__element filters-item__input js-filters-item__input"
       placeholder="Enter Text"
     />
     <svg class="filters-item__icon filters-item__input-icon">
@@ -19,7 +20,7 @@
       id=""
       class="filters-item__element filters-item__select js-choice"
     >
-      <option value="all">All</option>
+      <option value="">All</option>
       <option value="5">5 min</option>
       <option value="10">10 min</option>
       <option value="15">15 min</option>
@@ -59,7 +60,7 @@
       id=""
       class="filters-item__element filters-item__select js-choice"
     >
-      <option value="all">All</option>
+      <option value="">All</option>
     </select>
 
     <svg class="filters-item__icon filters-item__select-icon">
@@ -71,11 +72,11 @@
   <label class="filters-item label-ingredients">
     <span class="filters-item__label">Ingredients</span>
     <select
-      name="ingredients"
+      name="ingredient"
       id=""
       class="filters-item__element filters-item__select js-choice"
     >
-      <option value="all">All</option>
+      <option value="">All</option>
     </select>
 
     <svg class="filters-item__icon filters-item__select-icon">

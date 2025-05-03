@@ -14,11 +14,13 @@ import { initAllCategories } from './components/init-all-categories.js';
 import { initPopularRecipes } from './components/init-popular-recipes';
 import { initFilters } from './components/filters';
 import { initMainGallery } from './components/main-gallery.js';
+import { checkSavedCategory } from './components/current-category.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   initTheme();
   initMobileMenu();
   initModal();
+  checkSavedCategory();
 
   await Promise.all([
     initSwiper(),
