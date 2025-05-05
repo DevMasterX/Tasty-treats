@@ -45,7 +45,10 @@ function renderCategories(element, list) {
 function initCurrentItem(list) {
   const category = loadFromStorage(CURRENT_CATEGORY);
   const currentElement = findCurrentElement(list, category);
-  if (!category || !currentElement) return;
+  if (!category || !currentElement) {
+    allCategoriesBtn.classList.add('active');
+    return;
+  }
 
   addCurrentClass(currentElement);
 }
