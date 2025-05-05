@@ -25,3 +25,9 @@
     border-color: var(--btn-primary-bg);
   }
 }
+
+.all-categories__button.active {
+  color: var(--text-btn-primary);
+  background-color: var(--btn-primary-bg);
+  border-color: var(--btn-primary-bg);
+}

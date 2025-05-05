@@ -11,7 +11,7 @@ import {
 
 const CURRENT_CATEGORY = STORAGE_KEYS.CURRENT_CATEGORY;
 const allCategoriesSection = document.querySelector('.all-categories');
-// const allCategoriesBtn = document.querySelector('.all-categories__button');
+const allCategoriesBtn = document.querySelector('.all-categories__button');
 const allCategoriesList = document.querySelector('.all-categories__list');
 const allCategoriesListWrapper = document.querySelector(
   '.all-categories__list-wrapper'
@@ -34,7 +34,9 @@ function renderCategories(element, list) {
   element.innerHTML = list
     .map(
       ({ name }) => `
-    <li class="all-categories__item">${name}</li>
+    <li class="all-categories__item">
+    <button class="all-categories__item-btn">${name}</button>
+    </li>
         `
     )
     .join('');
@@ -58,7 +60,12 @@ function findCurrentElement(list, value = null) {
 
 function addCurrentClass(item) {
   item.classList.add('current');
+
+  if (allCategoriesBtn.classList.contains('active')) {
+    allCategoriesBtn.classList.remove('active');
+  }
 }
+
 function removeCurrentClass(current) {
   if (current) {
     current.classList.remove('current');
@@ -69,8 +76,13 @@ function initEventListeners(section) {
   section.addEventListener('click', e => {
     const isReset = e.target.closest('.all-categories__button');
     const item = e.target.closest('.all-categories__item');
+    const itemBtn = e.target.closest('.all-categories__item-btn');
 
     if (isReset) {
+      if (!allCategoriesBtn.classList.contains('active')) {
+        allCategoriesBtn.classList.add('active');
+      }
+
       const current = findCurrentElement(allCategoriesList);
       removeCurrentClass(current);
       removeFromStorage(CURRENT_CATEGORY);
@@ -78,7 +90,7 @@ function initEventListeners(section) {
       initMainGallery();
       return;
     }
-    if (item && !item.classList.contains('current')) {
+    if (itemBtn && !item.classList.contains('current')) {
       const current = findCurrentElement(allCategoriesList);
       removeCurrentClass(current);
       addCurrentClass(item);
