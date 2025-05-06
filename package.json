@@ -21,6 +21,7 @@
   "dependencies": {
     "axios": "^1.8.4",
     "choices.js": "^11.1.0",
+    "glightbox": "^3.3.1",
     "lodash.debounce": "^4.0.8",
     "modern-normalize": "^3.0.1",
     "notiflix": "^3.2.8",

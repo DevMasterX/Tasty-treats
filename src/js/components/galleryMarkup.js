@@ -3,7 +3,11 @@ function createGalleryMarkup(arr) {
     .map(
       ({ preview, title, description, rating }) => `
      <li class="gallery-item">
-     <img class="gallery-item__img" src="${preview}" alt="${title}" loading="lazy">
+<a href="${preview}" class="gallery-lightbox"  data-width="900px"
+  data-height="auto" data-zoomable="true" data-type="image"
+  data-effect="fade">
+ <img class="gallery-item__img" src="${preview}" alt="${title}" loading="lazy">
+</a>
       <button class="gallery-item__favorite-btn">
         <svg class="favorite-btn__icon">
           <use href="#icon-heart"></use>
