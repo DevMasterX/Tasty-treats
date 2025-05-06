@@ -14,11 +14,8 @@ function renderGallery(container, markup) {
   }
   lightbox = GLightbox({
     selector: '.gallery-lightbox',
+    loop: true,
   });
-
-  // setTimeout(() => {
-  //   console.log(lightbox);
-  // }, 0);
 }
 
 export { renderGallery };

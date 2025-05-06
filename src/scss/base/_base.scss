@@ -2,8 +2,7 @@
 @use '../utils/mixins' as *;
 
 // * {
-//   font-family: inherit;
-
+//   scrollbar-gutter: stable;
 // }
 
 html {
@@ -21,6 +20,10 @@ body {
   color: var(--text-primary);
 
   @include transition;
+}
+
+body.gscrollbar-fixer {
+  margin-right: 0 !important;
 }
 
 .current {
@@ -75,3 +78,7 @@ textarea:focus-visible {
 
   outline-offset: 2px;
 }
+
+// body.glightbox-open .gscrollbar-fixer {
+//   margin: 0 !important;
+// }

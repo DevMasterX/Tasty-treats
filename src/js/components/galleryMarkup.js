@@ -3,7 +3,7 @@ function createGalleryMarkup(arr) {
     .map(
       ({ preview, title, description, rating }) => `
      <li class="gallery-item">
-<a href="${preview}" class="gallery-lightbox"  data-width="900px"
+<a href="${preview}" class="gallery-lightbox"  data-width="700px"
   data-height="auto" data-zoomable="true" data-type="image"
   data-effect="fade">
  <img class="gallery-item__img" src="${preview}" alt="${title}" loading="lazy">

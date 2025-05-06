@@ -23,8 +23,10 @@
   }
 
   &:hover .gallery-item__img {
-    transform: scale(1.2);
+    transform: scale(1.05);
   }
+
+  transition: opacity 0.4s ease;
 
   @include media(md) {
     border-radius: 15px;
@@ -114,4 +116,12 @@
 
 body.dark-theme .gallery-item::before {
   background: linear-gradient(1deg, #050505 0%, rgba(5, 5, 5, 0) 100%);
+}
+
+.gallery-container {
+  &:has(.gallery-item:hover) {
+    .gallery-item:not(:hover) {
+      opacity: 0.4;
+    }
+  }
 }
