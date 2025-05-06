@@ -6,12 +6,10 @@
   letter-spacing: -0.04em;
   @include transition;
 
-  // transition: all 0.3s ease-out;
   span {
     color: var(--text-accent);
-    @include transition(all, 0.1s);
 
-    // transition: all 0.1s;
+    @include transition;
   }
 
   &:hover {
