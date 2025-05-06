@@ -1,9 +1,11 @@
 import Choices from 'choices.js';
+import debounce from 'lodash.debounce';
 import { fetchAreaList } from '../services/area';
 import { fetchIngredients } from '../services/ingredients';
 import { recipesApiService } from '../services/recipes-api-service';
 import { initMainGallery } from './main-gallery';
-import { checkSavedCategory } from './current-category';
+import { INPUT_DEBOUNCE_DELAY } from '../../constants/constants';
+// import { checkSavedCategory } from './current-category';
 
 const selects = document.querySelectorAll('.filters-item__select');
 const input = document.querySelector('.js-filters-item__input');
@@ -100,21 +102,13 @@ function createListMarkup(list) {
 function initInputEventListener(input) {
   if (!input) return;
 
-  input.addEventListener('input', e => {
-    const inputValue = e.currentTarget.value.toLowerCase().trim();
+  const onInput = debounce(e => {
+    const inputValue = e.target.value.toLowerCase().trim();
     recipesApiService.updateParams(input.name, inputValue);
     initMainGallery();
-    // updateFilterParams(input.name, inputValue);
+  }, INPUT_DEBOUNCE_DELAY);
 
-    //   console.log(inputValue);
-    //   try {
-    //     const filterFn = item => item.title.toLowerCase().includes(inputValue);
-    //     console.log('🚀 condition:', filterFn);
-    //     initMainGallery(filterFn);
-    //     // const response = await recipesApiService.fetchRecipes();
-    //     // console.log(response.results);
-    //   } catch (error) {}
-  });
+  input.addEventListener('input', onInput);
 }
 
 function initSelectsEventListener(selects) {

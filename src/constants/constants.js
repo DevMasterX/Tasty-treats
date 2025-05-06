@@ -4,5 +4,6 @@ const STORAGE_KEYS = {
 };
 
 const DARK_CLASS = 'dark-theme';
+const INPUT_DEBOUNCE_DELAY = 300;
 
-export { STORAGE_KEYS, DARK_CLASS };
+export { STORAGE_KEYS, DARK_CLASS, INPUT_DEBOUNCE_DELAY };
