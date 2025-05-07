@@ -7,6 +7,7 @@ window.ResizeObserver = ResizeObserver;
 // import 'simplebar/dist/simplebar.css';
 
 import { initTheme } from './components/themeSwitcher';
+import { initHeaderEventListeners } from './components/header-event-listeners';
 import { initMobileMenu } from './components/mobileMenu';
 import { initModal } from './components/modal.js';
 import { initSwiper } from './components/swiper';
@@ -18,6 +19,7 @@ import { checkSavedCategory } from './components/current-category.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   initTheme();
+  initHeaderEventListeners();
   initMobileMenu();
   initModal();
   checkSavedCategory();

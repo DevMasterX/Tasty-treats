@@ -87,12 +87,12 @@ class RecipesApiService {
       throw error;
     }
   }
-  async fetchAllRecipes() {
-    try {
-      const response = await apiClient.get('/recipes');
-      console.log('🚀 response:', response.data);
-    } catch (error) {}
-  }
+  // async fetchAllRecipes() {
+  //   try {
+  //     const response = await apiClient.get('/recipes');
+  //     console.log('🚀 response:', response.data);
+  //   } catch (error) {}
+  // }
 }
 
 export const recipesApiService = new RecipesApiService();
