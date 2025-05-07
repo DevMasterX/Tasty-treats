@@ -17,7 +17,7 @@ async function initMainGallery(filterFn = null) {
     // }
 
     const data = await recipesApiService.fetchRecipes();
-    // console.log(data);
+    console.log('res', data.results);
     const markup = createGalleryMarkup(data.results);
     console.log(data);
     renderGallery(container, markup);
