@@ -8,7 +8,7 @@ function createGalleryMarkup(arr) {
   if (arr.length === 0) {
     return ` <li><img
 
-  src="${notFoundImage}"
+  src="../public/not-found.png"
   
   alt="Nothing found"
   style="max-width: 400px; margin: 0px auto"
