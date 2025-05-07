@@ -19,7 +19,7 @@ async function initMainGallery(filterFn = null) {
     const data = await recipesApiService.fetchRecipes();
     console.log('res', data);
     const markup = createGalleryMarkup(data.results);
-    console.log(data);
+    console.log('MARKUP:', markup);
     renderGallery(container, markup);
   } catch (error) {
     console.error('Error loading recipes on the client:', error);
