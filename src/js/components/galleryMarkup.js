@@ -1,16 +1,18 @@
-import notFoundImage from '../../img/not-found.png';
+// import notFoundImage from '../../../public/not-found.png';
 
 // console.log('img path:', notFoundImage);
+import notFoundImage from '../../img/not-found.png';
 
+console.log('img path:', notFoundImage);
 function createGalleryMarkup(arr) {
   if (arr.length === 0) {
-    return `<img
- 
+    return ` <li><img
+
   src="${notFoundImage}"
   
   alt="Nothing found"
   style="max-width: 400px; margin: 0px auto"
-/>
+/> </li>
 `;
   }
 
