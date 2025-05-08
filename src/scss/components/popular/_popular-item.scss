@@ -4,7 +4,23 @@
   height: 67px;
   cursor: pointer;
 
-  &:hover .popular-recipes__img {
-    transform: scale(1.25);
+  transition: opacity 0.8s ease;
+
+  // &:hover .popular-recipes__img {
+  //   transform: scale(1.25);
+  // }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .popular-recipes__item:hover .popular-recipes__img {
+    transform: scale(1.1);
+  }
+
+  .popular-recipes__list {
+    &:has(.popular-recipes__item:hover) {
+      .popular-recipes__item:not(:hover) {
+        opacity: 0.4;
+      }
+    }
   }
 }

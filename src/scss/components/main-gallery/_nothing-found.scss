@@ -1,0 +1,13 @@
+.main-gallery-container {
+  position: relative;
+}
+.nothing-found-item {
+  position: absolute;
+  top: 0;
+}
+
+.nothing-found-img {
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.1))
+    drop-shadow(0 0 20px rgba(155, 181, 55, 0.25))
+    drop-shadow(0 0 30px rgba(0, 0, 0, 0.08));
+}
