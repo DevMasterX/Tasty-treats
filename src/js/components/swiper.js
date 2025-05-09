@@ -10,9 +10,9 @@ import 'swiper/modules/parallax.min.css';
 // const loaderContainer = document.querySelector('.hero-section');
 const loaderContainer = document.querySelector('.sw-container');
 
-showLoader(loaderContainer);
-
 async function initSwiper() {
+  showLoader(loaderContainer);
+
   try {
     const data = await getSwiperData();
     renderSlides(data);
