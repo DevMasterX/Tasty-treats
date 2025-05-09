@@ -34,7 +34,15 @@
   width: 100%;
   padding-left: 48px;
   padding-right: 14px;
+
+  &::placeholder {
+    color: var(--text-secondary);
+  }
 }
+
+// .filter-input__clear-btn {
+//   position: absolute;
+// }
 
 .filters-item__element {
   width: 100%;
@@ -46,7 +54,9 @@
   padding-bottom: 14px;
 
   // font-size: 14px;
-  color: currentColor;
+  // color: currentColor;
+
+  color: var(--text-primary);
 
   // font-size: 14px;
   line-height: 129%;

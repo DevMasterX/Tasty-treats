@@ -18,6 +18,22 @@
   @include transition;
 }
 
+.filter-input__clear-btn {
+  display: none;
+  opacity: 0;
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+
+  fill: transparent;
+  stroke: var(--text-primary);
+
+  @include transition;
+}
+
 .filters-item__select-icon {
   right: 18px;
 }
