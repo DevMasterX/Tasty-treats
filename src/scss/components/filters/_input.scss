@@ -45,15 +45,15 @@
   padding-top: 14px;
   padding-bottom: 14px;
 
-  font-size: 14px;
+  // font-size: 14px;
   color: currentColor;
 
-  font-size: 14px;
+  // font-size: 14px;
   line-height: 129%;
 
   @include media(md) {
     height: 48px;
-    font-size: 16px;
+    // font-size: 16px;
     line-height: 125%;
   }
 }
