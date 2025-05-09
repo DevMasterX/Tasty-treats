@@ -1,7 +1,7 @@
 @use '../utils/mixins' as *;
 
 .hero-section {
-  position: relative;
+  // position: relative;
   margin-top: 84px;
 
   @include media(md) {

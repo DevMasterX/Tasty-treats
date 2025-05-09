@@ -1,6 +1,7 @@
 @use '../../utils/mixins' as *;
 
 .sw-container {
+  position: relative;
   @include media(md) {
     margin: 0 auto;
     width: 768px;
