@@ -1,6 +1,7 @@
 @use '../utils/mixins' as *;
 
 .popular-recipes-section {
+  position: relative;
   margin-top: 40px;
 
   @include media(md) {

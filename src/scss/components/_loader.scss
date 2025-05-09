@@ -1,0 +1,23 @@
+@use '../utils/mixins' as *;
+
+.loader {
+  //   display: none;
+  position: absolute;
+  left: 50%;
+  top: 150px;
+  transform: translateX(-50%);
+  opacity: 1;
+
+  z-index: 999;
+
+  & .sk-circle .sk-circle-dot::before {
+    background-color: var(--text-accent);
+    width: 10px;
+    height: 10px;
+  }
+  & .sk-circle .sk-circle-dot {
+    width: 60px;
+  }
+
+  @include transition;
+}

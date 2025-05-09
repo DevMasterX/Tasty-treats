@@ -1,5 +1,9 @@
 @use '../utils/mixins' as *;
 
+.all-categories {
+  position: relative;
+}
+
 .all-categories__list-wrapper {
   margin-top: 24px;
 

@@ -2,6 +2,7 @@ import { initSimpleBar } from '../utils/simplebar';
 import { fetchAllCategoriesList } from '../services/all-categories';
 import { recipesApiService } from '../services/recipes-api-service';
 import { initMainGallery } from './main-gallery';
+import { hideLoader, showLoader } from './loader';
 import { STORAGE_KEYS } from '../../constants/constants';
 import {
   saveToStorage,
@@ -19,6 +20,9 @@ const allCategoriesListWrapper = document.querySelector(
 if (!allCategoriesList || !allCategoriesListWrapper) return;
 
 async function initAllCategories() {
+  const loaderContainer = document.querySelector('.all-categories');
+  showLoader(loaderContainer, allCategoriesList);
+
   try {
     const categories = await fetchAllCategoriesList();
     renderCategories(allCategoriesList, categories);
@@ -28,6 +32,8 @@ async function initAllCategories() {
     initEventListeners(allCategoriesSection);
   } catch (error) {
     console.error('Error loading categories:', error);
+  } finally {
+    hideLoader(loaderContainer, allCategoriesList);
   }
 }
 function renderCategories(element, list) {

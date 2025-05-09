@@ -5,7 +5,7 @@ window.ResizeObserver = ResizeObserver;
 // import SimpleBar from 'simplebar';
 // import 'simplebar';
 // import 'simplebar/dist/simplebar.css';
-
+import 'spinkit/spinkit.min.css';
 import { initTheme } from './components/themeSwitcher';
 import { initHeaderEventListeners } from './components/header-event-listeners';
 import { initMobileMenu } from './components/mobileMenu';

@@ -1,16 +1,27 @@
 import { fetchEvents } from '../services/events';
 import Swiper from 'swiper';
 import { Pagination, Autoplay, EffectCube, Parallax } from 'swiper/modules';
+import { hideLoader, showLoader } from './loader';
 import 'swiper/swiper.min.css';
 import 'swiper/modules/pagination.min.css';
 import 'swiper/modules/effect-cube.min.css';
 import 'swiper/modules/parallax.min.css';
 
-async function initSwiper() {
-  const data = await getSwiperData();
+const loaderContainer = document.querySelector('.hero-section');
 
-  renderSlides(data);
-  initSwiperInstance();
+showLoader(loaderContainer);
+
+async function initSwiper() {
+  try {
+    const data = await getSwiperData();
+    renderSlides(data);
+    initSwiperInstance();
+  } catch (error) {
+    console.error('Error loading swiper data:', error);
+    throw error;
+  } finally {
+    hideLoader(loaderContainer);
+  }
 }
 
 async function getSwiperData() {

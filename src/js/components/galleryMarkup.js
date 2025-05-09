@@ -7,7 +7,6 @@ function createGalleryMarkup(arr) {
     <li class='nothing-found-item'><img class='nothing-found-img'
     src="${notFoundImage}"
   alt="Nothing found"
-  
 /> </li>
 `;
   }

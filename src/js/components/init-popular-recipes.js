@@ -1,12 +1,22 @@
 import { fetchPopularRecipes } from '../services/popular-recipes';
+import { hideLoader, showLoader } from './loader';
+
+const loaderContainer = document.querySelector('.popular-recipes-section');
+showLoader(loaderContainer);
 
 const popularRecipesList = document.querySelector('.popular-recipes__list');
 if (!popularRecipesList) return;
 
 async function initPopularRecipes() {
-  const recipes = await fetchPopularRecipes();
-
-  renderPopularRecipes(recipes);
+  try {
+    const recipes = await fetchPopularRecipes();
+    renderPopularRecipes(recipes);
+  } catch (error) {
+    consolr.error('Error loading popular recipes:', error);
+    throw error;
+  } finally {
+    hideLoader(loaderContainer);
+  }
 }
 
 function renderPopularRecipes(recipes) {

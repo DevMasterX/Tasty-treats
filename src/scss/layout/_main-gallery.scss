@@ -1,6 +1,7 @@
 @use '../utils/mixins' as *;
 
 .main-gallery {
+  position: relative;
   margin-top: 14px;
 
   @include media(md) {

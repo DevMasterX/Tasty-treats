@@ -1,29 +1,24 @@
 import { createGalleryMarkup } from './galleryMarkup';
 import { renderGallery } from './renderGallery';
 import { recipesApiService } from '../services/recipes-api-service';
+import { hideLoader, showLoader } from './loader';
 
-async function initMainGallery(filterFn = null) {
+async function initMainGallery() {
   const container = document.querySelector('.main-gallery-container');
+  const loaderContainer = document.querySelector('.main-gallery');
+  showLoader(loaderContainer, container);
 
   try {
-    // if (filterFn) {
-    //   const data = await recipesApiService.fetchRecipes();
-    //   const filteredData = data.results.filter(filterFn);
-    //   console.log('🚀 filteredData:', filteredData);
-
-    //   const markup = createGalleryMarkup(filteredData);
-    //   renderGallery(container, markup);
-    //   return;
-    // }
-
     const data = await recipesApiService.fetchRecipes();
-    console.log('res', data);
+
     const markup = createGalleryMarkup(data.results);
-    console.log('MARKUP:', markup);
+    // hideLoader(LoaderContainer);
     renderGallery(container, markup);
   } catch (error) {
     console.error('Error loading recipes on the client:', error);
     throw error;
+  } finally {
+    hideLoader(loaderContainer, container);
   }
 }
 
