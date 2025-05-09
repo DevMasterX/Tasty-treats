@@ -48,7 +48,7 @@ function createGalleryMarkup(arr) {
             <li class="rating-list__item"></li>
           </ul>
         </div>
-        <button class="gallery-item__see-recipe-btn" aria-label="See recipe button" data-modal-open  data-modal-type="recipe"  data-title="${title}" data-video="${youtube}" data-tags="${tags}" data-rating="${rating}" data-time="${time}" data-ingredients="${ingredients}" data-instructions="${instructions}" data-id="${id}" >See recipe</button>
+        <button class="gallery-item__see-recipe-btn" aria-label="See recipe button" data-modal-open  data-modal-type="recipe"  data-title="${title}" data-video="${youtube}" data-tags="${tags}" data-rating="${rating}" data-time="${time}" data-ingredients="${ingredients}" data-instructions="${instructions}" data-id="${_id}" >See recipe</button>
       </div>
       </div>
     </li>
