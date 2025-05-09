@@ -31,6 +31,8 @@ const choicesOptions = {
 inputClearBtn.addEventListener('click', () => {
   input.value = '';
   hideClearBtn();
+  recipesApiService.updateParams(input.name, input.value);
+  initMainGallery();
 });
 
 resetBtn.addEventListener('click', () => {
