@@ -69,7 +69,6 @@ async function initAreaList() {
 }
 async function initIngredientsList() {
   const ingredientsList = await fetchIngredients();
-  console.log(ingredientsList);
   renderIngredientsList(ingredientsList);
 }
 

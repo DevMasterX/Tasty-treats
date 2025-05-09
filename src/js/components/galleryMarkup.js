@@ -1,6 +1,4 @@
 const notFoundImage = new URL('../../img/not-found.png', import.meta.url).href;
-console.log('notFoundImage', notFoundImage);
-console.log('img path:', notFoundImage);
 function createGalleryMarkup(arr) {
   if (arr.length === 0) {
     return ` 
@@ -13,7 +11,18 @@ function createGalleryMarkup(arr) {
 
   return arr
     .map(
-      ({ preview, title, description, rating }) => `
+      ({
+        preview,
+        title,
+        description,
+        rating,
+        youtube,
+        tags,
+        time,
+        ingredients,
+        instructions,
+        _id,
+      }) => `
      <li class="gallery-item">
 <a href="${preview}" class="gallery-lightbox"  data-width="700px"
   data-height="auto" data-zoomable="true" data-type="image"
@@ -39,7 +48,7 @@ function createGalleryMarkup(arr) {
             <li class="rating-list__item"></li>
           </ul>
         </div>
-        <button class="gallery-item__see-recipe-btn">See recipe</button>
+        <button class="gallery-item__see-recipe-btn" aria-label="See recipe button" data-modal-open  data-modal-type="recipe"  data-title="${title}" data-video="${youtube}" data-tags="${tags}" data-rating="${rating}" data-time="${time}" data-ingredients="${ingredients}" data-instructions="${instructions}" data-id="${id}" >See recipe</button>
       </div>
       </div>
     </li>

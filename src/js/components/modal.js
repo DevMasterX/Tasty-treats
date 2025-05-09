@@ -1,5 +1,6 @@
-import { renderOrderForm } from './renderOrderForm.js';
+// import { renderOrderForm } from './renderOrderForm.js';
 import { initOrderForm } from './initOrderForm.js';
+import { renderRecipeToModal } from './render-recipe-to-modal.js';
 // import { initOrderFormValidation } from '../utils/orderFormValidator.js';
 // import { initFormStorage } from '../utils/formStorage.js';
 
@@ -72,9 +73,10 @@ function setModalContent(modalType) {
   switch (modalType) {
     case 'order':
       initOrderForm(modalContent);
+      break;
 
-      // initFormStorage();
-      // initOrderFormValidation();
+    case 'recipe':
+      renderRecipeToModal(modalContent);
       break;
 
     default:
