@@ -16,7 +16,10 @@ import { initPopularRecipes } from './components/init-popular-recipes';
 import { initFilters } from './components/filters';
 import { initMainGallery } from './components/main-gallery.js';
 import { checkSavedCategory } from './components/current-category.js';
+import { adjustHeroMarginTop } from './utils/hero-margin-top.js';
 
+window.addEventListener('load', adjustHeroMarginTop);
+window.addEventListener('resize', adjustHeroMarginTop);
 document.addEventListener('DOMContentLoaded', async () => {
   initTheme();
   initHeaderEventListeners();
