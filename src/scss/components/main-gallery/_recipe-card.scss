@@ -105,8 +105,11 @@
   padding: 8px 14px;
   border-radius: 8px;
   font-size: 12px;
-  color: var(--text-btn-primary);
-  background-color: var(--btn-primary-bg);
+  // color: var(--text-btn-primary);
+  // background-color: var(--btn-primary-bg);
+
+  @include btn-primary;
+  @include transition;
 }
 
 body.dark-theme .gallery-item::before {

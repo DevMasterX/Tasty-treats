@@ -1,0 +1,22 @@
+.ingredients-list {
+}
+
+.ingredients-list__item {
+  padding-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--ingredient-underline-color);
+}
+
+.ingredients-list__item-name {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  color: var(--text-primary);
+}
+.ingredients-list__item-measure {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  color: var(--text-secondary);
+}

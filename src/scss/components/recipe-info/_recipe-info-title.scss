@@ -1,0 +1,13 @@
+@use '../../utils/mixins' as *;
+
+.recipe-info-title {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 133%;
+  text-transform: uppercase;
+  color: var(--text-primary);
+
+  @include media(md) {
+    line-height: 122%;
+  }
+}

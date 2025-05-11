@@ -19,7 +19,7 @@ function createRecipeInfoMarkup({
   youtube,
 }) {
   const tagsList = tags
-    .map(tag => `<li class="tags-list-item">${tag}</li>`)
+    .map(tag => `<li class="tags-list-item">#${tag}</li>`)
     .join('');
 
   const ingredientslist = ingredients
@@ -33,9 +33,58 @@ function createRecipeInfoMarkup({
     )
     .join('');
 
+  if (window.innerWidth < 768) {
+    return `
+    <div class="recipe-info-wrapper">
+    <div class="video-container">
+    <iframe
+    src="${getYouTubeEmbedUrl(youtube)}"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    ></iframe>
+    </div>
+    
+    <h3 class="recipe-info-title">${title}</h3>
+
+
+
+  <div class="recipe-info__rating-time-wrapper">
+  
+  <div class="recipe-info__rating-wrapper">
+  <p class="recipe-info-rating-number">${rating}</p>
+  
+  </div>
+  
+  
+  <p class="recipe-info-time">${time} min</p>
+  </div>
+
+
+  
+  <ul class="ingredients-list">
+  ${ingredientslist}
+  </ul>
+
+  <ul class="tags-list">
+  ${tagsList}
+  </ul>
+  
+  <p class="instructions-text">${instructions}</p>
+
+  <div class="recipe-info__btn-wrapper"> 
+  <button class="add-to-favorite-btn">Add to favorite</button>
+  <button class="give-rating-btn">Give a rating</button>
+  </div>
+ 
+  </div>
+    `;
+  }
+
   return `
   <div class="recipe-info-wrapper">
-  <h3>${title}</h3>
+  <h3 class="recipe-info-title">${title}</h3>
 <div class="video-container">
   <iframe
     src="${getYouTubeEmbedUrl(youtube)}"
@@ -51,12 +100,12 @@ function createRecipeInfoMarkup({
 ${tagsList}
 </ul>
 
-<div class="recipe-info-rating-wrapper">
+<div class="recipe-info__rating-time-wrapper">
 <p class="recipe-info-rating-number">${rating}</p>
 
+<p class="recipe-info-time">${time} min</p>
 </div>
 
-<p class="recipe-info-rating-time">${time}</p>
 </div>
 
 <ul class="ingredients-list">
@@ -65,8 +114,10 @@ ${ingredientslist}
 
 <p class="instructions-text">${instructions}</p>
 
-<button class="add-to-favorite-btn">Add to favorite</button>
-<button class="give-rating-btn">Give a rating</button>
+<div class="recipe-info__btn-wrapper"> 
+  <button class="add-to-favorite-btn">Add to favorite</button>
+  <button class="give-rating-btn">Give a rating</button>
+  </div>
 </div>
   `;
 }

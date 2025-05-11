@@ -1,0 +1,79 @@
+@use '../utils/mixins' as *;
+
+.video-container {
+  margin-top: 6px;
+
+  @include media(md) {
+    margin-top: 16px;
+  }
+}
+
+.recipe-info-title {
+  margin-top: 20px;
+
+  @include media(md) {
+    margin-top: 0;
+  }
+}
+
+.recipe-info__rating-time-wrapper {
+  margin-top: 14px;
+  display: flex;
+  gap: 16px;
+
+  @include media(md) {
+    margin-top: 0;
+    gap: 8px;
+  }
+}
+
+.ingredients-list {
+  margin-top: 33px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  @include media(md) {
+    margin-top: 32px;
+  }
+}
+
+.tags-list {
+  margin-top: 40px;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  @include media(md) {
+    margin-top: 0;
+    gap: 4px;
+  }
+}
+
+.instructions-text {
+  margin-top: 24px;
+
+  @include media(md) {
+    margin-top: 32px;
+  }
+}
+
+.recipe-info__btn-wrapper {
+  margin-top: 40px;
+  display: flex;
+  gap: 14px;
+
+  @include media(md) {
+    margin-top: 32px;
+    gap: 16px;
+  }
+}
+
+.tags-rating-time-wrapper {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

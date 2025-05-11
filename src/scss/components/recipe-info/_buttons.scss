@@ -1,0 +1,16 @@
+@use '../../utils/mixins' as *;
+
+.add-to-favorite-btn {
+  padding: 12px 24px;
+  font-size: 14px;
+  border-radius: 15px;
+  @include btn-primary;
+  @include transition;
+}
+.give-rating-btn {
+  padding: 12px 24px;
+  border-radius: 15px;
+  font-size: 14px;
+  @include btn-secondary;
+  @include transition;
+}

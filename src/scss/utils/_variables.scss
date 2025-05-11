@@ -1,8 +1,8 @@
 :root {
   --text-primary: #050505;
+  --text-secondary: rgba(5, 5, 5, 0.5);
 
   --popular-description-text-color: rgba(5, 5, 5, 0.8);
-  --text-secondary: rgba(5, 5, 5, 0.5);
   --text-secondary-light: rgba(5, 5, 5, 0.3);
   --text-accent: #9bb537;
   --text-btn-primary: #f8f8f8;
@@ -30,4 +30,8 @@
   --slide-card-text-location: rgba(248, 248, 248, 0.2);
 
   --all-categories-scrollbar-color: rgba(5, 5, 5, 0.18);
+
+  --ingredient-underline-color: rgba(5, 5, 5, 0.1);
+
+  --tag-border: 1px solid rgba(5, 5, 5, 0.2);
 }
