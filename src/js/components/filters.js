@@ -138,20 +138,23 @@ function toggleClearBtn(inputValue) {
 }
 
 function showClearBtn() {
-  inputClearBtn.style.display = 'block';
+  inputClearBtn.classList.remove('is-hidden');
+  // inputClearBtn.style.display = 'block';
 
-  setTimeout(() => {
-    inputClearBtn.style.opacity = 1;
-  }, 200);
+  // setTimeout(() => {
+  //   inputClearBtn.style.opacity = 1;
+  // }, 200);
   // inputClearBtn.style.display = 'block';
 }
 
 function hideClearBtn() {
-  setTimeout(() => {
-    inputClearBtn.style.display = 'none';
-  }, 200);
+  // setTimeout(() => {
+  //   inputClearBtn.style.display = 'none';
+  // }, 200);
 
-  inputClearBtn.style.opacity = 0;
+  // inputClearBtn.style.opacity = 0;
+
+  inputClearBtn.classList.add('is-hidden');
 }
 // function updateFilterParams(key, value) {
 //   filterParams[key] = value;

@@ -82,3 +82,8 @@ textarea:focus-visible {
 // body.glightbox-open .gscrollbar-fixer {
 //   margin: 0 !important;
 // }
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
