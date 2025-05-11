@@ -1,19 +1,24 @@
-function adjustHeroMarginTop() {
+function setHeroMarginTop() {
   const header = document.querySelector('.header');
   const hero = document.querySelector('.hero-section');
-  //   const isMobile = window.innerWidth;
-  //   console.log('🚀 isMobile:', isMobile);
   if (!header || !hero) return;
-  const totalHeight = header.offsetHeight + hero.offsetHeight;
 
-  const viewportHeight = window.innerHeight;
-  //   const heroMarginTop = Math.max(
-  //     60,
-  //     Math.max(viewportHeight - totalHeight - 10, 96)
-  //   );
-  const rawMargin = viewportHeight - totalHeight - 10;
-  const heroMarginTop = Math.min(Math.max(rawMargin, 70), 96);
-  hero.style.marginTop = `${heroMarginTop}px`;
+  function adjustHeroMarginTop() {
+    const totalHeight = header.offsetHeight + hero.offsetHeight;
+
+    const viewportHeight = window.innerHeight;
+
+    const rawMargin = viewportHeight - totalHeight - 10;
+    const heroMarginTop = Math.min(Math.max(rawMargin, 70), 96);
+    hero.style.marginTop = `${heroMarginTop}px`;
+  }
+  adjustHeroMarginTop();
+
+  window.addEventListener('resize', adjustHeroMarginTop);
+
+  const resizeObserver = new ResizeObserver(adjustHeroMarginTop);
+  resizeObserver.observe(header);
+  resizeObserver.observe(hero);
 }
 
-export { adjustHeroMarginTop };
+export { setHeroMarginTop };

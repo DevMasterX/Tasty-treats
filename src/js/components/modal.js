@@ -55,7 +55,7 @@ function handleEscapeKey() {
 function openModal(e) {
   if (!modal) return;
 
-  setModalContent(e.currentTarget.dataset.modalType);
+  setModalContent(e.currentTarget);
   modal.classList.remove('is-hidden');
   document.body.classList.add('no-scroll');
 }
@@ -67,7 +67,8 @@ function closeModal() {
   modalContent.innerHTML = '';
 }
 
-function setModalContent(modalType) {
+function setModalContent(currentTarget) {
+  const modalType = currentTarget.dataset.modalType;
   if (!modalContent || !modalType) return;
 
   switch (modalType) {
@@ -76,7 +77,7 @@ function setModalContent(modalType) {
       break;
 
     case 'recipe':
-      renderRecipeToModal(modalContent);
+      renderRecipeToModal(currentTarget, modalContent);
       break;
 
     default:

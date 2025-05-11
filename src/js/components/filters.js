@@ -11,6 +11,7 @@ const selects = document.querySelectorAll('.filters-item__select');
 const input = document.querySelector('.js-filters-item__input');
 const inputClearBtn = document.querySelector('.filter-input__clear-btn');
 const resetBtn = document.querySelector('.reset-filter-btn');
+
 const choicesInstances = [];
 const choicesOptions = {
   shouldSort: false,
@@ -69,6 +70,7 @@ async function initAreaList() {
 }
 async function initIngredientsList() {
   const ingredientsList = await fetchIngredients();
+
   renderIngredientsList(ingredientsList);
 }
 
