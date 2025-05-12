@@ -1,12 +1,17 @@
 import { fetchRecipeInfo } from '../services/recipe-info';
 
 async function renderRecipeToModal(btn, modalContent) {
-  const recipeId = btn.dataset.id;
-  const recipeInfo = await fetchRecipeInfo(recipeId);
+  try {
+    const recipeId = btn.dataset.id;
+    const recipeInfo = await fetchRecipeInfo(recipeId);
 
-  const markup = createRecipeInfoMarkup(recipeInfo);
+    const markup = createRecipeInfoMarkup(recipeInfo);
 
-  modalContent.innerHTML = markup;
+    modalContent.insertAdjacentHTML('afterbegin', markup);
+  } catch (error) {
+    console.error('Error rendering recipe iformation to madal', error);
+    throw error;
+  }
 }
 
 function createRecipeInfoMarkup({

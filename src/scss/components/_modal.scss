@@ -44,17 +44,17 @@
   background-color: var(--modal-bg);
 
   transform: scale(1);
-  transition: transform 0.3s ease;
+  // transition: transform 0.3s ease, scale 0.6s ease;
 
   max-height: 98dvh;
   overflow: auto;
-
+  @include transition;
   @include media(md) {
     padding: 40px;
   }
 
   .modal.is-hidden & {
-    transform: scale(0.7);
+    transform: scale(0);
   }
 }
 
