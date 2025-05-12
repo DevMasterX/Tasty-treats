@@ -40,7 +40,28 @@ function createGalleryMarkup(arr) {
         <button class="gallery-item__see-recipe-btn" aria-label="See recipe button" data-modal-open  data-modal-type="recipe"   data-id="${_id}" >See recipe</button>
       </div>
       </div>
+
+
+
+     <div class="loader js-loader" aria-label="Loading..." role="status">
+     <div class="sk-circle">
+       <div class="sk-circle-dot"></div>
+       <div class="sk-circle-dot"></div>
+       <div class="sk-circle-dot"></div>
+       <div class="sk-circle-dot"></div>
+       <div class="sk-circle-dot"></div>
+       <div class="sk-circle-dot"></div>
+       <div class="sk-circle-dot"></div>
+       <div class="sk-circle-dot"></div>
+       <div class="sk-circle-dot"></div>
+       <div class="sk-circle-dot"></div>
+       <div class="sk-circle-dot"></div>
+       <div class="sk-circle-dot"></div>
+     </div>
+   </div>
     </li>
+
+
     
     `
     )

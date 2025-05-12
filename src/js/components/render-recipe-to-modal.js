@@ -1,6 +1,10 @@
 import { fetchRecipeInfo } from '../services/recipe-info';
+import { hideLoader, showLoader } from './loader';
 
 async function renderRecipeToModal(btn, modalContent) {
+  const loaderContainer = btn.closest('.gallery-item');
+  showLoader(loaderContainer, loaderContainer);
+
   try {
     const recipeId = btn.dataset.id;
     const recipeInfo = await fetchRecipeInfo(recipeId);
@@ -11,6 +15,8 @@ async function renderRecipeToModal(btn, modalContent) {
   } catch (error) {
     console.error('Error rendering recipe iformation to madal', error);
     throw error;
+  } finally {
+    hideLoader(loaderContainer, loaderContainer);
   }
 }
 

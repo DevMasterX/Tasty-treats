@@ -11,6 +11,9 @@ function showLoader(container, opacityElement = null) {
 
 function hideLoader(container, opacityElement = null) {
   const loader = container.querySelector('.js-loader');
+  console.log('🚀 container:', container);
+  console.log('🚀 loader:', loader);
+
   if (!loader || !container) return;
 
   loader.style.display = 'none';

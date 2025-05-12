@@ -52,10 +52,10 @@ function handleEscapeKey() {
   });
 }
 
-function openModal(e) {
+async function openModal(e) {
   if (!modal) return;
 
-  setModalContent(e.currentTarget);
+  await setModalContent(e.currentTarget);
   modal.classList.remove('is-hidden');
   document.body.classList.add('no-scroll');
 }
@@ -67,7 +67,7 @@ function closeModal() {
   modalContent.innerHTML = '';
 }
 
-function setModalContent(currentTarget) {
+async function setModalContent(currentTarget) {
   const modalType = currentTarget.dataset.modalType;
   if (!modalContent || !modalType) return;
 
@@ -77,7 +77,7 @@ function setModalContent(currentTarget) {
       break;
 
     case 'recipe':
-      renderRecipeToModal(currentTarget, modalContent);
+      await renderRecipeToModal(currentTarget, modalContent);
       break;
 
     default:

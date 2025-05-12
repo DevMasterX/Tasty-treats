@@ -13,7 +13,7 @@ async function initMainGallery() {
     const data = await recipesApiService.fetchRecipes();
     console.log(data.results);
     const markup = createGalleryMarkup(data.results);
-    // hideLoader(LoaderContainer);
+    // hideLoader(loaderContainer);
     renderGallery(container, markup);
     initModal();
   } catch (error) {
@@ -21,6 +21,7 @@ async function initMainGallery() {
     throw error;
   } finally {
     hideLoader(loaderContainer, container);
+    console.log('hide');
   }
 }
 
