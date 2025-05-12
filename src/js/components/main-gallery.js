@@ -21,7 +21,6 @@ async function initMainGallery() {
     throw error;
   } finally {
     hideLoader(loaderContainer, container);
-    console.log('hide');
   }
 }
 

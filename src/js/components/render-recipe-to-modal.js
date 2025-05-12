@@ -29,9 +29,15 @@ function createRecipeInfoMarkup({
   tags,
   youtube,
 }) {
-  const tagsList = tags
-    .map(tag => `<li class="tags-list-item">#${tag}</li>`)
-    .join('');
+  // const tagsList = tags
+  //   .map(tag => `<li class="tags-list-item">#${tag}</li>`)
+  //   .join('');
+  let tagsList;
+  tags.length === 0
+    ? (tagsList = '')
+    : (tagsList = tags
+        .map(tag => `<li class="tags-list-item">#${tag}</li>`)
+        .join(''));
 
   const ingredientslist = ingredients
     .map(
