@@ -40,6 +40,7 @@ resetBtn.addEventListener('click', () => {
   recipesApiService.resetFilterQueryParams();
   // checkSavedCategory();
   input.value = '';
+  hideClearBtn();
 
   choicesInstances.forEach(instance => {
     instance.setChoiceByValue('');
