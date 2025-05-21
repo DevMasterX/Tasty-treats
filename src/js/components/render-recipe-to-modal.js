@@ -2,7 +2,8 @@ import { fetchRecipeInfo } from '../services/recipe-info';
 import { hideLoader, showLoader } from './loader';
 
 async function renderRecipeToModal(btn, modalContent) {
-  const loaderContainer = btn.closest('.gallery-item');
+  const loaderContainer =
+    btn.closest('.gallery-item') || btn.closest('.popular-recipes-section');
   showLoader(loaderContainer, loaderContainer);
 
   try {

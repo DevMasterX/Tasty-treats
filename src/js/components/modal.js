@@ -80,6 +80,10 @@ async function setModalContent(currentTarget) {
       await renderRecipeToModal(currentTarget, modalContent);
       break;
 
+    case 'popular-recipe':
+      await renderRecipeToModal(currentTarget, modalContent);
+      break;
+
     default:
       console.log('error');
   }

@@ -10,9 +10,13 @@ if (!popularRecipesList) return;
 async function initPopularRecipes() {
   try {
     const recipes = await fetchPopularRecipes();
+    // console.log('🚀 recipes:', recipes);
+
     renderPopularRecipes(recipes);
+    // [...popularRecipesList.children].forEach(item => item.addEventListener);
+    // setEventListeners(popularRecipesList);
   } catch (error) {
-    consolr.error('Error loading popular recipes:', error);
+    consol.error('Error loading popular recipes:', error);
     throw error;
   } finally {
     hideLoader(loaderContainer);
@@ -22,9 +26,9 @@ async function initPopularRecipes() {
 function renderPopularRecipes(recipes) {
   popularRecipesList.innerHTML = recipes
     .map(
-      ({ description, preview, title }) => `
+      ({ description, preview, title, _id }) => `
       
-        <li class="popular-recipes__item">
+        <li class="popular-recipes__item" data-modal-open data-id="${_id}" data-modal-type="popular-recipe" aria-label="See popular-recipe">
 <div class="popular-recipes__img-wrapper">
   <img class="popular-recipes__img" src="${preview}" alt="${title}"  />
 </div>
@@ -38,5 +42,9 @@ function renderPopularRecipes(recipes) {
     )
     .join('');
 }
+
+// function setEventListeners(list) {
+//   list.forEach(item => console.log(item));
+// }
 
 export { initPopularRecipes };
