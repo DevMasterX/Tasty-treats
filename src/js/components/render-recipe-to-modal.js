@@ -4,6 +4,7 @@ import { hideLoader, showLoader } from './loader';
 async function renderRecipeToModal(btn, modalContent) {
   const loaderContainer =
     btn.closest('.gallery-item') || btn.closest('.popular-recipes-section');
+
   showLoader(loaderContainer, loaderContainer);
 
   try {
