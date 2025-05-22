@@ -59,6 +59,18 @@
 
     fill: none;
   }
+
+  & .favorite-btn__icon.saved {
+    fill: #f8f8f8;
+  }
+
+  @include transition;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      scale: 1.2;
+    }
+  }
 }
 
 .gallery-item__content-wrapper {

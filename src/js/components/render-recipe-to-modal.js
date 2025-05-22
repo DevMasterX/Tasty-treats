@@ -1,6 +1,17 @@
 import { fetchRecipeInfo } from '../services/recipe-info';
 import { hideLoader, showLoader } from './loader';
 
+import {
+  saveToStorage,
+  loadFromStorage,
+  removeFromStorage,
+} from '../utils/localStorage';
+
+import { STORAGE_KEYS } from '../../constants/constants';
+const favoritesKey = STORAGE_KEYS.FAVORITES_KEY;
+
+let favoritesValue = loadFromStorage(favoritesKey) || [];
+
 async function renderRecipeToModal(btn, modalContent) {
   const loaderContainer =
     btn.closest('.gallery-item') || btn.closest('.popular-recipes-section');
@@ -22,7 +33,9 @@ async function renderRecipeToModal(btn, modalContent) {
 
     const markup = createRecipeInfoMarkup(recipeInfo);
 
-    modalContent.insertAdjacentHTML('afterbegin', markup);
+    // modalContent.insertAdjacentHTML('afterbegin', markup);
+    modalContent.innerHTML = markup;
+    initRecipeInfoButtons();
   } catch (error) {
     console.error('Error rendering recipe iformation to madal', error);
     throw error;
@@ -39,10 +52,20 @@ function createRecipeInfoMarkup({
   ingredients,
   tags,
   youtube,
+  _id,
 }) {
   // const tagsList = tags
   //   .map(tag => `<li class="tags-list-item">#${tag}</li>`)
   //   .join('');
+  favoritesValue = loadFromStorage(favoritesKey) || [];
+
+  let addToFavoriteBtnTextContent = '';
+  if (favoritesValue.includes(_id)) {
+    addToFavoriteBtnTextContent = 'Remove from favorite';
+  } else if (!favoritesValue.includes(_id)) {
+    addToFavoriteBtnTextContent = 'Add to favorite';
+  }
+
   let tagsList;
   tags.length === 0
     ? (tagsList = '')
@@ -143,8 +166,8 @@ ${ingredientslist}
 <p class="instructions-text">${instructions}</p>
 
 <div class="recipe-info__btn-wrapper"> 
-  <button class="add-to-favorite-btn">Add to favorite</button>
-  <button class="give-rating-btn">Give a rating</button>
+  <button class="add-to-favorite-btn" data-id="${_id}" aria-label="Add to favorite button" >${addToFavoriteBtnTextContent}</button>
+  <button class="give-rating-btn" data-id="${_id}" aria-label="Give a rating button">Give a rating</button>
   </div>
 </div>
   `;
@@ -159,5 +182,44 @@ function getYouTubeEmbedUrl(url) {
     return '';
   }
 }
+
+function initRecipeInfoButtons() {
+  const addToFavoriteBtn = document.querySelector('.add-to-favorite-btn');
+  const giveRatingBtn = document.querySelector('.give-rating-btn');
+
+  if (addToFavoriteBtn) {
+    addToFavoriteBtn.addEventListener('click', onAddToFavoriteBtnClick);
+  }
+
+  if (giveRatingBtn) {
+    giveRatingBtn.addEventListener('click', onGiveRatingBtn);
+  }
+}
+
+function onAddToFavoriteBtnClick(e) {
+  const addToFavoriteBtn = document.querySelector('.add-to-favorite-btn');
+  const id = e.currentTarget.dataset.id;
+  const heartIcon = document.querySelector(
+    `.favorite-btn__icon[data-id="${id}"]`
+  );
+
+  // const icon = e.currentTarget.closest('.favorite-btn__icon');
+  // console.log('🚀 icon:', icon);
+
+  if (!favoritesValue.includes(id)) {
+    favoritesValue.push(id);
+    heartIcon.classList.add('saved');
+    addToFavoriteBtn.textContent = 'Remove from favorite';
+  } else if (favoritesValue.includes(id)) {
+    heartIcon.classList.remove('saved');
+    const index = favoritesValue.indexOf(id);
+    favoritesValue.splice(index, 1);
+    addToFavoriteBtn.textContent = 'Add to favorite';
+  }
+
+  saveToStorage(favoritesKey, favoritesValue);
+}
+
+function onGiveRatingBtn(e) {}
 
 export { renderRecipeToModal };

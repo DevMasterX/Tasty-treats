@@ -4,6 +4,17 @@ import { recipesApiService } from '../services/recipes-api-service';
 import { hideLoader, showLoader } from './loader';
 import { initModal } from './modal';
 
+import {
+  saveToStorage,
+  loadFromStorage,
+  removeFromStorage,
+} from '../utils/localStorage';
+
+import { STORAGE_KEYS } from '../../constants/constants';
+const favoritesKey = STORAGE_KEYS.FAVORITES_KEY;
+const favoritesValue = loadFromStorage(favoritesKey) || [];
+console.log('🚀 favoritesValue:', favoritesValue);
+
 async function initMainGallery() {
   const container = document.querySelector('.main-gallery-container');
   const loaderContainer = document.querySelector('.main-gallery');
@@ -16,11 +27,48 @@ async function initMainGallery() {
     // hideLoader(loaderContainer);
     renderGallery(container, markup);
     initModal();
+    initFavoriteButtons();
   } catch (error) {
     console.error('Error loading recipes on the client:', error);
     throw error;
   } finally {
     hideLoader(loaderContainer, container);
+  }
+}
+
+function initFavoriteButtons() {
+  const favoriteBtns = document.querySelectorAll('.gallery-item__favorite-btn');
+  if (!favoriteBtns) return;
+  favoriteBtns.forEach(btn => {
+    const icon = btn.querySelector('.favorite-btn__icon');
+    const id = btn.dataset.id;
+    if (!icon || !id) return;
+
+    checkFavoriteBtnSavedClass(icon, id);
+
+    btn.addEventListener('click', () => {
+      if (!favoritesValue.includes(id)) {
+        icon.classList.add('saved');
+        favoritesValue.push(id);
+      } else {
+        icon.classList.remove('saved');
+        const index = favoritesValue.indexOf(id);
+        favoritesValue.splice(index, 1);
+      }
+
+      // console.log(btn);
+      // console.log(btn.dataset.id);
+
+      saveToStorage(favoritesKey, favoritesValue);
+    });
+  });
+}
+
+function checkFavoriteBtnSavedClass(icon, id) {
+  if (!icon || !id) return;
+
+  if (favoritesValue.includes(id)) {
+    icon.classList.add('saved');
   }
 }
 

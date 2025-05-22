@@ -18,8 +18,8 @@ function createGalleryMarkup(arr) {
   data-effect="fade">
  <img class="gallery-item__img" src="${preview}" alt="${title}" loading="lazy">
 </a>
-      <button class="gallery-item__favorite-btn">
-        <svg class="favorite-btn__icon">
+      <button class="gallery-item__favorite-btn" data-id="${_id}">
+        <svg class="favorite-btn__icon" data-id="${_id}">
           <use href="#icon-heart"></use>
         </svg>
       </button>

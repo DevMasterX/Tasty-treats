@@ -1,6 +1,7 @@
 const STORAGE_KEYS = {
   CURRENT_CATEGORY: 'current-category',
   THEME_KEY: 'theme',
+  FAVORITES_KEY: 'favorites',
 };
 
 const DARK_CLASS = 'dark-theme';
