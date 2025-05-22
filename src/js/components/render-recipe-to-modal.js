@@ -125,8 +125,8 @@ function createRecipeInfoMarkup({
   <p class="instructions-text">${instructions}</p>
 
   <div class="recipe-info__btn-wrapper"> 
-  <button class="add-to-favorite-btn">${addToFavoriteBtnTextContent}</button>
-  <button class="give-rating-btn">Give a rating</button>
+   <button class="add-to-favorite-btn" data-id="${_id}" aria-label="Add to favorite button" >${addToFavoriteBtnTextContent}</button>
+  <button class="give-rating-btn" data-id="${_id}" aria-label="Give a rating button">Give a rating</button>
   </div>
  
   </div>
