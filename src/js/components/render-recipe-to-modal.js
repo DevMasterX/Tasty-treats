@@ -4,8 +4,17 @@ import { hideLoader, showLoader } from './loader';
 async function renderRecipeToModal(btn, modalContent) {
   const loaderContainer =
     btn.closest('.gallery-item') || btn.closest('.popular-recipes-section');
+  let opacityElement = null;
 
-  showLoader(loaderContainer, loaderContainer);
+  if (btn.closest('.gallery-item')) {
+    opacityElement = loaderContainer.querySelector('.gallery__list');
+    showLoader(loaderContainer, opacityElement);
+  } else if (btn.closest('.popular-recipes-section')) {
+    opacityElement = loaderContainer.querySelector('.popular-recipes__list');
+    showLoader(loaderContainer, opacityElement);
+  } else {
+    console.error('Loader error');
+  }
 
   try {
     const recipeId = btn.dataset.id;
@@ -18,7 +27,7 @@ async function renderRecipeToModal(btn, modalContent) {
     console.error('Error rendering recipe iformation to madal', error);
     throw error;
   } finally {
-    hideLoader(loaderContainer, loaderContainer);
+    hideLoader(loaderContainer, opacityElement);
   }
 }
 
