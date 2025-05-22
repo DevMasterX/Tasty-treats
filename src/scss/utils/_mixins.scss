@@ -14,11 +14,17 @@
   color: var(--text-btn-primary);
   background-color: #9bb537;
 
-  &:hover {
-    color: var(--text-primary);
-  }
+  // &:hover {
+  //   color: var(--text-primary);
+  // }
   &:active {
     background-color: #7f9e2c;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: #050505;
+    }
   }
 }
 
