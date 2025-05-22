@@ -125,7 +125,7 @@ function createRecipeInfoMarkup({
   <p class="instructions-text">${instructions}</p>
 
   <div class="recipe-info__btn-wrapper"> 
-  <button class="add-to-favorite-btn">Add to favorite</button>
+  <button class="add-to-favorite-btn">${addToFavoriteBtnTextContent}</button>
   <button class="give-rating-btn">Give a rating</button>
   </div>
  
