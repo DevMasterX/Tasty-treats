@@ -65,4 +65,9 @@
 
 .all-categories__item.current {
   color: #9bb537;
+  @media (hover: hover) and (pointer: fine) {
+    & .all-categories__item-btn:hover {
+      color: currentColor;
+    }
+  }
 }
