@@ -30,4 +30,10 @@
   color: var(--text-btn-primary);
   background-color: var(--btn-primary-bg);
   border-color: var(--btn-primary-bg);
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
 }

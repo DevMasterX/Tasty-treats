@@ -54,15 +54,15 @@
 .all-categories__item-btn {
   cursor: pointer;
   transition: all 0.15s linear;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: scale(1.03);
+      color: var(--text-secondary-light-hover);
+    }
+  }
 }
 
 .all-categories__item.current {
   color: #9bb537;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .all-categories__item-btn:hover {
-    transform: scale(1.03);
-    color: var(--text-secondary-light-hover);
-  }
 }

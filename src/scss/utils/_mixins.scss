@@ -15,7 +15,7 @@
   background-color: #9bb537;
 
   &:hover {
-    color: #050505;
+    color: var(--text-primary);
   }
   &:active {
     background-color: #7f9e2c;
