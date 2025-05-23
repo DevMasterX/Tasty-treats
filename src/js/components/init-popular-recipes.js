@@ -16,7 +16,7 @@ async function initPopularRecipes() {
     // [...popularRecipesList.children].forEach(item => item.addEventListener);
     // setEventListeners(popularRecipesList);
   } catch (error) {
-    consol.error('Error loading popular recipes:', error);
+    console.error('Error loading popular recipes:', error);
     throw error;
   } finally {
     hideLoader(loaderContainer);

@@ -197,11 +197,14 @@ function initRecipeInfoButtons() {
 }
 
 function onAddToFavoriteBtnClick(e) {
-  const addToFavoriteBtn = document.querySelector('.add-to-favorite-btn');
+  // const addToFavoriteBtn = document.querySelector('.add-to-favorite-btn');
+  const addToFavoriteBtn = e.currentTarget;
   const id = e.currentTarget.dataset.id;
   const heartIcon = document.querySelector(
     `.favorite-btn__icon[data-id="${id}"]`
   );
+
+  favoritesValue = loadFromStorage(favoritesKey) || [];
 
   // const icon = e.currentTarget.closest('.favorite-btn__icon');
   // console.log('🚀 icon:', icon);
@@ -216,9 +219,9 @@ function onAddToFavoriteBtnClick(e) {
     favoritesValue.splice(index, 1);
     addToFavoriteBtn.textContent = 'Add to favorite';
   }
+
   if (favoritesValue.length === 0) {
     removeFromStorage(favoritesKey);
-
     return;
   }
 
