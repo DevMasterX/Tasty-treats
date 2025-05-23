@@ -35,10 +35,11 @@ async function renderRecipeToModal(btn, modalContent) {
 
     // modalContent.insertAdjacentHTML('afterbegin', markup);
     modalContent.innerHTML = markup;
-    requestAnimationFrame(() => {
-      initRecipeInfoButtons();
-    });
-    // initRecipeInfoButtons();
+
+    // requestAnimationFrame(() => {
+    //   initRecipeInfoButtons();
+    // });
+    initRecipeInfoButtons();
   } catch (error) {
     console.error('Error rendering recipe iformation to madal', error);
     throw error;
@@ -61,6 +62,7 @@ function createRecipeInfoMarkup({
   //   .map(tag => `<li class="tags-list-item">#${tag}</li>`)
   //   .join('');
   favoritesValue = loadFromStorage(favoritesKey) || [];
+  console.log('🚀 favoritesValue:', favoritesValue);
 
   let addToFavoriteBtnTextContent = '';
   if (favoritesValue.includes(_id)) {
@@ -188,6 +190,8 @@ function getYouTubeEmbedUrl(url) {
 
 function initRecipeInfoButtons() {
   const addToFavoriteBtn = document.querySelector('.add-to-favorite-btn');
+  console.log('🚀 addToFavoriteBtn:', addToFavoriteBtn);
+
   const giveRatingBtn = document.querySelector('.give-rating-btn');
 
   if (addToFavoriteBtn) {
@@ -214,10 +218,10 @@ function onAddToFavoriteBtnClick(e) {
 
   if (!favoritesValue.includes(id)) {
     favoritesValue.push(id);
-    heartIcon.classList.add('saved');
+    heartIcon?.classList.add('saved');
     addToFavoriteBtn.textContent = 'Remove from favorite';
   } else if (favoritesValue.includes(id)) {
-    heartIcon.classList.remove('saved');
+    heartIcon?.classList.remove('saved');
     const index = favoritesValue.indexOf(id);
     favoritesValue.splice(index, 1);
     addToFavoriteBtn.textContent = 'Add to favorite';
