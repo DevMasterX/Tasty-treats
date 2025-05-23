@@ -35,7 +35,10 @@ async function renderRecipeToModal(btn, modalContent) {
 
     // modalContent.insertAdjacentHTML('afterbegin', markup);
     modalContent.innerHTML = markup;
-    initRecipeInfoButtons();
+    requestAnimationFrame(() => {
+      initRecipeInfoButtons();
+    });
+    // initRecipeInfoButtons();
   } catch (error) {
     console.error('Error rendering recipe iformation to madal', error);
     throw error;
