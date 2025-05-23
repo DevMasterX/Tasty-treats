@@ -12,8 +12,7 @@ import {
 
 import { STORAGE_KEYS } from '../../constants/constants';
 const favoritesKey = STORAGE_KEYS.FAVORITES_KEY;
-const favoritesValue = loadFromStorage(favoritesKey) || [];
-console.log('🚀 favoritesValue:', favoritesValue);
+let favoritesValue = loadFromStorage(favoritesKey) || [];
 
 async function initMainGallery() {
   const container = document.querySelector('.main-gallery-container');
@@ -37,6 +36,7 @@ async function initMainGallery() {
 }
 
 function initFavoriteButtons() {
+  favoritesValue = loadFromStorage(favoritesKey) || [];
   const favoriteBtns = document.querySelectorAll('.gallery-item__favorite-btn');
   if (!favoriteBtns) return;
   favoriteBtns.forEach(btn => {
@@ -58,6 +58,11 @@ function initFavoriteButtons() {
 
       // console.log(btn);
       // console.log(btn.dataset.id);
+
+      if (favoritesValue.length === 0) {
+        removeFromStorage(favoritesKey);
+        return;
+      }
 
       saveToStorage(favoritesKey, favoritesValue);
     });

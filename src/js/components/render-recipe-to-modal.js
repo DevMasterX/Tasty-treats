@@ -216,6 +216,11 @@ function onAddToFavoriteBtnClick(e) {
     favoritesValue.splice(index, 1);
     addToFavoriteBtn.textContent = 'Add to favorite';
   }
+  if (favoritesValue.length === 0) {
+    removeFromStorage(favoritesKey);
+
+    return;
+  }
 
   saveToStorage(favoritesKey, favoritesValue);
 }
