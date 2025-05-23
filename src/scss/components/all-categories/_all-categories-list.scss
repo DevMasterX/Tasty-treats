@@ -2,6 +2,7 @@
 
 .all-categories__list-wrapper {
   height: 198px;
+  // height: 416px;
 
   .simplebar-track.simplebar-vertical {
     width: 8px;
@@ -10,7 +11,9 @@
 
   .simplebar-scrollbar {
     background-color: var(--all-categories-scrollbar-color);
-    min-height: 116px;
+    // min-height: 116px;
+    // height: 116px;
+    // height: 130px;
     border-radius: 12px;
     &::before {
       display: none;
@@ -21,9 +24,10 @@
     width: 176px;
     height: 416px;
 
-    .simplebar-scrollbar {
-      min-height: 201px;
-    }
+    // .simplebar-scrollbar {
+    //   min-height: 201px;
+    //   height: 201px;
+    // }
   }
 
   @include media(lg) {
