@@ -1,3 +1,4 @@
+import Notiflix from 'notiflix';
 import { fetchRecipeInfo } from '../services/recipe-info';
 import { hideLoader, showLoader } from './loader';
 
@@ -220,11 +221,17 @@ function onAddToFavoriteBtnClick(e) {
     favoritesValue.push(id);
     heartIcon?.classList.add('saved');
     addToFavoriteBtn.textContent = 'Remove from favorite';
+    Notiflix.Notify.success('Added to favorite', {
+      clickToClose: true,
+    });
   } else if (favoritesValue.includes(id)) {
     heartIcon?.classList.remove('saved');
     const index = favoritesValue.indexOf(id);
     favoritesValue.splice(index, 1);
     addToFavoriteBtn.textContent = 'Add to favorite';
+    Notiflix.Notify.warning('Removed from favorite', {
+      clickToClose: true,
+    });
   }
 
   if (favoritesValue.length === 0) {

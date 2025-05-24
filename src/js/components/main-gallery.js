@@ -1,3 +1,4 @@
+import Notiflix from 'notiflix';
 import { createGalleryMarkup } from './galleryMarkup';
 import { renderGallery } from './renderGallery';
 import { recipesApiService } from '../services/recipes-api-service';
@@ -50,10 +51,16 @@ function initFavoriteButtons() {
       if (!favoritesValue.includes(id)) {
         icon.classList.add('saved');
         favoritesValue.push(id);
+        Notiflix.Notify.success('Added to favorite', {
+          clickToClose: true,
+        });
       } else {
         icon.classList.remove('saved');
         const index = favoritesValue.indexOf(id);
         favoritesValue.splice(index, 1);
+        Notiflix.Notify.warning('Removed from favorite', {
+          clickToClose: true,
+        });
       }
 
       // console.log(btn);
