@@ -59,6 +59,7 @@ function createRecipeInfoMarkup({
   youtube,
   _id,
 }) {
+  const paintedStarsWidth = (rating / 5) * 100;
   // const tagsList = tags
   //   .map(tag => `<li class="tags-list-item">#${tag}</li>`)
   //   .join('');
@@ -112,6 +113,65 @@ function createRecipeInfoMarkup({
   <div class="recipe-info__rating-wrapper">
   <p class="recipe-info-rating-number">${rating}</p>
   
+<div class="stars-list-wrapper">
+          <ul class="rating-list">
+            <li class="rating-list__item">
+             <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+          </ul>
+
+ <ul class="rating-list painted" style="width: ${paintedStarsWidth}%;">
+            <li class="rating-list__item">
+             <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+          </ul>
+           </div>
+
+
   </div>
   
   
@@ -158,10 +218,74 @@ ${tagsList}
 </ul>
 
 <div class="recipe-info__rating-time-wrapper">
-<p class="recipe-info-rating-number">${rating}</p>
+  
+  <div class="recipe-info__rating-wrapper">
+  <p class="recipe-info-rating-number">${rating}</p>
+  
+<div class="stars-list-wrapper">
+          <ul class="rating-list">
+            <li class="rating-list__item">
+             <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+          </ul>
 
-<p class="recipe-info-time">${time} min</p>
-</div>
+ <ul class="rating-list painted" style="width: ${paintedStarsWidth}%;">
+            <li class="rating-list__item">
+             <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+          </ul>
+           </div>
+
+
+  </div>
+  
+  
+  <p class="recipe-info-time">${time} min</p>
+  </div>
 
 </div>
 

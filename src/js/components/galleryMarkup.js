@@ -31,6 +31,7 @@ function createGalleryMarkup(arr) {
       <div class="rating-and-btn-wrapper">
         <div class="rating-wrapper">
           <p class="rating-number">${rating}</p>
+          
           <div class="stars-list-wrapper">
           <ul class="rating-list">
             <li class="rating-list__item">
