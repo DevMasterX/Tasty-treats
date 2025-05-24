@@ -25,6 +25,7 @@ let e,t,i;function n(e,t,i,n){Object.defineProperty(e,t,{get:i,set:n,enumerable:
       <div class="rating-and-btn-wrapper">
         <div class="rating-wrapper">
           <p class="rating-number">${n}</p>
+          
           <div class="stars-list-wrapper">
           <ul class="rating-list">
             <li class="rating-list__item">
@@ -149,7 +150,7 @@ let e,t,i;function n(e,t,i,n){Object.defineProperty(e,t,{get:i,set:n,enumerable:
 
         <button type="submit" class="order-form__submit-btn">Send</button>
       </form>
-  `}}),d("bNOcN",function(e,t){n(e.exports,"ORDER_FORM_KEY",function(){return i}),n(e.exports,"initFormStorage",function(){return r});let i="order-form-data";function r(e){var t;(function(e){let t=JSON.parse(localStorage.getItem(i)||"{}");if(!t)return;let n=Object.keys(t);[...e.elements].forEach(e=>{n.includes(e.name)&&(e.value=t[e.name])})})(e),(t=e)&&t.addEventListener("focusout",e=>{if(!(e.target instanceof HTMLInputElement||e.target instanceof HTMLTextAreaElement||e.target instanceof HTMLSelectElement))return;let t=e.target.name,n=e.target.value;if(!t)return;let r=JSON.parse(localStorage.getItem(i)||"{}");r[t]=n,localStorage.setItem(i,JSON.stringify(r))})}}),d("fVTrp",function(e,t){n(e.exports,"initOrderFormValidation",function(){return l});var i=c("5a6Bh"),s=c("8IXMh"),o=c("bNOcN");let a={username:{required:!0,errorMessage:"Please enter your name"},phone_number:{required:!0,pattern:/^[\d\s+()-]{7,20}$/,errorMessage:"Enter a valid phone number"},email:{required:!0,pattern:/^[^\s@]+@[^\s@]+\.[^\s@]+$/,errorMessage:"Enter a valid email address"}};function l(e){e&&e.addEventListener("submit",t=>{t.preventDefault(),[...e.elements].forEach(e=>{var t;d(e),(t=e).name&&!t.dataset.listenerAdded&&a[t.name]&&(t.addEventListener("input",()=>{d(t)}),t.dataset.listenerAdded="true")}),function(e){var t;let n=[...e.elements].find(e=>e.classList.contains("is-invalid"));if(n)return n.focus();[...e.elements].forEach(e=>{e.classList.remove("is-valid","is-invalid"),delete e.dataset.listenerAdded;let t=u(e);t&&(t.textContent="")}),e.reset(),t=o.ORDER_FORM_KEY,localStorage.removeItem(t),(0,s.closeModal)(),r(i).Report.success("SUCCESS","Your request has been sent. We’ll contact you shortly.","Close",{width:"360px",svgSize:"180px"})}(e)})}function d(e){var t,i;let n=a[e.name];if(!n)return;let{required:r,pattern:s,errorMessage:o}=n,l=e.value.trim(),c=u(e);r&&""===l||s&&!s.test(l)?function(e,t,i){e&&i&&(e.textContent!==t&&(e.textContent=t),i.classList.add("is-invalid"),i.classList.remove("is-valid"))}(c,o,e):(t=e,i=c,t.classList.remove("is-invalid"),t.classList.add("is-valid"),i&&(i.textContent=""))}function u(e){return e.closest("label")?.querySelector(".order-form__error-message")}}),d("2u7Ya",function(e,t){n(e.exports,"renderRecipeToModal",function(){return u});var i=c("5a6Bh"),s=c("gC7Fo"),o=c("adAgQ"),a=c("emajU");let l=c("d1WZ0").STORAGE_KEYS.FAVORITES_KEY,d=(0,a.loadFromStorage)(l)||[];async function u(e,t){let i=e.closest(".gallery-item")||e.closest(".popular-recipes-section"),n=null;e.closest(".gallery-item")?(n=i.querySelector(".gallery__list"),(0,o.showLoader)(i,n)):e.closest(".popular-recipes-section")?(n=i.querySelector(".popular-recipes__list"),(0,o.showLoader)(i,n)):console.error("Loader error");try{let i=e.dataset.id,n=await (0,s.fetchRecipeInfo)(i);t.innerHTML=function({title:e,instructions:t,time:i,rating:n,ingredients:r,tags:s,youtube:o,_id:c}){let u;console.log("\uD83D\uDE80 favoritesValue:",d=(0,a.loadFromStorage)(l)||[]);let p="";d.includes(c)?p="Remove from favorite":d.includes(c)||(p="Add to favorite"),u=0===s.length?"":s.map(e=>`<li class="tags-list-item">#${e}</li>`).join("");let f=r.map(({name:e,measure:t})=>`
+  `}}),d("bNOcN",function(e,t){n(e.exports,"ORDER_FORM_KEY",function(){return i}),n(e.exports,"initFormStorage",function(){return r});let i="order-form-data";function r(e){var t;(function(e){let t=JSON.parse(localStorage.getItem(i)||"{}");if(!t)return;let n=Object.keys(t);[...e.elements].forEach(e=>{n.includes(e.name)&&(e.value=t[e.name])})})(e),(t=e)&&t.addEventListener("focusout",e=>{if(!(e.target instanceof HTMLInputElement||e.target instanceof HTMLTextAreaElement||e.target instanceof HTMLSelectElement))return;let t=e.target.name,n=e.target.value;if(!t)return;let r=JSON.parse(localStorage.getItem(i)||"{}");r[t]=n,localStorage.setItem(i,JSON.stringify(r))})}}),d("fVTrp",function(e,t){n(e.exports,"initOrderFormValidation",function(){return l});var i=c("5a6Bh"),s=c("8IXMh"),o=c("bNOcN");let a={username:{required:!0,errorMessage:"Please enter your name"},phone_number:{required:!0,pattern:/^[\d\s+()-]{7,20}$/,errorMessage:"Enter a valid phone number"},email:{required:!0,pattern:/^[^\s@]+@[^\s@]+\.[^\s@]+$/,errorMessage:"Enter a valid email address"}};function l(e){e&&e.addEventListener("submit",t=>{t.preventDefault(),[...e.elements].forEach(e=>{var t;d(e),(t=e).name&&!t.dataset.listenerAdded&&a[t.name]&&(t.addEventListener("input",()=>{d(t)}),t.dataset.listenerAdded="true")}),function(e){var t;let n=[...e.elements].find(e=>e.classList.contains("is-invalid"));if(n)return n.focus();[...e.elements].forEach(e=>{e.classList.remove("is-valid","is-invalid"),delete e.dataset.listenerAdded;let t=u(e);t&&(t.textContent="")}),e.reset(),t=o.ORDER_FORM_KEY,localStorage.removeItem(t),(0,s.closeModal)(),r(i).Report.success("SUCCESS","Your request has been sent. We’ll contact you shortly.","Close",{width:"360px",svgSize:"180px"})}(e)})}function d(e){var t,i;let n=a[e.name];if(!n)return;let{required:r,pattern:s,errorMessage:o}=n,l=e.value.trim(),c=u(e);r&&""===l||s&&!s.test(l)?function(e,t,i){e&&i&&(e.textContent!==t&&(e.textContent=t),i.classList.add("is-invalid"),i.classList.remove("is-valid"))}(c,o,e):(t=e,i=c,t.classList.remove("is-invalid"),t.classList.add("is-valid"),i&&(i.textContent=""))}function u(e){return e.closest("label")?.querySelector(".order-form__error-message")}}),d("2u7Ya",function(e,t){n(e.exports,"renderRecipeToModal",function(){return u});var i=c("5a6Bh"),s=c("gC7Fo"),o=c("adAgQ"),a=c("emajU");let l=c("d1WZ0").STORAGE_KEYS.FAVORITES_KEY,d=(0,a.loadFromStorage)(l)||[];async function u(e,t){let i=e.closest(".gallery-item")||e.closest(".popular-recipes-section"),n=null;e.closest(".gallery-item")?(n=i.querySelector(".gallery__list"),(0,o.showLoader)(i,n)):e.closest(".popular-recipes-section")?(n=i.querySelector(".popular-recipes__list"),(0,o.showLoader)(i,n)):console.error("Loader error");try{let i=e.dataset.id,n=await (0,s.fetchRecipeInfo)(i);t.innerHTML=function({title:e,instructions:t,time:i,rating:n,ingredients:r,tags:s,youtube:o,_id:c}){let u,p=n/5*100;console.log("\uD83D\uDE80 favoritesValue:",d=(0,a.loadFromStorage)(l)||[]);let f="";d.includes(c)?f="Remove from favorite":d.includes(c)||(f="Add to favorite"),u=0===s.length?"":s.map(e=>`<li class="tags-list-item">#${e}</li>`).join("");let m=r.map(({name:e,measure:t})=>`
   <li class="ingredients-list__item">
   <p class="ingredients-list__item-name">${e}</p>
  <p class="ingredients-list__item-measure">${t}</p>
@@ -175,6 +176,65 @@ let e,t,i;function n(e,t,i,n){Object.defineProperty(e,t,{get:i,set:n,enumerable:
   <div class="recipe-info__rating-wrapper">
   <p class="recipe-info-rating-number">${n}</p>
   
+<div class="stars-list-wrapper">
+          <ul class="rating-list">
+            <li class="rating-list__item">
+             <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+          </ul>
+
+ <ul class="rating-list painted" style="width: ${p}%;">
+            <li class="rating-list__item">
+             <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+          </ul>
+           </div>
+
+
   </div>
   
   
@@ -184,7 +244,7 @@ let e,t,i;function n(e,t,i,n){Object.defineProperty(e,t,{get:i,set:n,enumerable:
 
   
   <ul class="ingredients-list">
-  ${f}
+  ${m}
   </ul>
 
   <ul class="tags-list">
@@ -194,7 +254,7 @@ let e,t,i;function n(e,t,i,n){Object.defineProperty(e,t,{get:i,set:n,enumerable:
   <p class="instructions-text">${t}</p>
 
   <div class="recipe-info__btn-wrapper"> 
-   <button class="add-to-favorite-btn" data-id="${c}" aria-label="Add to favorite button" >${p}</button>
+   <button class="add-to-favorite-btn" data-id="${c}" aria-label="Add to favorite button" >${f}</button>
   <button class="give-rating-btn" data-id="${c}" aria-label="Give a rating button">Give a rating</button>
   </div>
  
@@ -218,21 +278,85 @@ ${u}
 </ul>
 
 <div class="recipe-info__rating-time-wrapper">
-<p class="recipe-info-rating-number">${n}</p>
+  
+  <div class="recipe-info__rating-wrapper">
+  <p class="recipe-info-rating-number">${n}</p>
+  
+<div class="stars-list-wrapper">
+          <ul class="rating-list">
+            <li class="rating-list__item">
+             <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+          </ul>
 
-<p class="recipe-info-time">${i} min</p>
-</div>
+ <ul class="rating-list painted" style="width: ${p}%;">
+            <li class="rating-list__item">
+             <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+            <li class="rating-list__item">
+            <svg class="rating-list__star-icon">
+                <use href="#icon-star"></use>
+              </svg>
+            </li>
+          </ul>
+           </div>
+
+
+  </div>
+  
+  
+  <p class="recipe-info-time">${i} min</p>
+  </div>
 
 </div>
 
 <ul class="ingredients-list">
-${f}
+${m}
 </ul>
 
 <p class="instructions-text">${t}</p>
 
 <div class="recipe-info__btn-wrapper"> 
-  <button class="add-to-favorite-btn" data-id="${c}" aria-label="Add to favorite button" >${p}</button>
+  <button class="add-to-favorite-btn" data-id="${c}" aria-label="Add to favorite button" >${f}</button>
   <button class="give-rating-btn" data-id="${c}" aria-label="Give a rating button">Give a rating</button>
   </div>
 </div>
@@ -273,4 +397,4 @@ ${f}
     `).join("");t.insertAdjacentHTML("beforeend",i)}(await iB())}async function iY(){!function(e){let t=document.querySelector('[name="ingredient"]'),i=e.map(({_id:e,name:t})=>`
     <option value="${e}">${t}</option>
     `).join("");t.insertAdjacentHTML("beforeend",i)}(await iF())}function iK(){iq.classList.add("is-hidden")}iq.addEventListener("click",()=>{iH.value="",iK(),I.recipesApiService.updateParams(iH.name,iH.value),(0,ij.initMainGallery)()}),i$.addEventListener("click",()=>{I.recipesApiService.resetFilterQueryParams(),iH.value="",iK(),iV.forEach(e=>{e.setChoiceByValue("")}),(0,ij.initMainGallery)()});var ij=c("kVtVK");window.ResizeObserver=L,document.addEventListener("DOMContentLoaded",async()=>{!function(){let e=document.querySelector(".header"),t=document.querySelector(".hero-section");if(!e||!t)return;function i(){let i=e.offsetHeight+t.offsetHeight,n=Math.min(Math.max(window.innerHeight-i-10,70),96);t.style.marginTop=`${n}px`}i(),window.addEventListener("resize",i);let n=new ResizeObserver(i);n.observe(e),n.observe(t)}(),function(){let e=document.querySelector(".js-theme-switcher__input");if(!e)return console.warn("Theme switcher not found: .js-theme-switcher__input");localStorage.getItem(M)===N.DARK_CLASS&&(document.body.classList.add(N.DARK_CLASS),e.checked=!0),e.addEventListener("change",()=>{let t=e.checked;document.body.classList.toggle(N.DARK_CLASS,t),t?localStorage.setItem(M,N.DARK_CLASS):localStorage.removeItem(M)})}(),z&&z.addEventListener("click",e=>{I.recipesApiService.resetFilterQueryParams(),P(),F(e.currentTarget)}),D&&D.addEventListener("click",e=>{F(e.currentTarget)}),B&&B.addEventListener("click",e=>{I.recipesApiService.resetFilterQueryParams(),P(),F(e.currentTarget)}),function(){let e=document.querySelector(".js-mobile-menu-btn"),t=document.querySelector(".js-close-btn"),i=document.querySelector(".js-mobile-menu"),n=document.querySelector("header"),r=document.querySelector(".js-theme-switcher");if(!e||!i||!n||!t)return console.warn("Mobile menu: один или несколько элементов не найдены");function s(){i.classList.remove("open"),n.classList.remove("menu-opened"),document.body.classList.remove("no-scroll"),document.removeEventListener("click",o)}function o(t){let n=i.contains(t.target),o=e.contains(t.target),a=r?.contains(t.target);n||o||a||s()}e.addEventListener("click",function(){i.classList.add("open"),n.classList.add("menu-opened"),document.body.classList.add("no-scroll"),document.addEventListener("click",o)}),t.addEventListener("click",s)}(),(0,j.initModal)();let e=(0,R.loadFromStorage)(N.STORAGE_KEYS.CURRENT_CATEGORY);e&&I.recipesApiService.updateParams("category",e),await Promise.all([ej(),(0,eH.initAllCategories)(),(0,eq.initPopularRecipes)(),iX(),(0,ij.initMainGallery)()])});
-//# sourceMappingURL=Tasty-treats.1f8d753e.js.map
+//# sourceMappingURL=Tasty-treats.d637c8c3.js.map
