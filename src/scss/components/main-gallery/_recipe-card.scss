@@ -141,16 +141,6 @@ body.dark-theme .gallery-item::before {
   }
 }
 
-.rating-wrapper {
-  display: flex;
-  gap: 4px;
-  // align-items: center;
-}
-
-.rating-list {
-  display: flex;
-}
-
 .rating-list__item {
   flex: 0 0 18px;
   padding: 2px;
@@ -158,15 +148,10 @@ body.dark-theme .gallery-item::before {
   width: 18px;
 }
 
-.stars-list-wrapper {
-  position: relative;
-  // height: 18px;
-}
-
 .rating-list.painted {
-  position: absolute;
+  // position: absolute;
 
-  inset: 0;
+  // inset: 0;
   overflow: hidden;
 
   & .rating-list__star-icon {

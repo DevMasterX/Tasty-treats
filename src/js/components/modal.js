@@ -1,6 +1,7 @@
 // import { renderOrderForm } from './renderOrderForm.js';
 import { initOrderForm } from './initOrderForm.js';
 import { renderRecipeToModal } from './render-recipe-to-modal.js';
+import { renderRatingModal } from './rating-modal.js';
 // import { initOrderFormValidation } from '../utils/orderFormValidator.js';
 // import { initFormStorage } from '../utils/formStorage.js';
 
@@ -22,9 +23,25 @@ function initModal() {
   handleEscapeKey();
 }
 
+// function setupOpenButtons() {
+//   document.addEventListener('click', e => {
+//     const openBtn = e.target.closest('[data-modal-open]');
+//     if (!openBtn) return;
+
+//     openModal(e);
+//   });
+
+//   // document.querySelectorAll('[data-modal-open]').forEach(btn => {
+//   //   btn.addEventListener('click', openModal);
+//   // });
+// }
+
 function setupOpenButtons() {
-  document.querySelectorAll('[data-modal-open]').forEach(btn => {
-    btn.addEventListener('click', openModal);
+  document.addEventListener('click', e => {
+    const openBtn = e.target.closest('[data-modal-open]');
+    if (!openBtn) return;
+
+    openModal(openBtn); // ← передаём именно кнопку
   });
 }
 
@@ -52,10 +69,10 @@ function handleEscapeKey() {
   });
 }
 
-async function openModal(e) {
-  if (!modal) return;
+async function openModal(triggerElement) {
+  if (!modal || !triggerElement?.dataset?.modalType) return;
 
-  await setModalContent(e.currentTarget);
+  await setModalContent(triggerElement);
   modal.classList.remove('is-hidden');
   document.body.classList.add('no-scroll');
 }
@@ -82,6 +99,10 @@ async function setModalContent(currentTarget) {
 
     case 'popular-recipe':
       await renderRecipeToModal(currentTarget, modalContent);
+      break;
+
+    case 'rating':
+      renderRatingModal(currentTarget, modalContent);
       break;
 
     default:

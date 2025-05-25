@@ -1,6 +1,7 @@
 import Notiflix from 'notiflix';
 import { fetchRecipeInfo } from '../services/recipe-info';
 import { hideLoader, showLoader } from './loader';
+// import { setupOpenButtons } from './modal';
 
 import {
   saveToStorage,
@@ -41,6 +42,7 @@ async function renderRecipeToModal(btn, modalContent) {
     //   initRecipeInfoButtons();
     // });
     initRecipeInfoButtons();
+    // setupOpenButtons();
   } catch (error) {
     console.error('Error rendering recipe iformation to madal', error);
     throw error;
@@ -192,7 +194,7 @@ function createRecipeInfoMarkup({
 
   <div class="recipe-info__btn-wrapper"> 
    <button class="add-to-favorite-btn" data-id="${_id}" aria-label="Add to favorite button" >${addToFavoriteBtnTextContent}</button>
-  <button class="give-rating-btn" data-id="${_id}" aria-label="Give a rating button">Give a rating</button>
+    <button class="give-rating-btn" data-id="${_id}" aria-label="Give a rating button"  data-modal-open  data-modal-type="rating">Give a rating</button>
   </div>
  
   </div>
@@ -297,7 +299,7 @@ ${ingredientslist}
 
 <div class="recipe-info__btn-wrapper"> 
   <button class="add-to-favorite-btn" data-id="${_id}" aria-label="Add to favorite button" >${addToFavoriteBtnTextContent}</button>
-  <button class="give-rating-btn" data-id="${_id}" aria-label="Give a rating button">Give a rating</button>
+  <button class="give-rating-btn" data-id="${_id}" aria-label="Give a rating button"  data-modal-open  data-modal-type="rating">Give a rating</button>
   </div>
 </div>
   `;

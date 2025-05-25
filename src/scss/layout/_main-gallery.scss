@@ -51,3 +51,20 @@
 // .gallery-item {
 //   position: relative;
 // }
+.rating-wrapper {
+  display: flex;
+  gap: 4px;
+}
+
+.rating-list {
+  display: flex;
+}
+
+.stars-list-wrapper {
+  position: relative;
+}
+
+.rating-list.painted {
+  position: absolute;
+  inset: 0;
+}
