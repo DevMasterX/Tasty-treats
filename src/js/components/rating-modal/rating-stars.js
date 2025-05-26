@@ -1,11 +1,14 @@
+// let checkedStarIdx = null;
 function initRatingStars(btn, modalContent) {
   const starsList = modalContent.querySelector('.js-modal-rating-list');
   const ratingNumber = document.querySelector('.js-modal-rating-number');
   const stars = modalContent.querySelector('.js-modal-rating-list').children;
-  console.log('🚀 stars:', stars);
+  const handleMouseLeave = createMouseLeaveHandler(stars);
+  const sendBtn = modalContent.querySelector('.rating-send-btn');
+  starsList.addEventListener('mouseleave', handleMouseLeave);
+
   [...stars].forEach((star, idx) => {
     star.addEventListener('mouseenter', () => {
-      console.log('enter', idx);
       highlightStarsUpTo(stars, idx);
     });
 
@@ -14,17 +17,9 @@ function initRatingStars(btn, modalContent) {
       clearHighlightedStars(stars, idx);
     });
 
-    // starsList.addEventListener('mouseleave', () => {
-    //   clearHighlightedStars(stars);
-    // });
-
-    const handleMouseLeave = createMouseLeaveHandler(stars);
-    starsList.addEventListener('mouseleave', handleMouseLeave);
-
     star.addEventListener('click', () => {
-      console.log('click');
-      onStarClick(stars, star, idx, ratingNumber);
-      starsList.removeEventListener('mouseleave', handleMouseLeave);
+      onStarClick(stars, star, idx, ratingNumber, sendBtn);
+      // starsList.removeEventListener('mouseleave', handleMouseLeave);
     });
   });
 
@@ -33,16 +28,14 @@ function initRatingStars(btn, modalContent) {
       clearHighlightedStars(stars);
     };
   }
-
-  //   stars.forEach(star);
 }
 
 function highlightStarsUpTo(stars, hoverIdx) {
   [...stars].forEach((star, idx) => {
     if (idx <= hoverIdx) {
-      star.classList.add('highlighted');
+      star.classList.add('highlighted-light');
     } else if (idx > hoverIdx) {
-      star.classList.remove('highlighted');
+      star.classList.remove('highlighted-light');
     }
   });
 }
@@ -51,38 +44,39 @@ function clearHighlightedStars(stars, mouseleaveIdx = null) {
   if (mouseleaveIdx) {
     [...stars].forEach((star, idx) => {
       if (idx > mouseleaveIdx) {
-        star.classList.remove('highlighted');
+        star.classList.remove('highlighted-light');
       }
     });
     return;
   }
 
   [...stars].forEach(star => {
-    if (star.classList.contains('highlighted')) {
-      star.classList.remove('highlighted');
+    if (star.classList.contains('highlighted-light')) {
+      star.classList.remove('highlighted-light');
     }
-    //   star.classList.remove('highlighted');
   });
 }
 
-function onStarClick(stars, star, clickIdx, ratingNumber) {
+function onStarClick(stars, star, clickIdx, ratingNumber, sendBtn) {
   const rating = Number(star.dataset.rating).toFixed(1);
+  const ratingAttributeValue = star.dataset.rating;
   ratingNumber.textContent = rating;
+  ratingNumber.classList.add('is-animate');
   star.classList.add('is-animate');
+  sendBtn.setAttribute('data-rating', ratingAttributeValue);
 
   [...stars].forEach((star, idx) => {
     if (idx <= clickIdx) {
       star.classList.add('highlighted');
+    } else if (idx > clickIdx) {
+      star.classList.remove('highlighted');
     }
   });
 
   setTimeout(() => {
     star.classList.remove('is-animate');
-  }, 1000);
-}
-
-function handleMouseLeave() {
-  clearHighlightedStars(stars);
+    ratingNumber.classList.remove('is-animate');
+  }, 650);
 }
 
 export { initRatingStars };

@@ -17,22 +17,34 @@
   //   color: #050505;
 }
 
-.recipe-info__rating-number {
+.recipe-info__rating-number.modal-rating-number {
   font-size: 16px;
   //   line-height: 150%;
+  @include transition;
+}
+
+.recipe-info__rating-number.modal-rating-number.is-animate {
+  animation: animate-number 0.5s ease-out 0s 1;
 }
 
 .rating-list__item.modal-rating-item {
   cursor: pointer;
 }
 
+.rating-list__item.modal-rating-item.highlighted-light .rating-list__star-icon {
+  fill: var(--star-icon-highlighted-color-light);
+  transform: scale(1.18);
+  @include transition;
+}
+
 .rating-list__item.modal-rating-item.highlighted .rating-list__star-icon {
   fill: var(--star-icon-highlighted-color);
+  transform: scale(1.18);
   @include transition;
 }
 
 .rating-list__item.modal-rating-item.is-animate .rating-list__star-icon {
-  animation: animate-star 1s ease-out 0s 1;
+  animation: animate-star 0.6s ease-out 0s 1;
 }
 
 .rating__input {
@@ -56,10 +68,24 @@
 }
 
 @keyframes animate-star {
-  from {
+  0% {
     transform: scale(1);
   }
-  to {
-    transform: scale(1.7) rotate(360deg);
+  50% {
+    transform: scale(1.7) rotate(180deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+@keyframes animate-number {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
   }
 }
