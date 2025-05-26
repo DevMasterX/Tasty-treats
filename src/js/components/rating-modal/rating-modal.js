@@ -12,7 +12,7 @@ function createRatingModalMarkup(btn) {
   <p class="recipe-info__rating-number modal-rating-number js-modal-rating-number">0.0</p>
   
 
-          <ul class="rating-list js-modal-rating-list">
+          <ul class="rating-list modal-rating-list js-modal-rating-list">
             <li class="rating-list__item modal-rating-item" data-rating="1">
              <svg class="rating-list__star-icon">
                 <use href="#icon-star"></use>
