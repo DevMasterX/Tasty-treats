@@ -1,0 +1,21 @@
+@use '../utils/mixins' as *;
+.recipe-info__rating-wrapper.modal-rating-wrapper {
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.rating__input-wrapper {
+  margin-top: 24px;
+
+  @include media(md) {
+    margin-top: 32px;
+  }
+}
+
+.rating-send-btn {
+  margin-top: 14px;
+
+  @include media(md) {
+    margin-top: 16px;
+  }
+}

@@ -3,7 +3,7 @@ import { createGalleryMarkup } from './galleryMarkup';
 import { renderGallery } from './renderGallery';
 import { recipesApiService } from '../services/recipes-api-service';
 import { hideLoader, showLoader } from './loader';
-import { initModal } from './modal';
+// import { setupOpenButtons } from './modal';
 
 import {
   saveToStorage,
@@ -26,7 +26,7 @@ async function initMainGallery() {
     const markup = createGalleryMarkup(data.results);
     // hideLoader(loaderContainer);
     renderGallery(container, markup);
-    initModal();
+    //  setupOpenButtons();
     initFavoriteButtons();
   } catch (error) {
     console.error('Error loading recipes on the client:', error);

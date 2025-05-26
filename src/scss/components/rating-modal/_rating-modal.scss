@@ -1,0 +1,47 @@
+@use '../../utils/mixins' as *;
+
+.rating-form {
+  // min-width: 10%;
+  width: 295px;
+  //   @include flex-column;
+
+  @include media(md) {
+    width: 360px;
+  }
+}
+
+.rating__title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 129%;
+  //   color: #050505;
+}
+
+.recipe-info__rating-number {
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.rating-list__item.modal-rating-item {
+  cursor: pointer;
+}
+
+.rating__input {
+  width: 100%;
+  padding: 18px 14px;
+  border: var(--input-border);
+  border-radius: 15px;
+
+  &::placeholder {
+    line-height: 125%;
+    color: var(--text-secondary);
+  }
+}
+
+.rating-send-btn {
+  width: 100%;
+  border-radius: 15px;
+  padding: 15px;
+  @include btn-primary;
+  @include transition;
+}
