@@ -155,7 +155,7 @@ body.dark-theme .gallery-item::before {
   overflow: hidden;
 
   & .rating-list__star-icon {
-    fill: #eea10c;
+    fill: var(--star-icon-highlighted-color);
   }
 }
 

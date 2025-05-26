@@ -9,7 +9,7 @@ function createRatingModalMarkup(btn) {
     <h3 class="rating__title">Rating</h3>
     
 <div class="recipe-info__rating-wrapper modal-rating-wrapper">
-  <p class="recipe-info__rating-number">0</p>
+  <p class="recipe-info__rating-number js-modal-rating-number">0.0</p>
   
 
           <ul class="rating-list js-modal-rating-list">

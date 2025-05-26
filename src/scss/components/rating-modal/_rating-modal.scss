@@ -19,11 +19,20 @@
 
 .recipe-info__rating-number {
   font-size: 16px;
-  line-height: 150%;
+  //   line-height: 150%;
 }
 
 .rating-list__item.modal-rating-item {
   cursor: pointer;
+}
+
+.rating-list__item.modal-rating-item.highlighted .rating-list__star-icon {
+  fill: var(--star-icon-highlighted-color);
+  @include transition;
+}
+
+.rating-list__item.modal-rating-item.is-animate .rating-list__star-icon {
+  animation: animate-star 1s ease-out 0s 1;
 }
 
 .rating__input {
@@ -44,4 +53,13 @@
   padding: 15px;
   @include btn-primary;
   @include transition;
+}
+
+@keyframes animate-star {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.7) rotate(360deg);
+  }
 }
