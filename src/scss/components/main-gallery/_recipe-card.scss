@@ -146,6 +146,18 @@ body.dark-theme .gallery-item::before {
   padding: 2px;
   height: 18px;
   width: 18px;
+  @include media(md) {
+    flex: 0 0 16px;
+    // padding: 2px;
+    height: 16px;
+    width: 16px;
+  }
+  @include media(lg) {
+    flex: 0 0 18px;
+    // padding: 2px;
+    height: 18px;
+    width: 18px;
+  }
 }
 
 .rating-list.painted {

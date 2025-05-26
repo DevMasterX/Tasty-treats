@@ -30,8 +30,8 @@ function createGalleryMarkup(arr) {
       <p class="gallery-item__text">${description}</p>
       <div class="rating-and-btn-wrapper">
         <div class="rating-wrapper">
-          <p class="rating-number">${rating}</p>
-          
+          <p class="rating-number">${rating.toFixed(1)}</p>
+
           <div class="stars-list-wrapper">
           <ul class="rating-list">
             <li class="rating-list__item">

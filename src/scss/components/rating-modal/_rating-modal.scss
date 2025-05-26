@@ -52,6 +52,7 @@
   padding: 18px 14px;
   border: var(--input-border);
   border-radius: 15px;
+  background-color: var(--modal-bg);
 
   &::placeholder {
     line-height: 125%;
