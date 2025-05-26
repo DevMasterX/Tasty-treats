@@ -64,6 +64,7 @@ function onStarClick(stars, star, clickIdx, ratingNumber, sendBtn) {
   ratingNumber.classList.add('is-animate');
   star.classList.add('is-animate');
   sendBtn.setAttribute('data-rating', ratingAttributeValue);
+  sendBtn.classList.remove('disabled');
 
   [...stars].forEach((star, idx) => {
     if (idx <= clickIdx) {

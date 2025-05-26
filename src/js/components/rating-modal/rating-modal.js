@@ -41,11 +41,14 @@ function createRatingModalMarkup(btn) {
           </ul>
   </div>
 <div class="rating__input-wrapper">
+<span class="order-form__error-message rating__input-error-message"></span>
 <input type="email" name="email" class="rating__input" autocomplete="email" placeholder="Enter email">
 </div>
 <button class="rating-send-btn" type="submit" aria-label="Send rating button" data-id="${id}">Send</button>
 </form>
     `;
 }
+
+function validateRatingForm() {}
 
 export { renderRatingModal };

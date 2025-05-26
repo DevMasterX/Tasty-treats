@@ -3,6 +3,8 @@ import { initOrderForm } from './initOrderForm.js';
 import { renderRecipeToModal } from './render-recipe-to-modal.js';
 import { renderRatingModal } from './rating-modal/rating-modal.js';
 import { initRatingStars } from './rating-modal/rating-stars.js';
+import { initRatingFormValidation } from '../utils/ratingFormValidator.js';
+import { initRatingFormStorage } from '../utils/ratingFormStorage.js';
 // import { initOrderFormValidation } from '../utils/orderFormValidator.js';
 // import { initFormStorage } from '../utils/formStorage.js';
 
@@ -105,6 +107,8 @@ async function setModalContent(currentTarget) {
     case 'rating':
       renderRatingModal(currentTarget, modalContent);
       initRatingStars(currentTarget, modalContent);
+      initRatingFormValidation(modalContent);
+      initRatingFormStorage(modalContent);
       break;
 
     default:

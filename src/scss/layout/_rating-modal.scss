@@ -31,3 +31,14 @@
     margin-top: 16px;
   }
 }
+
+.rating__input-wrapper {
+  position: relative;
+}
+.order-form__error-message.rating__input-error-message {
+  // display: block;
+  position: absolute;
+  // margin-bottom: 7px;
+  top: -22px;
+  left: 0;
+}

@@ -60,12 +60,26 @@
   }
 }
 
+.rating__input.is-invalid {
+  border-color: #e53935;
+  color: #e53935;
+}
+
+.rating__input.is-valid {
+  border-color: #9bb537;
+}
+
 .rating-send-btn {
   width: 100%;
   border-radius: 15px;
   padding: 15px;
   @include btn-primary;
   @include transition;
+}
+
+.rating-send-btn.disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 @keyframes animate-star {
