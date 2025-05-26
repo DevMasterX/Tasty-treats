@@ -52,8 +52,9 @@
   padding: 18px 14px;
   border: var(--input-border);
   border-radius: 15px;
-  background-color: var(--modal-bg);
-
+  // background-color: var(--modal-bg);
+  background-color: transparent;
+  color: var(--text-primary);
   &::placeholder {
     line-height: 125%;
     color: var(--text-secondary);
@@ -79,7 +80,7 @@
 
 .rating-send-btn.disabled {
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
 @keyframes animate-star {
