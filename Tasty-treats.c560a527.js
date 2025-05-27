@@ -148,7 +148,7 @@ let e,t,i,n,r,s;function a(e,t,i,n){Object.defineProperty(e,t,{get:i,set:n,enume
   <div class="recipe-info__rating-time-wrapper">
   
   <div class="recipe-info__rating-wrapper">
-  <p class="recipe-info-rating-number">${n}</p>
+  <p class="recipe-info-rating-number">${n.toFixed(1)}</p>
   
 <div class="stars-list-wrapper">
           <ul class="rating-list">
@@ -254,7 +254,7 @@ ${l}
 <div class="recipe-info__rating-time-wrapper">
   
   <div class="recipe-info__rating-wrapper">
-  <p class="recipe-info-rating-number">${n}</p>
+  <p class="recipe-info-rating-number">${n.toFixed(1)}</p>
   
 <div class="stars-list-wrapper">
           <ul class="rating-list">
@@ -439,4 +439,4 @@ ${u}
     `).join("");t.insertAdjacentHTML("beforeend",i)}(await i9())}async function nc(){!function(e){let t=document.querySelector('[name="ingredient"]'),i=e.map(({_id:e,name:t})=>`
     <option value="${e}">${t}</option>
     `).join("");t.insertAdjacentHTML("beforeend",i)}(await i7())}function nd(){nn.classList.add("is-hidden")}nn.addEventListener("click",()=>{ni.value="",nd(),z.recipesApiService.updateParams(ni.name,ni.value),(0,ne.initMainGallery)()}),nr.addEventListener("click",()=>{z.recipesApiService.resetFilterQueryParams(),ni.value="",nd(),ns.forEach(e=>{e.setChoiceByValue("")}),(0,ne.initMainGallery)()});var ne=h("kVtVK");window.ResizeObserver=I,document.addEventListener("DOMContentLoaded",async()=>{!function(){let e=document.querySelector(".header"),t=document.querySelector(".hero-section");if(!e||!t)return;function i(){let i=e.offsetHeight+t.offsetHeight,n=Math.min(Math.max(window.innerHeight-i-10,70),96);t.style.marginTop=`${n}px`}i(),window.addEventListener("resize",i);let n=new ResizeObserver(i);n.observe(e),n.observe(t)}(),function(){let e=document.querySelector(".js-theme-switcher__input");if(!e)return console.warn("Theme switcher not found: .js-theme-switcher__input");localStorage.getItem(P)===R.DARK_CLASS&&(document.body.classList.add(R.DARK_CLASS),e.checked=!0),e.addEventListener("change",()=>{let t=e.checked;document.body.classList.toggle(R.DARK_CLASS,t),t?localStorage.setItem(P,R.DARK_CLASS):localStorage.removeItem(P)})}(),F&&F.addEventListener("click",e=>{z.recipesApiService.resetFilterQueryParams(),B(),q(e.currentTarget)}),j&&j.addEventListener("click",e=>{q(e.currentTarget)}),W&&W.addEventListener("click",e=>{z.recipesApiService.resetFilterQueryParams(),B(),q(e.currentTarget)}),function(){let e=document.querySelector(".js-mobile-menu-btn"),t=document.querySelector(".js-close-btn"),i=document.querySelector(".js-mobile-menu"),n=document.querySelector("header"),r=document.querySelector(".js-theme-switcher");if(!e||!i||!n||!t)return console.warn("Mobile menu: один или несколько элементов не найдены");function s(){i.classList.remove("open"),n.classList.remove("menu-opened"),document.body.classList.remove("no-scroll"),document.removeEventListener("click",a)}function a(t){let n=i.contains(t.target),a=e.contains(t.target),o=r?.contains(t.target);n||a||o||s()}e.addEventListener("click",function(){i.classList.add("open"),n.classList.add("menu-opened"),document.body.classList.add("no-scroll"),document.addEventListener("click",a)}),t.addEventListener("click",s)}(),function(){if(e=document.querySelector(".modal"),t=document.querySelector(".modal-overlay"),i=document.querySelector(".modal-content"),!e||!t||!i)return console.warn("Modal: one of the elements not found");document.addEventListener("click",e=>{let t=e.target.closest("[data-modal-open]");t&&ed(t)}),document.querySelectorAll("[data-modal-close]").forEach(e=>{e.addEventListener("click",eu)}),t&&t.addEventListener("click",e=>{e.target===t&&eu()}),document.addEventListener("keydown",t=>{"Escape"===t.key&&e&&!e.classList.contains("is-hidden")&&eu()})}();let n=(0,D.loadFromStorage)(R.STORAGE_KEYS.CURRENT_CATEGORY);n&&z.recipesApiService.updateParams("category",n),await Promise.all([te(),(0,ti.initAllCategories)(),(0,tn.initPopularRecipes)(),no(),(0,ne.initMainGallery)()])});
-//# sourceMappingURL=Tasty-treats.144112f8.js.map
+//# sourceMappingURL=Tasty-treats.c560a527.js.map

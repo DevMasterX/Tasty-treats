@@ -148,7 +148,7 @@
   <div class="recipe-info__rating-time-wrapper">
   
   <div class="recipe-info__rating-wrapper">
-  <p class="recipe-info-rating-number">${n}</p>
+  <p class="recipe-info-rating-number">${n.toFixed(1)}</p>
   
 <div class="stars-list-wrapper">
           <ul class="rating-list">
@@ -254,7 +254,7 @@ ${l}
 <div class="recipe-info__rating-time-wrapper">
   
   <div class="recipe-info__rating-wrapper">
-  <p class="recipe-info-rating-number">${n}</p>
+  <p class="recipe-info-rating-number">${n.toFixed(1)}</p>
   
 <div class="stars-list-wrapper">
           <ul class="rating-list">
@@ -439,4 +439,4 @@ ${u}
     `).join("");t.insertAdjacentHTML("beforeend",i)}(await i7())}async function nd(){!function(e){let t=document.querySelector('[name="ingredient"]'),i=e.map(({_id:e,name:t})=>`
     <option value="${e}">${t}</option>
     `).join("");t.insertAdjacentHTML("beforeend",i)}(await ne())}function nu(){ns.classList.add("is-hidden")}ns.addEventListener("click",()=>{nn.value="",nu(),D.recipesApiService.updateParams(nn.name,nn.value),(0,nt.initMainGallery)()}),nr.addEventListener("click",()=>{D.recipesApiService.resetFilterQueryParams(),nn.value="",nu(),no.forEach(e=>{e.setChoiceByValue("")}),(0,nt.initMainGallery)()});var nt=p("i3PnM");window.ResizeObserver=P,document.addEventListener("DOMContentLoaded",async()=>{!function(){let e=document.querySelector(".header"),t=document.querySelector(".hero-section");if(!e||!t)return;function i(){let i=e.offsetHeight+t.offsetHeight,n=Math.min(Math.max(window.innerHeight-i-10,70),96);t.style.marginTop=`${n}px`}i(),window.addEventListener("resize",i);let n=new ResizeObserver(i);n.observe(e),n.observe(t)}(),function(){let e=document.querySelector(".js-theme-switcher__input");if(!e)return console.warn("Theme switcher not found: .js-theme-switcher__input");localStorage.getItem(z)===R.DARK_CLASS&&(document.body.classList.add(R.DARK_CLASS),e.checked=!0),e.addEventListener("change",()=>{let t=e.checked;document.body.classList.toggle(R.DARK_CLASS,t),t?localStorage.setItem(z,R.DARK_CLASS):localStorage.removeItem(z)})}(),W&&W.addEventListener("click",e=>{D.recipesApiService.resetFilterQueryParams(),F(),q(e.currentTarget)}),j&&j.addEventListener("click",e=>{q(e.currentTarget)}),H&&H.addEventListener("click",e=>{D.recipesApiService.resetFilterQueryParams(),F(),q(e.currentTarget)}),function(){let e=document.querySelector(".js-mobile-menu-btn"),t=document.querySelector(".js-close-btn"),i=document.querySelector(".js-mobile-menu"),n=document.querySelector("header"),s=document.querySelector(".js-theme-switcher");if(!e||!i||!n||!t)return console.warn("Mobile menu: один или несколько элементов не найдены");function r(){i.classList.remove("open"),n.classList.remove("menu-opened"),document.body.classList.remove("no-scroll"),document.removeEventListener("click",o)}function o(t){let n=i.contains(t.target),o=e.contains(t.target),a=s?.contains(t.target);n||o||a||r()}e.addEventListener("click",function(){i.classList.add("open"),n.classList.add("menu-opened"),document.body.classList.add("no-scroll"),document.addEventListener("click",o)}),t.addEventListener("click",r)}(),function(){if(e=document.querySelector(".modal"),t=document.querySelector(".modal-overlay"),i=document.querySelector(".modal-content"),!e||!t||!i)return console.warn("Modal: one of the elements not found");document.addEventListener("click",e=>{let t=e.target.closest("[data-modal-open]");t&&eu(t)}),document.querySelectorAll("[data-modal-close]").forEach(e=>{e.addEventListener("click",eh)}),t&&t.addEventListener("click",e=>{e.target===t&&eh()}),document.addEventListener("keydown",t=>{"Escape"===t.key&&e&&!e.classList.contains("is-hidden")&&eh()})}();let n=(0,B.loadFromStorage)(R.STORAGE_KEYS.CURRENT_CATEGORY);n&&D.recipesApiService.updateParams("category",n),await Promise.all([tt(),(0,tn.initAllCategories)(),(0,ts.initPopularRecipes)(),nl(),(0,nt.initMainGallery)()])})}();
-//# sourceMappingURL=Tasty-treats.00aae5b4.js.map
+//# sourceMappingURL=Tasty-treats.e46f32d5.js.map
