@@ -17,6 +17,7 @@ import { initFilters } from './components/filters';
 import { initMainGallery } from './components/main-gallery.js';
 import { checkSavedCategory } from './components/current-category.js';
 import { setHeroMarginTop } from './utils/hero-margin-top.js';
+import { initHomePagination } from './components/homePagination';
 
 document.addEventListener('DOMContentLoaded', async () => {
   setHeroMarginTop();
@@ -33,6 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initFilters(),
     initMainGallery(),
   ]);
+  initHomePagination();
   // initSwiper();
   // initAllCategories();
   // initPopularRecipes();

@@ -5,6 +5,7 @@ class RecipesApiService {
     this.title = '';
     this.category = '';
     this.page = 1;
+    this.totalPages = null;
     this.limit = this.getLimitByViewport();
     this.time = null;
     this.area = '';
@@ -54,6 +55,7 @@ class RecipesApiService {
       title: this.title ?? null,
       category: this.category ?? null,
       page: this.page,
+      totalPages: this.totalPages,
       limit: this.limit,
       time: this.time ?? null,
       area: this.area ?? null,
@@ -70,6 +72,7 @@ class RecipesApiService {
   resetFilterQueryParams() {
     this.title = '';
     this.page = 1;
+    this.totalPages = null;
     this.limit = this.getLimitByViewport();
     this.time = null;
     this.area = '';

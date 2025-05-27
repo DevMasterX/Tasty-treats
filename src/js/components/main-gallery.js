@@ -22,8 +22,13 @@ async function initMainGallery() {
 
   try {
     const data = await recipesApiService.fetchRecipes();
-    console.log(data.results);
+    // console.log(data.results);
+    // console.log(data.totalPages);
+    const totalPages = data.totalPages;
+    // console.log('🚀 totalPages:', totalPages);
+    recipesApiService.updateParams('totalPages', totalPages);
     const markup = createGalleryMarkup(data.results);
+
     // hideLoader(loaderContainer);
     renderGallery(container, markup);
     //  setupOpenButtons();
