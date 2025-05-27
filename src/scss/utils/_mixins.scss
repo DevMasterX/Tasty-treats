@@ -43,6 +43,30 @@
   }
 }
 
+@mixin pagination-btn($backgroundColor) {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 122%;
+  @include flex-center;
+  @if $backgroundColor == black {
+    background-color: #050505;
+  } @else if $backgroundColor == green {
+    background-color: var(--btn-primary-bg);
+  } @else if $backgroundColor == transparent {
+    background-color: transparent;
+    outline: 1px solid var(--pagination-btn-outline);
+  }
+
+  @include media(md) {
+    width: 44px;
+    height: 44px;
+  }
+}
+
 @mixin media($breakpoint) {
   @if $breakpoint == sm {
     @media (max-width: 767px) {

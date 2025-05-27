@@ -113,7 +113,7 @@ function createRecipeInfoMarkup({
   <div class="recipe-info__rating-time-wrapper">
   
   <div class="recipe-info__rating-wrapper">
-  <p class="recipe-info-rating-number">${rating}</p>
+  <p class="recipe-info-rating-number">${rating.toFixed(1)}</p>
   
 <div class="stars-list-wrapper">
           <ul class="rating-list">
@@ -222,7 +222,7 @@ ${tagsList}
 <div class="recipe-info__rating-time-wrapper">
   
   <div class="recipe-info__rating-wrapper">
-  <p class="recipe-info-rating-number">${rating}</p>
+  <p class="recipe-info-rating-number">${rating.toFixed(1)}</p>
   
 <div class="stars-list-wrapper">
           <ul class="rating-list">

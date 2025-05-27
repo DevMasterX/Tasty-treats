@@ -1,0 +1,15 @@
+@use '../utils/mixins' as *;
+
+.pagination__btn.left {
+  @include pagination-btn(black);
+}
+.pagination__btn.active {
+  @include pagination-btn(green);
+}
+
+.pagination__btn.transparent {
+  @include pagination-btn(transparent);
+}
+.pagination__btn.right {
+  @include pagination-btn(green);
+}

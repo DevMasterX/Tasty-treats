@@ -1,0 +1,38 @@
+@use '../utils/mixins' as *;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 40px;
+
+  @include media(md) {
+    gap: 24px;
+    margin-top: 64px;
+  }
+}
+
+.pagination.main-pagination {
+  @include media(lg) {
+    justify-content: right;
+    margin-right: 168px;
+  }
+}
+
+.pagination__left-btns-wrapper,
+.pagination__right-btns-wrapper {
+  display: flex;
+  gap: 4px;
+
+  @include media(md) {
+    gap: 8px;
+  }
+}
+
+.pagination__center-btns-wrapper {
+  display: flex;
+  gap: 8px;
+  @include media(md) {
+    gap: 10px;
+  }
+}
