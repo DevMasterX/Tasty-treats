@@ -43,9 +43,13 @@
 //   }
 // }
 
-.pagination__btn.third {
+// .pagination__btn.third {
+//   display: none;
+//   @include media(md) {
+//     display: block;
+//   }
+// }
+
+.pagination__btn.pagination__prev-pages-btn {
   display: none;
-  @include media(md) {
-    display: block;
-  }
 }
