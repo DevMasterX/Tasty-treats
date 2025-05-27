@@ -13,3 +13,39 @@
 .pagination__btn.right {
   @include pagination-btn(green);
 }
+
+.pagination__btn.left .pagination__btn-icon,
+.pagination__btn.right .pagination__btn-icon {
+  width: 20px;
+  height: 20px;
+
+  @include media(md) {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.pagination__btn.left .pagination__btn-icon {
+  fill: var(--pagination-btn-left-icon-color);
+}
+
+.left-double-icon {
+  margin-right: -14px;
+
+  @include media(md) {
+    margin-right: -16px;
+  }
+}
+// .right-double-icon {
+//   margin-left: -14px;
+//   @include media(md) {
+//     margin-right: -16px;
+//   }
+// }
+
+.pagination__btn.third {
+  display: none;
+  @include media(md) {
+    display: block;
+  }
+}
