@@ -3,6 +3,7 @@ import { createGalleryMarkup } from './galleryMarkup';
 import { renderGallery } from './renderGallery';
 import { recipesApiService } from '../services/recipes-api-service';
 import { hideLoader, showLoader } from './loader';
+// import { renderPaginationButtons } from './pagination/render-pagination-buttons';
 // import { setupOpenButtons } from './modal';
 
 import {
@@ -27,12 +28,18 @@ async function initMainGallery() {
     const totalPages = data.totalPages;
     // console.log('🚀 totalPages:', totalPages);
     recipesApiService.updateParams('totalPages', totalPages);
+    // renderPaginationButtons(totalPages);
+
     const markup = createGalleryMarkup(data.results);
 
     // hideLoader(loaderContainer);
     renderGallery(container, markup);
+    // updatePaginationBtns(totalPages);
     //  setupOpenButtons();
     initFavoriteButtons();
+    // const totalP = recipesApiService.getQueryParams().totalPages;
+    // console.log('🚀 totalP:', totalP);
+    console.log('Gallery rendered');
   } catch (error) {
     console.error('Error loading recipes on the client:', error);
     throw error;

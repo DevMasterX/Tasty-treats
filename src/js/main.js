@@ -23,7 +23,6 @@ import { renderPaginationButtons } from './components/pagination/render-paginati
 document.addEventListener('DOMContentLoaded', async () => {
   setHeroMarginTop();
   initTheme();
-  renderPaginationButtons();
   initHeaderEventListeners();
   initMobileMenu();
   initModal();
@@ -36,6 +35,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     initFilters(),
     initMainGallery(),
   ]);
+  renderPaginationButtons();
+  // renderPaginationButtons();
   initHomePagination();
   // initSwiper();
   // initAllCategories();

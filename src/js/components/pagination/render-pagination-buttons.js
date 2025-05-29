@@ -1,16 +1,44 @@
+import { recipesApiService } from '../../services/recipes-api-service';
+
 function renderPaginationButtons() {
-  const container = document.querySelector(
+  const centerBtnsContainer = document.querySelector(
     '.js-pagination__center-btns-wrapper'
   );
 
-  container.innerHTML = createPaginationBtnsMarkup();
+  centerBtnsContainer.innerHTML = createPaginationBtnsMarkup();
+  // const totalPages = recipesApiService.getQueryParams().totalPages;
+  // console.log(3);
+  const totalPages = recipesApiService.getQueryParams().totalPages;
+  console.log('🚀 totalPages:', totalPages);
+  // console.log('🚀 totalP:', totalP);
+
+  const existingPageBtns = [...centerBtnsContainer.children].filter(
+    btn => btn.dataset.page
+  );
+
+  const nextPagesBtn = centerBtnsContainer.querySelector(
+    '.js-pagination-next-pages-btn'
+  );
+
+  existingPageBtns.forEach(btn => {
+    // btn.dataset.page > totalPages
+    //   ? (btn.style.display = 'none')
+    //   : (btn.style.display = 'block');
+    if (btn.dataset.page > totalPages) {
+      btn.classList.add('visually-hidden');
+      nextPagesBtn.classList.add('visually-hidden');
+    } else if (btn.dataset.page <= totalPages) {
+      btn.classList.remove('visually-hidden');
+      nextPagesBtn.classList.remove('visually-hidden');
+    }
+  });
 }
 
 function createPaginationBtnsMarkup() {
   if (window.innerWidth < 768) {
     return `
     <button
-        class="pagination__btn transparent pagination__prev-pages-btn js-pagination-prev-pages-btn"
+        class="pagination__btn transparent pagination__prev-pages-btn js-pagination-prev-pages-btn visually-hidden"
         aria-label="Previous pages button"
       >
         ...
@@ -42,7 +70,7 @@ function createPaginationBtnsMarkup() {
   return `
     
 <button
-        class="pagination__btn transparent pagination__prev-pages-btn js-pagination-prev-pages-btn"
+        class="pagination__btn transparent pagination__prev-pages-btn js-pagination-prev-pages-btn visually-hidden"
         aria-label="Previous pages button"
       >
         ...

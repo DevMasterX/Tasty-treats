@@ -41,25 +41,9 @@ function onFirstPageBtnClick() {}
 function onPrevPageBtnClick(e) {}
 
 async function onPrevPagesBtnClick(e) {
-  const {
-    nextPagesBtn,
-    prevPagesBtn,
-    totalPages,
-    existingPageBtns,
-    pageBtnsAmount,
-  } = initVars(e);
-
-  updateButtons(
-    e,
-    prevPagesBtn,
-    nextPagesBtn,
-    pageBtnsAmount,
-    existingPageBtns,
-    totalPages
-  );
+  updateButtons(e);
 
   const { firstBtnPageNumber } = initVars(e);
-  console.log('🚀 firstBtnPageNumber:', firstBtnPageNumber);
 
   recipesApiService.updateParams('page', firstBtnPageNumber);
   await initMainGallery();
@@ -80,26 +64,10 @@ function onThirdBtnClick(e) {
 }
 
 async function onNextPagesBtnClick(e) {
-  const {
-    nextPagesBtn,
-    prevPagesBtn,
-    totalPages,
-    existingPageBtns,
-    pageBtnsAmount,
-  } = initVars(e);
-
-  updateButtons(
-    e
-    // prevPagesBtn,
-    // nextPagesBtn,
-    // pageBtnsAmount,
-    // existingPageBtns,
-    // totalPages
-  );
+  console.log('click');
+  updateButtons(e);
 
   const { firstBtnPageNumber } = initVars(e);
-  // console.log('🚀 firstBtnPageNumber:', firstBtnPageNumber);
-
   recipesApiService.updateParams('page', firstBtnPageNumber);
   await initMainGallery();
   console.log(recipesApiService.getQueryParams());
@@ -139,7 +107,7 @@ function initVars(e) {
     existingPageBtns[existingPageBtns.length - 1].dataset.page
   );
   const isLastBtns = lastBtnPageNumber >= totalPages;
-  const isFirstBtns = firstBtnPageNumber > pageBtnsAmount;
+  const isFirstBtns = firstBtnPageNumber < pageBtnsAmount;
 
   return {
     nextPagesBtn,
@@ -155,14 +123,8 @@ function initVars(e) {
   };
 }
 
-function updateButtons(
-  e
-  // prevPagesBtn,
-  // nextPagesBtn,
-  // pageBtnsAmount,
-  // existingPageBtns,
-  // totalPages
-) {
+function updateButtons(e) {
+  console.log('zhmak');
   const {
     nextPagesBtn,
     prevPagesBtn,
@@ -186,15 +148,43 @@ function updateButtons(
     const { isLastBtns, isFirstBtns } = initVars(e);
 
     isLastBtns
-      ? (nextPagesBtn.style.display = 'none')
-      : (nextPagesBtn.style.display = 'block');
+      ? nextPagesBtn.classList.add('visually-hidden')
+      : nextPagesBtn.classList.remove('visually-hidden');
 
-    !isFirstBtns
-      ? (prevPagesBtn.style.display = 'none')
-      : (prevPagesBtn.style.display = 'block');
-    // console.log('🚀 isLastBtns:', isLastBtns);
+    isFirstBtns
+      ? prevPagesBtn.classList.add('visually-hidden')
+      : prevPagesBtn.classList.remove('visually-hidden');
   } else if (e.currentTarget === prevPagesBtn) {
     console.log('🚀 prevPagesBtn:', prevPagesBtn);
+
+    for (let i = 0; i < pageBtnsAmount; i++) {
+      existingPageBtns[i].dataset.page = `${
+        Number(existingPageBtns[i].dataset.page) - pageBtnsAmount
+      }`;
+      existingPageBtns[i].textContent = existingPageBtns[i].dataset.page;
+
+      existingPageBtns[i].dataset.page > totalPages
+        ? (existingPageBtns[i].style.display = 'none')
+        : (existingPageBtns[i].style.display = 'block');
+    }
+
+    const { isLastBtns, isFirstBtns } = initVars(e);
+
+    // isLastBtns
+    //   ? (nextPagesBtn.style.display = 'none')
+    //   : (nextPagesBtn.style.display = 'block');
+
+    // !isFirstBtns
+    //   ? (prevPagesBtn.style.display = 'none')
+    //   : (prevPagesBtn.style.display = 'block');
+
+    isLastBtns
+      ? nextPagesBtn.classList.add('visually-hidden')
+      : nextPagesBtn.classList.remove('visually-hidden');
+
+    isFirstBtns
+      ? prevPagesBtn.classList.add('visually-hidden')
+      : prevPagesBtn.classList.remove('visually-hidden');
   }
 }
 

@@ -106,7 +106,9 @@ function initEventListeners(section) {
       const category = item.textContent.trim();
       saveToStorage(CURRENT_CATEGORY, category);
 
+      recipesApiService.updateParams('page', 1);
       recipesApiService.updateParams('category', category);
+      console.log('after all-categories', recipesApiService.getQueryParams());
       initMainGallery();
     }
   });
