@@ -3,13 +3,16 @@
 .pagination__btn.left {
   @include pagination-btn(black);
 }
-.pagination__btn.active {
+.pagination__btn.transparent.active {
   @include pagination-btn(green);
 }
 
 .pagination__btn.transparent {
   @include pagination-btn(transparent);
 }
+// .pagination__btn {
+//   @include pagination-btn(transparent);
+// }
 .pagination__btn.right {
   @include pagination-btn(green);
 }
@@ -53,3 +56,7 @@
 // .pagination__btn.pagination__prev-pages-btn {
 //   display: none;
 // }
+.pagination__btn.disabled {
+  pointer-events: none;
+  opacity: 0.25;
+}

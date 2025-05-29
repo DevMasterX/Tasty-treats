@@ -51,6 +51,7 @@
   font-weight: 600;
   font-size: 18px;
   line-height: 122%;
+  // outline: 1px solid var(--pagination-btn-outline);
   @include flex-center;
   @if $backgroundColor == black {
     background-color: #050505;

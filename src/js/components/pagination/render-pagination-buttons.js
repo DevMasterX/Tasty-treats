@@ -1,4 +1,4 @@
-import { recipesApiService } from '../../services/recipes-api-service';
+// import { recipesApiService } from '../../services/recipes-api-service';
 
 function renderPaginationButtons() {
   const centerBtnsContainer = document.querySelector(
@@ -6,32 +6,32 @@ function renderPaginationButtons() {
   );
 
   centerBtnsContainer.innerHTML = createPaginationBtnsMarkup();
+  // console.log('🚀 centerBtnsContainer:', centerBtnsContainer);
   // const totalPages = recipesApiService.getQueryParams().totalPages;
   // console.log(3);
-  const totalPages = recipesApiService.getQueryParams().totalPages;
-  console.log('🚀 totalPages:', totalPages);
+  // const totalPages = recipesApiService.getQueryParams().totalPages;
+  // console.log('🚀 totalPages:', totalPages);
   // console.log('🚀 totalP:', totalP);
 
-  const existingPageBtns = [...centerBtnsContainer.children].filter(
-    btn => btn.dataset.page
-  );
+  // const existingPageBtns = [...centerBtnsContainer.children].filter(
+  //   btn => btn.dataset.page
+  // );
 
-  const nextPagesBtn = centerBtnsContainer.querySelector(
-    '.js-pagination-next-pages-btn'
-  );
+  // const nextPagesBtn = centerBtnsContainer.querySelector(
+  //   '.js-pagination-next-pages-btn'
+  // );
 
-  existingPageBtns.forEach(btn => {
-    // btn.dataset.page > totalPages
-    //   ? (btn.style.display = 'none')
-    //   : (btn.style.display = 'block');
-    if (btn.dataset.page > totalPages) {
-      btn.classList.add('visually-hidden');
-      nextPagesBtn.classList.add('visually-hidden');
-    } else if (btn.dataset.page <= totalPages) {
-      btn.classList.remove('visually-hidden');
-      nextPagesBtn.classList.remove('visually-hidden');
-    }
-  });
+  // existingPageBtns.forEach(btn => {
+
+  //   if (btn.dataset.page > totalPages) {
+  //     btn.classList.add('visually-hidden');
+  //     nextPagesBtn.classList.add('visually-hidden');
+  //   } else if (btn.dataset.page <= totalPages) {
+  //     btn.classList.remove('visually-hidden');
+  //     nextPagesBtn.classList.remove('visually-hidden');
+  //   }
+  // });
+  console.log('pagination buttons rendered', centerBtnsContainer);
 }
 
 function createPaginationBtnsMarkup() {
@@ -45,7 +45,7 @@ function createPaginationBtnsMarkup() {
       </button>
 
      <button
-        class="pagination__btn active js-pagination-first-btn"
+        class="pagination__btn transparent active js-pagination-first-btn"
         data-page="1"
       >
         1
@@ -77,7 +77,7 @@ function createPaginationBtnsMarkup() {
       </button>
 
      <button
-        class="pagination__btn active js-pagination-first-btn"
+        class="pagination__btn transparent active js-pagination-first-btn"
         data-page="1"
       >
         1

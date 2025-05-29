@@ -55,7 +55,7 @@ class RecipesApiService {
       title: this.title ?? null,
       category: this.category ?? null,
       page: this.page,
-      totalPages: this.totalPages,
+      // totalPages: this.totalPages,
       limit: this.limit,
       time: this.time ?? null,
       area: this.area ?? null,
@@ -72,7 +72,7 @@ class RecipesApiService {
   resetFilterQueryParams() {
     this.title = '';
     this.page = 1;
-    this.totalPages = null;
+    // this.totalPages = null;
     this.limit = this.getLimitByViewport();
     this.time = null;
     this.area = '';
@@ -84,11 +84,15 @@ class RecipesApiService {
       const response = await apiClient.get('/recipes', {
         params: this.getQueryParams(),
       });
+      this.totalPages = response.data.totalPages;
       return response.data;
     } catch (error) {
       console.error('Error fetching recipes:', error);
       throw error;
     }
+  }
+  getTotalPages() {
+    return this.totalPages;
   }
   // async fetchAllRecipes() {
   //   try {

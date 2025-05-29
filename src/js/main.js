@@ -14,6 +14,7 @@ import { initSwiper } from './components/swiper';
 import { initAllCategories } from './components/init-all-categories.js';
 import { initPopularRecipes } from './components/init-popular-recipes';
 import { initFilters } from './components/filters';
+export { initMainGallery };
 import { initMainGallery } from './components/main-gallery.js';
 import { checkSavedCategory } from './components/current-category.js';
 import { setHeroMarginTop } from './utils/hero-margin-top.js';
@@ -23,10 +24,12 @@ import { renderPaginationButtons } from './components/pagination/render-paginati
 document.addEventListener('DOMContentLoaded', async () => {
   setHeroMarginTop();
   initTheme();
+  renderPaginationButtons();
   initHeaderEventListeners();
   initMobileMenu();
   initModal();
   checkSavedCategory();
+  initHomePagination();
 
   await Promise.all([
     initSwiper(),
@@ -35,9 +38,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     initFilters(),
     initMainGallery(),
   ]);
-  renderPaginationButtons();
+  // console.log('🚀 totalPages:', totalPages);
+  // const totalPages = recipesApiService.getTotalPages();
+  // console.log(getTotalPages());
   // renderPaginationButtons();
-  initHomePagination();
   // initSwiper();
   // initAllCategories();
   // initPopularRecipes();
