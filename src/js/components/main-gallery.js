@@ -3,6 +3,7 @@ import { createGalleryMarkup } from './galleryMarkup';
 import { renderGallery } from './renderGallery';
 import { recipesApiService } from '../services/recipes-api-service';
 import { hideLoader, showLoader } from './loader';
+import { updatePaginationBtns } from './pagination/homePagination';
 // import { renderPaginationButtons } from './pagination/render-pagination-buttons';
 // import { setupOpenButtons } from './modal';
 
@@ -34,7 +35,7 @@ async function initMainGallery() {
 
     // hideLoader(loaderContainer);
     renderGallery(container, markup);
-    // updatePaginationBtns(totalPages);
+    updatePaginationBtns(totalPages);
     //  setupOpenButtons();
     initFavoriteButtons();
     // const totalP = recipesApiService.getQueryParams().totalPages;

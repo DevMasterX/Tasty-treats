@@ -5,6 +5,7 @@ import { initMainGallery } from '../main-gallery';
 // console.log('🚀 recipesApiService:', recipesApiService);
 // let buttonsIterator = 0;
 let dataPage = 1;
+
 function initHomePagination() {
   setupButtonsEventListeners();
 }
@@ -188,4 +189,8 @@ function updateButtons(e) {
   }
 }
 
-export { initHomePagination };
+function updatePaginationBtns(totalPages) {
+  console.log('upd', totalPages);
+}
+
+export { initHomePagination, updatePaginationBtns };
