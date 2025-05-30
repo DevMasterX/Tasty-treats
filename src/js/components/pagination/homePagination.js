@@ -36,7 +36,6 @@ async function onPrevPagesBtnClick(e) {
   onPaginationBtnClick(e);
 
   const { firstBtnPageNumber } = initVars(e);
-
   recipesApiService.updateParams('page', firstBtnPageNumber);
   await initMainGallery();
   console.log(recipesApiService.getQueryParams());
@@ -75,7 +74,11 @@ function onNextPageBtnClick() {
   // existingPageBtns.forEach(btn => btn.classList.remove('active'));
 }
 
-function onLastPageBtnClick() {}
+function onLastPageBtnClick() {
+  const { totalPages: lastPage } = initVars();
+  recipesApiService.updateParams('page', lastPage);
+  initMainGallery();
+}
 
 function handlePaginationClick(e) {
   const { existingPageBtns } = initVars();
@@ -124,6 +127,7 @@ function initVars() {
   const lastBtnPageNumber = Number(
     existingPageBtns[existingPageBtns.length - 1].dataset.page
   );
+  // lastPageBtn=
   const isLastBtns = lastBtnPageNumber >= totalPages;
   const isFirstBtns = firstBtnPageNumber < pageBtnsAmount;
 
@@ -151,6 +155,7 @@ function initVars() {
 
 function onDotsBtnClick(e) {
   const {
+    firstPageBtn,
     nextPagesBtn,
     prevPagesBtn,
     // totalPages,
@@ -166,7 +171,11 @@ function onDotsBtnClick(e) {
         Number(existingPageBtns[i].dataset.page) + pageBtnsAmount
       }`;
       existingPageBtns[i].textContent = existingPageBtns[i].dataset.page;
-      existingPageBtns[i].classList.remove('active');
+      if (!firstPageBtn.classList.contains('active')) {
+        existingPageBtns[i].classList.remove('active');
+      }
+      // if(){}
+      // existingPageBtns[i].classList.remove('active');
       // existingPageBtns[i].classList.toggle(
       //   'active',
       //   Number(existingPageBtns[i].dataset.page) === currentPage
@@ -184,6 +193,7 @@ function onDotsBtnClick(e) {
 
 function updatePaginationBtns(page, totalPages) {
   const {
+    pageBtnsAmount,
     firstPageBtn,
     prevPageBtn,
     existingPageBtns,
@@ -191,22 +201,34 @@ function updatePaginationBtns(page, totalPages) {
     nextPagesBtn,
     nextPageBtn,
     lastPageBtn,
-    isLastBtns,
-    isFirstBtns,
+
     currentPage,
+    lastBtnPageNumber,
   } = initVars();
+  console.log('🚀 existingPageBtns:', existingPageBtns);
   console.log('🚀 currentPage:', currentPage);
+
+  if (lastBtnPageNumber < page) {
+    for (let i = 0; i < pageBtnsAmount; i++) {
+      existingPageBtns[i].dataset.page = page + i;
+      existingPageBtns[i].textContent = existingPageBtns[i].dataset.page;
+    }
+  }
+  console.log('🚀 existingPageBtns:', existingPageBtns);
+
+  const { isLastBtns, isFirstBtns } = initVars();
 
   existingPageBtns.forEach(btn => {
     btn.classList.toggle('visually-hidden', btn.dataset.page > totalPages);
     btn.classList.toggle('active', Number(btn.dataset.page) === page);
   });
-  firstPageBtn.classList.toggle('disabled', currentPage === 1);
+  firstPageBtn.classList.toggle('disabled', page === 1);
   prevPageBtn.classList.toggle('disabled', isFirstBtns);
   prevPagesBtn.classList.toggle('visually-hidden', isFirstBtns);
   nextPagesBtn.classList.toggle('visually-hidden', isLastBtns);
   nextPageBtn.classList.toggle('disabled', isLastBtns);
-  lastPageBtn.classList.toggle('disabled', currentPage === totalPages);
+  lastPageBtn.classList.toggle('disabled', page === totalPages);
+  console.log('🚀 isLastBtns:', isLastBtns);
 }
 
 export { initHomePagination, updatePaginationBtns };
