@@ -205,7 +205,10 @@ function updatePaginationBtns(page, totalPages) {
     currentPage,
     lastBtnPageNumber,
   } = initVars();
-  console.log('🚀 existingPageBtns:', existingPageBtns);
+
+  existingPageBtns.forEach(btn => {
+    console.log('before', btn.dataset.page);
+  });
   console.log('🚀 currentPage:', currentPage);
 
   if (lastBtnPageNumber < page) {
@@ -214,7 +217,10 @@ function updatePaginationBtns(page, totalPages) {
       existingPageBtns[i].textContent = existingPageBtns[i].dataset.page;
     }
   }
-  console.log('🚀 existingPageBtns:', existingPageBtns);
+
+  existingPageBtns.forEach(btn => {
+    console.log('after', btn.dataset.page);
+  });
 
   const { isLastBtns, isFirstBtns } = initVars();
 
