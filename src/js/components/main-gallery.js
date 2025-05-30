@@ -24,9 +24,10 @@ async function initMainGallery() {
 
   try {
     const data = await recipesApiService.fetchRecipes();
-    console.log('🚀 data:', data);
+    console.log('Init main gallery');
 
     const totalPages = data.totalPages;
+    console.log('🚀 totalPages:', totalPages);
     const page = recipesApiService.getQueryParams().page;
     console.log('🚀 page:', page);
     // console.log('🚀 totalPages:', totalPages);
@@ -38,7 +39,7 @@ async function initMainGallery() {
     // hideLoader(loaderContainer);
     renderGallery(container, markup);
     console.log('Gallery rendered');
-    updatePaginationBtns(totalPages);
+    updatePaginationBtns(page, totalPages);
     // updatePaginationBtns(totalPages);
     //  setupOpenButtons();
     initFavoriteButtons();
