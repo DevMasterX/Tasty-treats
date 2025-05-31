@@ -29,16 +29,27 @@ function setupButtonsEventListeners() {
   lastPageBtn?.addEventListener('click', onLastPageBtnClick);
 }
 
-function onFirstPageBtnClick() {}
-function onPrevPageBtnClick(e) {}
+function onFirstPageBtnClick() {
+  recipesApiService.updateParams('page', 1);
+  initMainGallery();
+}
+function onPrevPageBtnClick() {
+  const { currentPage, existingPageBtns } = initVars();
+  const prevPage = currentPage - 1;
+
+  // existingPageBtns.forEach(btn => {
+  //   btn.classList.toggle('active', Number(btn.dataset.page) === prevPage);
+  // });
+  recipesApiService.updateParams('page', prevPage);
+  initMainGallery();
+}
 
 async function onPrevPagesBtnClick(e) {
-  onPaginationBtnClick(e);
+  onDotsBtnClick(e);
 
-  const { firstBtnPageNumber } = initVars(e);
+  const { firstBtnPageNumber } = initVars();
   recipesApiService.updateParams('page', firstBtnPageNumber);
   await initMainGallery();
-  console.log(recipesApiService.getQueryParams());
 }
 
 function onFirstBtnClick(e) {
@@ -127,6 +138,7 @@ function initVars() {
   const lastBtnPageNumber = Number(
     existingPageBtns[existingPageBtns.length - 1].dataset.page
   );
+
   // lastPageBtn=
   const isLastBtns = lastBtnPageNumber >= totalPages;
   const isFirstBtns = firstBtnPageNumber < pageBtnsAmount;
@@ -187,6 +199,9 @@ function onDotsBtnClick(e) {
         Number(existingPageBtns[i].dataset.page) - pageBtnsAmount
       }`;
       existingPageBtns[i].textContent = existingPageBtns[i].dataset.page;
+      if (!firstPageBtn.classList.contains('active')) {
+        existingPageBtns[i].classList.remove('active');
+      }
     }
   }
 }
@@ -203,6 +218,7 @@ function updatePaginationBtns(page, totalPages) {
     lastPageBtn,
 
     currentPage,
+    firstBtnPageNumber,
     lastBtnPageNumber,
   } = initVars();
 
@@ -214,6 +230,12 @@ function updatePaginationBtns(page, totalPages) {
   if (lastBtnPageNumber < page) {
     for (let i = 0; i < pageBtnsAmount; i++) {
       existingPageBtns[i].dataset.page = page + i;
+      existingPageBtns[i].textContent = existingPageBtns[i].dataset.page;
+    }
+  } else if (page < firstBtnPageNumber) {
+    for (let i = 0; i < pageBtnsAmount; i++) {
+      existingPageBtns[i].dataset.page =
+        existingPageBtns[i].dataset.page - page;
       existingPageBtns[i].textContent = existingPageBtns[i].dataset.page;
     }
   }
@@ -229,12 +251,11 @@ function updatePaginationBtns(page, totalPages) {
     btn.classList.toggle('active', Number(btn.dataset.page) === page);
   });
   firstPageBtn.classList.toggle('disabled', page === 1);
-  prevPageBtn.classList.toggle('disabled', isFirstBtns);
+  prevPageBtn.classList.toggle('disabled', page === 1);
   prevPagesBtn.classList.toggle('visually-hidden', isFirstBtns);
   nextPagesBtn.classList.toggle('visually-hidden', isLastBtns);
-  nextPageBtn.classList.toggle('disabled', isLastBtns);
+  nextPageBtn.classList.toggle('disabled', page === totalPages);
   lastPageBtn.classList.toggle('disabled', page === totalPages);
-  console.log('🚀 isLastBtns:', isLastBtns);
 }
 
 export { initHomePagination, updatePaginationBtns };
