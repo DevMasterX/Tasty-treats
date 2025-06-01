@@ -28,25 +28,19 @@ async function initMainGallery() {
 
     const totalPages = data.totalPages;
     console.log('🚀 totalPages:', totalPages);
+
     const page = recipesApiService.getQueryParams().page;
     console.log('🚀 page:', page);
-    // console.log('🚀 totalPages:', totalPages);
+
     recipesApiService.updateParams('totalPages', totalPages);
-    // renderPaginationButtons(totalPages);
 
     const markup = createGalleryMarkup(data.results);
 
-    // hideLoader(loaderContainer);
     renderGallery(container, markup);
-    console.log('Gallery rendered');
-    updatePaginationBtns(page, totalPages);
-    // updatePaginationBtns(totalPages);
-    //  setupOpenButtons();
-    initFavoriteButtons();
-    // const totalP = recipesApiService.getQueryParams().totalPages;
-    // console.log('🚀 totalP:', totalP);
 
-    // return data.totalPages;
+    updatePaginationBtns(page, totalPages);
+
+    initFavoriteButtons();
   } catch (error) {
     console.error('Error loading recipes on the client:', error);
     throw error;
@@ -81,9 +75,6 @@ function initFavoriteButtons() {
           clickToClose: true,
         });
       }
-
-      // console.log(btn);
-      // console.log(btn.dataset.id);
 
       if (favoritesValue.length === 0) {
         removeFromStorage(favoritesKey);
