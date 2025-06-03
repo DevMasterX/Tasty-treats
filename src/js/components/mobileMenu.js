@@ -1,8 +1,8 @@
 function initMobileMenu() {
   let touchStartX = 0;
   let touchEndX = 0;
-  let currentX = 0;
-  let isDragging = false;
+  // let currentX = 0;
+  // let isDragging = false;
   const mobileMenuBtn = document.querySelector('.js-mobile-menu-btn');
   const mobileMenuCloseBtn = document.querySelector('.js-close-btn');
   const mobileMenu = document.querySelector('.js-mobile-menu');
@@ -87,7 +87,6 @@ function initMobileMenu() {
   function handleSwipeGesture() {
     const swipeDistance = touchStartX - touchEndX;
     if (swipeDistance < 50) {
-      console.log('swipe right');
       onCloseMenu();
     }
   }

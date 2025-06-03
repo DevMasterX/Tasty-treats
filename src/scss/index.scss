@@ -1,8 +1,11 @@
 // @use 'modern-normalize/modern-normalize';
+
 @use 'vendors';
 @use 'utils';
 @use 'base';
 @use 'layout';
 @use 'components';
 @use 'themes';
+
 @import 'choices.js/src/styles/choices';
+// @import 'animate.css/animate';

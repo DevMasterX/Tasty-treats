@@ -1,5 +1,5 @@
 import Notiflix from 'notiflix';
-
+// import 'animate.css';
 import { closeModal } from '../components/modal';
 import { ORDER_FORM_KEY } from './formStorage';
 

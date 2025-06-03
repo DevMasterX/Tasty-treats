@@ -1,5 +1,7 @@
 import ResizeObserver from 'resize-observer-polyfill';
 window.ResizeObserver = ResizeObserver;
+import 'animate.css';
+
 // import iconsUrl from '../img/icons.svg';
 // import 'choices.js/public/assets/styles/choices.css';
 // import SimpleBar from 'simplebar';
@@ -20,6 +22,7 @@ import { checkSavedCategory } from './components/current-category.js';
 import { setHeroMarginTop } from './utils/hero-margin-top.js';
 import { initHomePagination } from './components/pagination/homePagination';
 import { renderPaginationButtons } from './components/pagination/render-pagination-buttons';
+import { initBackToTop } from './components/back-to-top.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   setHeroMarginTop();
@@ -29,6 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   initMobileMenu();
   initModal();
   checkSavedCategory();
+  initBackToTop();
   initHomePagination();
 
   await Promise.all([

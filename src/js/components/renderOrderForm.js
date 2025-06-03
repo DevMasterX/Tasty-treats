@@ -10,7 +10,7 @@ function renderOrderForm(modalContentElement) {
           <label class="order-form__label">
           <span class="order-form__label-text">Name</span>
           <input type="text" name="username" class="order-form__input"  autocomplete="name"/>
-          <span class="order-form__error-message"></span>
+          <span class="order-form__error-message "></span>
           </label>
 
           <label class="order-form__label">

@@ -1,0 +1,29 @@
+@use '../utils/mixins' as *;
+
+.back-to-top__btn {
+  width: 60px;
+  height: 60px;
+  border: 2px solid red;
+  border-radius: 50%;
+  background-color: blue;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  @include transition;
+}
+
+.back-to-top__icon {
+  fill: green;
+}
