@@ -12,7 +12,7 @@ function createPaginationBtnsMarkup() {
   if (window.innerWidth < 768) {
     return `
     <button
-        class="pagination__btn transparent pagination__prev-pages-btn js-pagination-prev-pages-btn visually-hidden"
+        class="pagination__btn transparent pagination__prev-pages-btn js-pagination-prev-pages-btn disabled"
         aria-label="Previous pages button"
       >
         ...
@@ -44,7 +44,7 @@ function createPaginationBtnsMarkup() {
   return `
     
 <button
-        class="pagination__btn transparent pagination__prev-pages-btn js-pagination-prev-pages-btn visually-hidden"
+        class="pagination__btn transparent pagination__prev-pages-btn js-pagination-prev-pages-btn disabled"
         aria-label="Previous pages button"
       >
         ...

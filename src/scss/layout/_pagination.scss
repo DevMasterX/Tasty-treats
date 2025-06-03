@@ -3,7 +3,7 @@
 .pagination {
   display: flex;
   justify-content: center;
-  // gap: 14px;
+  gap: 14px;
   margin-top: 40px;
 
   @include media(md) {
@@ -30,7 +30,7 @@
 }
 
 .pagination__center-btns-wrapper {
-  margin: 0 14px;
+  // margin: 0 14px;
 
   display: flex;
   gap: 5px;
