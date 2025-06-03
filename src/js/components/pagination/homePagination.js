@@ -255,6 +255,9 @@ function updatePaginationBtns(page, totalPages) {
   prevPageBtn.classList.toggle('disabled', page === 1);
   prevPagesBtn.classList.toggle('visually-hidden', isFirstBtns);
   nextPagesBtn.classList.toggle('visually-hidden', isLastBtns);
+  // prevPagesBtn.classList.toggle('disabled', isFirstBtns);
+  // nextPagesBtn.classList.toggle('disabled', isLastBtns);
+
   nextPageBtn.classList.toggle('disabled', page === totalPages);
   lastPageBtn.classList.toggle('disabled', page === totalPages);
 }
