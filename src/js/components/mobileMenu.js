@@ -17,7 +17,7 @@ function initMobileMenu() {
   mobileMenu.addEventListener('touchstart', handleTouchStart, {
     passive: true,
   });
-  mobileMenu.addEventListener('touchmove', handleTouchMove, { passive: false });
+  // mobileMenu.addEventListener('touchmove', handleTouchMove, { passive: false });
   mobileMenu.addEventListener('touchend', handleTouchEnd);
 
   mobileMenuBtn.addEventListener('click', onOpenMenu);
@@ -53,30 +53,30 @@ function initMobileMenu() {
     // console.log(e);
     // console.log(e.changedTouches[0].clientX);
     touchStartX = e.touches[0].clientX;
-    isDragging = true;
+    // isDragging = true;
   }
 
-  function handleTouchMove(e) {
-    currentX = e.touches[0].clientX;
-    const deltaX = currentX - touchStartX;
-    console.log('🚀 deltaX:', deltaX);
-    // console.log('🚀 currentX:', currentX);
-    const screenWidth = window.innerWidth;
-    const maxMobileMenuWidth = screenWidth * 0.65;
-    const movePercentToRight = (currentX / screenWidth) * 100;
-    console.log('🚀 movePercent:', movePercentToRight);
-    // console.log('🚀 mobileMenuWidth:', mobileMenuWidth);
-    if (maxMobileMenuWidth <= maxMobileMenuWidth) {
-      mobileMenu.style.transform = `translateX(${deltaX}px)`;
-    }
-    mobileMenu.style.transform = `translateX(${deltaX}px)`;
+  // function handleTouchMove(e) {
+  //   currentX = e.touches[0].clientX;
+  //   const deltaX = currentX - touchStartX;
+  //   console.log('🚀 deltaX:', deltaX);
+  //   // console.log('🚀 currentX:', currentX);
+  //   const screenWidth = window.innerWidth;
+  //   const maxMobileMenuWidth = screenWidth * 0.65;
+  //   const movePercentToRight = (currentX / screenWidth) * 100;
+  //   console.log('🚀 movePercent:', movePercentToRight);
+  //   // console.log('🚀 mobileMenuWidth:', mobileMenuWidth);
+  //   if (maxMobileMenuWidth <= maxMobileMenuWidth) {
+  //     mobileMenu.style.transform = `translateX(${deltaX}px)`;
+  //   }
+  //   mobileMenu.style.transform = `translateX(${deltaX}px)`;
 
-    // console.log('🚀 screenWidth:', screenWidth);
-    e.preventDefault();
-  }
+  //   // console.log('🚀 screenWidth:', screenWidth);
+  //   e.preventDefault();
+  // }
 
   function handleTouchEnd(e) {
-    isDragging = false;
+    // isDragging = false;
     // console.log(e);
     // console.log(e.changedTouches[0].clientX);
     touchEndX = e.changedTouches[0].clientX;
@@ -88,7 +88,7 @@ function initMobileMenu() {
     const swipeDistance = touchStartX - touchEndX;
     if (swipeDistance < 50) {
       console.log('swipe right');
-      // onCloseMenu();
+      onCloseMenu();
     }
   }
 }
