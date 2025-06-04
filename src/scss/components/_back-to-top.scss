@@ -1,11 +1,13 @@
 @use '../utils/mixins' as *;
 
 .back-to-top__btn {
-  width: 60px;
-  height: 60px;
-  border: 2px solid red;
-  border-radius: 50%;
-  background-color: blue;
+  // position: relative;
+  width: 40px;
+  height: 40px;
+  // border-top: 7px solid var(--up-to-top-icon-color);
+  // border: 2px solid red;
+  // border-radius: 50%;
+  // background-color: blue;
 
   opacity: 0;
   visibility: hidden;
@@ -14,6 +16,17 @@
   &.visible {
     opacity: 1;
     visibility: visible;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 0;
+    width: 40px;
+    height: 7px;
+    border-radius: 3px;
+    border: 1px solid var(--text-accent);
+    background-color: var(--up-to-top-icon-color);
   }
 
   @media (hover: hover) and (pointer: fine) {
@@ -25,5 +38,6 @@
 }
 
 .back-to-top__icon {
-  fill: green;
+  fill: var(--up-to-top-icon-color);
+  stroke: var(--text-accent);
 }

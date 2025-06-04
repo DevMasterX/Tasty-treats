@@ -76,6 +76,11 @@ function validateField(inputElement) {
 function showError(errorElement, message, inputElement) {
   if (!errorElement || !inputElement) return;
 
+  errorElement.classList.add('animate__animated', 'animate__headShake');
+  errorElement.addEventListener('animationend', () => {
+    errorElement.classList.remove('animate__bounceIn');
+  });
+
   if (errorElement.textContent !== message) {
     errorElement.textContent = message;
   }
