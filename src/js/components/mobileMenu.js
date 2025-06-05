@@ -28,6 +28,10 @@ function initMobileMenu() {
     header.classList.add('menu-opened');
     document.body.classList.add('no-scroll');
     document.addEventListener('click', onDocumentClick);
+
+    // setTimeout(() => {
+    //   document.addEventListener('click', onDocumentClick);
+    // }, 0);
   }
 
   function onCloseMenu() {
@@ -38,6 +42,7 @@ function initMobileMenu() {
   }
 
   function onDocumentClick(e) {
+    console.log(e.target);
     const clickInsideMenu = mobileMenu.contains(e.target);
     const clickOnButton = mobileMenuBtn.contains(e.target);
     // const clickOnThemeSwitcher =
