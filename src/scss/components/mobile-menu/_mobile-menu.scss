@@ -63,8 +63,10 @@
 }
 
 .mobile-menu-list-item.mobile-menu-current {
+  font-size: 18px;
   color: var(--mobile-menu-current);
   font-weight: 600;
+  border-bottom: 2px solid var(--mobile-menu-current);
 }
 
 body.dark-theme .mobile-menu {

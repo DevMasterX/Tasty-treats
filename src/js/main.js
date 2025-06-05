@@ -23,9 +23,11 @@ import { setHeroMarginTop } from './utils/hero-margin-top.js';
 import { initHomePagination } from './components/pagination/homePagination';
 import { renderPaginationButtons } from './components/pagination/render-pagination-buttons';
 import { initBackToTop } from './components/back-to-top';
+import { highlightActiveNavLink } from './utils/nav-link-active';
 // import { initBackToTop } from './components/back-to-top.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
+  highlightActiveNavLink();
   setHeroMarginTop();
   initTheme();
   renderPaginationButtons();
