@@ -1,5 +1,29 @@
 @use '../utils/mixins' as *;
 
-.favorites-hero__container {
-  // @include responsive-bg('bg')
+.favorites-hero__img-container {
+  margin-top: 44px;
+  border-radius: 15px;
+  height: 516px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  @include media(md) {
+    height: 356px;
+  }
+  @include media(lg) {
+    margin-top: 36px;
+  }
 }
+
+body.webp .favorites-hero__img-container {
+  @include responsive-bg('bg', 'webp');
+}
+
+body.no-webp .favorites-hero__img-container {
+  @include responsive-bg('bg');
+}
+
+// .favorites-hero__img-container {
+//   @include responsive-bg('bg');
+// }

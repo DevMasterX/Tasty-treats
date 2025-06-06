@@ -93,27 +93,27 @@
 
 @mixin responsive-bg($name, $ext: 'jpg') {
   // Mobile
-  background-image: url('../img/mobile/#{$name}@1x.#{$ext}');
+  background-image: url('../img/favorite-hero/#{$name}-sm@1x.#{$ext}');
 
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    background-image: url('../img/mobile/#{$name}@2x.#{$ext}');
+    background-image: url('../img/favorite-hero/#{$name}-sm@2x.#{$ext}');
   }
 
   // Tablet
   @media (min-width: 768px) {
-    background-image: url('../img/tablet/#{$name}@1x.#{$ext}');
+    background-image: url('../img/favorite-hero/#{$name}-md@1x.#{$ext}');
 
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-      background-image: url('../img/tablet/#{$name}@2x.#{$ext}');
+      background-image: url('../img/favorite-hero/#{$name}-md@2x.#{$ext}');
     }
   }
 
   // Desktop
   @media (min-width: 1280px) {
-    background-image: url('../img/desktop/#{$name}@1x.#{$ext}');
+    background-image: url('../img/favorite-hero/#{$name}-lg@1x.#{$ext}');
 
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-      background-image: url('../img/desktop/#{$name}@2x.#{$ext}');
+      background-image: url('../img/favorite-hero/#{$name}-lg@2x.#{$ext}');
     }
   }
 }
