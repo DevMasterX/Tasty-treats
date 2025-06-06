@@ -90,3 +90,30 @@
 @mixin transition($properties: all, $time: 0.3s, $ease: ease-out) {
   transition: $properties $time $ease;
 }
+
+@mixin responsive-bg($name, $ext: 'jpg') {
+  // Mobile
+  background-image: url('../img/mobile/#{$name}@1x.#{$ext}');
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: url('../img/mobile/#{$name}@2x.#{$ext}');
+  }
+
+  // Tablet
+  @media (min-width: 768px) {
+    background-image: url('../img/tablet/#{$name}@1x.#{$ext}');
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: url('../img/tablet/#{$name}@2x.#{$ext}');
+    }
+  }
+
+  // Desktop
+  @media (min-width: 1280px) {
+    background-image: url('../img/desktop/#{$name}@1x.#{$ext}');
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      background-image: url('../img/desktop/#{$name}@2x.#{$ext}');
+    }
+  }
+}

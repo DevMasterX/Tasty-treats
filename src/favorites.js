@@ -11,10 +11,12 @@ import { initModal } from './js/components/modal';
 import { setHeroMarginTop } from './js/utils/hero-margin-top';
 import { initBackToTop } from './js/components/back-to-top';
 import { highlightActiveNavLink } from './js/utils/nav-link-active';
+import { isWebPSupported } from './js/utils/support-webp';
 
 // import { initBackToTop } from './js/components/back-to-top';
 
 document.addEventListener('DOMContentLoaded', async () => {
+  document.body.classList.add(isWebPSupported() ? 'webp' : 'no-webp');
   highlightActiveNavLink();
   //   setHeroMarginTop(); // Учитываем высоту хедера
   initTheme(); // Тема (светлая/тёмная)
