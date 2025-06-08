@@ -1,0 +1,22 @@
+@use '../utils/mixins' as *;
+
+.favorites-section {
+  margin-top: 40px;
+  @include media(md) {
+    margin-top: 64px;
+  }
+}
+
+.container.favorites-container {
+  padding-right: 0;
+}
+
+.favorites-container,
+.fav-categories-btn-wrapper {
+  display: flex;
+  gap: 12px;
+
+  @include media(md) {
+    gap: 15px;
+  }
+}

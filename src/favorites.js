@@ -12,17 +12,19 @@ import { setHeroMarginTop } from './js/utils/hero-margin-top';
 import { initBackToTop } from './js/components/back-to-top';
 import { highlightActiveNavLink } from './js/utils/nav-link-active';
 import { isWebPSupported } from './js/utils/support-webp';
+import { initFavCategories } from './js/components/fav-categories';
 
 // import { initBackToTop } from './js/components/back-to-top';
 
 document.addEventListener('DOMContentLoaded', async () => {
   document.body.classList.add(isWebPSupported() ? 'webp' : 'no-webp');
+  initTheme(); // Тема (светлая/тёмная)
   highlightActiveNavLink();
   //   setHeroMarginTop(); // Учитываем высоту хедера
-  initTheme(); // Тема (светлая/тёмная)
   initHeaderEventListeners(); // Бургер, логотип и т.д.
   initMobileMenu(); // Открытие/закрытие меню
   initModal(); // Общая логика модалки
+  await initFavCategories();
   initBackToTop(); // Кнопка "вверх"
 
   //   await initFavoritesGallery(); // ⚡️ основная логика страницы
