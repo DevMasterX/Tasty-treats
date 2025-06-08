@@ -1,0 +1,21 @@
+@use '../utils/mixins' as *;
+
+.favorites-gallery {
+  position: relative;
+  margin-top: 24px;
+
+  @include media(md) {
+    margin-top: 32px;
+    //   grid-area: gallery;
+  }
+}
+
+.favorites-gallery-container {
+  @include media(md) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @include media(lg) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}

@@ -1,0 +1,47 @@
+@use '../utils/mixins' as *;
+
+.container.favorites-container {
+  padding-right: 0;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  // ✅ Плавная прокрутка на iOS (важно для UX на iPhone)
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.fav-btn {
+  flex-shrink: 0;
+  color: var(--text-secondary-light);
+  border: var(--input-border);
+  border-radius: 15px;
+  padding: 14px 18px;
+  &:active {
+    background-color: var(--active-color);
+    transform: scale(0.95);
+  }
+
+  @include transition;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .fav-btn:hover {
+    color: var(--text-btn-primary);
+    background-color: var(--hover-color);
+    // transform: scale(1.1);
+  }
+  .fav-btn:hover:active {
+    background-color: var(--active-color);
+    transform: scale(0.95);
+  }
+}
+
+.fav-btn.checked {
+  background-color: var(--hover-color);
+}

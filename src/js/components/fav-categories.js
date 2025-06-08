@@ -9,36 +9,28 @@ async function initFavCategories() {
   const favCategoriesContainer = document.querySelector(
     '.fav-categories-btn-wrapper'
   );
-  console.log('🚀 favCategoriesContainer:', favCategoriesContainer);
   const favCategoriesKey = STORAGE_KEYS.FAVORITES_KEY;
-  const favCategoriesId = loadFromStorage(favCategoriesKey);
-  console.log('🚀 favCategoriesId:', favCategoriesId);
+  const favCategoriesIdList = loadFromStorage(favCategoriesKey);
+  console.log('🚀 favCategoriesId:', favCategoriesIdList);
 
-  if (!Array.isArray(favCategoriesId) || favCategoriesId.length === 0) {
+  if (!Array.isArray(favCategoriesIdList) || favCategoriesIdList.length === 0) {
     console.log('❗️ No favorites recipes');
     return;
   }
 
   try {
     allFavRecipes = await Promise.all(
-      favCategoriesId.map(id => fetchRecipeInfo(id))
+      favCategoriesIdList.map(id => fetchRecipeInfo(id))
     );
     console.log('🚀 allFavRecipes:', allFavRecipes);
     const favCategories = allFavRecipes.map(category => category.category);
     console.log('🚀 favCategories:', favCategories);
+
     favCategoriesContainer.innerHTML = createFavCategoriesMarkup(favCategories);
   } catch (error) {
     console.error('Error fetching favorites recipes:', error);
     throw error;
   }
-
-  //   const allCategories = await fetchAllCategoriesList();
-  //   console.log('🚀 allCategories:', allCategories);
-
-  //   const favCategories = allCategories.filter(category =>
-  //     favCategoriesId.includes(category._id)
-  //   );
-  //   console.log('🚀 favCategories:', favCategories);
 }
 
 function createFavCategoriesMarkup(favCategories) {

@@ -12,13 +12,10 @@
 @mixin btn-primary {
   @include flex-center;
   color: var(--text-btn-primary);
-  background-color: #9bb537;
+  background-color: var(--btn-primary-bg);
 
-  // &:hover {
-  //   color: var(--text-primary);
-  // }
   &:active {
-    background-color: #7f9e2c;
+    background-color: var(--active-color);
   }
 
   @media (hover: hover) and (pointer: fine) {
@@ -34,12 +31,18 @@
   color: var(--text-primary);
   border: 1px solid #9bb537;
 
-  &:hover {
-    color: #f8f8f8;
-    background-color: #9bb537;
-  }
   &:active {
-    background-color: #7f9e2c;
+    background-color: var(--active-color);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: #f8f8f8;
+      background-color: var(--hover-color);
+    }
+    &:hover:active {
+      background-color: var(--active-color);
+    }
   }
 }
 

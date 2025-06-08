@@ -13,7 +13,7 @@ import { initBackToTop } from './js/components/back-to-top';
 import { highlightActiveNavLink } from './js/utils/nav-link-active';
 import { isWebPSupported } from './js/utils/support-webp';
 import { initFavCategories } from './js/components/fav-categories';
-
+import { initFavoritesGallery } from './js/components/favorites-gallery';
 // import { initBackToTop } from './js/components/back-to-top';
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   initMobileMenu(); // Открытие/закрытие меню
   initModal(); // Общая логика модалки
   await initFavCategories();
+  initFavoritesGallery();
   initBackToTop(); // Кнопка "вверх"
 
   //   await initFavoritesGallery(); // ⚡️ основная логика страницы
