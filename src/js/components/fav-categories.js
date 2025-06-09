@@ -23,7 +23,9 @@ async function initFavCategories() {
       favCategoriesIdList.map(id => fetchRecipeInfo(id))
     );
     console.log('🚀 allFavRecipes:', allFavRecipes);
-    const favCategories = allFavRecipes.map(category => category.category);
+    const favCategories = [
+      ...new Set(allFavRecipes.map(category => category.category)),
+    ];
     console.log('🚀 favCategories:', favCategories);
 
     favCategoriesContainer.innerHTML = createFavCategoriesMarkup(favCategories);
