@@ -1,7 +1,11 @@
-import { recipesApiService } from '../../services/recipes-api-service';
-import { initMainGallery } from '../main-gallery';
+// import { recipesApiService } from '../../services/recipes-api-service';
+import {
+  initFavoritesGallery,
+  getCurrentPage,
+  getTotalPages,
+} from '../favorites-gallery';
 
-function initHomePagination() {
+function initFavoritesPagination() {
   setupButtonsEventListeners();
 }
 
@@ -30,26 +34,24 @@ function setupButtonsEventListeners() {
 }
 
 function onFirstPageBtnClick() {
-  recipesApiService.updateParams('page', 1);
-  initMainGallery();
+  console.log('onFirstPageBtnClick');
+
+  initFavoritesGallery();
+  //   initMainGallery();
 }
-function onPrevPageBtnClick() {
+async function onPrevPageBtnClick() {
   const { currentPage } = initVars();
+  console.log('🚀 currentPage:', currentPage);
   const prevPage = currentPage - 1;
 
-  // existingPageBtns.forEach(btn => {
-  //   btn.classList.toggle('active', Number(btn.dataset.page) === prevPage);
-  // });
-  recipesApiService.updateParams('page', prevPage);
-  initMainGallery();
+  await initFavoritesGallery(prevPage);
 }
 
 async function onPrevPagesBtnClick(e) {
   onDotsBtnClick(e);
 
   const { firstBtnPageNumber } = initVars();
-  recipesApiService.updateParams('page', firstBtnPageNumber);
-  await initMainGallery();
+  await initFavoritesGallery(firstBtnPageNumber);
 }
 
 function onFirstBtnClick(e) {
@@ -64,44 +66,47 @@ function onThirdBtnClick(e) {
   handlePaginationClick(e);
 }
 
-function onNextPagesBtnClick(e) {
+async function onNextPagesBtnClick(e) {
   onDotsBtnClick(e);
 
   const { firstBtnPageNumber } = initVars();
-  recipesApiService.updateParams('page', firstBtnPageNumber);
-  initMainGallery();
+  await initFavoritesGallery(firstBtnPageNumber);
 }
 
-function onNextPageBtnClick() {
+async function onNextPageBtnClick() {
   const { currentPage, existingPageBtns } = initVars();
   const nextPage = currentPage + 1;
+  console.log('🚀 nextPage:', nextPage);
 
   existingPageBtns.forEach(btn => {
     btn.classList.toggle('active', Number(btn.dataset.page) === nextPage);
   });
-  recipesApiService.updateParams('page', nextPage);
-  initMainGallery();
+  await initFavoritesGallery(nextPage);
 }
 
-function onLastPageBtnClick() {
+async function onLastPageBtnClick() {
   const { totalPages: lastPage } = initVars();
-  recipesApiService.updateParams('page', lastPage);
-  initMainGallery();
+  //   recipesApiService.updateParams('page', lastPage);
+  console.log('🚀 lastPage:', lastPage);
+  await initFavoritesGallery(lastPage);
 }
 
-function handlePaginationClick(e) {
-  const { existingPageBtns } = initVars();
+async function handlePaginationClick(e) {
+  console.log(e.target);
+  const { existingPageBtns, currentPage } = initVars();
+  console.log('🚀 existingPageBtns:', existingPageBtns);
+  console.log('🚀 currentPage:', currentPage);
+
   const button = e.currentTarget;
   const btnPageNumber = Number(button.dataset.page);
-  const currentPage = recipesApiService.getQueryParams().page;
+  console.log('🚀 btnPageNumber:', btnPageNumber);
 
   if (btnPageNumber !== currentPage) {
     existingPageBtns.forEach(btn => {
       btn.classList.remove('active');
     });
     button.classList.add('active');
-    recipesApiService.updateParams('page', btnPageNumber);
-    initMainGallery();
+    await initFavoritesGallery(btnPageNumber);
   }
 }
 
@@ -125,16 +130,18 @@ function initVars() {
   const pageBtnsContainer = pagination.querySelector(
     '.js-pagination__center-btns-wrapper'
   );
-  const totalPages = recipesApiService.getTotalPages();
-  const currentPage = recipesApiService.getQueryParams().page;
+  const totalPages = getTotalPages();
+  const currentPage = getCurrentPage();
+
   const existingPageBtns = [...pageBtnsContainer.children].filter(
     btn => btn.dataset.page
   );
-  const pageBtnsAmount = existingPageBtns.length;
   const firstBtnPageNumber = Number(existingPageBtns[0].dataset.page);
+  const pageBtnsAmount = existingPageBtns.length;
   const lastBtnPageNumber = Number(
     existingPageBtns[existingPageBtns.length - 1].dataset.page
   );
+  // -------------------------------------------
 
   const isLastBtns = lastBtnPageNumber >= totalPages;
   const isFirstBtns = firstBtnPageNumber < pageBtnsAmount;
@@ -193,7 +200,7 @@ function onDotsBtnClick(e) {
   }
 }
 
-function updatePaginationBtns(page, totalPages) {
+function updateFavPaginationBtns(page, totalPages) {
   const {
     pageBtnsAmount,
     firstPageBtn,
@@ -265,4 +272,4 @@ function updatePaginationBtns(page, totalPages) {
   lastPageBtn.classList.toggle('disabled', page === totalPages);
 }
 
-export { initHomePagination, updatePaginationBtns };
+export { initFavoritesPagination, updateFavPaginationBtns };

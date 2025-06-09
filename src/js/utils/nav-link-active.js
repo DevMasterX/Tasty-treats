@@ -1,7 +1,6 @@
 function highlightActiveNavLink() {
   const homeBtn = document.querySelector('.js-home-btn');
   const mobileHomeBtn = document.querySelector('.js-mobile-home-btn');
-  console.log('🚀 mobileHomeBtn:', mobileHomeBtn);
 
   const favoritesBtn = document.querySelector('.js-favorites-btn');
   const mobileFavoritesBtn = document.querySelector('.js-mobile-favorite-btn');

@@ -14,16 +14,22 @@ import { highlightActiveNavLink } from './js/utils/nav-link-active';
 import { isWebPSupported } from './js/utils/support-webp';
 import { initFavCategories } from './js/components/fav-categories';
 import { initFavoritesGallery } from './js/components/favorites-gallery';
+import { renderPaginationButtons } from './js/components/pagination/render-pagination-buttons';
+// import { initHomePagination } from './js/components/pagination/homePagination';
 // import { initBackToTop } from './js/components/back-to-top';
+import { initFavoritesPagination } from './js/components/pagination/favorites-pagination';
 
 document.addEventListener('DOMContentLoaded', async () => {
   document.body.classList.add(isWebPSupported() ? 'webp' : 'no-webp');
   initTheme(); // Тема (светлая/тёмная)
   highlightActiveNavLink();
+  renderPaginationButtons();
   //   setHeroMarginTop(); // Учитываем высоту хедера
   initHeaderEventListeners(); // Бургер, логотип и т.д.
   initMobileMenu(); // Открытие/закрытие меню
+  initFavoritesPagination();
   initModal(); // Общая логика модалки
+  // initHomePagination();
   await initFavCategories();
   initFavoritesGallery();
   initBackToTop(); // Кнопка "вверх"

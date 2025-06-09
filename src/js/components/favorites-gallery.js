@@ -3,7 +3,7 @@ import { createGalleryMarkup } from './galleryMarkup';
 import { renderGallery } from './renderGallery';
 // import { recipesApiService } from '../services/recipes-api-service';
 import { hideLoader, showLoader } from './loader';
-import { updatePaginationBtns } from './pagination/homePagination';
+import { updateFavPaginationBtns } from './pagination/favorites-pagination';
 import { allFavRecipes } from './fav-categories';
 
 import {
@@ -15,21 +15,32 @@ import {
 import { STORAGE_KEYS } from '../../constants/constants';
 const favoritesKey = STORAGE_KEYS.FAVORITES_KEY;
 let favoritesValue = loadFromStorage(favoritesKey) || [];
-
-async function initFavoritesGallery() {
+// let currentPage = null;
+let page = null;
+let totalPages = null;
+// let currentPage = 1;
+async function initFavoritesGallery(newPage = 1) {
+  page = newPage;
+  console.log('🚀 page:', page);
   const container = document.querySelector('.favorites-gallery-container');
   const loaderContainer = document.querySelector('.favorites-gallery');
   showLoader(loaderContainer, container);
 
   try {
-    console.log(allFavRecipes.length);
     const recipesAmount = allFavRecipes.length;
     const perPage = getLimitByViewport();
-    const totalPages = Math.ceil(recipesAmount / perPage);
-    let recipesToRender = [];
-    for (const i = 1; i <= totalPages; i++) {
-      for (const i = 0; i < perPage; i++) {}
-    }
+    totalPages = Math.ceil(recipesAmount / perPage);
+    console.log('🚀 recipesAmount:', recipesAmount);
+    console.log('🚀 perPage:', perPage);
+    console.log('🚀 totalPages:', totalPages);
+
+    const start = (page - 1) * perPage;
+    const end = start + perPage;
+    console.log('🚀 start:', start);
+    console.log('🚀 end:', end);
+
+    const recipesToRender = allFavRecipes.splice(start, end);
+    console.log('🚀 recipesToRender:', recipesToRender);
 
     // const totalPages = data.totalPages;
     // console.log('🚀 totalPages:', totalPages);
@@ -39,12 +50,12 @@ async function initFavoritesGallery() {
 
     // recipesApiService.updateParams('totalPages', totalPages);
 
-    const markup = createGalleryMarkup(allFavRecipes);
+    const markup = createGalleryMarkup(recipesToRender);
 
     renderGallery(container, markup);
 
-    // updatePaginationBtns(page, totalPages);
-
+    updateFavPaginationBtns(page, totalPages);
+    // getCurrentPage(page);
     initFavoriteButtons();
   } catch (error) {
     console.error('Error loading favorite recipes on the client:', error);
@@ -109,4 +120,12 @@ function getLimitByViewport() {
   }
 }
 
-export { initFavoritesGallery };
+function getCurrentPage() {
+  return page;
+}
+
+function getTotalPages() {
+  return totalPages;
+}
+
+export { initFavoritesGallery, getCurrentPage, getTotalPages };
