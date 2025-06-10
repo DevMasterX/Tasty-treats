@@ -30,8 +30,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   initFavoritesPagination();
   initModal(); // Общая логика модалки
   // initHomePagination();
-  await initFavCategories();
-  initFavoritesGallery();
+
+  // await Promise.all([initFavCategories(), initFavoritesGallery()]);
+  await initFavoritesGallery();
+
   initBackToTop(); // Кнопка "вверх"
 
   //   await initFavoritesGallery(); // ⚡️ основная логика страницы
