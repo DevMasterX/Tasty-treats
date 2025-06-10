@@ -2,18 +2,17 @@
 
 .container.favorites-container {
   padding-right: 0;
-  overflow-y: auto;
+  // overflow-y: auto;
 
-  &::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Edge */
-  }
+  // &::-webkit-scrollbar {
+  //   display: none;
+  // }
 
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  // scrollbar-width: none;
+  // -ms-overflow-style: none;
 
-  // ✅ Плавная прокрутка на iOS (важно для UX на iPhone)
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
+  // -webkit-overflow-scrolling: touch;
+  // scroll-behavior: smooth;
 }
 
 .fav-btn {
@@ -44,4 +43,25 @@
 
 .fav-btn.checked {
   background-color: var(--hover-color);
+  color: var(--text-btn-primary);
+}
+
+.fav-categories-btn-wrapper {
+  overflow-y: auto;
+
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }

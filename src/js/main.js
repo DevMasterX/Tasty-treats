@@ -16,7 +16,6 @@ import { initSwiper } from './components/swiper';
 import { initAllCategories } from './components/init-all-categories.js';
 import { initPopularRecipes } from './components/init-popular-recipes';
 import { initFilters } from './components/filters';
-export { initMainGallery };
 import { initMainGallery } from './components/main-gallery.js';
 import { checkSavedCategory } from './components/current-category.js';
 import { setHeroMarginTop } from './utils/hero-margin-top.js';
@@ -35,7 +34,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   initMobileMenu();
   initModal();
   checkSavedCategory();
-  // initBackToTop();
   initBackToTop();
   initHomePagination();
 

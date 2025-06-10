@@ -188,6 +188,8 @@ function onDotsBtnClick(e) {
       }
     }
   } else if (e.currentTarget === prevPagesBtn) {
+    // if (Number(existingPageBtns[i].dataset.page) - pageBtnsAmount < 1) {
+    // }
     for (let i = 0; i < pageBtnsAmount; i++) {
       existingPageBtns[i].dataset.page = `${
         Number(existingPageBtns[i].dataset.page) - pageBtnsAmount
@@ -250,6 +252,8 @@ function updateFavPaginationBtns(page, totalPages) {
   }
 
   const { isLastBtns, isFirstBtns } = initVars();
+  console.log('🚀 isLastBtns:', isLastBtns);
+  console.log('🚀 isFirstBtns:', isFirstBtns);
 
   existingPageBtns.forEach(btn => {
     const pageNumber = Number(btn.dataset.page);
@@ -265,7 +269,8 @@ function updateFavPaginationBtns(page, totalPages) {
   prevPageBtn.classList.toggle('disabled', page === 1);
   // prevPagesBtn.classList.toggle('visually-hidden', isFirstBtns);
   // nextPagesBtn.classList.toggle('visually-hidden', isLastBtns);
-  prevPagesBtn.classList.toggle('disabled', isFirstBtns);
+  prevPagesBtn.classList.toggle('disabled', page <= pageBtnsAmount);
+  // prevPagesBtn.classList.toggle('disabled', isFirstBtns);
   nextPagesBtn.classList.toggle('disabled', isLastBtns);
 
   nextPageBtn.classList.toggle('disabled', page === totalPages);

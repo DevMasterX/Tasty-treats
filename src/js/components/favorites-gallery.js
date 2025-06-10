@@ -1,4 +1,5 @@
 import Notiflix from 'notiflix';
+import { initFavCategories } from './fav-categories';
 import { createGalleryMarkup } from './galleryMarkup';
 import { renderGallery } from './renderGallery';
 import { hideLoader, showLoader } from './loader';
@@ -10,36 +11,44 @@ import {
   removeFromStorage,
 } from '../utils/localStorage';
 import { STORAGE_KEYS } from '../../constants/constants';
-
+const pagination = document.querySelector('.pagination');
+const categoriesContainer = document.querySelector('.favorites-container');
 const favoritesKey = STORAGE_KEYS.FAVORITES_KEY;
-// let favoritesValue = loadFromStorage(favoritesKey) || [];
-console.log('🚀 favoritesValue:', favoritesValue);
+let favoritesValue = loadFromStorage(favoritesKey) || [];
+const perPage = getLimitByViewport();
 
-// let currentPage = null;
 let page = null;
 let totalPages = null;
-// let currentPage = 1;
+
+pagination.classList.add('visually-hidden');
 async function initFavoritesGallery(newPage = 1) {
   page = newPage;
-  // console.log('🚀 page:', page);
+
   const container = document.querySelector('.favorites-gallery-container');
   const loaderContainer = document.querySelector('.favorites-gallery');
   showLoader(loaderContainer, container);
 
   try {
     const favRecipes = await getFavRecipes();
-    const recipesAmount = favRecipes.length;
-    const perPage = getLimitByViewport();
+    console.log('🚀 favRecipes:', favRecipes);
+    const recipesAmount = Array.isArray(favRecipes) ? favRecipes.length : 0;
+    console.log('🚀 recipesAmount:', recipesAmount);
     totalPages = Math.ceil(recipesAmount / perPage);
     const start = (page - 1) * perPage;
     const end = start + perPage;
-    const recipesToRender = favRecipes.slice(start, end);
-    const markup = createGalleryMarkup(recipesToRender);
+    const recipesToRender = favRecipes?.slice(start, end);
+    if (favRecipes) {
+      initFavCategories(favRecipes);
+    }
+    categoriesContainer.classList.toggle('visually-hidden', !favRecipes);
+    if (recipesToRender) {
+      const markup = createGalleryMarkup(recipesToRender);
+      renderGallery(container, markup);
+      initFavoriteButtons();
+    }
 
-    renderGallery(container, markup);
+    pagination.classList.toggle('visually-hidden', !recipesAmount);
     updateFavPaginationBtns(page, totalPages);
-
-    initFavoriteButtons();
   } catch (error) {
     console.error('Error loading favorite recipes on the client:', error);
     throw error;
@@ -49,7 +58,7 @@ async function initFavoritesGallery(newPage = 1) {
 }
 
 function initFavoriteButtons() {
-  const favoritesValue = loadFromStorage(favoritesKey) || [];
+  //   const favoritesValue = loadFromStorage(favoritesKey) || [];
   const favoriteBtns = document.querySelectorAll('.gallery-item__favorite-btn');
   if (!favoriteBtns) return;
   favoriteBtns.forEach(btn => {
@@ -59,17 +68,13 @@ function initFavoriteButtons() {
 
     checkFavoriteBtnSavedClass(icon, id);
 
-    btn.addEventListener('click', () => {
-      // if (!favoritesValue.includes(id)) {
-      //   icon.classList.add('saved');
-      //   favoritesValue.push(id);
-      //   Notiflix.Notify.success('Added to favorite', {
-      //     clickToClose: true,
-      //   });
-      // } else {
+    btn.addEventListener('click', async () => {
       icon.classList.remove('saved');
       const index = favoritesValue.indexOf(id);
       favoritesValue.splice(index, 1);
+
+      btn.closest('.gallery-item').style.display = 'none';
+
       Notiflix.Notify.warning('Removed from favorite', {
         clickToClose: true,
       });
@@ -77,10 +82,21 @@ function initFavoriteButtons() {
 
       if (favoritesValue.length === 0) {
         removeFromStorage(favoritesKey);
-        return;
+      } else {
+        saveToStorage(favoritesKey, favoritesValue);
       }
-
-      saveToStorage(favoritesKey, favoritesValue);
+      const favRecipes = await getFavRecipes();
+      if (favRecipes) {
+        initFavCategories(favRecipes);
+      }
+      categoriesContainer.classList.toggle('visually-hidden', !favRecipes);
+      //   saveToStorage(favoritesKey, favoritesValue);
+      const newTotalPages = Math.ceil(favoritesValue.length / perPage);
+      if (page > newTotalPages) {
+        page = newTotalPages;
+        initFavoritesGallery(page);
+      }
+      //   initFavoritesGallery(page);
     });
   });
 }
