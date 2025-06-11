@@ -16,40 +16,92 @@ const categoriesContainer = document.querySelector('.favorites-container');
 const favoritesKey = STORAGE_KEYS.FAVORITES_KEY;
 let favoritesValue = loadFromStorage(favoritesKey) || [];
 const perPage = getLimitByViewport();
+const container = document.querySelector('.favorites-gallery-container');
 
 let page = null;
 let totalPages = null;
-
+pagination.classList.add('centered');
 pagination.classList.add('visually-hidden');
-async function initFavoritesGallery(newPage = 1) {
+let filteredRecipes = null;
+async function initFavoritesGallery(newPage = 1, categoryRecipes = null) {
   page = newPage;
 
-  const container = document.querySelector('.favorites-gallery-container');
+  if (categoryRecipes) {
+    filteredRecipes = categoryRecipes;
+  }
+
   const loaderContainer = document.querySelector('.favorites-gallery');
   showLoader(loaderContainer, container);
 
   try {
-    const favRecipes = await getFavRecipes();
-    console.log('🚀 favRecipes:', favRecipes);
-    const recipesAmount = Array.isArray(favRecipes) ? favRecipes.length : 0;
-    console.log('🚀 recipesAmount:', recipesAmount);
-    totalPages = Math.ceil(recipesAmount / perPage);
-    const start = (page - 1) * perPage;
-    const end = start + perPage;
-    const recipesToRender = favRecipes?.slice(start, end);
-    if (favRecipes) {
-      initFavCategories(favRecipes);
+    if (filteredRecipes) {
+      console.log('🚀 filteredRecipes:', filteredRecipes);
+      const favRecipes = await getFavRecipes();
+      const recipesAmount = Array.isArray(filteredRecipes)
+        ? filteredRecipes.length
+        : 0;
+      console.log('🚀 recipesAmount:', recipesAmount);
+      totalPages = Math.ceil(recipesAmount / perPage);
+      const start = (page - 1) * perPage;
+      const end = start + perPage;
+      const recipesToRender = filteredRecipes?.slice(start, end);
+      // if (favRecipes) {
+      //   initFavCategories(favRecipes);
+      // }
+      // categoriesContainer.classList.toggle('visually-hidden', !favRecipes);
+      if (recipesToRender) {
+        const markup = createGalleryMarkup(recipesToRender);
+        renderGallery(container, markup);
+        initFavoriteButtons();
+      }
+      pagination.classList.toggle('visually-hidden', totalPages <= 1);
+      updateFavPaginationBtns(page, totalPages);
+    } else {
+      const favRecipes = await getFavRecipes();
+      const recipesAmount = Array.isArray(favRecipes) ? favRecipes.length : 0;
+      console.log('🚀 recipesAmount:', recipesAmount);
+      totalPages = Math.ceil(recipesAmount / perPage);
+      const start = (page - 1) * perPage;
+      const end = start + perPage;
+      const recipesToRender = favRecipes?.slice(start, end);
+      if (favRecipes) {
+        initFavCategories(favRecipes);
+      }
+      categoriesContainer.classList.toggle('visually-hidden', !favRecipes);
+      if (recipesToRender) {
+        const markup = createGalleryMarkup(recipesToRender);
+        renderGallery(container, markup);
+        initFavoriteButtons();
+      }
+      pagination.classList.toggle('visually-hidden', totalPages <= 1);
+      updateFavPaginationBtns(page, totalPages);
     }
-    categoriesContainer.classList.toggle('visually-hidden', !favRecipes);
-    if (recipesToRender) {
-      const markup = createGalleryMarkup(recipesToRender);
-      renderGallery(container, markup);
-      initFavoriteButtons();
-    }
-
-    pagination.classList.toggle('visually-hidden', !recipesAmount);
-    updateFavPaginationBtns(page, totalPages);
   } catch (error) {
+    // try {
+    //   const favRecipes = await getFavRecipes();
+    //   const recipesAmount = Array.isArray(favRecipes) ? favRecipes.length : 0;
+    //   console.log('🚀 recipesAmount:', recipesAmount);
+    //   totalPages = Math.ceil(recipesAmount / perPage);
+    //   const start = (page - 1) * perPage;
+    //   const end = start + perPage;
+
+    //   const recipesToRender = favRecipes?.slice(start, end);
+    //   if (favRecipes) {
+    //     initFavCategories(favRecipes);
+    //   }
+
+    //   categoriesContainer.classList.toggle('visually-hidden', !favRecipes);
+
+    //   if (recipesToRender) {
+    //     const markup = createGalleryMarkup(recipesToRender);
+    //     renderGallery(container, markup);
+    //     initFavoriteButtons();
+    //   }
+
+    //   pagination.classList.toggle('visually-hidden', totalPages <= 1);
+    //   updateFavPaginationBtns(page, totalPages);
+    // }
+
     console.error('Error loading favorite recipes on the client:', error);
     throw error;
   } finally {
@@ -127,4 +179,13 @@ function getTotalPages() {
   return totalPages;
 }
 
-export { initFavoritesGallery, getCurrentPage, getTotalPages };
+function resetFilteredRecipes() {
+  filteredRecipes = null;
+}
+
+export {
+  initFavoritesGallery,
+  getCurrentPage,
+  getTotalPages,
+  resetFilteredRecipes,
+};

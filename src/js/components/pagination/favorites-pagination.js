@@ -92,14 +92,14 @@ async function onLastPageBtnClick() {
 }
 
 async function handlePaginationClick(e) {
-  console.log(e.target);
+  //   console.log(e.target);
   const { existingPageBtns, currentPage } = initVars();
-  console.log('🚀 existingPageBtns:', existingPageBtns);
-  console.log('🚀 currentPage:', currentPage);
+  //   console.log('🚀 existingPageBtns:', existingPageBtns);
+  //   console.log('🚀 currentPage:', currentPage);
 
   const button = e.currentTarget;
   const btnPageNumber = Number(button.dataset.page);
-  console.log('🚀 btnPageNumber:', btnPageNumber);
+  //   console.log('🚀 btnPageNumber:', btnPageNumber);
 
   if (btnPageNumber !== currentPage) {
     existingPageBtns.forEach(btn => {
@@ -144,7 +144,8 @@ function initVars() {
   // -------------------------------------------
 
   const isLastBtns = lastBtnPageNumber >= totalPages;
-  const isFirstBtns = firstBtnPageNumber < pageBtnsAmount;
+  //   const isFirstBtns = firstBtnPageNumber < pageBtnsAmount;
+  const isFirstBtns = firstBtnPageNumber === 1;
 
   return {
     firstPageBtn,
@@ -170,26 +171,68 @@ function initVars() {
 
 function onDotsBtnClick(e) {
   const {
-    firstPageBtn,
+    //   firstPageBtn,
+    firstBtn,
     nextPagesBtn,
     prevPagesBtn,
     existingPageBtns,
     pageBtnsAmount,
+    lastBtnPageNumber,
+    firstBtnPageNumber,
+    totalPages,
   } = initVars();
 
   if (e.currentTarget === nextPagesBtn) {
+    if (lastBtnPageNumber + pageBtnsAmount > totalPages) {
+      for (
+        let i = pageBtnsAmount - 1, j = 0;
+        i >= 0, j < pageBtnsAmount;
+        i--, j++
+      ) {
+        existingPageBtns[i].dataset.page = totalPages - j;
+        existingPageBtns[i].textContent = existingPageBtns[i].dataset.page;
+        if (!firstBtn.classList.contains('active')) {
+          existingPageBtns[i].classList.remove('active');
+        }
+      }
+
+      if (!firstBtn.classList.contains('active')) {
+        firstBtn.classList.add('active');
+      }
+      return;
+    }
+
     for (let i = 0; i < pageBtnsAmount; i++) {
       existingPageBtns[i].dataset.page = `${
         Number(existingPageBtns[i].dataset.page) + pageBtnsAmount
       }`;
       existingPageBtns[i].textContent = existingPageBtns[i].dataset.page;
-      if (!firstPageBtn.classList.contains('active')) {
+      if (!firstBtn.classList.contains('active')) {
         existingPageBtns[i].classList.remove('active');
       }
     }
+    if (!firstBtn.classList.contains('active')) {
+      firstBtn.classList.add('active');
+    }
   } else if (e.currentTarget === prevPagesBtn) {
-    // if (Number(existingPageBtns[i].dataset.page) - pageBtnsAmount < 1) {
-    // }
+    if (firstBtnPageNumber - pageBtnsAmount < 1) {
+      //   firstPageBtn.classList.add('active');
+      //   console.log('kiya');
+
+      for (let i = 0; i < pageBtnsAmount; i++) {
+        existingPageBtns[i].dataset.page = i + 1;
+        existingPageBtns[i].textContent = existingPageBtns[i].dataset.page;
+        if (!firstBtn.classList.contains('active')) {
+          existingPageBtns[i].classList.remove('active');
+        }
+      }
+      if (!firstBtn.classList.contains('active')) {
+        firstBtn.classList.add('active');
+      }
+      //   console.log('kiya-2');
+      return;
+    }
+
     for (let i = 0; i < pageBtnsAmount; i++) {
       existingPageBtns[i].dataset.page = `${
         Number(existingPageBtns[i].dataset.page) - pageBtnsAmount
@@ -199,6 +242,10 @@ function onDotsBtnClick(e) {
         existingPageBtns[i].classList.remove('active');
       }
     }
+    if (!firstBtn.classList.contains('active')) {
+      firstBtn.classList.add('active');
+    }
+    // firstPageBtn.classList.add('active');
   }
 }
 
@@ -252,8 +299,6 @@ function updateFavPaginationBtns(page, totalPages) {
   }
 
   const { isLastBtns, isFirstBtns } = initVars();
-  console.log('🚀 isLastBtns:', isLastBtns);
-  console.log('🚀 isFirstBtns:', isFirstBtns);
 
   existingPageBtns.forEach(btn => {
     const pageNumber = Number(btn.dataset.page);
@@ -269,8 +314,8 @@ function updateFavPaginationBtns(page, totalPages) {
   prevPageBtn.classList.toggle('disabled', page === 1);
   // prevPagesBtn.classList.toggle('visually-hidden', isFirstBtns);
   // nextPagesBtn.classList.toggle('visually-hidden', isLastBtns);
-  prevPagesBtn.classList.toggle('disabled', page <= pageBtnsAmount);
-  // prevPagesBtn.classList.toggle('disabled', isFirstBtns);
+  //   prevPagesBtn.classList.toggle('disabled', page <= pageBtnsAmount);
+  prevPagesBtn.classList.toggle('disabled', isFirstBtns);
   nextPagesBtn.classList.toggle('disabled', isLastBtns);
 
   nextPageBtn.classList.toggle('disabled', page === totalPages);

@@ -137,7 +137,8 @@ function initVars() {
   );
 
   const isLastBtns = lastBtnPageNumber >= totalPages;
-  const isFirstBtns = firstBtnPageNumber < pageBtnsAmount;
+  // const isFirstBtns = firstBtnPageNumber < pageBtnsAmount;
+  const isFirstBtns = firstBtnPageNumber === 1;
 
   return {
     firstPageBtn,
@@ -163,32 +164,78 @@ function initVars() {
 
 function onDotsBtnClick(e) {
   const {
-    firstPageBtn,
+    // firstPageBtn,
+    firstBtn,
     nextPagesBtn,
     prevPagesBtn,
     existingPageBtns,
     pageBtnsAmount,
+    lastBtnPageNumber,
+    firstBtnPageNumber,
+    totalPages,
   } = initVars();
 
   if (e.currentTarget === nextPagesBtn) {
+    if (lastBtnPageNumber + pageBtnsAmount > totalPages) {
+      for (
+        let i = pageBtnsAmount - 1, j = 0;
+        i >= 0, j < pageBtnsAmount;
+        i--, j++
+      ) {
+        existingPageBtns[i].dataset.page = totalPages - j;
+        existingPageBtns[i].textContent = existingPageBtns[i].dataset.page;
+        if (!firstBtn.classList.contains('active')) {
+          existingPageBtns[i].classList.remove('active');
+        }
+      }
+
+      if (!firstBtn.classList.contains('active')) {
+        firstBtn.classList.add('active');
+      }
+
+      return;
+    }
+
     for (let i = 0; i < pageBtnsAmount; i++) {
       existingPageBtns[i].dataset.page = `${
         Number(existingPageBtns[i].dataset.page) + pageBtnsAmount
       }`;
       existingPageBtns[i].textContent = existingPageBtns[i].dataset.page;
-      if (!firstPageBtn.classList.contains('active')) {
+      if (!firstBtn.classList.contains('active')) {
         existingPageBtns[i].classList.remove('active');
       }
     }
+
+    if (!firstBtn.classList.contains('active')) {
+      firstBtn.classList.add('active');
+    }
   } else if (e.currentTarget === prevPagesBtn) {
+    if (firstBtnPageNumber - pageBtnsAmount < 1) {
+      for (let i = 0; i < pageBtnsAmount; i++) {
+        existingPageBtns[i].dataset.page = i + 1;
+        existingPageBtns[i].textContent = existingPageBtns[i].dataset.page;
+        if (!firstBtn.classList.contains('active')) {
+          existingPageBtns[i].classList.remove('active');
+        }
+      }
+      if (!firstBtn.classList.contains('active')) {
+        firstBtn.classList.add('active');
+      }
+      return;
+    }
+
     for (let i = 0; i < pageBtnsAmount; i++) {
       existingPageBtns[i].dataset.page = `${
         Number(existingPageBtns[i].dataset.page) - pageBtnsAmount
       }`;
       existingPageBtns[i].textContent = existingPageBtns[i].dataset.page;
-      if (!firstPageBtn.classList.contains('active')) {
+      if (!firstBtn.classList.contains('active')) {
         existingPageBtns[i].classList.remove('active');
       }
+    }
+
+    if (!firstBtn.classList.contains('active')) {
+      firstBtn.classList.add('active');
     }
   }
 }

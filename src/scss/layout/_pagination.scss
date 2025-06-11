@@ -15,7 +15,14 @@
 .pagination.home-pagination {
   @include media(lg) {
     justify-content: right;
-    margin-right: 168px;
+    margin-right: 140px;
+  }
+}
+
+.pagination.centered {
+  @include media(lg) {
+    justify-content: center;
+    margin-right: 0;
   }
 }
 

@@ -1,4 +1,15 @@
+// import { initFavoritesGallery } from './favorites-gallery';
+// console.log('🚀 initFavoritesGallery:', initFavoritesGallery);
+import {
+  initFavoritesGallery,
+  resetFilteredRecipes,
+} from './favorites-gallery';
+
+let isListenersAdded = false;
+
 async function initFavCategories(favRecipes) {
+  // const favAllBtn = document.querySelector('.fav-all-btn');
+  // console.log('🚀 favAllBtn:', favAllBtn);
   const favCategoriesContainer = document.querySelector(
     '.fav-categories-btn-wrapper'
   );
@@ -11,7 +22,10 @@ async function initFavCategories(favRecipes) {
     favCategoriesContainer.innerHTML =
       createFavCategoriesMarkup(favCategoriesList);
     scrollHint(favCategoriesContainer);
-    initButtonsListeners(favCategoriesList, favRecipes);
+
+    if (!isListenersAdded) {
+      initButtonsListeners(favRecipes);
+    }
   } catch (error) {
     console.error('Error fetching favorites recipes:', error);
     throw error;
@@ -22,7 +36,7 @@ function createFavCategoriesMarkup(categoriesList) {
   return categoriesList
     .map(
       category => `
-        <button class="fav-btn" type="button" aria-label="${category} category button">${category}</button>
+        <button class="fav-btn" type="button" aria-label="${category} category button" data-category="${category}">${category}</button>
         `
     )
     .join('');
@@ -31,15 +45,70 @@ function createFavCategoriesMarkup(categoriesList) {
 function scrollHint(el) {
   //   const el = document.querySelector('.fav-categories-btn-wrapper');
   if (window.innerWidth >= 1024) {
-    el.scrollLeft = 250;
+    el.scrollLeft = 500;
     setTimeout(() => (el.scrollLeft = 0), 500);
+  }
+  el.scrollLeft = 250;
+  setTimeout(() => (el.scrollLeft = 0), 500);
+}
+
+function initButtonsListeners(favRecipes) {
+  console.log('🚀 favRecipes:', favRecipes);
+
+  if (!favRecipes) return;
+
+  const btnContainer = document.querySelector('.js-categories-btn-container');
+
+  btnContainer.addEventListener('click', e => onBtnClick(e, favRecipes));
+  isListenersAdded = true;
+}
+
+function onBtnClick(e, favRecipes) {
+  const button = e.target.closest('button');
+  if (!button) return;
+  const category = button.dataset.category;
+  if (!category) return;
+  console.log('🚀 category:', category);
+  console.log('🚀 button:', button);
+
+  resetCheckedClass();
+  addCheckedClass(button);
+
+  if (category === 'All') {
+    resetFilteredRecipes();
+    initFavoritesGallery();
+    return;
+  }
+
+  const filteredRecipes = favRecipes.filter(
+    recipe => recipe.category === category
+  );
+  // console.log('🚀 filteredRecipes:', filteredRecipes);
+
+  initFavoritesGallery(1, filteredRecipes);
+}
+
+function resetCheckedClass() {
+  const favAllBtn = document.querySelector('.fav-all-btn');
+  const categoryButtons = [
+    ...document.querySelector('.fav-categories-btn-wrapper').children,
+  ];
+
+  categoryButtons.forEach(btn => {
+    if (btn.classList.contains('checked')) {
+      btn.classList.remove('checked');
+    }
+  });
+
+  if (favAllBtn.classList.contains('checked')) {
+    favAllBtn.classList.remove('checked');
   }
 }
 
-function initButtonsListeners(favCategoriesList, favRecipes) {
-  if (!favCategoriesList || !favRecipes) return;
-  console.log('🚀 favRecipes:', favRecipes);
-  console.log('🚀 favCategoriesList:', favCategoriesList);
+function addCheckedClass(button) {
+  if (!button.classList.contains('checked')) {
+    button.classList.add('checked');
+  }
 }
 
 export { initFavCategories };
