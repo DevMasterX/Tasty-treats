@@ -1,5 +1,5 @@
 import Notiflix from 'notiflix';
-import { initFavCategories } from './fav-categories';
+import { initFavCategories, resetCheckedCategory } from './fav-categories';
 import { createGalleryMarkup } from './galleryMarkup';
 import { renderGallery } from './renderGallery';
 import { hideLoader, showLoader } from './loader';
@@ -18,11 +18,14 @@ let favoritesValue = loadFromStorage(favoritesKey) || [];
 console.log('🚀 favoritesValue:', favoritesValue);
 const perPage = getLimitByViewport();
 const container = document.querySelector('.favorites-gallery-container');
-
+const allCategoriesBtn = document.querySelector('.fav-all-btn');
+console.log('🚀 allCategoriesBtn:', allCategoriesBtn);
 let page = null;
 let totalPages = null;
 pagination.classList.add('centered');
 pagination.classList.add('visually-hidden');
+let favRecipes = null;
+
 let filteredRecipes = null;
 
 async function initFavoritesGallery(newPage = 1, categoryRecipes = null) {
@@ -38,7 +41,7 @@ async function initFavoritesGallery(newPage = 1, categoryRecipes = null) {
   try {
     if (filteredRecipes) {
       console.log('🚀 filteredRecipes:', filteredRecipes);
-      const favRecipes = await getFavRecipes();
+      // const favRecipes = await getFavRecipes();
       const recipesAmount = Array.isArray(filteredRecipes)
         ? filteredRecipes.length
         : 0;
@@ -59,7 +62,9 @@ async function initFavoritesGallery(newPage = 1, categoryRecipes = null) {
       pagination.classList.toggle('visually-hidden', totalPages <= 1);
       updateFavPaginationBtns(page, totalPages);
     } else {
-      const favRecipes = await getFavRecipes();
+      if (!favRecipes) {
+        favRecipes = await getFavRecipes();
+      }
       const recipesAmount = Array.isArray(favRecipes) ? favRecipes.length : 0;
       console.log('🚀 recipesAmount:', recipesAmount);
       totalPages = Math.ceil(recipesAmount / perPage);
@@ -79,31 +84,6 @@ async function initFavoritesGallery(newPage = 1, categoryRecipes = null) {
       updateFavPaginationBtns(page, totalPages);
     }
   } catch (error) {
-    // try {
-    //   const favRecipes = await getFavRecipes();
-    //   const recipesAmount = Array.isArray(favRecipes) ? favRecipes.length : 0;
-    //   console.log('🚀 recipesAmount:', recipesAmount);
-    //   totalPages = Math.ceil(recipesAmount / perPage);
-    //   const start = (page - 1) * perPage;
-    //   const end = start + perPage;
-
-    //   const recipesToRender = favRecipes?.slice(start, end);
-    //   if (favRecipes) {
-    //     initFavCategories(favRecipes);
-    //   }
-
-    //   categoriesContainer.classList.toggle('visually-hidden', !favRecipes);
-
-    //   if (recipesToRender) {
-    //     const markup = createGalleryMarkup(recipesToRender);
-    //     renderGallery(container, markup);
-    //     initFavoriteButtons();
-    //   }
-
-    //   pagination.classList.toggle('visually-hidden', totalPages <= 1);
-    //   updateFavPaginationBtns(page, totalPages);
-    // }
-
     console.error('Error loading favorite recipes on the client:', error);
     throw error;
   } finally {
@@ -124,38 +104,48 @@ function initFavoriteButtons() {
 
     btn.addEventListener('click', async () => {
       icon.classList.remove('saved');
-      const index = favoritesValue.indexOf(id);
-      favoritesValue.splice(index, 1);
-
-      btn.closest('.gallery-item').style.display = 'none';
 
       Notiflix.Notify.warning('Removed from favorite', {
         clickToClose: true,
       });
-      // }
 
-      if (favoritesValue.length === 0) {
-        removeFromStorage(favoritesKey);
-      } else {
-        saveToStorage(favoritesKey, favoritesValue);
+      removeRecipeFromStorage(id);
+      removeRecipeFromFavList(id);
+      // initFavCategories(favRecipes);
+
+      if (filteredRecipes) {
+        removeRecipeFromFilteredRecipes(id);
+        if (!filteredRecipes.length) {
+          initFavCategories(favRecipes);
+          resetFilteredRecipes();
+          initFavoritesGallery();
+          allCategoriesBtn.classList.add('checked');
+          return;
+        }
       }
-      console.log('🚀 favoritesValueUpdated:', favoritesValue);
 
-      const favRecipes = await getFavRecipes();
-      console.log('🚀 favRecipesUpdated:', favRecipes);
+      // btn.closest('.gallery-item').style.display = 'none';
 
-      if (favRecipes) {
-        initFavCategories(favRecipes);
-      }
-      categoriesContainer.classList.toggle('visually-hidden', !favRecipes);
+      // console.log('🚀 favRecipes:', favRecipes);
+
+      // console.log('🚀 favoritesValueUpdated:', favoritesValue);
+
+      // initFavoritesGallery();
+
+      // categoriesContainer.classList.toggle('visually-hidden', !favRecipes);
       //   saveToStorage(favoritesKey, favoritesValue);
-
-      const newTotalPages = Math.ceil(favoritesValue.length / perPage);
+      let newTotalPages;
+      if (filteredRecipes) {
+        newTotalPages = Math.ceil(filteredRecipes.length / perPage);
+      } else {
+        newTotalPages = Math.ceil(favoritesValue.length / perPage);
+      }
+      // const newTotalPages = Math.ceil(favoritesValue.length / perPage);
       if (page > newTotalPages) {
         page = newTotalPages;
         initFavoritesGallery(page);
       }
-      //   initFavoritesGallery(page);
+      initFavoritesGallery(page);
     });
   });
 }
@@ -190,9 +180,33 @@ function resetFilteredRecipes() {
   filteredRecipes = null;
 }
 
+// function getFavRecipes() {
+//   return favRecipes;
+// }
+
+function removeRecipeFromStorage(id) {
+  const index = favoritesValue.indexOf(id);
+  favoritesValue.splice(index, 1);
+  if (favoritesValue.length === 0) {
+    removeFromStorage(favoritesKey);
+  } else {
+    saveToStorage(favoritesKey, favoritesValue);
+  }
+}
+function removeRecipeFromFavList(id) {
+  const indexToRemove = favRecipes.findIndex(recipe => recipe._id === id);
+  favRecipes.splice(indexToRemove, 1);
+}
+
+function removeRecipeFromFilteredRecipes(id) {
+  const indexToRemove = filteredRecipes.findIndex(recipe => recipe._id === id);
+  filteredRecipes.splice(indexToRemove, 1);
+}
+
 export {
   initFavoritesGallery,
   getCurrentPage,
   getTotalPages,
   resetFilteredRecipes,
+  // getFavRecipes,
 };

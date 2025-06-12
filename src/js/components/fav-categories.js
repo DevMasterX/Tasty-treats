@@ -4,16 +4,22 @@ import {
   initFavoritesGallery,
   resetFilteredRecipes,
 } from './favorites-gallery';
+const categoriesContainer = document.querySelector('.favorites-container');
 
 let isListenersAdded = false;
 
-async function initFavCategories(favRecipes) {
+function initFavCategories(favRecipes) {
+  categoriesContainer.classList.toggle('visually-hidden', !favRecipes);
+  if (!favRecipes) return;
+  // const buttons = [...categoriesContainer.querySelectorAll('.fav-btn')];
+
   // const favAllBtn = document.querySelector('.fav-all-btn');
   // console.log('🚀 favAllBtn:', favAllBtn);
   const favCategoriesContainer = document.querySelector(
     '.fav-categories-btn-wrapper'
   );
   if (!favCategoriesContainer) return;
+
   try {
     const favCategoriesList = [
       ...new Set(favRecipes.map(category => category.category)),
@@ -21,6 +27,7 @@ async function initFavCategories(favRecipes) {
 
     favCategoriesContainer.innerHTML =
       createFavCategoriesMarkup(favCategoriesList);
+
     scrollHint(favCategoriesContainer);
 
     if (!isListenersAdded) {
@@ -67,6 +74,7 @@ function onBtnClick(e, favRecipes) {
   const button = e.target.closest('button');
   if (!button) return;
   const category = button.dataset.category;
+
   if (!category) return;
   console.log('🚀 category:', category);
   console.log('🚀 button:', button);
@@ -111,4 +119,8 @@ function addCheckedClass(button) {
   }
 }
 
-export { initFavCategories };
+function resetCheckedCategory() {
+  checkedCategory = null;
+}
+
+export { initFavCategories, resetCheckedCategory };
