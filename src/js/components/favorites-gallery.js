@@ -15,6 +15,7 @@ const pagination = document.querySelector('.pagination');
 const categoriesContainer = document.querySelector('.favorites-container');
 const favoritesKey = STORAGE_KEYS.FAVORITES_KEY;
 let favoritesValue = loadFromStorage(favoritesKey) || [];
+console.log('🚀 favoritesValue:', favoritesValue);
 const perPage = getLimitByViewport();
 const container = document.querySelector('.favorites-gallery-container');
 
@@ -23,6 +24,7 @@ let totalPages = null;
 pagination.classList.add('centered');
 pagination.classList.add('visually-hidden');
 let filteredRecipes = null;
+
 async function initFavoritesGallery(newPage = 1, categoryRecipes = null) {
   page = newPage;
 
@@ -137,12 +139,17 @@ function initFavoriteButtons() {
       } else {
         saveToStorage(favoritesKey, favoritesValue);
       }
+      console.log('🚀 favoritesValueUpdated:', favoritesValue);
+
       const favRecipes = await getFavRecipes();
+      console.log('🚀 favRecipesUpdated:', favRecipes);
+
       if (favRecipes) {
         initFavCategories(favRecipes);
       }
       categoriesContainer.classList.toggle('visually-hidden', !favRecipes);
       //   saveToStorage(favoritesKey, favoritesValue);
+
       const newTotalPages = Math.ceil(favoritesValue.length / perPage);
       if (page > newTotalPages) {
         page = newTotalPages;
