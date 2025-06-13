@@ -108,44 +108,32 @@ function initFavoriteButtons() {
       Notiflix.Notify.warning('Removed from favorite', {
         clickToClose: true,
       });
+      removeItemAndUpdateFavGallery(id);
+      // removeRecipeFromStorage(id);
+      // removeRecipeFromFavList(id);
 
-      removeRecipeFromStorage(id);
-      removeRecipeFromFavList(id);
-      // initFavCategories(favRecipes);
-
-      if (filteredRecipes) {
-        removeRecipeFromFilteredRecipes(id);
-        if (!filteredRecipes.length) {
-          initFavCategories(favRecipes);
-          resetFilteredRecipes();
-          initFavoritesGallery();
-          allCategoriesBtn.classList.add('checked');
-          return;
-        }
-      }
-
-      // btn.closest('.gallery-item').style.display = 'none';
-
-      // console.log('🚀 favRecipes:', favRecipes);
-
-      // console.log('🚀 favoritesValueUpdated:', favoritesValue);
-
-      // initFavoritesGallery();
-
-      // categoriesContainer.classList.toggle('visually-hidden', !favRecipes);
-      //   saveToStorage(favoritesKey, favoritesValue);
-      let newTotalPages;
-      if (filteredRecipes) {
-        newTotalPages = Math.ceil(filteredRecipes.length / perPage);
-      } else {
-        newTotalPages = Math.ceil(favoritesValue.length / perPage);
-      }
+      // if (filteredRecipes) {
+      //   removeRecipeFromFilteredRecipes(id);
+      //   if (!filteredRecipes.length) {
+      //     initFavCategories(favRecipes);
+      //     resetFilteredRecipes();
+      //     initFavoritesGallery();
+      //     allCategoriesBtn.classList.add('checked');
+      //     return;
+      //   }
+      // }
+      // let newTotalPages;
+      // if (filteredRecipes) {
+      //   newTotalPages = Math.ceil(filteredRecipes.length / perPage);
+      // } else {
+      //   newTotalPages = Math.ceil(favoritesValue.length / perPage);
+      // }
       // const newTotalPages = Math.ceil(favoritesValue.length / perPage);
-      if (page > newTotalPages) {
-        page = newTotalPages;
-        initFavoritesGallery(page);
-      }
-      initFavoritesGallery(page);
+      // if (page > newTotalPages) {
+      //   page = newTotalPages;
+      //   initFavoritesGallery(page);
+      // }
+      // initFavoritesGallery(page);
     });
   });
 }
@@ -203,10 +191,42 @@ function removeRecipeFromFilteredRecipes(id) {
   filteredRecipes.splice(indexToRemove, 1);
 }
 
+function removeItemAndUpdateFavGallery(id) {
+  removeRecipeFromStorage(id);
+  removeRecipeFromFavList(id);
+
+  if (filteredRecipes) {
+    removeRecipeFromFilteredRecipes(id);
+    if (!filteredRecipes.length) {
+      initFavCategories(favRecipes);
+      resetFilteredRecipes();
+      initFavoritesGallery();
+      allCategoriesBtn.classList.add('checked');
+      return;
+    }
+  }
+
+  let newTotalPages;
+  if (filteredRecipes) {
+    newTotalPages = Math.ceil(filteredRecipes.length / perPage);
+  } else {
+    newTotalPages = Math.ceil(favoritesValue.length / perPage);
+  }
+
+  if (page > newTotalPages) {
+    page = newTotalPages;
+    initFavoritesGallery(page);
+  }
+  initFavoritesGallery(page);
+}
+
 export {
   initFavoritesGallery,
   getCurrentPage,
   getTotalPages,
   resetFilteredRecipes,
   // getFavRecipes,
+  // removeRecipeFromStorage,
+  // removeRecipeFromFavList,
+  removeItemAndUpdateFavGallery,
 };

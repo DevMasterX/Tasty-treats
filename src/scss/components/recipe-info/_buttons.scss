@@ -7,6 +7,12 @@
   @include btn-primary;
   @include transition;
 }
+
+.add-to-favorite-btn.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 .give-rating-btn {
   padding: 12px 24px;
   border-radius: 15px;

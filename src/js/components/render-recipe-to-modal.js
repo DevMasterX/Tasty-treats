@@ -1,8 +1,12 @@
 import Notiflix from 'notiflix';
 import { fetchRecipeInfo } from '../services/recipe-info';
 import { hideLoader, showLoader } from './loader';
+import { removeItemAndUpdateFavGallery } from './favorites-gallery';
 // import { setupOpenButtons } from './modal';
-
+// import {
+//   removeRecipeFromStorage,
+//   removeRecipeFromFavList,
+// } from './favorites-gallery';
 import {
   saveToStorage,
   loadFromStorage,
@@ -317,7 +321,7 @@ function getYouTubeEmbedUrl(url) {
 
 function initRecipeInfoButtons() {
   const addToFavoriteBtn = document.querySelector('.add-to-favorite-btn');
-  console.log('🚀 addToFavoriteBtn:', addToFavoriteBtn);
+  // console.log('🚀 addToFavoriteBtn:', addToFavoriteBtn);
 
   const giveRatingBtn = document.querySelector('.give-rating-btn');
 
@@ -352,20 +356,24 @@ function onAddToFavoriteBtnClick(e) {
     });
   } else if (favoritesValue.includes(id)) {
     heartIcon?.classList.remove('saved');
-    const index = favoritesValue.indexOf(id);
-    favoritesValue.splice(index, 1);
-    addToFavoriteBtn.textContent = 'Add to favorite';
-    Notiflix.Notify.warning('Removed from favorite', {
-      clickToClose: true,
-    });
-  }
+    if (document.body.dataset.currentPage === 'favorites') {
+      addToFavoriteBtn.classList.add('disabled');
+      removeItemAndUpdateFavGallery(id);
+    } else {
+      const index = favoritesValue.indexOf(id);
+      favoritesValue.splice(index, 1);
 
-  if (favoritesValue.length === 0) {
-    removeFromStorage(favoritesKey);
-    return;
+      addToFavoriteBtn.textContent = 'Add to favorite';
+      Notiflix.Notify.warning('Removed from favorite', {
+        clickToClose: true,
+      });
+      if (favoritesValue.length === 0) {
+        removeFromStorage(favoritesKey);
+      } else {
+        saveToStorage(favoritesKey, favoritesValue);
+      }
+    }
   }
-
-  saveToStorage(favoritesKey, favoritesValue);
 }
 
 function onGiveRatingBtn(e) {}

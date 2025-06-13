@@ -1,6 +1,7 @@
 import ResizeObserver from 'resize-observer-polyfill';
 window.ResizeObserver = ResizeObserver;
 
+import 'animate.css';
 import 'spinkit/spinkit.min.css';
 // import 'animate.css';
 import './scss/index.scss';
