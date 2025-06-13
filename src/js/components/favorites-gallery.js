@@ -22,8 +22,13 @@ const allCategoriesBtn = document.querySelector('.fav-all-btn');
 console.log('🚀 allCategoriesBtn:', allCategoriesBtn);
 let page = null;
 let totalPages = null;
-pagination.classList.add('centered');
-pagination.classList.add('visually-hidden');
+
+if (document.body.dataset.currentPage === 'favorites') {
+  pagination.classList.add('centered');
+  pagination.classList.add('visually-hidden');
+}
+// pagination.classList.add('centered');
+// pagination.classList.add('visually-hidden');
 let favRecipes = null;
 
 let filteredRecipes = null;

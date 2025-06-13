@@ -1,7 +1,7 @@
 @use '../utils/mixins' as *;
 
 .container.favorites-container {
-  padding-right: 0;
+  padding-right: 1px;
   // overflow-y: auto;
 
   // &::-webkit-scrollbar {

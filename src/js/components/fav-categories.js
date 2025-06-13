@@ -1,5 +1,3 @@
-// import { initFavoritesGallery } from './favorites-gallery';
-// console.log('🚀 initFavoritesGallery:', initFavoritesGallery);
 import {
   initFavoritesGallery,
   resetFilteredRecipes,
@@ -11,10 +9,6 @@ let isListenersAdded = false;
 function initFavCategories(favRecipes) {
   categoriesContainer.classList.toggle('visually-hidden', !favRecipes);
   if (!favRecipes) return;
-  // const buttons = [...categoriesContainer.querySelectorAll('.fav-btn')];
-
-  // const favAllBtn = document.querySelector('.fav-all-btn');
-  // console.log('🚀 favAllBtn:', favAllBtn);
   const favCategoriesContainer = document.querySelector(
     '.fav-categories-btn-wrapper'
   );
@@ -29,7 +23,7 @@ function initFavCategories(favRecipes) {
       createFavCategoriesMarkup(favCategoriesList);
 
     scrollHint(favCategoriesContainer);
-
+    initDragScroll(favCategoriesContainer);
     if (!isListenersAdded) {
       initButtonsListeners(favRecipes);
     }
@@ -119,8 +113,32 @@ function addCheckedClass(button) {
   }
 }
 
-function resetCheckedCategory() {
-  checkedCategory = null;
+// function resetCheckedCategory() {
+//   checkedCategory = null;
+// }
+
+function initDragScroll(favCategoriesContainer) {
+  let isDown = false;
+  let startX;
+  favCategoriesContainer.addEventListener('mousedown', handleMouseDown);
+  // сохранить стартовое положение мыши
+  document.addEventListener('mousemove', handleMouseMove);
+
+  document.addEventListener('mouseup', handleMouseUp);
+  // Чтобы завершить "перетаскивание" и сбросить флаг, что пользователь тянет.
+
+  favCategoriesContainer.addEventListener('mouseleave', handleMouseUp);
+
+  // Можно также завершить тягивание, если мышь вышла за пределы, чтобы не оставлять "висящий" drag
 }
+
+function handleMouseDown(e) {
+  console.log(e);
+  console.log(e.clientX);
+}
+
+function handleMouseUp(e) {}
+
+function handleMouseMove(e) {}
 
 export { initFavCategories, resetCheckedCategory };
