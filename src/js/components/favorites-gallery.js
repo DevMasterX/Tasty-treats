@@ -84,11 +84,11 @@ async function initFavoritesGallery(newPage = 1, categoryRecipes = null) {
         renderGallery(container, markup);
         initFavoriteButtons();
       } else {
-        const main = document.querySelector('.main');
-        const markup = createGalleryEmptyMarkup();
-        main.innerHTML = markup;
-        // renderGallery(container, markup);
-        return;
+        // const empty = document.querySelector('.empty');
+        // const markup = createGalleryEmptyMarkup();
+        // empty.innerHTML = markup;
+        // // renderGallery(container, markup);
+        // return;
       }
       pagination.classList.toggle('visually-hidden', totalPages <= 1);
       updateFavPaginationBtns(page, totalPages);
@@ -205,6 +205,7 @@ function removeItemAndUpdateFavGallery(id) {
 
   if (page > newTotalPages) {
     page = newTotalPages;
+    initFavoritesGallery(page);
   }
   initFavoritesGallery(page);
 }
