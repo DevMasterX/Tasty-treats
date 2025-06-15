@@ -51,6 +51,8 @@ async function onPrevPagesBtnClick(e) {
   onDotsBtnClick(e);
 
   const { firstBtnPageNumber } = initVars();
+  console.log('🚀 firstBtnPageNumber:', firstBtnPageNumber);
+
   await initFavoritesGallery(firstBtnPageNumber);
 }
 
@@ -113,27 +115,27 @@ async function handlePaginationClick(e) {
 function initVars() {
   const pagination = document.querySelector('.home-pagination');
 
-  const firstPageBtn = pagination.querySelector('.js-first-page-btn');
-  const prevPageBtn = pagination.querySelector('.js-prev-page-btn');
-  const prevPagesBtn = pagination.querySelector(
+  const firstPageBtn = pagination?.querySelector('.js-first-page-btn');
+  const prevPageBtn = pagination?.querySelector('.js-prev-page-btn');
+  const prevPagesBtn = pagination?.querySelector(
     '.js-pagination-prev-pages-btn'
   );
-  const firstBtn = pagination.querySelector('.js-pagination-first-btn');
-  const secondBtn = pagination.querySelector('.js-pagination-second-btn');
-  const thirdBtn = pagination.querySelector('.js-pagination-third-btn');
-  const nextPagesBtn = pagination.querySelector(
+  const firstBtn = pagination?.querySelector('.js-pagination-first-btn');
+  const secondBtn = pagination?.querySelector('.js-pagination-second-btn');
+  const thirdBtn = pagination?.querySelector('.js-pagination-third-btn');
+  const nextPagesBtn = pagination?.querySelector(
     '.js-pagination-next-pages-btn'
   );
-  const nextPageBtn = pagination.querySelector('.js-pagination-next-page-btn');
-  const lastPageBtn = pagination.querySelector('.js-pagination-last-page-btn');
+  const nextPageBtn = pagination?.querySelector('.js-pagination-next-page-btn');
+  const lastPageBtn = pagination?.querySelector('.js-pagination-last-page-btn');
 
-  const pageBtnsContainer = pagination.querySelector(
+  const pageBtnsContainer = pagination?.querySelector(
     '.js-pagination__center-btns-wrapper'
   );
   const totalPages = getTotalPages();
   const currentPage = getCurrentPage();
 
-  const existingPageBtns = [...pageBtnsContainer.children].filter(
+  const existingPageBtns = [...pageBtnsContainer?.children].filter(
     btn => btn.dataset.page
   );
   const firstBtnPageNumber = Number(existingPageBtns[0].dataset.page);
@@ -238,7 +240,7 @@ function onDotsBtnClick(e) {
         Number(existingPageBtns[i].dataset.page) - pageBtnsAmount
       }`;
       existingPageBtns[i].textContent = existingPageBtns[i].dataset.page;
-      if (!firstPageBtn.classList.contains('active')) {
+      if (!firstBtn.classList.contains('active')) {
         existingPageBtns[i].classList.remove('active');
       }
     }

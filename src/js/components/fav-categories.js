@@ -3,18 +3,19 @@ import {
   resetFilteredRecipes,
 } from './favorites-gallery';
 const categoriesContainer = document.querySelector('.favorites-container');
-let isDown = false;
-let isDragging = false;
-let startX;
+
 let isListenersAdded = false;
+const favCategoriesContainer = document.querySelector(
+  '.fav-categories-btn-wrapper'
+);
 
 function initFavCategories(favRecipes) {
-  categoriesContainer.classList.toggle('visually-hidden', !favRecipes);
-  if (!favRecipes) return;
-  const favCategoriesContainer = document.querySelector(
-    '.fav-categories-btn-wrapper'
+  categoriesContainer.classList.toggle(
+    'visually-hidden',
+    !favRecipes || favRecipes.length === 0
   );
-  if (!favCategoriesContainer) return;
+
+  if (!favRecipes || !favCategoriesContainer) return;
 
   try {
     const favCategoriesList = [
@@ -56,7 +57,7 @@ function scrollHint(el) {
 }
 
 function initButtonsListeners(favRecipes) {
-  console.log('🚀 favRecipes:', favRecipes);
+  // console.log('🚀 favRecipes:', favRecipes);
 
   if (!favRecipes) return;
 
@@ -115,37 +116,36 @@ function addCheckedClass(button) {
   }
 }
 
-// function resetCheckedCategory() {
-//   checkedCategory = null;
-// }
+function initDragScroll(container) {
+  let isDown = false;
+  let startX;
+  let scrollLeft;
 
-function initDragScroll(favCategoriesContainer) {
-  favCategoriesContainer.addEventListener('mousedown', handleMouseDown);
-  // сохранить стартовое положение мыши
-  document.addEventListener('mousemove', handleMouseMove);
+  container.addEventListener('mousedown', e => {
+    isDown = true;
+    startX = e.clientX;
+    scrollLeft = container.scrollLeft;
+    // container.classList.add('grabbing');
+    e.preventDefault();
+  });
 
-  document.addEventListener('mouseup', handleMouseUp);
-  // Чтобы завершить "перетаскивание" и сбросить флаг, что пользователь тянет.
+  container.addEventListener('mouseup', () => {
+    isDown = false;
+    container.classList.remove('grabbing');
+  });
 
-  // favCategoriesContainer.addEventListener('mouseleave', handleMouseUp);
+  container.addEventListener('mouseleave', () => {
+    isDown = false;
+    container.classList.remove('grabbing');
+  });
 
-  // Можно также завершить тягивание, если мышь вышла за пределы, чтобы не оставлять "висящий" drag
-}
+  container.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    const walk = e.clientX - startX;
+    container.scrollLeft = scrollLeft - walk;
 
-function handleMouseDown(e) {
-  isDown = true;
-  startX = e.clientX;
-  console.log('🚀 startX:', startX);
-}
-
-function handleMouseUp(e) {
-  // console.log(e);
-  isDragging = false;
-  console.log('mouseup');
-}
-
-function handleMouseMove(e) {
-  console.log('mousemove');
+    container.classList.add('grabbing');
+  });
 }
 
 export { initFavCategories };
