@@ -24,6 +24,9 @@ body.no-webp .favorites-hero__img-container {
   @include responsive-bg('bg');
 }
 
-// .favorites-hero__img-container {
-//   @include responsive-bg('bg');
-// }
+.favorites-hero.empty-page {
+  display: none;
+  @include media(md) {
+    display: block;
+  }
+}

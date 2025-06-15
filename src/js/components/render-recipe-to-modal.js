@@ -66,17 +66,14 @@ function createRecipeInfoMarkup({
   _id,
 }) {
   const paintedStarsWidth = (rating / 5) * 100;
-  // const tagsList = tags
-  //   .map(tag => `<li class="tags-list-item">#${tag}</li>`)
-  //   .join('');
+
   favoritesValue = loadFromStorage(favoritesKey) || [];
-  console.log('🚀 favoritesValue:', favoritesValue);
 
   let addToFavoriteBtnTextContent = '';
   if (favoritesValue.includes(_id)) {
-    addToFavoriteBtnTextContent = 'Remove from favorite';
+    addToFavoriteBtnTextContent = 'Remove from favorites';
   } else if (!favoritesValue.includes(_id)) {
-    addToFavoriteBtnTextContent = 'Add to favorite';
+    addToFavoriteBtnTextContent = 'Add to favorites';
   }
 
   let tagsList;
@@ -197,7 +194,7 @@ function createRecipeInfoMarkup({
   <p class="instructions-text">${instructions}</p>
 
   <div class="recipe-info__btn-wrapper"> 
-   <button class="add-to-favorite-btn" data-id="${_id}" aria-label="Add to favorite button" >${addToFavoriteBtnTextContent}</button>
+   <button class="add-to-favorite-btn" data-id="${_id}" aria-label="Add to favorites button" >${addToFavoriteBtnTextContent}</button>
     <button class="give-rating-btn" data-id="${_id}" aria-label="Give a rating button"  data-modal-open  data-modal-type="rating">Give a rating</button>
   </div>
  
@@ -302,7 +299,7 @@ ${ingredientslist}
 <p class="instructions-text">${instructions}</p>
 
 <div class="recipe-info__btn-wrapper"> 
-  <button class="add-to-favorite-btn" data-id="${_id}" aria-label="Add to favorite button" >${addToFavoriteBtnTextContent}</button>
+  <button class="add-to-favorite-btn" data-id="${_id}" aria-label="Add to favorites button" >${addToFavoriteBtnTextContent}</button>
   <button class="give-rating-btn" data-id="${_id}" aria-label="Give a rating button"  data-modal-open  data-modal-type="rating">Give a rating</button>
   </div>
 </div>
@@ -323,15 +320,15 @@ function initRecipeInfoButtons() {
   const addToFavoriteBtn = document.querySelector('.add-to-favorite-btn');
   // console.log('🚀 addToFavoriteBtn:', addToFavoriteBtn);
 
-  const giveRatingBtn = document.querySelector('.give-rating-btn');
+  // const giveRatingBtn = document.querySelector('.give-rating-btn');
 
   if (addToFavoriteBtn) {
     addToFavoriteBtn.addEventListener('click', onAddToFavoriteBtnClick);
   }
 
-  if (giveRatingBtn) {
-    giveRatingBtn.addEventListener('click', onGiveRatingBtn);
-  }
+  // if (giveRatingBtn) {
+  //   giveRatingBtn.addEventListener('click', onGiveRatingBtnClick);
+  // }
 }
 
 function onAddToFavoriteBtnClick(e) {
@@ -350,32 +347,33 @@ function onAddToFavoriteBtnClick(e) {
   if (!favoritesValue.includes(id)) {
     favoritesValue.push(id);
     heartIcon?.classList.add('saved');
-    addToFavoriteBtn.textContent = 'Remove from favorite';
-    Notiflix.Notify.success('Added to favorite', {
+    addToFavoriteBtn.textContent = 'Remove from favorites';
+    Notiflix.Notify.success('Added to favorites', {
       clickToClose: true,
     });
   } else if (favoritesValue.includes(id)) {
     heartIcon?.classList.remove('saved');
     if (document.body.dataset.currentPage === 'favorites') {
+      addToFavoriteBtn.textContent = 'Removed from favorites';
       addToFavoriteBtn.classList.add('disabled');
       removeItemAndUpdateFavGallery(id);
     } else {
       const index = favoritesValue.indexOf(id);
       favoritesValue.splice(index, 1);
 
-      addToFavoriteBtn.textContent = 'Add to favorite';
-      Notiflix.Notify.warning('Removed from favorite', {
+      addToFavoriteBtn.textContent = 'Add to favorites';
+      Notiflix.Notify.warning('Removed from favorites', {
         clickToClose: true,
       });
-      if (favoritesValue.length === 0) {
-        removeFromStorage(favoritesKey);
-      } else {
-        saveToStorage(favoritesKey, favoritesValue);
-      }
     }
+  }
+  if (favoritesValue.length === 0) {
+    removeFromStorage(favoritesKey);
+  } else {
+    saveToStorage(favoritesKey, favoritesValue);
   }
 }
 
-function onGiveRatingBtn(e) {}
+// function onGiveRatingBtnClick(e) {}
 
 export { renderRecipeToModal };

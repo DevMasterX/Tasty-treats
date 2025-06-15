@@ -124,9 +124,8 @@ function initDragScroll(container) {
   container.addEventListener('mousedown', e => {
     isDown = true;
     startX = e.clientX;
-    scrollLeft = container.scrollLeft;
-    // container.classList.add('grabbing');
     e.preventDefault();
+    scrollLeft = container.scrollLeft;
   });
 
   container.addEventListener('mouseup', () => {
@@ -142,6 +141,7 @@ function initDragScroll(container) {
   container.addEventListener('mousemove', e => {
     if (!isDown) return;
     const walk = e.clientX - startX;
+
     container.scrollLeft = scrollLeft - walk;
 
     container.classList.add('grabbing');

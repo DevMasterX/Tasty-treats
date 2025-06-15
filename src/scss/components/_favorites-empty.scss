@@ -1,0 +1,21 @@
+@use '../utils/mixins' as *;
+
+.fav-empty {
+}
+
+.fav-empty__img-wrapper {
+  width: 68px;
+  height: 58px;
+}
+
+.fav-empty__img-text {
+  text-align: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  @include media(md) {
+    width: 481px;
+    font-syze: 16px;
+    line-height: 150%;
+  }
+}

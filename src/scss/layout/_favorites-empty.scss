@@ -1,0 +1,23 @@
+@use '../utils/mixins' as *;
+
+.fav-empty {
+  margin-top: 276px;
+
+  @include media(md) {
+    margin-top: 64px;
+  }
+}
+
+.fav-empty__img-wrapper {
+  margin: 0 auto;
+}
+
+.fav-empty__img-text {
+  margin-top: 24px;
+
+  @include media(md) {
+    margin-top: 32px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
