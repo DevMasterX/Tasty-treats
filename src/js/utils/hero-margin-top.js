@@ -9,7 +9,7 @@ function setHeroMarginTop() {
     const viewportHeight = window.innerHeight;
 
     const rawMargin = viewportHeight - totalHeight - 10;
-    const heroMarginTop = Math.min(Math.max(rawMargin, 70), 96);
+    const heroMarginTop = Math.min(Math.max(rawMargin, 70), 105);
     hero.style.marginTop = `${heroMarginTop}px`;
   }
   adjustHeroMarginTop();
