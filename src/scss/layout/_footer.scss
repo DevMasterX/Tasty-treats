@@ -1,0 +1,21 @@
+.footer__container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding-top: 100px;
+  padding-bottom: 80px;
+}
+
+.footer__socials {
+  display: flex;
+  gap: 16px;
+}
+
+// .footer__socials-item {
+// }
+.footer__socials-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

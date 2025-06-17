@@ -1,0 +1,39 @@
+@use '../utils/mixins' as *;
+
+.footer__socials-item {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  //   outline: 1px solid red;
+  border: 1px solid var(--text-secondary-light);
+
+  @include transition;
+}
+.footer__socials-link {
+  width: 100%;
+  height: 100%;
+}
+
+.footer__socials-icon {
+  width: 24px;
+  height: 24px;
+  fill: var(--text-secondary);
+  //   stroke: green;
+  @include transition;
+}
+
+.footer__author {
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.28;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+@media (hover: hover) and (pointer: fine) {
+  .footer__socials-item:hover {
+    border: 1px solid var(--text-primary);
+  }
+  .footer__socials-item:hover .footer__socials-icon {
+    fill: var(--text-primary);
+  }
+}
