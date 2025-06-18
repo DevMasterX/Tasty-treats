@@ -18,8 +18,8 @@
 .filters-item__label {
   position: absolute;
   top: -20px;
-  color: currentColor;
 
+  color: currentColor;
   font-size: 12px;
   line-height: 117%;
 
@@ -49,14 +49,11 @@
   padding-top: 14px;
   padding-bottom: 14px;
 
-  color: var(--text-primary);
-
-  // font-size: 14px;
+  color: var(--text-secondary);
   line-height: 129%;
 
   @include media(md) {
     height: 48px;
-
     line-height: 125%;
   }
 }
@@ -79,6 +76,7 @@
     grid-area: auto;
   }
 }
+
 .label-time {
   grid-area: time;
 
@@ -87,6 +85,7 @@
     grid-area: auto;
   }
 }
+
 .label-area {
   grid-area: area;
 
@@ -95,6 +94,7 @@
     grid-area: auto;
   }
 }
+
 .label-ingredients {
   grid-area: ingredients;
   max-width: 60%;
@@ -104,3 +104,5 @@
     grid-area: auto;
   }
 }
+
+// --------------------------------

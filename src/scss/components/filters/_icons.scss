@@ -27,11 +27,13 @@
   height: 18px;
 
   fill: transparent;
-  stroke: var(--text-primary);
+  stroke: var(--text-secondary);
 
   @include transition;
 }
 
-.filters-item__select-icon {
-  right: 18px;
-}
+// .filters-item__select-icon {
+//   right: 18px;
+// }
+
+// --------------------------------
