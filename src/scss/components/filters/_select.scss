@@ -62,20 +62,19 @@
 }
 
 .choices__list--dropdown {
-  scrollbar-width: thin; /* для Firefox */
-  scrollbar-color: var(--text-secondary-light) transparent; /* для Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-secondary-light) transparent;
 }
 
-/* для Webkit-браузеров (Chrome, Safari, Edge) */
 .choices__list--dropdown::-webkit-scrollbar {
-  width: 6px; /* ширина полосы */
+  width: 6px;
 }
 
 .choices__list--dropdown::-webkit-scrollbar-thumb {
-  background-color: var(--text-secondary-light); /* цвет "ползунка" */
-  border-radius: 10px; /* скругление ползунка */
+  background-color: var(--text-secondary-light);
+  border-radius: 10px;
 }
 
 .choices__list--dropdown::-webkit-scrollbar-track {
-  background: transparent; /* фон трека */
+  background: transparent;
 }

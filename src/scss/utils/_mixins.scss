@@ -60,8 +60,10 @@
   @include flex-center;
   @if $backgroundColor == black {
     background-color: #050505;
+    outline: 1px solid transparent;
   } @else if $backgroundColor == green {
     background-color: var(--btn-primary-bg);
+    outline: 1px solid var(--btn-primary-bg);
   } @else if $backgroundColor == transparent {
     background-color: transparent;
     outline: 1px solid var(--pagination-btn-outline);

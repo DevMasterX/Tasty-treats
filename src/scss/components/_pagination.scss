@@ -61,10 +61,8 @@
   opacity: 0.25;
 }
 
-// .pagination__btn {
-//   @media (hover: hover) and (pointer: fine) {
-//     &:hover {
-//       transform: scale(1.06);
-//     }
-//   }
-// }
+@media (hover: hover) and (pointer: fine) {
+  .pagination__btn:hover {
+    outline: 1px solid var(--text-primary);
+  }
+}

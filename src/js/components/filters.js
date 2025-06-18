@@ -5,7 +5,6 @@ import { fetchIngredients } from '../services/ingredients';
 import { recipesApiService } from '../services/recipes-api-service';
 import { initMainGallery } from './main-gallery';
 import { INPUT_DEBOUNCE_DELAY } from '../../constants/constants';
-// import { checkSavedCategory } from './current-category';
 
 const selects = document.querySelectorAll('.filters-item__select');
 const input = document.querySelector('.js-filters-item__input');
@@ -140,25 +139,10 @@ function toggleClearBtn(inputValue) {
 
 function showClearBtn() {
   inputClearBtn.classList.remove('is-hidden');
-  // inputClearBtn.style.display = 'block';
-
-  // setTimeout(() => {
-  //   inputClearBtn.style.opacity = 1;
-  // }, 200);
-  // inputClearBtn.style.display = 'block';
 }
 
 function hideClearBtn() {
-  // setTimeout(() => {
-  //   inputClearBtn.style.display = 'none';
-  // }, 200);
-
-  // inputClearBtn.style.opacity = 0;
-
   inputClearBtn.classList.add('is-hidden');
 }
-// function updateFilterParams(key, value) {
-//   filterParams[key] = value;
-// }
 
 export { initFilters };
