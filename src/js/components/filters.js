@@ -21,13 +21,6 @@ const choicesOptions = {
   allowHTML: true,
 };
 
-// let filterParams = {
-//   title: null,
-//   time: null,
-//   area: null,
-//   ingredients: null,
-// };
-
 inputClearBtn.addEventListener('click', () => {
   input.value = '';
   hideClearBtn();
@@ -37,7 +30,7 @@ inputClearBtn.addEventListener('click', () => {
 
 resetBtn.addEventListener('click', () => {
   recipesApiService.resetFilterQueryParams();
-  // checkSavedCategory();
+
   input.value = '';
   hideClearBtn();
 
