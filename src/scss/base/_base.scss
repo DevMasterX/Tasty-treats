@@ -62,6 +62,13 @@ label {
   -webkit-tap-highlight-color: transparent;
 }
 
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: none;
+}
+
 button:focus,
 a:focus,
 input:focus,

@@ -6,9 +6,10 @@
   transform: translateY(-50%);
   width: 18px;
   height: 18px;
-
+  cursor: pointer;
   fill: transparent;
   stroke: currentColor;
+  z-index: 4;
 }
 
 .filters-item__input-icon {
@@ -32,8 +33,8 @@
   @include transition;
 }
 
-// .filters-item__select-icon {
-//   right: 18px;
-// }
+.filters-item__select-icon {
+  right: 18px;
+}
 
 // --------------------------------

@@ -4,10 +4,6 @@
 //   margin-bottom: 0;
 // }
 
-// .choices::after {
-//   display: none;
-// }
-
 // .choices .choices__inner {
 //   height: 46px;
 
@@ -81,21 +77,115 @@
 
 // --------------------------------
 
+.filters-item__select {
+  padding-left: 18px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+}
+
 .choices {
   width: 100%;
   height: 46px;
+
   margin-bottom: 0;
+
   background-color: inherit;
   border: var(--input-border);
   border-radius: 15px;
-  padding-top: 14px;
-  padding-bottom: 14px;
 
-  color: var(--text-secondary);
+  font-weight: 500;
+
   line-height: 129%;
+  z-index: 3;
+  overflow: hidden;
+
+  &.is-focused {
+    border-color: #b7b7b7;
+  }
+
+  &::after {
+    display: none;
+  }
 
   @include media(md) {
     height: 48px;
     line-height: 125%;
   }
+  @include transition;
 }
+
+.choices.is-open.is-flipped .choices__list--dropdown.is-active,
+.choices.is-open .choices__list--dropdown.is-active {
+  border-radius: 15px;
+  // outline: 1px solid blue;
+  border: none;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  background-color: var(--dropdown-background-color);
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-secondary-light) red;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--text-secondary-light);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+.choices__inner {
+  height: 100%;
+  padding-top: 14px;
+  padding-left: 18px;
+  background-color: inherit;
+}
+
+.choices.is-open .choices__inner {
+  border-radius: 15px;
+  // outline: 1px solid red;
+  // margin: 0;
+  // padding: 0;
+  // padding-top: 14px;
+  // padding-left: 18px;
+  height: 100%;
+  // padding-bottom: 0 !important;
+}
+.choices__list {
+  // padding-left: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.choices[data-type*='select-one'] .choices__inner {
+  border: 1px solid var(--input-border-color);
+  // padding-left: 18px;
+}
+
+.choices__item--choice {
+  padding-left: 18px !important;
+  color: var(--text-secondary-light);
+
+  &.is-highlighted {
+    background-color: transparent !important;
+    color: var(--text-secondary);
+    transform: scale(1.05);
+  }
+
+  &.is-selected {
+    color: var(--text-primary);
+  }
+
+  @include transition;
+}
+
+// .choices__item.choices__item--choice.is-selected.choices__item--selectable {
+//   background-color: transparent;
+// }

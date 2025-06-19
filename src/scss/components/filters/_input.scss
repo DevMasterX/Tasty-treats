@@ -38,6 +38,7 @@
   &::placeholder {
     color: var(--text-secondary);
   }
+  @include transition;
 }
 
 .filters-item__element {

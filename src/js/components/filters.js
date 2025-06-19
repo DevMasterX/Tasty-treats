@@ -16,7 +16,7 @@ const choicesOptions = {
   shouldSort: false,
   searchEnabled: false,
   itemSelectText: '',
-
+  placeholder: false,
   renderSelectedChoices: 'always',
   allowHTML: true,
 
