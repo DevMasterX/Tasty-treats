@@ -1,12 +1,18 @@
 .main-gallery-container {
   position: relative;
 }
-.nothing-found-item {
-  position: absolute;
-  top: 0;
+
+.gallery-item__nothing-found {
+  height: 348px;
 }
 
 .nothing-found-img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 390px;
+
   filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.1))
     drop-shadow(0 0 20px rgba(155, 181, 55, 0.25))
     drop-shadow(0 0 30px rgba(0, 0, 0, 0.08));

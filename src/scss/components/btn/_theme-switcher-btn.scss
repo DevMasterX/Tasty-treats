@@ -61,9 +61,9 @@
 .theme-switcher {
   @include media(sm) {
     position: fixed;
-    bottom: 20px;
+    bottom: 36px;
     right: -100%;
-    z-index: 3;
+    z-index: 6;
 
     header.menu-opened & {
       right: calc(65% - 46px - 20px);

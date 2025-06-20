@@ -16,7 +16,8 @@ import {
 import { STORAGE_KEYS } from '../../constants/constants';
 const favoritesKey = STORAGE_KEYS.FAVORITES_KEY;
 let favoritesValue = loadFromStorage(favoritesKey) || [];
-
+const pagination = document.querySelector('.pagination');
+pagination.classList.add('visually-hidden');
 async function initMainGallery() {
   const container = document.querySelector('.main-gallery-container');
   const loaderContainer = document.querySelector('.main-gallery');
@@ -35,7 +36,7 @@ async function initMainGallery() {
     recipesApiService.updateParams('totalPages', totalPages);
 
     const markup = createGalleryMarkup(data.results);
-
+    pagination.classList.toggle('visually-hidden', totalPages <= 1);
     renderGallery(container, markup);
 
     updatePaginationBtns(page, totalPages);

@@ -1,12 +1,6 @@
-import ResizeObserver from 'resize-observer-polyfill';
-window.ResizeObserver = ResizeObserver;
-// import 'animate.css';
+// import ResizeObserver from 'resize-observer-polyfill';
+// window.ResizeObserver = ResizeObserver;
 
-// import iconsUrl from '../img/icons.svg';
-// import 'choices.js/public/assets/styles/choices.css';
-// import SimpleBar from 'simplebar';
-// import 'simplebar';
-// import 'simplebar/dist/simplebar.css';
 import 'spinkit/spinkit.min.css';
 import { initTheme } from './components/themeSwitcher';
 import { initHeaderEventListeners } from './components/header-event-listeners';

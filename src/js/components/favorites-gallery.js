@@ -52,22 +52,22 @@ async function initFavoritesGallery(newPage = 1, categoryRecipes = null) {
       const start = (page - 1) * perPage;
       const end = start + perPage;
       const recipesToRender = filteredRecipes?.slice(start, end);
-
+      pagination.classList.toggle('visually-hidden', totalPages <= 1);
       if (recipesToRender) {
         const markup = createGalleryMarkup(recipesToRender);
         renderGallery(container, markup);
         initFavoriteButtons();
       }
-      pagination.classList.toggle('visually-hidden', totalPages <= 1);
+      // pagination.classList.toggle('visually-hidden', totalPages <= 1);
       updateFavPaginationBtns(page, totalPages);
     } else {
-      console.log(5);
       if (!favRecipes) {
         favRecipes = await getFavRecipes();
       }
       const recipesAmount = Array.isArray(favRecipes) ? favRecipes.length : 0;
 
       totalPages = Math.ceil(recipesAmount / perPage);
+      pagination.classList.toggle('visually-hidden', totalPages <= 1);
       const start = (page - 1) * perPage;
       const end = start + perPage;
       const recipesToRender = favRecipes?.slice(start, end) || [];
@@ -93,7 +93,7 @@ async function initFavoritesGallery(newPage = 1, categoryRecipes = null) {
 
         return;
       }
-      pagination.classList.toggle('visually-hidden', totalPages <= 1);
+      // pagination.classList.toggle('visually-hidden', totalPages <= 1);
       updateFavPaginationBtns(page, totalPages);
     }
   } catch (error) {
