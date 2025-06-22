@@ -1,4 +1,5 @@
 import Choices from 'choices.js';
+import { initSimpleBar } from '../utils/simplebar';
 import debounce from 'lodash.debounce';
 import { fetchAreaList } from '../services/area';
 import { fetchIngredients } from '../services/ingredients';
@@ -86,6 +87,7 @@ function initChoices() {
   selectElements.forEach(element => {
     const instance = new Choices(element, choicesOptions);
     choicesInstances.push(instance);
+    initSimpleBar(instance.dropdown.element.firstChild);
   });
 }
 

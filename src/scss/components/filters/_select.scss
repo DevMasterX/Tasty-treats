@@ -158,5 +158,27 @@
 }
 
 .choices__list--dropdown.is-active[aria-expanded] {
-  z-index: 5;
+  z-index: 10;
+}
+.choices__list--dropdown .choices__list,
+.choices__list[aria-expanded] .choices__list {
+  overflow-x: hidden;
+  z-index: 10;
+}
+
+.choices__list--dropdown .choices__list,
+.choices__list[aria-expanded] .choices__list {
+  .simplebar-track.simplebar-vertical {
+    width: 8px;
+    background: transparent;
+  }
+
+  .simplebar-scrollbar {
+    background-color: var(--all-categories-scrollbar-color);
+
+    border-radius: 12px;
+    &::before {
+      display: none;
+    }
+  }
 }
