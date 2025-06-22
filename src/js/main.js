@@ -1,6 +1,7 @@
 // import ResizeObserver from 'resize-observer-polyfill';
 // window.ResizeObserver = ResizeObserver;
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import 'spinkit/spinkit.min.css';
 import { initTheme } from './components/themeSwitcher';
 import { initHeaderEventListeners } from './components/header-event-listeners';
@@ -20,6 +21,7 @@ import { highlightActiveNavLink } from './utils/nav-link-active';
 // import { initBackToTop } from './components/back-to-top.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
+  AOS.init();
   highlightActiveNavLink();
   setHeroMarginTop();
   initTheme();

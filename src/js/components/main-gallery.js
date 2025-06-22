@@ -65,14 +65,14 @@ function initFavoriteButtons() {
       if (!favoritesValue.includes(id)) {
         icon.classList.add('saved');
         favoritesValue.push(id);
-        Notiflix.Notify.success('Added to favorite', {
+        Notiflix.Notify.success('Added to favorites', {
           clickToClose: true,
         });
       } else {
         icon.classList.remove('saved');
         const index = favoritesValue.indexOf(id);
         favoritesValue.splice(index, 1);
-        Notiflix.Notify.warning('Removed from favorite', {
+        Notiflix.Notify.warning('Removed from favorites', {
           clickToClose: true,
         });
       }

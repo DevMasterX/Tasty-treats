@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "animate.css": "^4.1.1",
+    "aos": "^2.3.4",
     "axios": "^1.8.4",
     "choices.js": "^11.1.0",
     "glightbox": "^3.3.1",

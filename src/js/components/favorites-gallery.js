@@ -15,7 +15,6 @@ const pagination = document.querySelector('.pagination');
 const categoriesContainer = document.querySelector('.favorites-container');
 const favoritesKey = STORAGE_KEYS.FAVORITES_KEY;
 let favoritesValue = loadFromStorage(favoritesKey) || [];
-console.log('🚀 favoritesValue:', favoritesValue);
 const perPage = getLimitByViewport();
 const container = document.querySelector('.favorites-gallery-container');
 const allCategoriesBtn = document.querySelector('.fav-all-btn');
@@ -117,7 +116,7 @@ function initFavoriteButtons() {
     btn.addEventListener('click', async () => {
       icon.classList.remove('saved');
 
-      Notiflix.Notify.warning('Removed from favorite', {
+      Notiflix.Notify.warning('Removed from favorites', {
         clickToClose: true,
       });
       removeItemAndUpdateFavGallery(id);
