@@ -28,6 +28,7 @@
     "modern-normalize": "^3.0.1",
     "notiflix": "^3.2.8",
     "resize-observer-polyfill": "^1.5.1",
+    "simple-parallax-js": "^6.2.1",
     "simplebar": "^6.3.0",
     "spinkit": "^2.0.1",
     "swiper": "^11.2.6"

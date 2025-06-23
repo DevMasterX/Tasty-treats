@@ -1,4 +1,5 @@
 import Notiflix from 'notiflix';
+
 import { createGalleryMarkup } from './galleryMarkup';
 import { renderGallery } from './renderGallery';
 import { recipesApiService } from '../services/recipes-api-service';
@@ -38,7 +39,8 @@ async function initMainGallery() {
     const markup = createGalleryMarkup(data.results);
     pagination.classList.toggle('visually-hidden', totalPages <= 1);
     renderGallery(container, markup);
-
+    // initParallax();
+    // console.log('simpleParallax:', window.simpleParallax);
     updatePaginationBtns(page, totalPages);
 
     initFavoriteButtons();
@@ -94,5 +96,16 @@ function checkFavoriteBtnSavedClass(icon, id) {
     icon.classList.add('saved');
   }
 }
+// function initParallax() {
+//   const images = document.querySelectorAll('.parallax-img');
+//   if (images.length === 0 || !window.simpleParallax) return;
+
+//   new window.simpleParallax(images, {
+//     scale: 1.1,
+//     delay: 0.1,
+//     transition: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+//     // transition: 'cubic-bezier(0,0,0,1)',
+//   });
+// }
 
 export { initMainGallery };
