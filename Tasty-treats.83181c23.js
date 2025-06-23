@@ -262,7 +262,7 @@ ${h}
         <button class="fav-btn" type="button" aria-label="${t} category button" data-category="${t}">${t}</button>
         `).join(""),e=s,window.innerWidth>=1024&&(e.scrollLeft=500,setTimeout(()=>e.scrollLeft=0,500)),e.scrollLeft=250,setTimeout(()=>e.scrollLeft=0,500),i=s,c=!1,i.addEventListener("mousedown",t=>{c=!0,a=t.clientX,t.preventDefault(),l=i.scrollLeft}),i.addEventListener("mouseup",()=>{c=!1,i.classList.remove("grabbing")}),i.addEventListener("mouseleave",()=>{c=!1,i.classList.remove("grabbing")}),i.addEventListener("mousemove",t=>{if(!c)return;let e=t.clientX-a;i.scrollLeft=l-e,i.classList.add("grabbing")}),o||(r=t)&&(document.querySelector(".js-categories-btn-container").addEventListener("click",t=>(function(t,e){var i;let a=t.target.closest("button");if(!a)return;let r=a.dataset.category;if(!r)return;if(console.log("\uD83D\uDE80 category:",r),console.log("\uD83D\uDE80 button:",a),function(){let t=document.querySelector(".fav-all-btn");[...document.querySelector(".fav-categories-btn-wrapper").children].forEach(t=>{t.classList.contains("checked")&&t.classList.remove("checked")}),t.classList.contains("checked")&&t.classList.remove("checked")}(),(i=a).classList.contains("checked")||i.classList.add("checked"),"All"===r){(0,n.resetFilteredRecipes)(),(0,n.initFavoritesGallery)();return}let o=e.filter(t=>t.category===r);(0,n.initFavoritesGallery)(1,o)})(t,r)),o=!0)}catch(t){throw console.error("Error fetching favorites recipes:",t),t}}}),o("8e6VR",function(e,i){t(e.exports,"createGalleryMarkup",function(){return a});let n=new URL(r("jOmYX")).href;function a(t){return 0===t.length?` 
    
-    <li class='gallery-item__nothing-found'><img class='nothing-found-img'
+    <li class='gallery-item__nothing-found '><img class='nothing-found-img parallax-img'
     src="${n}"
   alt="Nothing found"
 /> </li>
@@ -272,7 +272,7 @@ ${h}
 <a href="${t}" class="gallery-lightbox"  data-width="700px"
   data-height="auto" data-zoomable="true" data-type="image"
   data-effect="fade">
- <img class="gallery-item__img" src="${t}" alt="${e}" loading="lazy">
+ <img class="gallery-item__img parallax-img" src="${t}" alt="${e}" loading="lazy">
 </a>
       <button class="gallery-item__favorite-btn" data-id="${a}">
         <svg class="favorite-btn__icon" data-id="${a}">
@@ -477,4 +477,4 @@ ${h}
       </button>
     
     `}t(e.exports,"renderPaginationButtons",function(){return n})}),o("eq7JK",function(e,i){t(e.exports,"initBackToTop",function(){return n});function n(){let t=document.getElementById("backToTop");window.addEventListener("scroll",function(e){window.scrollY>500?t.classList.add("visible"):t.classList.remove("visible")}),t.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})})}}),o("g8Qcq",function(e,i){t(e.exports,"highlightActiveNavLink",function(){return n});function n(){let t=document.querySelector(".js-home-btn"),e=document.querySelector(".js-mobile-home-btn"),i=document.querySelector(".js-favorites-btn"),n=document.querySelector(".js-mobile-favorite-btn");if(!t||!i)return;let a=window.location.pathname;t?.classList.remove("current"),e?.classList.remove("mobile-menu-current"),i?.classList.remove("current"),n?.classList.remove("mobile-menu-current"),a.includes("favorites")?(i?.classList.add("current"),n?.classList.add("mobile-menu-current")):(t?.classList.add("current"),e?.classList.add("mobile-menu-current"))}}),Object.assign(r.i??={},{"84BDf":"not-found.b645fb3a.png"});
-//# sourceMappingURL=Tasty-treats.f69fb640.js.map
+//# sourceMappingURL=Tasty-treats.83181c23.js.map
