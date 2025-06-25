@@ -2,11 +2,11 @@
 
 .hero-section {
   // position: relative;
-  // margin-top: 84px;
+  margin-top: 84px;
   // margin-top: clamp(40px, calc(100vh-940px), 96px);
-
+  // margin-top: clamp(40px, calc(100vh - 940px), 96px);
   @include media(md) {
-    // margin-top: 89px;
+    margin-top: 89px;
   }
 
   @include media(lg) {
@@ -15,10 +15,12 @@
     gap: 32px;
 
     width: 1280px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    // margin: 0 auto;
     padding-left: 100px;
     // padding-right: 100px;
-    // margin-top: 96px;
+    margin-top: 125px;
   }
 }
 
