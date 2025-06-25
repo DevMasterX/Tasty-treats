@@ -9,9 +9,10 @@ function createGalleryMarkup(arr) {
     // `;
     return ` 
    
-    <li class='gallery-item__nothing-found '><img class='nothing-found-img parallax-img'
+    <li class='gallery-item__nothing-found'><img class='nothing-found-img parallax-img'
     src="${notFoundImage}"
   alt="Nothing found"
+
 /> </li>
 
 `;
@@ -26,7 +27,17 @@ function createGalleryMarkup(arr) {
 <a href="${preview}" class="gallery-lightbox"  data-width="700px"
   data-height="auto" data-zoomable="true" data-type="image"
   data-effect="fade">
- <img class="gallery-item__img parallax-img" src="${preview}" alt="${title}" loading="lazy">
+ <img class="gallery-item__img parallax-img" src="${preview}" alt="${title}" loading="lazy"
+ 
+  data-aos="zoom-out"
+    data-aos-offset="0"
+    data-aos-delay="50"
+    data-aos-duration="700"
+    data-aos-once="true"
+    data-aos-anchor-placement="top-bottom"
+ 
+ 
+ >
 </a>
       <button class="gallery-item__favorite-btn" data-id="${_id}">
         <svg class="favorite-btn__icon" data-id="${_id}">

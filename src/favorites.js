@@ -1,5 +1,7 @@
 // import ResizeObserver from 'resize-observer-polyfill';
 // window.ResizeObserver = ResizeObserver;
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import './scss/index.scss';
 // import AOS from 'aos';
 // import 'aos/dist/aos.css';
@@ -19,6 +21,11 @@ import { initFavoritesPagination } from './js/components/pagination/favorites-pa
 // import 'aos/dist/aos.css';
 document.addEventListener('DOMContentLoaded', async () => {
   document.body.classList.add(isWebPSupported() ? 'webp' : 'no-webp');
+  AOS.init({
+    // disable: window.innerWidth < 768,
+    debounceDelay: 50,
+    throttleDelay: 99,
+  });
   initTheme(); // Тема (светлая/тёмная)
   highlightActiveNavLink();
   // AOS.init();
