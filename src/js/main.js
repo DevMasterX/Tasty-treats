@@ -13,7 +13,7 @@ import { initPopularRecipes } from './components/init-popular-recipes';
 import { initFilters } from './components/filters';
 import { initMainGallery } from './components/main-gallery.js';
 import { checkSavedCategory } from './components/current-category.js';
-import { setHeroMarginTop } from './utils/hero-margin-top.js';
+// import { setHeroMarginTop } from './utils/hero-margin-top.js';
 import { initHomePagination } from './components/pagination/homePagination';
 import { renderPaginationButtons } from './components/pagination/render-pagination-buttons';
 import { initBackToTop } from './components/back-to-top';
