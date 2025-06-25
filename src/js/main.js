@@ -21,7 +21,7 @@ import { highlightActiveNavLink } from './utils/nav-link-active';
 // import { initBackToTop } from './components/back-to-top.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-  setHeroMarginTop();
+  // setHeroMarginTop();
   AOS.init({
     // disable: window.innerWidth < 768,
     debounceDelay: 50,
