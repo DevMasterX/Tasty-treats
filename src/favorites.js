@@ -1,8 +1,8 @@
 // import ResizeObserver from 'resize-observer-polyfill';
 // window.ResizeObserver = ResizeObserver;
+import './scss/index.scss';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import './scss/index.scss';
 // import AOS from 'aos';
 // import 'aos/dist/aos.css';
 import 'animate.css';
