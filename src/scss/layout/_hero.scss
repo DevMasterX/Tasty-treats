@@ -5,6 +5,8 @@
   margin-top: 84px;
   // margin-top: clamp(40px, calc(100vh-940px), 96px);
   // margin-top: clamp(40px, calc(100vh - 940px), 96px);
+
+  overflow-x: hidden;
   @include media(md) {
     margin-top: 89px;
   }
