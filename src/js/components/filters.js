@@ -6,9 +6,11 @@ import { fetchIngredients } from '../services/ingredients';
 import { recipesApiService } from '../services/recipes-api-service';
 import { initMainGallery } from './main-gallery';
 import { INPUT_DEBOUNCE_DELAY } from '../../constants/constants';
+import { startTypeEffect, stopTypeEffect } from './typing-effect';
 
 const selects = document.querySelectorAll('.filters-item__select');
 const input = document.querySelector('.js-filters-item__input');
+const placeholder = input.placeholder;
 const inputClearBtn = document.querySelector('.filter-input__clear-btn');
 const resetBtn = document.querySelector('.reset-filter-btn');
 
@@ -73,6 +75,8 @@ resetBtn.addEventListener('click', () => {
 
   initMainGallery();
 });
+
+startTypeEffect(placeholder, input);
 async function initFilters() {
   await Promise.all([initAreaList(), initIngredientsList()]);
 

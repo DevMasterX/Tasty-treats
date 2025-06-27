@@ -4,13 +4,13 @@ const pauseBeforeErasing = 2000;
 let typingTimeoutId;
 let isTypingEnabled = false;
 
-async function typeEffect(animatedText, textContainer) {
+async function typeEffect(animatedText, input) {
   for (let i = 0; i <= animatedText.length; i += 1) {
     if (!isTypingEnabled) {
       return;
     }
 
-    textContainer.textContent = animatedText.slice(0, i);
+    input.placeholder = animatedText.slice(0, i);
     await pause(typingSpeed);
   }
 
@@ -21,18 +21,21 @@ async function typeEffect(animatedText, textContainer) {
       return;
     }
 
-    textContainer.textContent = animatedText.slice(0, i);
+    input.placeholder = animatedText.slice(0, i);
     await pause(erasingSpeed);
   }
 
-  typingTimeoutId = setTimeout(typeEffect, typingSpeed);
+  typingTimeoutId = setTimeout(
+    () => typeEffect(animatedText, input),
+    typingSpeed
+  );
 }
 async function pause(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function startTypeEffect(animatedText, textContainer) {
-  if (!textContainer) {
+function startTypeEffect(animatedText, input) {
+  if (!input) {
     console.error('Text container not found.');
     return;
   }
@@ -47,7 +50,7 @@ function startTypeEffect(animatedText, textContainer) {
   }
 
   isTypingEnabled = true;
-  typeEffect(animatedText, textContainer);
+  typeEffect(animatedText, input);
 }
 function stopTypeEffect() {
   isTypingEnabled = false;
