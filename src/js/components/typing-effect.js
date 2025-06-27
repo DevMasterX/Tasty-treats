@@ -1,6 +1,6 @@
 const typingSpeed = 100;
 const erasingSpeed = 50;
-const pauseBeforeErasing = 2000;
+const pauseBeforeErasing = 3000;
 let typingTimeoutId;
 let isTypingEnabled = false;
 
@@ -11,6 +11,7 @@ async function typeEffect(animatedText, input) {
     }
 
     input.placeholder = animatedText.slice(0, i);
+
     await pause(typingSpeed);
   }
 
@@ -22,6 +23,7 @@ async function typeEffect(animatedText, input) {
     }
 
     input.placeholder = animatedText.slice(0, i);
+
     await pause(erasingSpeed);
   }
 
