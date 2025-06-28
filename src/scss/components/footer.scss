@@ -4,11 +4,11 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  //   outline: 1px solid red;
   border: 1px solid var(--text-secondary-light);
 
   @include transition;
 }
+
 .footer__socials-link {
   width: 100%;
   height: 100%;
@@ -19,9 +19,9 @@
   height: 24px;
   fill: var(--text-secondary);
 
-  &#icon-email {
-    fill: red;
-  }
+  // &#icon-email {
+  //   fill: red;
+  // }
   // stroke: none;
   //   stroke: green;
   @include transition;
