@@ -22,7 +22,7 @@ import { initFavoritesPagination } from './js/components/pagination/favorites-pa
 document.addEventListener('DOMContentLoaded', async () => {
   document.body.classList.add(isWebPSupported() ? 'webp' : 'no-webp');
   AOS.init({
-    // disable: window.innerWidth < 768,
+    offset: 0,
     once: true,
     startEvent: 'load',
     debounceDelay: 50,

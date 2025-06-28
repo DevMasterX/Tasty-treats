@@ -14,7 +14,6 @@ function initBackToTop() {
       backToTopBtn.classList.remove('visible');
     }
   }
-  // backToTopBtn.addEventListener('click', () => {});
 }
 
 export { initBackToTop };

@@ -4,8 +4,8 @@
   padding: 12px 24px;
   font-size: 14px;
   border-radius: 15px;
-  @include btn-primary;
   @include transition;
+  @include btn-primary;
 }
 
 .add-to-favorite-btn.disabled {

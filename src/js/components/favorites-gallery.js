@@ -221,8 +221,8 @@ function createGalleryEmptyMarkup() {
           <use href="#icon-fav-empty"></use>
         </svg>
     </div>
-    <p class="fav-empty__img-text" data-aos="fade-up" data-aos-delay="450"
-    data-aos-duration="1000">
+    <p class="fav-empty__img-text" data-aos="fade-up" data-aos-delay="350"
+    data-aos-duration="1100">
     It appears that you haven't added any recipes to your favorites yet. To get started, you can add recipes that you like to your favorites for easier access in the future.
     </p>
   </div>

@@ -13,17 +13,16 @@ import { initPopularRecipes } from './components/init-popular-recipes';
 import { initFilters } from './components/filters';
 import { initMainGallery } from './components/main-gallery.js';
 import { checkSavedCategory } from './components/current-category.js';
-// import { setHeroMarginTop } from './utils/hero-margin-top.js';
 import { initHomePagination } from './components/pagination/homePagination';
 import { renderPaginationButtons } from './components/pagination/render-pagination-buttons';
 import { initBackToTop } from './components/back-to-top';
 import { highlightActiveNavLink } from './utils/nav-link-active';
-// import { initBackToTop } from './components/back-to-top.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-  // setHeroMarginTop();
   AOS.init({
-    // disable: window.innerWidth < 768,
+    offset: 0,
+    once: true,
+    startEvent: 'load',
     debounceDelay: 50,
     throttleDelay: 99,
   });
@@ -44,12 +43,4 @@ document.addEventListener('DOMContentLoaded', async () => {
     initFilters(),
     initMainGallery(),
   ]);
-  // console.log('🚀 totalPages:', totalPages);
-  // const totalPages = recipesApiService.getTotalPages();
-  // console.log(getTotalPages());
-  // renderPaginationButtons();
-  // initSwiper();
-  // initAllCategories();
-  // initPopularRecipes();
-  // initFilters();
 });
