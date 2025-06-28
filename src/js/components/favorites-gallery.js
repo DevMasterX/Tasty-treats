@@ -215,12 +215,14 @@ function removeItemAndUpdateFavGallery(id) {
 function createGalleryEmptyMarkup() {
   return `
   <div class="container fav-empty">
-    <div class="fav-empty__img-wrapper">
+    <div class="fav-empty__img-wrapper" data-aos="fade-down"  data-aos-delay="200"
+    data-aos-duration="800">
       <svg class="pagination__btn-icon">
           <use href="#icon-fav-empty"></use>
         </svg>
     </div>
-    <p class="fav-empty__img-text">
+    <p class="fav-empty__img-text" data-aos="fade-up" data-aos-delay="450"
+    data-aos-duration="1000">
     It appears that you haven't added any recipes to your favorites yet. To get started, you can add recipes that you like to your favorites for easier access in the future.
     </p>
   </div>

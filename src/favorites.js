@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.body.classList.add(isWebPSupported() ? 'webp' : 'no-webp');
   AOS.init({
     // disable: window.innerWidth < 768,
+    once: true,
     startEvent: 'load',
     debounceDelay: 50,
     throttleDelay: 99,
