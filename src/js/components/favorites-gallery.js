@@ -216,7 +216,7 @@ function createGalleryEmptyMarkup() {
   return `
   <div class="container fav-empty">
     <div class="fav-empty__img-wrapper" data-aos="fade-down"  data-aos-delay="200"
-    data-aos-duration="800">
+    data-aos-duration="1000">
       <svg class="pagination__btn-icon">
           <use href="#icon-fav-empty"></use>
         </svg>
