@@ -1,7 +1,7 @@
 @use '../utils/mixins' as *;
 
 .fav-empty {
-  margin-top: 100px;
+  margin-top: 180px;
 
   @include media(md) {
     margin-top: 64px;
