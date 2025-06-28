@@ -254,8 +254,8 @@ ${h}
           <use href="#icon-fav-empty"></use>
         </svg>
     </div>
-    <p class="fav-empty__img-text" data-aos="fade-up" data-aos-delay="450"
-    data-aos-duration="1000">
+    <p class="fav-empty__img-text" data-aos="fade-up" data-aos-delay="350"
+    data-aos-duration="1100">
     It appears that you haven't added any recipes to your favorites yet. To get started, you can add recipes that you like to your favorites for easier access in the future.
     </p>
   </div>
@@ -490,4 +490,4 @@ ${h}
       </button>
     
     `}t(e.exports,"renderPaginationButtons",function(){return n})}),r("eq7JK",function(e,i){t(e.exports,"initBackToTop",function(){return n});function n(){let t=document.getElementById("backToTop");window.addEventListener("scroll",function(e){window.scrollY>500?t.classList.add("visible"):t.classList.remove("visible")}),t.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})})}}),r("g8Qcq",function(e,i){t(e.exports,"highlightActiveNavLink",function(){return n});function n(){let t=document.querySelector(".js-home-btn"),e=document.querySelector(".js-mobile-home-btn"),i=document.querySelector(".js-favorites-btn"),n=document.querySelector(".js-mobile-favorite-btn");if(!t||!i)return;let a=window.location.pathname;t?.classList.remove("current"),e?.classList.remove("mobile-menu-current"),i?.classList.remove("current"),n?.classList.remove("mobile-menu-current"),a.includes("favorites")?(i?.classList.add("current"),n?.classList.add("mobile-menu-current")):(t?.classList.add("current"),e?.classList.add("mobile-menu-current"))}}),Object.assign(o.i??={},{"84BDf":"not-found.b645fb3a.png"});
-//# sourceMappingURL=Tasty-treats.9172e527.js.map
+//# sourceMappingURL=Tasty-treats.afca1985.js.map
