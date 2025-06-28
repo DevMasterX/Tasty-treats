@@ -7,7 +7,6 @@ async function getFavRecipes() {
   const favCategoriesIdList = loadFromStorage(favCategoriesKey);
 
   if (!Array.isArray(favCategoriesIdList) || favCategoriesIdList.length === 0) {
-    console.log('❗️ No favorites recipes');
     return;
   }
 

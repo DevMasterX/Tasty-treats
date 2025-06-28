@@ -70,7 +70,6 @@ async function initFavoritesGallery(newPage = 1, categoryRecipes = null) {
       const start = (page - 1) * perPage;
       const end = start + perPage;
       const recipesToRender = favRecipes?.slice(start, end) || [];
-      console.log('🚀 recipesToRender:', recipesToRender);
       if (favRecipes) {
         initFavCategories(favRecipes);
       }
@@ -92,7 +91,6 @@ async function initFavoritesGallery(newPage = 1, categoryRecipes = null) {
 
         return;
       }
-      // pagination.classList.toggle('visually-hidden', totalPages <= 1);
       updateFavPaginationBtns(page, totalPages);
     }
   } catch (error) {
@@ -154,10 +152,6 @@ function resetFilteredRecipes() {
   filteredRecipes = null;
 }
 
-// function getFavRecipes() {
-//   return favRecipes;
-// }
-
 function removeRecipeFromStorage(id) {
   const index = favoritesValue.indexOf(id);
   favoritesValue.splice(index, 1);
@@ -193,7 +187,6 @@ function removeItemAndUpdateFavGallery(id) {
       resetFilteredRecipes();
       initFavoritesGallery();
       allCategoriesBtn.classList.add('checked');
-      // categoriesContainer.classList.toggle('visually-hidden', !favRecipes);
       return;
     }
   }

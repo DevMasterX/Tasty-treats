@@ -1,13 +1,9 @@
 import Notiflix from 'notiflix';
-
 import { createGalleryMarkup } from './galleryMarkup';
 import { renderGallery } from './renderGallery';
 import { recipesApiService } from '../services/recipes-api-service';
 import { hideLoader, showLoader } from './loader';
 import { updatePaginationBtns } from './pagination/homePagination';
-// import { renderPaginationButtons } from './pagination/render-pagination-buttons';
-// import { setupOpenButtons } from './modal';
-
 import {
   saveToStorage,
   loadFromStorage,
@@ -26,23 +22,15 @@ async function initMainGallery() {
 
   try {
     const data = await recipesApiService.fetchRecipes();
-    console.log('Init main gallery');
-
     const totalPages = data.totalPages;
-    console.log('🚀 totalPages:', totalPages);
-
     const page = recipesApiService.getQueryParams().page;
-    console.log('🚀 page:', page);
 
     recipesApiService.updateParams('totalPages', totalPages);
 
     const markup = createGalleryMarkup(data.results);
     pagination.classList.toggle('visually-hidden', totalPages <= 1);
     renderGallery(container, markup);
-    // initParallax();
-    // console.log('simpleParallax:', window.simpleParallax);
     updatePaginationBtns(page, totalPages);
-
     initFavoriteButtons();
   } catch (error) {
     console.error('Error loading recipes on the client:', error);
@@ -96,16 +84,5 @@ function checkFavoriteBtnSavedClass(icon, id) {
     icon.classList.add('saved');
   }
 }
-// function initParallax() {
-//   const images = document.querySelectorAll('.parallax-img');
-//   if (images.length === 0 || !window.simpleParallax) return;
-
-//   new window.simpleParallax(images, {
-//     scale: 1.1,
-//     delay: 0.1,
-//     transition: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-//     // transition: 'cubic-bezier(0,0,0,1)',
-//   });
-// }
 
 export { initMainGallery };
