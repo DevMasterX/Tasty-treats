@@ -24,26 +24,6 @@ class RecipesApiService {
     }
   }
 
-  //   setCategory(category) {
-  //     this.category = category;
-  //   }
-
-  //   setPage(page) {
-  //     this.page = page;
-  //   }
-
-  //   setTime(time) {
-  //     this.time = time;
-  //   }
-
-  //   setArea(area) {
-  //     this.area = area;
-  //   }
-
-  //   setIngredient(ingredient) {
-  //     this.ingredient = ingredient;
-  //   }
-
   updateParams(paramName, value) {
     if (this.hasOwnProperty(paramName)) {
       this[paramName] = value;
@@ -94,12 +74,6 @@ class RecipesApiService {
   getTotalPages() {
     return this.totalPages;
   }
-  // async fetchAllRecipes() {
-  //   try {
-  //     const response = await apiClient.get('/recipes');
-  //     console.log('🚀 response:', response.data);
-  //   } catch (error) {}
-  // }
 }
 
 export const recipesApiService = new RecipesApiService();

@@ -28,8 +28,6 @@
 }
 
 .popular-recipes__item {
-  //   display: flex;
-
   display: grid;
   grid-template-columns: 64px 1fr;
   gap: 16px;

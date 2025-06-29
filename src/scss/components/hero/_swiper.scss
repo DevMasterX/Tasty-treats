@@ -9,7 +9,6 @@
 }
 
 .sw-container.swiper-container {
-  // overflow-x: hidden !important;
   overflow: hidden !important;
 
   @include media(lg) {
@@ -30,7 +29,6 @@
 }
 
 .swiper-wrapper .swiper-slide {
-  // width: 100% !important;
   display: grid !important;
   grid-template-columns: 0.4fr 1fr 1fr;
   aspect-ratio: 512 / 280;
@@ -57,7 +55,6 @@
   justify-content: center;
   align-items: end;
   padding-left: 15%;
-  // border: 1px solid rgba(155, 181, 55, 0.3);
 
   & img {
     max-width: 360%;
@@ -128,7 +125,6 @@
   justify-content: center;
   align-items: center;
   padding-left: 5%;
-  // border: 1px solid rgba(155, 181, 55, 0.3);
 
   & img {
     max-width: 230%;

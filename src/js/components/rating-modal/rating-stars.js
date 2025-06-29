@@ -1,4 +1,3 @@
-// let checkedStarIdx = null;
 function initRatingStars(btn, modalContent) {
   const starsList = modalContent.querySelector('.js-modal-rating-list');
   const ratingNumber = document.querySelector('.js-modal-rating-number');
@@ -19,7 +18,6 @@ function initRatingStars(btn, modalContent) {
 
     star.addEventListener('click', () => {
       onStarClick(stars, star, idx, ratingNumber, sendBtn);
-      // starsList.removeEventListener('mouseleave', handleMouseLeave);
     });
   });
 

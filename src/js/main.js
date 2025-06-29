@@ -1,5 +1,3 @@
-// import ResizeObserver from 'resize-observer-polyfill';
-// window.ResizeObserver = ResizeObserver;
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import 'spinkit/spinkit.min.css';

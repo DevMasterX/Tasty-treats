@@ -1,82 +1,5 @@
 @use '../../utils/mixins' as *;
 
-// .filters-item .choices {
-//   margin-bottom: 0;
-// }
-
-// .choices .choices__inner {
-//   height: 46px;
-
-//   font-size: 14px;
-//   line-height: 129%;
-//   background-color: inherit;
-//   border: var(--input-border);
-//   border-radius: 15px;
-//   padding-top: 14px;
-//   padding-bottom: 14px;
-//   padding-left: 18px;
-
-//   @include media(md) {
-//     height: 48px;
-//     font-size: 16px;
-//     line-height: 125%;
-//   }
-// }
-
-// .is-flipped.is-open .choices__inner {
-//   border-radius: 15px;
-// }
-
-// .choices__list.choices__list--single {
-//   padding: 0;
-// }
-
-// .choices .choices__list--dropdown.is-active {
-//   max-height: 176px !important;
-//   border-radius: 15px !important;
-//   border: none;
-//   margin: 0 !important;
-
-//   box-shadow: 0 4px 36px 0 rgba(0, 0, 0, 0.02);
-//   background: var(--modal-bg);
-//   color: var(--text-secondary-light);
-
-//   z-index: 3;
-
-//   @include media(md) {
-//     max-height: 188px !important;
-//   }
-// }
-
-// .choices.is-open .choices__inner {
-//   border-radius: 15px !important;
-// }
-
-// .choices__item.choices__item--choice.choices__item--selectable.is-highlighted {
-//   background-color: transparent !important;
-//   color: var(--text-primary);
-// }
-
-// .choices__list--dropdown {
-//   scrollbar-width: thin;
-//   scrollbar-color: var(--text-secondary-light) transparent;
-// }
-
-// .choices__list--dropdown::-webkit-scrollbar {
-//   width: 6px;
-// }
-
-// .choices__list--dropdown::-webkit-scrollbar-thumb {
-//   background-color: var(--text-secondary-light);
-//   border-radius: 10px;
-// }
-
-// .choices__list--dropdown::-webkit-scrollbar-track {
-//   background: transparent;
-// }
-
-// --------------------------------
-
 .filters-item__select {
   padding-left: 18px;
   font-weight: 500;
@@ -97,9 +20,7 @@
   line-height: 129%;
 
   &.is-focused {
-    // border-color: #b7b7b7;
     border-color: var(--text-primary);
-    // border-color: var(--text-secondary);
   }
 
   &::after {
@@ -177,8 +98,8 @@
 
   .simplebar-scrollbar {
     background-color: var(--all-categories-scrollbar-color);
-
     border-radius: 12px;
+
     &::before {
       display: none;
     }

@@ -10,9 +10,7 @@
 .pagination__btn.transparent {
   @include pagination-btn(transparent);
 }
-// .pagination__btn {
-//   @include pagination-btn(transparent);
-// }
+
 .pagination__btn.right {
   @include pagination-btn(green);
 }
@@ -39,23 +37,7 @@
     margin-right: -16px;
   }
 }
-// .right-double-icon {
-//   margin-left: -14px;
-//   @include media(md) {
-//     margin-right: -16px;
-//   }
-// }
 
-// .pagination__btn.third {
-//   display: none;
-//   @include media(md) {
-//     display: block;
-//   }
-// }
-
-// .pagination__btn.pagination__prev-pages-btn {
-//   display: none;
-// }
 .pagination__btn.disabled {
   pointer-events: none;
   opacity: 0.25;

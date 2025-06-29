@@ -2,19 +2,15 @@ import { fetchPopularRecipes } from '../services/popular-recipes';
 import { hideLoader, showLoader } from './loader';
 
 const loaderContainer = document.querySelector('.popular-recipes-section');
-showLoader(loaderContainer);
-
 const popularRecipesList = document.querySelector('.popular-recipes__list');
+showLoader(loaderContainer);
 if (!popularRecipesList) return;
 
 async function initPopularRecipes() {
   try {
     const recipes = await fetchPopularRecipes();
-    // console.log('🚀 recipes:', recipes);
 
     renderPopularRecipes(recipes);
-    // [...popularRecipesList.children].forEach(item => item.addEventListener);
-    // setEventListeners(popularRecipesList);
   } catch (error) {
     console.error('Error loading popular recipes:', error);
     throw error;
@@ -42,9 +38,5 @@ function renderPopularRecipes(recipes) {
     )
     .join('');
 }
-
-// function setEventListeners(list) {
-//   list.forEach(item => console.log(item));
-// }
 
 export { initPopularRecipes };

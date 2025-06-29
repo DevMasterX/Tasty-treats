@@ -1,5 +1,4 @@
 import Notiflix from 'notiflix';
-// import 'animate.css';
 import { closeModal } from '../components/modal';
 import { ORDER_FORM_KEY } from './formStorage';
 
@@ -21,7 +20,6 @@ const validationConfig = {
 };
 
 function initOrderFormValidation(form) {
-  // const form = document.querySelector('.js-order-form');
   if (!form) return;
 
   form.addEventListener('submit', e => {
@@ -37,10 +35,6 @@ function validateForm(form) {
     attachInputListener(input);
   });
 }
-
-export { initOrderFormValidation };
-
-// -----------------------------------------------------
 
 function validateField(inputElement) {
   const config = validationConfig[inputElement.name];
@@ -147,3 +141,5 @@ function formSubmit(form) {
 function getErrorElement(input) {
   return input.closest('label')?.querySelector('.order-form__error-message');
 }
+
+export { initOrderFormValidation };

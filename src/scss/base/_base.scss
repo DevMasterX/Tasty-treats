@@ -1,9 +1,4 @@
-// @use '../utils/variables';
 @use '../utils/mixins' as *;
-
-// * {
-//   scrollbar-gutter: stable;
-// }
 
 html {
   scrollbar-gutter: stable;
@@ -16,7 +11,6 @@ html {
 
 body {
   overflow-y: auto;
-  // scrollbar-gutter: stable;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   will-change: scroll-position;
@@ -26,11 +20,6 @@ body {
 body.gscrollbar-fixer {
   margin-right: 0 !important;
 }
-
-// html,
-// body {
-//   overflow-x: hidden;
-// }
 
 .current {
   color: var(--text-accent);
@@ -45,56 +34,15 @@ body.gscrollbar-fixer {
   overflow: hidden;
 }
 
-button {
-  background: none;
-  border: none;
-  font: inherit;
-  color: inherit;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-  display: inline-block;
-}
-
-button,
-a,
-input,
-textarea,
-li,
-select,
-label {
-  outline: none;
-  box-shadow: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-select {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background: none;
-}
-
-button:focus,
-a:focus,
-input:focus,
-textarea:focus {
-  outline: none;
-}
-
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
-  // outline: 2px solid #1976d2;
   outline: 2px solid var(--hover-color);
 
   outline-offset: 2px;
 }
 
-// body.glightbox-open .gscrollbar-fixer {
-//   margin: 0 !important;
-// }
 .is-hidden {
   opacity: 0;
   visibility: hidden;

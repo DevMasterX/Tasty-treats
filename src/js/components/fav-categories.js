@@ -47,7 +47,6 @@ function createFavCategoriesMarkup(categoriesList) {
 }
 
 function scrollHint(el) {
-  //   const el = document.querySelector('.fav-categories-btn-wrapper');
   if (window.innerWidth >= 1024) {
     el.scrollLeft = 500;
     setTimeout(() => (el.scrollLeft = 0), 500);
@@ -57,8 +56,6 @@ function scrollHint(el) {
 }
 
 function initButtonsListeners(favRecipes) {
-  // console.log('🚀 favRecipes:', favRecipes);
-
   if (!favRecipes) return;
 
   const btnContainer = document.querySelector('.js-categories-btn-container');
@@ -88,7 +85,6 @@ function onBtnClick(e, favRecipes) {
   const filteredRecipes = favRecipes.filter(
     recipe => recipe.category === category
   );
-  // console.log('🚀 filteredRecipes:', filteredRecipes);
 
   initFavoritesGallery(1, filteredRecipes);
 }
@@ -141,9 +137,7 @@ function initDragScroll(container) {
   container.addEventListener('mousemove', e => {
     if (!isDown) return;
     const walk = e.clientX - startX;
-
     container.scrollLeft = scrollLeft - walk;
-
     container.classList.add('grabbing');
   });
 }

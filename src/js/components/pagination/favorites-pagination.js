@@ -1,4 +1,3 @@
-// import { recipesApiService } from '../../services/recipes-api-service';
 import {
   initFavoritesGallery,
   getCurrentPage,
@@ -37,7 +36,6 @@ function onFirstPageBtnClick() {
   console.log('onFirstPageBtnClick');
 
   initFavoritesGallery();
-  //   initMainGallery();
 }
 async function onPrevPageBtnClick() {
   const { currentPage } = initVars();
@@ -88,20 +86,15 @@ async function onNextPageBtnClick() {
 
 async function onLastPageBtnClick() {
   const { totalPages: lastPage } = initVars();
-  //   recipesApiService.updateParams('page', lastPage);
+
   console.log('🚀 lastPage:', lastPage);
   await initFavoritesGallery(lastPage);
 }
 
 async function handlePaginationClick(e) {
-  //   console.log(e.target);
   const { existingPageBtns, currentPage } = initVars();
-  //   console.log('🚀 existingPageBtns:', existingPageBtns);
-  //   console.log('🚀 currentPage:', currentPage);
-
   const button = e.currentTarget;
   const btnPageNumber = Number(button.dataset.page);
-  //   console.log('🚀 btnPageNumber:', btnPageNumber);
 
   if (btnPageNumber !== currentPage) {
     existingPageBtns.forEach(btn => {
@@ -143,10 +136,8 @@ function initVars() {
   const lastBtnPageNumber = Number(
     existingPageBtns[existingPageBtns.length - 1].dataset.page
   );
-  // -------------------------------------------
 
   const isLastBtns = lastBtnPageNumber >= totalPages;
-  //   const isFirstBtns = firstBtnPageNumber < pageBtnsAmount;
   const isFirstBtns = firstBtnPageNumber === 1;
 
   return {
@@ -173,7 +164,6 @@ function initVars() {
 
 function onDotsBtnClick(e) {
   const {
-    //   firstPageBtn,
     firstBtn,
     nextPagesBtn,
     prevPagesBtn,
@@ -218,9 +208,6 @@ function onDotsBtnClick(e) {
     }
   } else if (e.currentTarget === prevPagesBtn) {
     if (firstBtnPageNumber - pageBtnsAmount < 1) {
-      //   firstPageBtn.classList.add('active');
-      //   console.log('kiya');
-
       for (let i = 0; i < pageBtnsAmount; i++) {
         existingPageBtns[i].dataset.page = i + 1;
         existingPageBtns[i].textContent = existingPageBtns[i].dataset.page;
@@ -231,7 +218,6 @@ function onDotsBtnClick(e) {
       if (!firstBtn.classList.contains('active')) {
         firstBtn.classList.add('active');
       }
-      //   console.log('kiya-2');
       return;
     }
 
@@ -247,7 +233,6 @@ function onDotsBtnClick(e) {
     if (!firstBtn.classList.contains('active')) {
       firstBtn.classList.add('active');
     }
-    // firstPageBtn.classList.add('active');
   }
 }
 
@@ -314,12 +299,8 @@ function updateFavPaginationBtns(page, totalPages) {
   });
   firstPageBtn.classList.toggle('disabled', page === 1);
   prevPageBtn.classList.toggle('disabled', page === 1);
-  // prevPagesBtn.classList.toggle('visually-hidden', isFirstBtns);
-  // nextPagesBtn.classList.toggle('visually-hidden', isLastBtns);
-  //   prevPagesBtn.classList.toggle('disabled', page <= pageBtnsAmount);
   prevPagesBtn.classList.toggle('disabled', isFirstBtns);
   nextPagesBtn.classList.toggle('disabled', isLastBtns);
-
   nextPageBtn.classList.toggle('disabled', page === totalPages);
   lastPageBtn.classList.toggle('disabled', page === totalPages);
 }

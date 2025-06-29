@@ -1,10 +1,7 @@
 @use '../utils/mixins' as *;
 
 .hero-section {
-  // position: relative;
   margin-top: 84px;
-  // margin-top: clamp(40px, calc(100vh-940px), 96px);
-  // margin-top: clamp(40px, calc(100vh - 940px), 96px);
 
   overflow-x: hidden;
   @include media(md) {
@@ -15,14 +12,10 @@
     display: grid;
     grid-template-columns: 446px 1fr;
     gap: 32px;
-
     width: 1280px;
     margin-left: auto;
     margin-right: auto;
-    // margin: 0 auto;
     padding-left: 100px;
-    // padding-right: 100px;
-    // margin-top: 125px;
     margin-top: 146px;
   }
 }
@@ -40,9 +33,6 @@
   }
 
   @include media(lg) {
-    // display: flex;
-    // gap: 32px;
-    // padding-top: 94px;
     padding-left: 0;
     padding-right: 0;
     margin-top: 64px;

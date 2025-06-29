@@ -117,8 +117,6 @@
   padding: 8px 14px;
   border-radius: 8px;
   font-size: 12px;
-  // color: var(--text-btn-primary);
-  // background-color: var(--btn-primary-bg);
 
   @include btn-primary;
   @include transition;
@@ -148,22 +146,19 @@ body.dark-theme .gallery-item::before {
   width: 18px;
   @include media(md) {
     flex: 0 0 16px;
-    // padding: 2px;
+
     height: 16px;
     width: 16px;
   }
   @include media(lg) {
     flex: 0 0 18px;
-    // padding: 2px;
+
     height: 18px;
     width: 18px;
   }
 }
 
 .rating-list.painted {
-  // position: absolute;
-
-  // inset: 0;
   overflow: hidden;
 
   & .rating-list__star-icon {
@@ -173,9 +168,4 @@ body.dark-theme .gallery-item::before {
 
 .rating-list__star-icon {
   fill: var(--star-icon-base-color);
-  // height: 14px;
-  // width: 14px;
 }
-// .rating-list {
-//   height: 18px;
-// }

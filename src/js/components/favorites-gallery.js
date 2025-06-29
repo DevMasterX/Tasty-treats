@@ -18,18 +18,15 @@ let favoritesValue = loadFromStorage(favoritesKey) || [];
 const perPage = getLimitByViewport();
 const container = document.querySelector('.favorites-gallery-container');
 const allCategoriesBtn = document.querySelector('.fav-all-btn');
-
 let page = null;
 let totalPages = null;
+let favRecipes = null;
+let filteredRecipes = null;
 
 if (document.body.dataset.currentPage === 'favorites') {
   pagination.classList.add('centered');
   pagination.classList.add('visually-hidden');
 }
-
-let favRecipes = null;
-
-let filteredRecipes = null;
 
 async function initFavoritesGallery(newPage = 1, categoryRecipes = null) {
   page = newPage;
@@ -57,7 +54,6 @@ async function initFavoritesGallery(newPage = 1, categoryRecipes = null) {
         renderGallery(container, markup);
         initFavoriteButtons();
       }
-      // pagination.classList.toggle('visually-hidden', totalPages <= 1);
       updateFavPaginationBtns(page, totalPages);
     } else {
       if (!favRecipes) {

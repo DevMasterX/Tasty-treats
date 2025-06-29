@@ -2,20 +2,17 @@
 
 .container {
   width: 100%;
-  // max-width: 1280px;
+
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
-  // overflow-x: hidden;
 
   @include media(md) {
-    // background-color: black;
     width: 768px;
     padding-left: 32px;
     padding-right: 32px;
   }
   @include media(lg) {
-    // background-color: red;
     width: 1280px;
     padding-left: 100px;
     padding-right: 100px;

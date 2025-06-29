@@ -1,5 +1,3 @@
-// import { recipesApiService } from '../../services/recipes-api-service';
-
 function renderPaginationButtons() {
   const centerBtnsContainer = document.querySelector(
     '.js-pagination__center-btns-wrapper'

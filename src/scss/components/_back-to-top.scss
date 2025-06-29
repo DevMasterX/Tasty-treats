@@ -19,30 +19,13 @@
     animation: up-bounce 2s ease-in-out infinite;
   }
 
-  // &:hover {
-  //   animation: none;
-  //   fill: var(--text-accent);
-  //   transform: scale(1.1);
-  // }
-  // &::before {
-  //   content: '';
-  //   position: absolute;
-  //   top: -8px;
-  //   left: 0;
-  //   width: 40px;
-  //   height: 7px;
-  //   border-radius: 3px;
-  //   border: 1px solid var(--text-accent);
-  //   background-color: var(--up-to-top-icon-color);
-  // }
-
   @include transition;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .back-to-top__btn:hover {
     border-color: var(--text-accent);
-    transform: scale(1.1); // ✅ добавили сюда
+    transform: scale(1.1);
 
     .back-to-top__icon {
       fill: var(--text-accent);
@@ -52,7 +35,7 @@
 
 .back-to-top__icon {
   fill: var(--up-to-top-icon-color);
-  // stroke: var(--text-accent);
+
   @include transition;
 }
 

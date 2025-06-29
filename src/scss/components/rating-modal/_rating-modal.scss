@@ -1,9 +1,7 @@
 @use '../../utils/mixins' as *;
 
 .rating-form {
-  // min-width: 10%;
   width: 295px;
-  //   @include flex-column;
 
   @include media(md) {
     width: 360px;
@@ -14,12 +12,10 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 129%;
-  //   color: #050505;
 }
 
 .recipe-info__rating-number.modal-rating-number {
   font-size: 16px;
-  //   line-height: 150%;
   @include transition;
 }
 
@@ -52,7 +48,6 @@
   padding: 18px 14px;
   border: var(--input-border);
   border-radius: 15px;
-  // background-color: var(--modal-bg);
   background-color: transparent;
   color: var(--text-primary);
   &::placeholder {

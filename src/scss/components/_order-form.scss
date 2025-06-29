@@ -1,7 +1,6 @@
 @use '../utils/mixins' as *;
 
 .order-form {
-  // min-width: 10%;
   width: 295px;
   @include flex-column;
 
@@ -46,7 +45,6 @@
 }
 
 .order-form__input {
-  //   color: var(--text-primary);
   color: inherit;
   padding: 14px;
   height: 46px;
@@ -58,13 +56,6 @@
     height: 48px;
   }
 }
-
-// .order-form__input:valid {
-//   border-color: #4caf50;
-// }
-// .order-form__input:invalid {
-//   border-color: #f44336;
-// }
 
 .order-form__textarea {
   color: inherit;

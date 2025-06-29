@@ -5,8 +5,6 @@ import { renderRatingModal } from './rating-modal/rating-modal.js';
 import { initRatingStars } from './rating-modal/rating-stars.js';
 import { initRatingFormValidation } from '../utils/ratingFormValidator.js';
 import { initRatingFormStorage } from '../utils/ratingFormStorage.js';
-// import { initOrderFormValidation } from '../utils/orderFormValidator.js';
-// import { initFormStorage } from '../utils/formStorage.js';
 
 let modal, overlay, modalContent;
 
@@ -26,25 +24,12 @@ function initModal() {
   handleEscapeKey();
 }
 
-// function setupOpenButtons() {
-//   document.addEventListener('click', e => {
-//     const openBtn = e.target.closest('[data-modal-open]');
-//     if (!openBtn) return;
-
-//     openModal(e);
-//   });
-
-//   // document.querySelectorAll('[data-modal-open]').forEach(btn => {
-//   //   btn.addEventListener('click', openModal);
-//   // });
-// }
-
 function setupOpenButtons() {
   document.addEventListener('click', e => {
     const openBtn = e.target.closest('[data-modal-open]');
     if (!openBtn) return;
 
-    openModal(openBtn); // ← передаём именно кнопку
+    openModal(openBtn);
   });
 }
 

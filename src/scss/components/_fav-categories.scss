@@ -2,17 +2,6 @@
 
 .container.favorites-container {
   padding-right: 1px;
-  // overflow-y: auto;
-
-  // &::-webkit-scrollbar {
-  //   display: none;
-  // }
-
-  // scrollbar-width: none;
-  // -ms-overflow-style: none;
-
-  // -webkit-overflow-scrolling: touch;
-  // scroll-behavior: smooth;
 }
 
 .fav-btn {
@@ -24,7 +13,6 @@
   padding: 14px 18px;
   &:active {
     background-color: var(--active-color);
-    // transform: scale(0.95);
   }
 
   @include transition;
@@ -34,19 +22,15 @@
   .fav-btn:hover {
     color: var(--text-btn-primary);
     background-color: var(--hover-color-light);
-    // border: none;
-    // transform: scale(1.1);
   }
   .fav-btn:hover:active {
     background-color: var(--active-color);
-    // transform: scale(0.95);
   }
 }
 
 .fav-btn.checked {
   background-color: var(--hover-color);
   color: var(--text-btn-primary);
-  // border: none;
 }
 
 .fav-categories-btn-wrapper {

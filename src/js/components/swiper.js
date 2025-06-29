@@ -7,7 +7,6 @@ import 'swiper/modules/pagination.min.css';
 import 'swiper/modules/effect-cube.min.css';
 import 'swiper/modules/parallax.min.css';
 
-// const loaderContainer = document.querySelector('.hero-section');
 const loaderContainer = document.querySelector('.sw-container');
 
 async function initSwiper() {

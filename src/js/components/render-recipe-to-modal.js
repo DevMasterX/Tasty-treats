@@ -2,17 +2,11 @@ import Notiflix from 'notiflix';
 import { fetchRecipeInfo } from '../services/recipe-info';
 import { hideLoader, showLoader } from './loader';
 import { removeItemAndUpdateFavGallery } from './favorites-gallery';
-// import { setupOpenButtons } from './modal';
-// import {
-//   removeRecipeFromStorage,
-//   removeRecipeFromFavList,
-// } from './favorites-gallery';
 import {
   saveToStorage,
   loadFromStorage,
   removeFromStorage,
 } from '../utils/localStorage';
-
 import { STORAGE_KEYS } from '../../constants/constants';
 const favoritesKey = STORAGE_KEYS.FAVORITES_KEY;
 
@@ -36,17 +30,11 @@ async function renderRecipeToModal(btn, modalContent) {
   try {
     const recipeId = btn.dataset.id;
     const recipeInfo = await fetchRecipeInfo(recipeId);
-
     const markup = createRecipeInfoMarkup(recipeInfo);
 
-    // modalContent.insertAdjacentHTML('afterbegin', markup);
     modalContent.innerHTML = markup;
 
-    // requestAnimationFrame(() => {
-    //   initRecipeInfoButtons();
-    // });
     initRecipeInfoButtons();
-    // setupOpenButtons();
   } catch (error) {
     console.error('Error rendering recipe iformation to madal', error);
     throw error;
@@ -318,21 +306,12 @@ function getYouTubeEmbedUrl(url) {
 
 function initRecipeInfoButtons() {
   const addToFavoriteBtn = document.querySelector('.add-to-favorite-btn');
-  // console.log('🚀 addToFavoriteBtn:', addToFavoriteBtn);
-
-  // const giveRatingBtn = document.querySelector('.give-rating-btn');
-
   if (addToFavoriteBtn) {
     addToFavoriteBtn.addEventListener('click', onAddToFavoriteBtnClick);
   }
-
-  // if (giveRatingBtn) {
-  //   giveRatingBtn.addEventListener('click', onGiveRatingBtnClick);
-  // }
 }
 
 function onAddToFavoriteBtnClick(e) {
-  // const addToFavoriteBtn = document.querySelector('.add-to-favorite-btn');
   const addToFavoriteBtn = e.currentTarget;
   const id = e.currentTarget.dataset.id;
   const heartIcon = document.querySelector(
@@ -340,9 +319,6 @@ function onAddToFavoriteBtnClick(e) {
   );
 
   favoritesValue = loadFromStorage(favoritesKey) || [];
-
-  // const icon = e.currentTarget.closest('.favorite-btn__icon');
-  // console.log('🚀 icon:', icon);
 
   if (!favoritesValue.includes(id)) {
     favoritesValue.push(id);
@@ -373,7 +349,5 @@ function onAddToFavoriteBtnClick(e) {
     saveToStorage(favoritesKey, favoritesValue);
   }
 }
-
-// function onGiveRatingBtnClick(e) {}
 
 export { renderRecipeToModal };

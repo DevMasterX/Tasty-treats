@@ -1,20 +1,11 @@
 const notFoundImage = new URL('../../img/not-found.png', import.meta.url).href;
 function createGalleryMarkup(arr) {
   if (arr.length === 0) {
-    //     return `
-    //     <li class='nothing-found-item'><img class='nothing-found-img'
-    //     src="${notFoundImage}"
-    //   alt="Nothing found"
-    // /> </li>
-    // `;
     return ` 
-   
     <li class='gallery-item__nothing-found'><img class='nothing-found-img parallax-img'
     src="${notFoundImage}"
   alt="Nothing found"
-
 /> </li>
-
 `;
   }
 
@@ -134,9 +125,6 @@ function createGalleryMarkup(arr) {
      </div>
    </div>
     </li>
-
-
-    
     `;
     })
     .join('');

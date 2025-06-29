@@ -37,9 +37,6 @@ function onPrevPageBtnClick() {
   const { currentPage } = initVars();
   const prevPage = currentPage - 1;
 
-  // existingPageBtns.forEach(btn => {
-  //   btn.classList.toggle('active', Number(btn.dataset.page) === prevPage);
-  // });
   recipesApiService.updateParams('page', prevPage);
   initMainGallery();
 }
@@ -137,7 +134,6 @@ function initVars() {
   );
 
   const isLastBtns = lastBtnPageNumber >= totalPages;
-  // const isFirstBtns = firstBtnPageNumber < pageBtnsAmount;
   const isFirstBtns = firstBtnPageNumber === 1;
 
   return {
@@ -164,7 +160,6 @@ function initVars() {
 
 function onDotsBtnClick(e) {
   const {
-    // firstPageBtn,
     firstBtn,
     nextPagesBtn,
     prevPagesBtn,
@@ -303,11 +298,8 @@ function updatePaginationBtns(page, totalPages) {
   });
   firstPageBtn.classList.toggle('disabled', page === 1);
   prevPageBtn.classList.toggle('disabled', page === 1);
-  // prevPagesBtn.classList.toggle('visually-hidden', isFirstBtns);
-  // nextPagesBtn.classList.toggle('visually-hidden', isLastBtns);
   prevPagesBtn.classList.toggle('disabled', isFirstBtns);
   nextPagesBtn.classList.toggle('disabled', isLastBtns);
-
   nextPageBtn.classList.toggle('disabled', page === totalPages);
   lastPageBtn.classList.toggle('disabled', page === totalPages);
 }

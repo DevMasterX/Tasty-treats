@@ -1,10 +1,6 @@
-// import ResizeObserver from 'resize-observer-polyfill';
-// window.ResizeObserver = ResizeObserver;
 import './scss/index.scss';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-// import AOS from 'aos';
-// import 'aos/dist/aos.css';
 import 'animate.css';
 import 'spinkit/spinkit.min.css';
 import { initTheme } from './js/components/themeSwitcher';
@@ -17,8 +13,7 @@ import { isWebPSupported } from './js/utils/support-webp';
 import { initFavoritesGallery } from './js/components/favorites-gallery';
 import { renderPaginationButtons } from './js/components/pagination/render-pagination-buttons';
 import { initFavoritesPagination } from './js/components/pagination/favorites-pagination';
-// import AOS from 'aos';
-// import 'aos/dist/aos.css';
+
 document.addEventListener('DOMContentLoaded', async () => {
   document.body.classList.add(isWebPSupported() ? 'webp' : 'no-webp');
   AOS.init({
@@ -28,17 +23,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     debounceDelay: 50,
     throttleDelay: 99,
   });
-  initTheme(); // Тема (светлая/тёмная)
+  initTheme();
   highlightActiveNavLink();
-  // AOS.init();
-  // AOS.refresh();
   renderPaginationButtons();
-
   initHeaderEventListeners();
   initMobileMenu();
   initFavoritesPagination();
   initModal();
   await initFavoritesGallery();
-
   initBackToTop();
 });

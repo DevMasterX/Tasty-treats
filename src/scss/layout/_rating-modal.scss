@@ -1,6 +1,5 @@
 @use '../utils/mixins' as *;
 .recipe-info__rating-wrapper.modal-rating-wrapper {
-  // gap: 8px;
   position: relative;
   margin-top: 4px;
 }
@@ -9,7 +8,6 @@
   position: absolute;
   top: 3px;
   left: 0;
-  // transform: translateY(-50%);
 }
 
 .rating-list.modal-rating-list {
@@ -36,9 +34,7 @@
   position: relative;
 }
 .order-form__error-message.rating__input-error-message {
-  // display: block;
   position: absolute;
-  // margin-bottom: 7px;
   top: -22px;
   left: 0;
 }

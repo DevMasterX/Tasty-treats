@@ -5,25 +5,8 @@ import { STORAGE_KEYS } from '../../constants/constants';
 import { removeFromStorage } from './localStorage';
 
 const ratingEmailKey = STORAGE_KEYS.RATING_EMAIL_KEY;
-// import { ORDER_FORM_KEY } from './formStorage';
-
-// const STORAGE_KEYS = {
-//   CURRENT_CATEGORY: 'current-category',
-//   THEME_KEY: 'theme',
-//   FAVORITES_KEY: 'favorites',
-//   RATING_EMAIL_KEY: 'rating-email';
-// };
 
 const validationConfig = {
-  // username: {
-  //   required: true,
-  //   errorMessage: 'Please enter your name',
-  // },
-  // phone_number: {
-  //   required: true,
-  //   pattern: /^[\d\s+()-]{7,20}$/,
-  //   errorMessage: 'Enter a valid phone number',
-  // },
   email: {
     required: true,
     pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
@@ -52,8 +35,6 @@ function validateForm(form) {
   validateField(input);
   attachInputListener(input);
 }
-
-// -----------------------------------------------------
 
 function validateField(inputElement) {
   const config = validationConfig[inputElement.name];
@@ -98,17 +79,10 @@ function clearError(inputElement, errorEl) {
 }
 
 function checkBeforeSubmit(form) {
-  // const invalidInput = [...form.elements].find(input =>
-  //   input.classList.contains('is-invalid')
-  // );
   const sendRatigBtn = form.querySelector('.rating-send-btn');
   const rating = sendRatigBtn.dataset.rating;
   const invalidInput = form.querySelector('.is-invalid');
   const input = form.querySelector('.rating__input');
-  // const errorEl = getErrorElement(input);
-
-  // if (rating) {
-  // }
 
   if (invalidInput) {
     invalidInput.focus();
@@ -131,15 +105,6 @@ function resetValidationState(form) {
   const errorEl = getErrorElement(input);
 
   if (errorEl) errorEl.textContent = '';
-
-  // [...form.elements].forEach(input => {
-  //   input.classList.remove('is-valid', 'is-invalid');
-  //   delete input.dataset.listenerAdded;
-
-  //   const errorEl = getErrorElement(input);
-
-  //   if (errorEl) errorEl.textContent = '';
-  // });
 }
 
 function attachInputListener(input) {
@@ -155,10 +120,6 @@ function attachInputListener(input) {
   });
   input.dataset.listenerAdded = 'true';
 }
-
-// function clearFormStorage(storageKey) {
-//   localStorage.removeItem(storageKey);
-// }
 
 function formSubmit(form) {
   console.log('formData:', formData);

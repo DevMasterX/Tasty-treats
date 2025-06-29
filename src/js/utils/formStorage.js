@@ -16,10 +16,6 @@ function restoreFormStateFromLocalStorage(form) {
     if (formDataKeys.includes(element.name)) {
       element.value = formData[element.name];
     }
-
-    // if (formDataKeys.includes(element.name)) {
-    //   element.value = formDataKeys[element.name];
-    // }
   });
 }
 
@@ -45,7 +41,6 @@ function saveFormStateToLocalStorage(form) {
     const formData = JSON.parse(localStorage.getItem(ORDER_FORM_KEY) || '{}');
 
     formData[formDataKey] = formDataValue;
-
     localStorage.setItem(ORDER_FORM_KEY, JSON.stringify(formData));
   });
 }
