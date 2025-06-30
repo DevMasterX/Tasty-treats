@@ -1,6 +1,7 @@
 import Notiflix from 'notiflix';
 import { closeModal } from '../components/modal';
 import { ORDER_FORM_KEY } from './formStorage';
+import { sendFormData } from '../services/order-form';
 
 const validationConfig = {
   username: {
@@ -9,13 +10,13 @@ const validationConfig = {
   },
   phone_number: {
     required: true,
-    pattern: /^[\d\s+()-]{7,20}$/,
-    errorMessage: 'Enter a valid phone number',
+    pattern: /^\+380\d{9}$/,
+    errorMessage: 'Phone must be in format +380XXXXXXXXX',
   },
   email: {
     required: true,
-    pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-    errorMessage: 'Enter a valid email address',
+    pattern: /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/,
+    errorMessage: 'Enter a valid email like test@gmail.com',
   },
 };
 
@@ -121,21 +122,46 @@ function clearFormStorage(storageKey) {
   localStorage.removeItem(storageKey);
 }
 
-function formSubmit(form) {
-  form.reset();
-  clearFormStorage(ORDER_FORM_KEY);
-  closeModal();
+async function formSubmit(form) {
+  const formData = new FormData(form);
+  const rawData = Object.fromEntries(formData.entries());
+  const data = {
+    name: rawData.username,
+    phone: rawData.phone_number,
+    email: rawData.email,
+    comment: rawData.comments || 'No comment provided',
+  };
 
-  Notiflix.Report.success(
-    'SUCCESS',
-    'Your request has been sent. We’ll contact you shortly.',
-    'Close',
+  try {
+    await sendFormData(data);
+    form.reset();
+    clearFormStorage(ORDER_FORM_KEY);
+    closeModal();
 
-    {
-      width: '360px',
-      svgSize: '180px',
-    }
-  );
+    Notiflix.Report.success(
+      'SUCCESS',
+
+      'Your request has been sent. We’ll contact you shortly.',
+      'Close',
+
+      {
+        width: '360px',
+        svgSize: '180px',
+      }
+    );
+  } catch (error) {
+    Notiflix.Report.failure(
+      'Error',
+
+      'Something went wrong while submitting the form. Please try again.',
+
+      'Close',
+      {
+        width: '360px',
+        svgSize: '180px',
+      }
+    );
+  }
 }
 
 function getErrorElement(input) {
