@@ -151,7 +151,8 @@ async function formSubmit(form) {
   } catch (error) {
     Notiflix.Report.failure(
       'Error',
-      'Something went wrong. Please try again.',
+      // 'Something went wrong. Please try again.',
+      `${error?.response?.data.message}`,
       'Close',
       {
         width: '360px',
