@@ -1,7 +1,8 @@
 @use '../utils/mixins' as *;
 
 .main-grid-container {
-  margin-top: 80px;
+  // margin-top: 80px;
+  margin-top: 40px;
 
   @include media(md) {
     margin-top: 100px;
