@@ -1,3 +1,7 @@
+@mixin transition($properties: all, $time: 0.3s, $ease: ease-out) {
+  transition: $properties $time $ease;
+}
+
 @mixin flex-center {
   display: flex;
   align-items: center;
@@ -88,10 +92,6 @@
       @content;
     }
   }
-}
-
-@mixin transition($properties: all, $time: 0.3s, $ease: ease-out) {
-  transition: $properties $time $ease;
 }
 
 @mixin responsive-bg($name, $ext: 'jpg') {

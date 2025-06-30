@@ -1,8 +1,6 @@
 @use '../utils/mixins' as *;
 
 .modal {
-  @include flex-center;
-
   position: fixed;
   inset: 0;
 
@@ -14,11 +12,13 @@
   pointer-events: auto;
   transform: scale(1);
   transition: opacity 0.3s ease, transform 0.3s ease;
+
   &.is-hidden {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
   }
+  @include flex-center;
 }
 
 .modal-overlay {
@@ -41,9 +41,9 @@
   transform: scale(1);
   max-height: 98dvh;
   overflow: auto;
+  padding: 40px;
   @include transition;
   @include media(md) {
-    padding: 40px;
   }
 
   .modal.is-hidden & {
