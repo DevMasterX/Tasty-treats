@@ -14,11 +14,15 @@
   margin-top: 20px;
 
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
+  // grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  // gap: 24px;
+  gap: 0;
 
   @include media(md) {
     margin-top: 32px;
+    grid-template-columns: 1fr;
     gap: 16px;
   }
   @include media(lg) {

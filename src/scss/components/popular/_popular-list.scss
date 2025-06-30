@@ -1,7 +1,9 @@
 @use '../../utils/mixins' as *;
 
 .popular-recipes__list {
-  height: 158px;
+  // height: 158px;
+  height: 65px;
+
   overflow: hidden;
 
   @include media(md) {
