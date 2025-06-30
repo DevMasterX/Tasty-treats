@@ -6,8 +6,8 @@
   border-radius: 12px;
   font-size: 14px;
 
+  // @include transition;
   @include btn-secondary;
-  @include transition;
   @include media(md) {
     width: 127px;
     height: 45px;

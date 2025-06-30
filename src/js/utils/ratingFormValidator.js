@@ -3,14 +3,15 @@ import Notiflix from 'notiflix';
 import { closeModal } from '../components/modal';
 import { STORAGE_KEYS } from '../../constants/constants';
 import { removeFromStorage } from './localStorage';
+import { sendRatingFormData } from '../services/rating-form';
 
 const ratingEmailKey = STORAGE_KEYS.RATING_EMAIL_KEY;
 
 const validationConfig = {
   email: {
     required: true,
-    pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-    errorMessage: 'Enter a valid email address',
+    pattern: /^[a-zA-Z0-9._%+-]+@gmail\.com$/,
+    errorMessage: 'Enter a valid Gmail address (test@gmail.com)',
   },
 };
 
@@ -121,22 +122,43 @@ function attachInputListener(input) {
   input.dataset.listenerAdded = 'true';
 }
 
-function formSubmit(form) {
-  console.log('formData:', formData);
-  form.reset();
-  removeFromStorage(ratingEmailKey);
-  closeModal();
+async function formSubmit(form) {
+  const sendBtn = form.querySelector('.rating-send-btn');
+  const id = sendBtn.dataset.id;
+  console.log('🚀 id:', id);
 
-  Notiflix.Report.success(
-    'SUCCESS',
-    'Thank you! Your rating has been sent.',
-    'Close',
+  const data = {
+    rate: Number(formData.rating),
+    email: formData.email,
+  };
+  console.log('🚀 data:', data);
 
-    {
-      width: '360px',
-      svgSize: '180px',
-    }
-  );
+  try {
+    await sendRatingFormData(id, data);
+    form.reset();
+    removeFromStorage(ratingEmailKey);
+    closeModal();
+
+    Notiflix.Report.success(
+      'SUCCESS',
+      'Thank you! Your rating has been sent.',
+      'Close',
+      {
+        width: '360px',
+        svgSize: '180px',
+      }
+    );
+  } catch (error) {
+    Notiflix.Report.failure(
+      'Error',
+      'Something went wrong. Please try again.',
+      'Close',
+      {
+        width: '360px',
+        svgSize: '180px',
+      }
+    );
+  }
 }
 
 function getErrorElement(input) {

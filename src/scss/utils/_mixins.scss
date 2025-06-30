@@ -31,6 +31,7 @@
 
 @mixin btn-secondary {
   @include flex-center;
+  @include transition;
 
   color: var(--text-primary);
   border: 1px solid #9bb537;
@@ -58,7 +59,6 @@
   font-weight: 600;
   font-size: 18px;
   line-height: 122%;
-  // outline: 1px solid var(--pagination-btn-outline);
   @include transition;
   @include flex-center;
   @if $backgroundColor == black {

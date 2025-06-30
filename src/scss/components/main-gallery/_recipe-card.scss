@@ -118,8 +118,8 @@
   border-radius: 8px;
   font-size: 12px;
 
-  @include btn-primary;
   @include transition;
+  @include btn-primary;
 }
 
 body.dark-theme .gallery-item::before {

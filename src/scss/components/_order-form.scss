@@ -73,8 +73,8 @@
   border-radius: 15px;
   font-size: 14px;
 
-  @include btn-primary;
   @include transition;
+  @include btn-primary;
 }
 
 .order-form__error-essage {

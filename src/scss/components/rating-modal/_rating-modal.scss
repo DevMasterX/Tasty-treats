@@ -69,8 +69,8 @@
   width: 100%;
   border-radius: 15px;
   padding: 15px;
-  @include btn-primary;
   @include transition;
+  @include btn-primary;
 }
 
 .rating-send-btn.disabled {

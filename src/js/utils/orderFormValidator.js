@@ -15,8 +15,8 @@ const validationConfig = {
   },
   email: {
     required: true,
-    pattern: /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/,
-    errorMessage: 'Enter a valid email like test@gmail.com',
+    pattern: /^[a-zA-Z0-9._%+-]+@gmail\.com$/,
+    errorMessage: 'Enter a valid Gmail address (test@gmail.com)',
   },
 };
 

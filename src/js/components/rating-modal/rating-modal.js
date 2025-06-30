@@ -49,6 +49,4 @@ function createRatingModalMarkup(btn) {
     `;
 }
 
-function validateRatingForm() {}
-
 export { renderRatingModal };

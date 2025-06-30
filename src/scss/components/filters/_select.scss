@@ -27,11 +27,11 @@
     display: none;
   }
 
+  @include transition;
   @include media(md) {
     height: 48px;
     line-height: 125%;
   }
-  @include transition;
 }
 
 .choices.is-open.is-flipped .choices__list--dropdown.is-active,
