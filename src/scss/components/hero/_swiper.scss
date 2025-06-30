@@ -9,7 +9,12 @@
 }
 
 .sw-container.swiper-container {
+  aspect-ratio: 641 / 527.3;
   overflow: hidden !important;
+
+  @include media(md) {
+    aspect-ratio: 702 / 480.39;
+  }
 
   @include media(lg) {
     width: 100%;
