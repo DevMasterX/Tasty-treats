@@ -42,9 +42,11 @@
   gap: 16px;
 
   @include media(md) {
+    grid-template-columns: 48px 1fr;
     gap: 8px;
   }
   @include media(lg) {
+    grid-template-columns: 64px 1fr;
     gap: 16px;
   }
 }
