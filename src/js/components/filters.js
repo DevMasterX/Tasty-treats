@@ -146,6 +146,7 @@ function initInputEventListener(input) {
     const inputValue = e.target.value.toLowerCase().trim();
     toggleClearBtn(inputValue);
     recipesApiService.updateParams(input.name, inputValue);
+    recipesApiService.updateParams('page', 1);
     initMainGallery();
   }, INPUT_DEBOUNCE_DELAY);
 
@@ -156,9 +157,7 @@ function initSelectsEventListener(selects) {
   selects.forEach(select => {
     select.addEventListener('change', () => {
       recipesApiService.updateParams(select.name, select.value);
-      console.log(select.name);
-      console.log(select.value);
-
+      recipesApiService.updateParams('page', 1);
       initMainGallery();
     });
   });
