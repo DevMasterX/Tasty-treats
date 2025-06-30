@@ -1,0 +1,17 @@
+@use '../utils/mixins' as *;
+
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  background-color: var(--splash-bg);
+  display: flex;
+  z-index: 2000;
+
+  @include flex-center;
+  @include transition;
+}
+
+.splash-logo {
+  font-size: 60px;
+  color: var(--splash-text-color);
+}

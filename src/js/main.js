@@ -15,8 +15,10 @@ import { initHomePagination } from './components/pagination/homePagination';
 import { renderPaginationButtons } from './components/pagination/render-pagination-buttons';
 import { initBackToTop } from './components/back-to-top';
 import { highlightActiveNavLink } from './utils/nav-link-active';
+import { initSplashScreen } from './components/splash-screen';
 
 document.addEventListener('DOMContentLoaded', async () => {
+  initSplashScreen();
   AOS.init({
     offset: 0,
     once: true,
