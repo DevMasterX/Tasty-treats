@@ -6,7 +6,7 @@ import { fetchIngredients } from '../services/ingredients';
 import { recipesApiService } from '../services/recipes-api-service';
 import { initMainGallery } from './main-gallery';
 import { INPUT_DEBOUNCE_DELAY } from '../../constants/constants';
-import { startTypeEffect} from './typing-effect';
+import { startTypeEffect } from './typing-effect';
 
 const selects = document.querySelectorAll('.filters-item__select');
 const input = document.querySelector('.js-filters-item__input');
@@ -86,14 +86,92 @@ async function initFilters() {
   initSelectsEventListener(selects);
 }
 
+// function initChoices() {
+//   const selectElements = document.querySelectorAll('.js-choice');
+//   selectElements.forEach(element => {
+//     const instance = new Choices(element, choicesOptions);
+//     choicesInstances.push(instance);
+//     initSimpleBar(instance.dropdown.element.firstChild);
+
+//   });
+// }
+
+// function initChoices() {
+//   const selectElements = document.querySelectorAll('.js-choice');
+
+//   selectElements.forEach(element => {
+//     const instance = new Choices(element, choicesOptions);
+//     choicesInstances.push(instance);
+
+//     let dropdown = instance.dropdown?.element?.firstChild;
+//     element.addEventListener('showDropdown', () => {
+//       // dropdown = instance.dropdown?.element?.firstChild;
+//       console.log('🚀 dropdown:', dropdown);
+//       if (!dropdown.dataset.simplebarInited) {
+//         console.log('show');
+//         initSimpleBar(dropdown);
+//         dropdown.dataset.simplebarInited = 'true';
+//       }
+
+//       // if (!dropdown || dropdown.dataset.simplebarInited) return;
+//       // initSimpleBar(dropdown);
+//       // dropdown.dataset.simplebarInited = 'true';
+
+//       // initSimpleBar(dropdown);
+
+//       // if (dropdown && dropdown.hasAttribute('data-simplebar')) {
+//       //   if (dropdown.SimpleBar) {
+//       //     dropdown.SimpleBar.unMount();
+//       //   }
+//       //   dropdown.removeAttribute('data-simplebar');
+//       // }
+
+//       // if (!dropdown.hasAttribute('data-simplebarInited')) {
+//       //   initSimpleBar(dropdown);
+//       //   dropdown.setAttribute('data-simplebarInited', 'true');
+//       //   console.log(dropdown);
+//       // }
+
+//       // if (!dropdown.hasAttribute('data-simplebar')) {
+//       //   initSimpleBar(dropdown);
+//       // }
+//     });
+
+//     element.addEventListener('hideDropdown', () => {
+//       dropdown = instance.dropdown?.element?.firstChild;
+//       dropdown.dataset.simplebarInited = 'false';
+//       console.log('hide');
+//       console.log('🚀 dropdown:', dropdown);
+//     });
+//   });
+// }
+
 function initChoices() {
   const selectElements = document.querySelectorAll('.js-choice');
+
   selectElements.forEach(element => {
     const instance = new Choices(element, choicesOptions);
     choicesInstances.push(instance);
-    initSimpleBar(instance.dropdown.element.firstChild);
+
+    element.addEventListener('showDropdown', () => {
+      console.log('show');
+      const dropdown = instance.dropdown?.element?.firstChild;
+      console.log('🚀 dropdown before init:', dropdown);
+
+      initSimpleBar(dropdown);
+      console.log('🚀 dropdown after init:', dropdown);
+    });
+
+    element.addEventListener('hideDropdown', () => {
+      console.log('hide');
+      const dropdown = instance.dropdown?.element?.firstChild;
+      dropdown.dataset.simplebarInited = 'false';
+      console.log('after hide', dropdown);
+    });
   });
 }
+
+// showDropdown;
 
 async function initAreaList() {
   const areaList = await fetchAreaList();
