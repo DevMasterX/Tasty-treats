@@ -1,5 +1,21 @@
 @use '../../utils/mixins' as *;
 
+.filters-item {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover .choices {
+      border-color: var(--text-secondary);
+    }
+  }
+}
+
+.choices {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover:focus {
+      border-color: var(--text-primary);
+    }
+  }
+}
+
 .filters-item__select {
   padding-left: 18px;
   font-weight: 500;

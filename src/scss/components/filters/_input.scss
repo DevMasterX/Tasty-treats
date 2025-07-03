@@ -69,6 +69,22 @@
   }
 }
 
+.filters-item {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover .filters-item__element.filters-item__input {
+      border-color: var(--text-secondary);
+    }
+  }
+}
+
+.filters-item__element.filters-item__input {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover:focus {
+      border-color: var(--text-primary);
+    }
+  }
+}
+
 .label-search {
   grid-area: search;
 
