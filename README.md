@@ -1,89 +1,156 @@
-🍽️ Tasty Treats — Recipe Web Application
 
-Live Demo: https://sokolovskyi-dev.github.io/Tasty-treats/
+# 🍽️ Tasty Treats — Recipe Web Application
 
-Source Code: https://github.com/sokolovskyi-dev/Tasty-treats
+![Logo](./demo/logo.gif)
 
-🧩 About the Project Tasty Treats is a modern, responsive recipe web application
-featuring rich UI, smart filtering, and a clean UX.
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-online-brightgreen)](https://sokolovskyi-dev.github.io/Tasty-treats/)
+[![GitHub Code](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/sokolovskyi-dev/Tasty-treats)
 
-This project was originally built as a team collaboration, where I acted as the
-team lead. The full commit history is preserved. I have since rewritten the
-entire project from scratch, improving structure, optimizing performance, and
-applying best practices to solidify my frontend development skills.
 
-🚀 Key Features 🎞️ Hero 3D Slider showcasing cooking masterclasses
 
-🔍 Advanced Filtering by category, region, ingredients, time, and recipe name
+Tasty Treats is a modern, responsive recipe web application featuring rich UI, smart filtering, and a clean UX.
 
-🧾 Recipe Cards with modal previews:
+This project was originally built as a team collaboration, where I acted as the team lead. The full commit history is preserved. I have  rewritten the entire project from scratch, improving structure, optimizing performance, and applying best practices to solidify my frontend development skills.
+The project was optimized for smooth user experience and fast performance, with attention to accessibility, UI responsiveness, and usability.
 
-Video instructions
+Note: This is a frontend-only project using a third-party public recipe API.
 
-Ratings and hashtags
 
-Ingredients list and cooking steps
 
-"Add to Favorites" button
 
-Submit rating via modal form
 
-⭐ Favorites Page — stores your favorite recipes with category filtering
+## Features
 
-📄 Gallery Pagination for recipe browsing
+🎞️ Hero 3D Slider showcasing cooking masterclasses  
+🔍 Advanced Filtering (category, region, ingredients, time, recipe name)  
+🧾 Recipe Modals with:
+  - Video instructions
+  - Ratings and hashtags
+  - Ingredients and steps
+  - Add to Favorites
+  - Submit rating via form  
+⭐ Favorites Page with filtering  
+📄 Paginated recipe gallery  
+🌓 Dark/Light theme toggle  
+✅ Form validation  
+🎨 UI enhancements: animations, custom scrollbars 
 
-🌓 Dark/Light Theme Toggle
+Special attention was given to UI consistency, form feedback, animated interactions, and mobile responsiveness.
 
-✅ Form Validation for improved user experience
+## Usage
 
-🎨 Interactive UI with animations, parallax effects, and custom scrollbars
+At the top of the application, the header contains two main navigation buttons: **Home** and **Favorites**.
+These buttons let users navigate between the main page and their personal list of saved favorites.
 
-🛠 Tech Stack JavaScript (ES6+), SCSS
+The Hero section features an interactive 3D slider that visually presents available cooking masterclasses.
+**Order** Now button opens a modal with a validated form, where users can request a specific masterclass.
 
-Parcel as a bundler
+Below the Hero section, users can explore a dynamic recipe gallery with intuitive pagination for navigating between pages.
+Filtering is available by category, region, ingredients, preparation time, and recipe name.
+Each gallery item is displayed as a recipe card. Clicking on a card opens a modal with a large dish image and navigation arrows to browse other recipes images.
 
-API consumption via axios
+To see complete recipe details — including video instructions, ingredients, hashtags, ratings, and cooking steps —
+the user must click the **See Recipe** button inside the modal. This opens a modal window with  detailed information.
+There, a **Give a rating** button allows the user to open another modal to submit a rating via a form.
 
-Libraries:
+Any recipe can be added to or removed from the Favorites list using a button in the detailed modal or **heart-button** on the recipe card.
 
-swiper, glightbox, simple-parallax-js, choices.js, notiflix, aos,
-lodash.debounce, animate.css, and others
+The Favorites page, accessible from the header, displays a gallery of saved recipes.
+Users can filter their saved recipes by category, providing a convenient way to organize and revisit preferred dishes.
 
-LocalStorage / SessionStorage for state persistence
+The interface supports dark and light themes, animated transitions, and validated form inputs to ensure smooth and user-friendly interaction across all devices.
 
-Custom class-based RecipeApiService for handling API logic
 
-🎯 What I Practiced and Learned Dynamic rendering and DOM manipulation
+## Demo
 
-Asynchronous operations with async/await and axios
+Here are some key UI interactions demonstrated:
 
-Responsive design using CSS Grid and Flexbox
+### 🎯 Hero Section
+Interactive 3D slider with masterclass ordering form.
 
-Pagination logic and state control
+![Hero Section](./demo/hero.gif)
 
-Modular, scalable SCSS structure
+---
 
-Theme switching with CSS variables
+### 🧠 Gallery Filtering
+Smart recipe filtering by category, area, ingredients, and preparation time.
 
-Form validation and user feedback patterns
+![Filtering](./demo/gallery.gif)
 
-Building a pleasant UI/UX with animation libraries
+---
 
-<!-- 🛠 About This Project This project was originally developed as a team
-collaboration, where I acted as the team lead. You can explore the full commit
-history to see the contributions made by the team.
+### 📑 Pagination Logic
+Custom pagination interface synchronized with API query parameters.
 
-Now, I am rewriting the project from scratch to improve the code structure,
-optimize performance, and implement best practices.
+![Pagination](./demo/pagination.gif)
 
-📜 Project History The initial version was built as a team project, which you
-can review in the commit history.
+---
 
-I am now rebuilding it entirely, demonstrating my individual coding skills and
-approach to modern development.
+### ⭐ Favorites Page
+Saving and viewing favorite recipes with category filtering.
 
-🚀 Goals of the Rewrite Better architecture and clean code
+![Favorites](./demo/favorites.gif)
 
-Improved performance and maintainability
+## Tech Stack
 
-Implementation of best practices and new technologies -->
+- ![JS](https://img.shields.io/badge/JavaScript_(ES6+)-F7DF1E?style=flat&logo=javascript&logoColor=black)
+- ![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=flat&logo=sass&logoColor=white) 
+- ![Parcel](https://img.shields.io/badge/Parcel-FF6F00?style=flat&logo=parcel&logoColor=white)
+- ![REST API](https://img.shields.io/badge/REST%20API-HTTP-blue?style=flat)
+- ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=axios&logoColor=white)
+
+#### Libraries:
+
+- ![Swiper](https://img.shields.io/badge/Swiper-6332F6?style=flat&logo=swiper&logoColor=white)
+- ![GLightbox](https://img.shields.io/badge/GLightbox-000000?style=flat&logo=google-chrome&logoColor=white)
+- ![Choices.js](https://img.shields.io/badge/Choices.js-6C63FF?style=flat)
+- ![Notiflix](https://img.shields.io/badge/Notiflix-0088CC?style=flat)
+- ![Lodash.debounce](https://img.shields.io/badge/Lodash.debounce-3492FF?style=flat&logo=lodash&logoColor=white)
+- ![AOS](https://img.shields.io/badge/AOS-F06868?style=flat)
+- ![Animate.css](https://img.shields.io/badge/Animate.css-FF69B4?style=flat)
+
+
+####  Storage & Custom Logic:
+
+- ![LocalStorage](https://img.shields.io/badge/LocalStorage-%F0%9F%93%81-yellow?style=flat)
+- ![SessionStorage](https://img.shields.io/badge/SessionStorage-%F0%9F%93%82-orange?style=flat)
+- ![Custom Service](https://img.shields.io/badge/RecipeApiService-Custom--Class-4CAF50?style=flat)
+
+
+
+
+## 🔗Links
+
+- 🔗 [Live Demo](https://sokolovskyi-dev.github.io/Tasty-treats/)
+- 💻 [Source Code](https://github.com/sokolovskyi-dev/Tasty-treats)
+## Installation
+
+Install my-project with npm
+
+```bash
+git clone https://github.com/sokolovskyi-dev/Tasty-treats.git
+cd Tasty-treats
+npm install
+npm start
+```
+    
+## Highlights
+
+- Rebuilt legacy team code into a clean, modular architecture
+- Optimized performance and enhanced gallery responsiveness
+- Separated UI logic from data services for better maintainability
+- Designed a scalable SCSS structure with reusable, organized styles
+- Developed flexible filtering logic with support for multiple criteria
+- Integrated server-side pagination by managing API query parameters, combined with fully custom client-side logic for page rendering and navigation
+## 🧠 What I Learned
+
+- Rewriting legacy code into a clean, modular architecture  
+- Dynamic rendering and conditional UI logic  
+- Managing async workflows with axios and async/await  
+- Form validation and theme switching logic  
+- Using LocalStorage and SessionStorage to manage UI state  
+- Building fully responsive interfaces using Flexbox and Grid  
+- Organizing scalable styles with SCSS partials, structured by component and layout  
+- Implementing multi-criteria filtering with real-time UI updates
+- Managing server-side pagination with query parameter handling and interface synchronization
+- Enhancing user experience through transitions, feedback, and load states  
