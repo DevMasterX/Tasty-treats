@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   checkSavedCategory();
   initBackToTop();
   initHomePagination();
-  await initSwiper();
+  // await initSwiper();
   await Promise.all([
     // initSwiper(),
     initAllCategories(),
