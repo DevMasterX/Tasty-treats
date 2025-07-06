@@ -42,23 +42,16 @@ function renderSlides(data) {
     return;
   }
 
-  const preloadLink = document.createElement('link');
-  preloadLink.rel = 'preload';
-  preloadLink.as = 'image';
-  preloadLink.href = data[0].topic.previewWebpUrl;
-  document.head.appendChild(preloadLink);
-
   swiperContainer.innerHTML = data
-    .map((item, i) => {
-      const preloadAttrs = i === 0 ? 'fetchpriority="high"' : 'loading="lazy"';
-      return `
+    .map(
+      item => `
    <div class="swiper-slide" >
     <div class="swiper-slide__cook-img-container">
       <img   src="${item.cook.imgWebpUrl}" alt="${item.cook.name}" data-swiper-parallax="60%" />
       
     </div>
     <div class="swiper-slide__main-img-container">
-      <img   src="${item.topic.previewWebpUrl}" alt="${item.topic.name}" ${preloadAttrs} data-swiper-parallax-scale="0" />
+      <img   src="${item.topic.previewWebpUrl}" alt="${item.topic.name}" data-swiper-parallax-scale="0" />
       
       <div class="swiper-title-wrapper">
         <h3 class="swiper-title" data-swiper-parallax-y="-150%" >${item.topic.name}</h3>
@@ -71,8 +64,8 @@ function renderSlides(data) {
     </div>
   </div>
    
-    `;
-    })
+    `
+    )
     .join('');
 }
 
