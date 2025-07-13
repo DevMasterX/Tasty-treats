@@ -14,7 +14,7 @@ function initSplashScreen() {
           splash.style.display = 'none';
         }
       });
-    }, 2000);
+    }, 700);
     sessionStorage.setItem('visited', 'true');
   }
 }

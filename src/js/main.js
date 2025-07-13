@@ -18,7 +18,7 @@ import { highlightActiveNavLink } from './utils/nav-link-active';
 import { initSplashScreen } from './components/splash-screen';
 
 document.addEventListener('DOMContentLoaded', async () => {
-  // initSplashScreen();
+  initSplashScreen();
   AOS.init({
     offset: 0,
     once: true,
