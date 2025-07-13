@@ -54,7 +54,7 @@ function renderSlides(data) {
       <img   src="${item.topic.previewWebpUrl}" alt="${item.topic.name}" loading="lazy" data-swiper-parallax-scale="0" />
       
       <div class="swiper-title-wrapper">
-        <h3 class="swiper-title" data-swiper-parallax-y="-150%" >${item.topic.name}</h3>
+        <p class="swiper-title" data-swiper-parallax-y="-150%" >${item.topic.name}</p>
         <p class="swiper-location-text" data-swiper-parallax-y="-600%"  >${item.topic.area}</p>
       </div>
     </div>

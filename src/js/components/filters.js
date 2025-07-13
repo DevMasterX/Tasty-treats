@@ -91,6 +91,20 @@ function initChoices() {
 
   selectElements.forEach(element => {
     const instance = new Choices(element, choicesOptions);
+
+    const labelledBy = element.getAttribute('aria-labelledby');
+    if (labelledBy) {
+      // Ждём, пока Choices создаст обёртку
+      setTimeout(() => {
+        const choicesWrapper = element
+          .closest('.filters-item')
+          ?.querySelector('.choices');
+        if (choicesWrapper) {
+          choicesWrapper.setAttribute('aria-labelledby', labelledBy);
+        }
+      }, 0);
+    }
+
     let shouldSimplebarInit = true;
     choicesInstances.push(instance);
 

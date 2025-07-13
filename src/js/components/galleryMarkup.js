@@ -30,7 +30,7 @@ function createGalleryMarkup(arr) {
  
  >
 </a>
-      <button class="gallery-item__favorite-btn" data-id="${_id}">
+      <button class="gallery-item__favorite-btn" aria-label="Favorite button" data-id="${_id}">
         <svg class="favorite-btn__icon" data-id="${_id}">
           <use href="#icon-heart"></use>
         </svg>

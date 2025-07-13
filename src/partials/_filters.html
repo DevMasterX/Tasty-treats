@@ -20,10 +20,10 @@
   </label>
 
   <label class="filters-item label-time">
-    <span class="filters-item__label">Time</span>
+    <span id="label-time" class="filters-item__label">Time</span>
     <select
       name="time"
-      id=""
+      aria-labelledby="label-time"
       class="filters-item__element filters-item__select js-choice"
     >
       <option value="">All</option>
@@ -58,8 +58,9 @@
     </svg>
   </label>
   <label class="filters-item label-area">
-    <span class="filters-item__label">Area</span>
+    <span id="label-area" class="filters-item__label">Area</span>
     <select
+      aria-labelledby="label-area"
       name="area"
       class="filters-item__element filters-item__select js-choice"
     >
@@ -72,8 +73,9 @@
   </label>
 
   <label class="filters-item label-ingredients">
-    <span class="filters-item__label">Ingredients</span>
+    <span id="label-ingredients" class="filters-item__label">Ingredients</span>
     <select
+      aria-labelledby="label-ingredients"
       name="ingredient"
       class="filters-item__element filters-item__select js-choice"
     >
