@@ -18,14 +18,14 @@ import { highlightActiveNavLink } from './utils/nav-link-active';
 import { initSplashScreen } from './components/splash-screen';
 
 document.addEventListener('DOMContentLoaded', async () => {
-  initSplashScreen();
-  AOS.init({
-    offset: 0,
-    once: true,
-    startEvent: 'load',
-    debounceDelay: 50,
-    throttleDelay: 99,
-  });
+  // initSplashScreen();
+  // AOS.init({
+  //   offset: 0,
+  //   once: true,
+  //   startEvent: 'load',
+  //   debounceDelay: 50,
+  //   throttleDelay: 99,
+  // });
 
   highlightActiveNavLink();
   initTheme();
