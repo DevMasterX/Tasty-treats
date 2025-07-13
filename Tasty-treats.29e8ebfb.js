@@ -284,7 +284,7 @@ ${h}
  
  >
 </a>
-      <button class="gallery-item__favorite-btn" data-id="${a}">
+      <button class="gallery-item__favorite-btn" aria-label="Favorite button" data-id="${a}">
         <svg class="favorite-btn__icon" data-id="${a}">
           <use href="#icon-heart"></use>
         </svg>
@@ -484,4 +484,4 @@ ${h}
       </button>
     
     `}t(e.exports,"renderPaginationButtons",function(){return n})}),s("c0gs0",function(e,i){t(e.exports,"initBackToTop",function(){return n});function n(){let t=document.getElementById("backToTop");window.addEventListener("scroll",function(e){window.scrollY>500?t.classList.add("visible"):t.classList.remove("visible")}),t.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})})}}),s("5pQdp",function(e,i){t(e.exports,"highlightActiveNavLink",function(){return n});function n(){let t=document.querySelector(".js-home-btn"),e=document.querySelector(".js-mobile-home-btn"),i=document.querySelector(".js-favorites-btn"),n=document.querySelector(".js-mobile-favorite-btn");if(!t||!i)return;let a=window.location.pathname;t?.classList.remove("current"),e?.classList.remove("mobile-menu-current"),i?.classList.remove("current"),n?.classList.remove("mobile-menu-current"),a.includes("favorites")?(i?.classList.add("current"),n?.classList.add("mobile-menu-current")):(t?.classList.add("current"),e?.classList.add("mobile-menu-current"))}}),Object.assign(r.i??={},{"5Xoex":"not-found.b645fb3a.png"})}();
-//# sourceMappingURL=Tasty-treats.997a9074.js.map
+//# sourceMappingURL=Tasty-treats.29e8ebfb.js.map
