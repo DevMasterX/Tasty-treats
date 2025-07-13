@@ -29,7 +29,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   highlightActiveNavLink();
   initTheme();
-  await initSwiper();
+  // await initSwiper();
+  initSwiper();
   renderPaginationButtons();
   initHeaderEventListeners();
   initMobileMenu();
