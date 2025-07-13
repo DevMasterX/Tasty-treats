@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   highlightActiveNavLink();
   initTheme();
+  await initSwiper();
   renderPaginationButtons();
   initHeaderEventListeners();
   initMobileMenu();
@@ -36,7 +37,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   checkSavedCategory();
   initBackToTop();
   initHomePagination();
-  await initSwiper();
   await Promise.all([
     // initSwiper(),
     initAllCategories(),
