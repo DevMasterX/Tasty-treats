@@ -17,7 +17,7 @@ import { initBackToTop } from './components/back-to-top';
 import { highlightActiveNavLink } from './utils/nav-link-active';
 import { initSplashScreen } from './components/splash-screen';
 
-// initSplashScreen();
+initSplashScreen();
 document.addEventListener('DOMContentLoaded', async () => {
   AOS.init({
     offset: 0,
