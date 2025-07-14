@@ -19,6 +19,8 @@ import { initSplashScreen } from './components/splash-screen';
 
 initSplashScreen();
 document.addEventListener('DOMContentLoaded', async () => {
+  highlightActiveNavLink();
+  initTheme();
   AOS.init({
     offset: 0,
     once: true,
@@ -27,8 +29,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     throttleDelay: 99,
   });
 
-  highlightActiveNavLink();
-  initTheme();
   // await initSwiper();
   initSwiper();
   renderPaginationButtons();
