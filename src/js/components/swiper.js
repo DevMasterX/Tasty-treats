@@ -27,6 +27,12 @@ async function initSwiper() {
 async function getSwiperData() {
   try {
     const data = await fetchEvents();
+    const lcpImageUrl = data?.[0]?.topic?.previewWebpUrl;
+
+    if (lcpImageUrl) {
+      preloadImage(lcpImageUrl);
+    }
+
     return data;
   } catch (error) {
     console.error('Error loading data for slider:', error);
@@ -94,6 +100,14 @@ function initSwiperInstance() {
     loop: true,
     parallax: true,
   });
+}
+
+function preloadImage(src) {
+  const link = document.createElement('link');
+  link.rel = 'preload';
+  link.as = 'image';
+  link.href = src;
+  document.head.appendChild(link);
 }
 
 export { initSwiper };
