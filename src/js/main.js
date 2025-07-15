@@ -16,21 +16,28 @@ import { renderPaginationButtons } from './components/pagination/render-paginati
 import { initBackToTop } from './components/back-to-top';
 import { highlightActiveNavLink } from './utils/nav-link-active';
 import { initSplashScreen } from './components/splash-screen';
+AOS.init({
+  offset: 0,
+  once: true,
+  startEvent: 'load',
+  debounceDelay: 50,
+  throttleDelay: 99,
+});
 
-initSplashScreen();
+initSwiper();
+// initSplashScreen();
 document.addEventListener('DOMContentLoaded', async () => {
   highlightActiveNavLink();
   initTheme();
-  AOS.init({
-    offset: 0,
-    once: true,
-    startEvent: 'load',
-    debounceDelay: 50,
-    throttleDelay: 99,
-  });
+  // AOS.init({
+  //   offset: 0,
+  //   once: true,
+  //   startEvent: 'load',
+  //   debounceDelay: 50,
+  //   throttleDelay: 99,
+  // });
 
-  // await initSwiper();
-  initSwiper();
+  // initSwiper();
   renderPaginationButtons();
   initHeaderEventListeners();
   initMobileMenu();
