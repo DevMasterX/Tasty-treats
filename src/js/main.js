@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     debounceDelay: 50,
     throttleDelay: 99,
   });
+  initSwiper();
 
   highlightActiveNavLink();
   initTheme();
@@ -36,7 +37,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   checkSavedCategory();
   initBackToTop();
   initHomePagination();
-  await initSwiper();
   await Promise.all([
     // initSwiper(),
     initAllCategories(),
