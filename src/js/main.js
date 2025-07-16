@@ -16,28 +16,19 @@ import { renderPaginationButtons } from './components/pagination/render-paginati
 import { initBackToTop } from './components/back-to-top';
 import { highlightActiveNavLink } from './utils/nav-link-active';
 import { initSplashScreen } from './components/splash-screen';
-AOS.init({
-  offset: 0,
-  once: true,
-  startEvent: 'load',
-  debounceDelay: 50,
-  throttleDelay: 99,
-});
 
-initSwiper();
-// initSplashScreen();
 document.addEventListener('DOMContentLoaded', async () => {
+  initSplashScreen();
+  AOS.init({
+    offset: 0,
+    once: true,
+    startEvent: 'load',
+    debounceDelay: 50,
+    throttleDelay: 99,
+  });
+
   highlightActiveNavLink();
   initTheme();
-  // AOS.init({
-  //   offset: 0,
-  //   once: true,
-  //   startEvent: 'load',
-  //   debounceDelay: 50,
-  //   throttleDelay: 99,
-  // });
-
-  // initSwiper();
   renderPaginationButtons();
   initHeaderEventListeners();
   initMobileMenu();
@@ -45,6 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   checkSavedCategory();
   initBackToTop();
   initHomePagination();
+  await initSwiper();
   await Promise.all([
     // initSwiper(),
     initAllCategories(),
