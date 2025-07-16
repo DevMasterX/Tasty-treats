@@ -25,7 +25,7 @@ AOS.init({
 });
 
 initSwiper();
-initSplashScreen();
+// initSplashScreen();
 document.addEventListener('DOMContentLoaded', async () => {
   highlightActiveNavLink();
   initTheme();
