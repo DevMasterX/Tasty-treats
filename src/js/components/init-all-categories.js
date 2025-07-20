@@ -108,7 +108,6 @@ function initEventListeners(section) {
 
       recipesApiService.updateParams('page', 1);
       recipesApiService.updateParams('category', category);
-      console.log('after all-categories', recipesApiService.getQueryParams());
       initMainGallery();
     }
   });
